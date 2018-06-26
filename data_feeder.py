@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 from sqlalchemy import create_engine
 
 class DataParser:
@@ -10,15 +9,13 @@ class DataParser:
 
     def print_from_start(self, number):
         return self.power_ds.head(number)
-    def grab_list(self,start, end):
-        engine = create_engine('sqlite://', echo=False)
-        self.power_ds.to_sql(name = "power", con = engine)
-        command = "SELECT * FROM power LIMIT " + str(start) + "," + str(end)
-        a = engine.execute(command).fetchall()
-        clean = [k[0] for k in a]
+
+    def grab_list_range(self,start,end):
+        #this allows you to get sequential listings
+        engine = create_engine('sqlite://', echo=False) #make sql engine
+        self.power_ds.to_sql(name = "power", con = engine) #make sql table
+        command = "SELECT * FROM power LIMIT " + str(start) + "," + str(end) #make command
+        a = engine.execute(command).fetchall() #run command
+        clean = [k[0] for k in a] #extract single number
         return clean
 
-dp = DataParser()
-answer = dp.grab_list(0,1000)
-
-print(answer[4])
