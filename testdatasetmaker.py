@@ -1,13 +1,7 @@
 from dataset_maker import SetMaker
 sm = SetMaker()
+sm.create_training_set()
+sm.create_validation_set()
+for k in range(300):
+    sm.next_epoch_valid()
 
-for k in range(2):
-    sm.next_epoch()
-
-    for i in range(9):
-        carrier = sm.next_sample()
-        print(carrier)
-    print(sm.get_label())
-    print("\n")
-
-    sm.create_training_set()

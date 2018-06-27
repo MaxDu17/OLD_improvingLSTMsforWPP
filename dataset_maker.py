@@ -7,22 +7,50 @@ class SetMaker:
     master_list = list()
     counter = 0
     batch_counter = 0
-
+    training_set_size = 0
+    valid_counter = 0
+    validation_set_size = 0
     def test_database(self): #checks that the query is in good shape.
         test = self.dp.grab_list_range(10,20)
         print(len(test))
         print(test)
 
     def create_training_set(self):
-        print(self.dp.dataset_size())
+        self.training_set_size = self.hyp.TRAIN_PERCENT * self.dp.dataset_size()
+        self.test_counter = self.training_set_size
+
+    def create_validation_set(self):
+        self.validation_set_size = self.hyp.VALIDATION_PERCENT * self.dp.dataset_size()
+        print(self.validation_set_size)
 
     def next_epoch(self):
         self.master_list = list()
+        if self.counter + self.hyp.FOOTPRINT+1 > self.training_set_size:
+            self.clear_counter()
         self.master_list = self.dp.grab_list_range(self.counter, self.counter+self.hyp.FOOTPRINT+1)
         self.counter += 1
         self.batch_counter = 0
         #print(self.counter) #for debugging purposes
         #print(self.master_list)
+
+    def next_epoch_test(self):
+        if self.test_counter + self.hyp.FOOTPRINT + 1 > self.dp.dataset_size():
+            raise ValueError("you have reached the end of the test set. Violation dataset_maker/next_epoch_test")
+        self.master_list = list()
+        self.master_list = self.dp.grab_list_range(self.test_counter, self.test_counter + self.hyp.FOOTPRINT + 1)
+        self.test_counter += 1
+        self.batch_counter = 0
+
+    def next_epoch_valid(self):
+        print(self.valid_counter)
+        if self.valid_counter + self.hyp.FOOTPRINT + 1 > self.validation_set_size:
+
+            raise ValueError("you have reached the end of the validation. Please check your code"
+                             " for boundary cases. Violation dataset_maker/next_epoch_valid")
+        self.master_list = list()
+        self.master_list = self.dp.grab_list_range(self.valid_counter, self.valid_counter + self.hyp.FOOTPRINT + 1)
+        self.valid_counter += 1
+        self.batch_counter = 0
 
     def clear_counter(self):
         self.counter = 0
@@ -33,7 +61,7 @@ class SetMaker:
     def next_sample(self):
         if self.batch_counter >=self.hyp.FOOTPRINT:
             raise ValueError("you are infiltrating into key territory! Traceback: dataset_maker/next_sample. "
-                             "violation: batch_counter > self.hyp.FOOTPRINT")
+                             "Violation: batch_counter > self.hyp.FOOTPRINT")
         else:
             carrier = self.master_list[self.batch_counter]
             self.batch_counter += 1
