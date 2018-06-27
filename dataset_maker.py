@@ -16,12 +16,14 @@ class SetMaker:
         self.master_list = self.dp.grab_list_range(self.counter, self.counter+self.hyp.FOOTPRINT+1)
         self.counter += (self.hyp.FOOTPRINT+1)
         self.batch_counter = 0
-        #print(self.counter)
+        #print(self.counter) #for debugging purposes
         #print(self.master_list)
     def clear_counter(self):
         self.counter = 0
+
     def get_label(self):
         return self.master_list[self.hyp.FOOTPRINT+1]
+
     def next_sample(self):
         self.batch_counter += 1
         if self.batch_counter >self.hyp.FOOTPRINT:
