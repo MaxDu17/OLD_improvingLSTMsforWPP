@@ -12,6 +12,6 @@ class DataParser:
         self.power_ds.index.name = "index" #sets index to "index" for ease of query
         command = str(start)+ "<=index<" + str(end) #makes command
         subset = self.power_ds.query(command) #querys the pandas data frame
-        clean = [k[0] for k in subset.values] #extracts the value and discards the index value
+        clean = [round(k[0],3) for k in subset.values] #extracts the value and discards the index value
         return clean #returns the query in a form of a list
 

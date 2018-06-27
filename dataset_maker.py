@@ -22,12 +22,13 @@ class SetMaker:
         self.counter = 0
 
     def get_label(self):
-        return self.master_list[self.hyp.FOOTPRINT+1]
+        return self.master_list[self.hyp.FOOTPRINT]
 
     def next_sample(self):
-        self.batch_counter += 1
-        if self.batch_counter >self.hyp.FOOTPRINT:
+        if self.batch_counter >=self.hyp.FOOTPRINT:
             raise ValueError("you are infiltrating into key territory! Traceback: dataset_maker/next_sample. "
                              "violation: batch_counter > self.hyp.FOOTPRINT")
         else:
-            return self.master_list[self.batch_counter]
+            carrier = self.master_list[self.batch_counter]
+            self.batch_counter += 1
+            return carrier
