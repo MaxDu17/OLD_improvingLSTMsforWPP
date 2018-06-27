@@ -21,7 +21,6 @@ class SetMaker:
 
     def create_validation_set(self):
         self.validation_set_size = int(self.hyp.VALIDATION_PERCENT * self.dp.dataset_size()) #just casting to whole #
-        print(self.validation_set_size)
 
     def next_epoch(self):
         self.master_list = list()
@@ -34,6 +33,7 @@ class SetMaker:
         #print(self.master_list)
 
     def next_epoch_test(self):
+        print(self.test_counter)
         if self.test_counter + self.hyp.FOOTPRINT + 1 > self.dp.dataset_size():
             raise ValueError("you have reached the end of the test set. Violation dataset_maker/next_epoch_test")
         self.master_list = list()
