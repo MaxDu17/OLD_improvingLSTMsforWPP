@@ -7,12 +7,15 @@ class SetMaker:
     master_list = list()
     counter = 0
     batch_counter = 0
+
     def test_database(self): #checks that the query is in good shape.
         test = self.dp.grab_list_range(10,20)
         print(len(test))
         print(test)
+
     def create_training_set(self):
         print(self.dp.dataset_size())
+
     def next_epoch(self):
         self.master_list = list()
         self.master_list = self.dp.grab_list_range(self.counter, self.counter+self.hyp.FOOTPRINT+1)
@@ -20,6 +23,7 @@ class SetMaker:
         self.batch_counter = 0
         #print(self.counter) #for debugging purposes
         #print(self.master_list)
+
     def clear_counter(self):
         self.counter = 0
 
