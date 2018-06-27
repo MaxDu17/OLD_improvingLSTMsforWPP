@@ -20,7 +20,7 @@ class SetMaker:
         self.test_counter = self.training_set_size
 
     def create_validation_set(self):
-        self.validation_set_size = self.hyp.VALIDATION_PERCENT * self.dp.dataset_size()
+        self.validation_set_size = int(self.hyp.VALIDATION_PERCENT * self.dp.dataset_size()) #just casting to whole #
         print(self.validation_set_size)
 
     def next_epoch(self):
@@ -42,7 +42,6 @@ class SetMaker:
         self.batch_counter = 0
 
     def next_epoch_valid(self):
-        print(self.valid_counter)
         if self.valid_counter + self.hyp.FOOTPRINT + 1 > self.validation_set_size:
 
             raise ValueError("you have reached the end of the validation. Please check your code"
