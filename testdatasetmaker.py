@@ -1,4 +1,5 @@
-from dataset_maker import SetMaker
+from pipeline import SetMaker
+
 sm = SetMaker()
 sm.create_training_set()
 sm.create_validation_set()

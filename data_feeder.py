@@ -5,9 +5,10 @@ class DataParser:
     this database has a query interval of [x, y)
     meaning that xth number is included, while the yth number is not
     """
-    data = pd.read_csv("2012DATA_HEADLESS.csv") #read file
-    #clean_data = data[["Month", "Day", "Hour", "Minute", "power (MW)"]] #extract critical data, not used here
-    power_ds = data[["power (MW)"]] #extract a single column
+    def __init__(self):
+        self.data = pd.read_csv("2012DATA_HEADLESS.csv") #read file
+        #clean_data = data[["Month", "Day", "Hour", "Minute", "power (MW)"]] #extract critical data, not used here
+        self.power_ds = self.data[["power (MW)"]] #extract a single column
 
     def print_from_start(self, number):
         return self.power_ds.head(number) #print everything. Seldom used, but is an option
@@ -15,7 +16,7 @@ class DataParser:
         return self.power_ds.size
     def grab_list_range(self,start,end): #selects a range to query
         self.power_ds.index.name = "index" #sets index to "index" for ease of query
-        command = str(start)+ "<=index<" + str(end) #makes command
+        command = str(start) + "<=index<" + str(end) #makes command
         subset = self.power_ds.query(command) #querys the pandas data frame
         clean = [round(k[0],3) for k in subset.values] #extracts the value and discards the index value
         return clean #returns the query in a form of a list

@@ -1,15 +1,17 @@
 from data_feeder import DataParser
-
 from hyperparameters import Hyperparameters
+
 class SetMaker:
-    dp = DataParser()
-    hyp = Hyperparameters()
-    master_list = list()
-    counter = 0
-    batch_counter = 0
-    training_set_size = 0
-    valid_counter = 0
-    validation_set_size = 0
+    def __init__(self):
+        self.dp = DataParser()
+        self.hyp = Hyperparameters()
+        self.master_list = list()
+        self.counter = 0
+        self.batch_counter = 0
+        self.training_set_size = 0
+        self.valid_counter = 0
+        self.validation_set_size = 0
+
     def test_database(self): #checks that the query is in good shape.
         test = self.dp.grab_list_range(10,20)
         print(len(test))
