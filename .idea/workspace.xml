@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/lstm_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matrix test.py" beforeDir="false" afterPath="$PROJECT_DIR$/matrix test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,7 +25,8 @@
       <file leaf-file-name="lstm_v1.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lstm_v1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="325">
+              <caret line="47" column="8" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="8" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -457,7 +457,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lstm_v1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="325">
+          <caret line="47" column="8" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="8" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
