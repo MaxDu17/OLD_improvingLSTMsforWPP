@@ -49,3 +49,11 @@ with tf.name_scope("output_gate"): #output gate values to hidden
     current_cell = tf.tanh(current_cell, name = "output_presquashing")
     current_hidden = tf.multiply(output_gate, current_cell)
     output = current_hidden
+
+with tf.name_scope("loss"):
+    loss = tf.square(tf.subtract(output, Y))
+
+with tf.name_scope("optimizer"):
+    optimizer = tf.train.AdamOptimizer(learning_rate=hyp.LEARNING_RATE).minimize(loss)
+
+    
