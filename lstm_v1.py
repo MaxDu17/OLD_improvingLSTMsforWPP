@@ -4,6 +4,7 @@ import tensorflow as tf
 import numpy as np
 from pipeline import SetMaker
 from pipeline import Hyperparameters
+import csv
 sm = SetMaker()
 hyp = Hyperparameters()
 
@@ -71,3 +72,12 @@ with tf.name_scope("summaries_and_saver"):
 
     summary_op = tf.summary.merge_all()
     saver = tf.train.Saver()
+
+with tf.Session() as sess:
+    log_loss = open("v1/GRAPHS.csv", "w")
+    logger = csv.writer(log_loss, lineterminator="\n")
+
+    sess.run(tf.global_variables_initializer())
+
+    tf.train.write_graph(sess.graph_def, 'v1/GRAPHS/', 'graph.pbtxt')
+    writer = tf.summary.FileWriter("v1/GRAPHS/", sess.graph)
