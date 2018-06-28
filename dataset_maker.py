@@ -35,7 +35,6 @@ class SetMaker:
         #print(self.master_list)
 
     def next_epoch_test(self):
-        print(self.test_counter)
         if self.test_counter + self.hyp.FOOTPRINT + 1 > self.dp.dataset_size():
             raise ValueError("you have reached the end of the test set. Violation dataset_maker/next_epoch_test")
         self.master_list = list()
@@ -45,7 +44,6 @@ class SetMaker:
 
     def next_epoch_valid(self):
         if self.valid_counter + self.hyp.FOOTPRINT + 1 > self.validation_set_size:
-
             raise ValueError("you have reached the end of the validation. Please check your code"
                              " for boundary cases. Violation dataset_maker/next_epoch_valid")
         self.master_list = list()

@@ -81,6 +81,7 @@ with tf.name_scope("summaries_and_saver"):
     saver = tf.train.Saver()
 
 with tf.Session() as sess:
+    sm.create_training_set()
     log_loss = open("v1/GRAPHS/LOSS.csv", "w")
     validation = open("v1/GRAPHS/VALIDATION.csv", "w")
     test = open("v1/GRAPHS/TEST.csv", "w")
@@ -96,7 +97,6 @@ with tf.Session() as sess:
     summary = None
 
     for epoch in range(hyp.EPOCHS):
-
         sm.next_epoch()
         label = sm.get_label()
         label = np.reshape(label, [1, 1])
@@ -126,7 +126,8 @@ with tf.Session() as sess:
             saver.save(sess, "v1/models/LSTMv1", global_step=epoch)
             print("saved model")
 
-        if epoch-500%500 == 0
+        if epoch%500 == 0 & epoch>498:
+            sm.create_validation_set()
             average_sq_loss = 0.0
             for i in range(hyp.VALIDATION_NUMBER):
                 sm.next_epoch_valid()
@@ -144,7 +145,7 @@ with tf.Session() as sess:
                     else:
                         output_, loss_= sess.run(
                             [output, loss],
-                            feed_dict={X: data, H_last: next_hidd, C_last: next_cell})
+                            feed_dict={X: data, Y:label, H_last: next_hidd, C_last: next_cell})
                         average_sq_loss += loss_
 
             average_sq_loss = average_sq_loss/hyp.VALIDATION_NUMBER
@@ -170,7 +171,7 @@ with tf.Session() as sess:
             else:
                 output_, loss_ = sess.run(
                     [output, loss],
-                    feed_dict={X: data, H_last: next_hidd, C_last: next_cell})
+                    feed_dict={X: data, Y:label, H_last: next_hidd, C_last: next_cell})
                 average_sq_loss += loss_
                 test_logger.writerow([loss_])
 
