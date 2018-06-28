@@ -56,4 +56,18 @@ with tf.name_scope("loss"):
 with tf.name_scope("optimizer"):
     optimizer = tf.train.AdamOptimizer(learning_rate=hyp.LEARNING_RATE).minimize(loss)
 
-    
+with tf.name_scope("summaries_and_saver"):
+    tf.summary.histogram("W_Forget", W_Forget)
+    tf.summary.histogram("W_Input", W_Input)
+    tf.summary.histogram("W_Output", W_Output)
+    tf.summary.histogram("W_Gate", W_Gate)
+
+    tf.summary.histogram("B_Forget", B_Forget)
+    tf.summary.histogram("B_Input", B_Input)
+    tf.summary.histogram("B_Output", B_Output)
+    tf.summary.histogram("B_Gate", B_Gate)
+
+    tf.summary.scalar("Loss", loss)
+
+    summary_op = tf.summary.merge_all()
+    saver = tf.train.Saver()
