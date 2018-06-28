@@ -9,9 +9,15 @@ hyp = Hyperparameters()
 
 #constructing the big weight now
 with tf.name_scope("weights and biases"):
-    W_Concat = tf.Variable(tf.random_normal(shape = [4, hyp.hidden_dim+1]), name = "big_weight")
-    B_Concat = tf.Variable(tf.zeros(shape=[4, hyp.cell_dim]), name = "big_bias")
+    W_Forget = tf.Variable(tf.random_normal(shape = [hyp.hidden_dim + 1,hyp.cell_dim]), name = "forget_weight")
+    W_Output = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1,hyp.cell_dim]), name="output_weight")
+    W_Gate = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="gate_weight")
+    W_Input = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="input_weight")
 
+    B_Forget = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name = "forget_bias")
+    B_Output = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="output_bias")
+    B_Gate = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="gate_bias")
+    B_Input = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="input_bias")
 #consruction of the placeholders now
 with tf.name_scope("placeholders"):
     X = tf.placeholder(shape = [1,1], dtype =  tf.float32, name = "input_placeholder")
