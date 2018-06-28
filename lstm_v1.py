@@ -76,8 +76,11 @@ with tf.name_scope("summaries_and_saver"):
 with tf.Session() as sess:
     log_loss = open("v1/GRAPHS/LOSS.csv", "w")
     validation = open("v1/GRAPHS/VALIDATION.csv", "w")
+    test = open("v1/GRAPHS/TEST.csv", "w")
+
     logger = csv.writer(log_loss, lineterminator="\n")
     validation_logger = csv.writer(validation, lineterminator="\n")
+    test_logger = csv.writer(test, lineterminator="\n")
 
     sess.run(tf.global_variables_initializer())
 
@@ -102,8 +105,7 @@ with tf.Session() as sess:
         writer.add_summary(summary, global_step=epoch)
         print("I finished epoch ", epoch, " out of ", hyp.EPOCHS, " epochs")
         print("The squared loss for this sample is ", loss_)
-        carrier = [loss_]
-        logger.writerow(carrier)
+        logger.writerow([loss_])
 
         if epoch%10 == 0:
             print("predicted number: ", output_, ", real number: ", label)
@@ -133,7 +135,30 @@ with tf.Session() as sess:
 
             average_sq_loss = average_sq_loss/hyp.VALIDATION_NUMBER
             print("validation: average square loss is ", average_sq_loss)
-            carrier = [average_sq_loss]
-            validation_logger.writerow(carrier)
+            validation_logger.writerow([epoch, average_sq_loss])
 
+
+    average_sq_loss = 0.0
+    for test in range(hyp.Info.TEST_SIZE): #this will be replaced later
+
+        sm.next_epoch_test()
+        label = sm.get_label()
+        next_cell = np.zeros(shape=[1, hyp.cell_dim])
+        next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
+
+        for counter in range(hyp.FOOTPRINT + 1):
+            data = sm.next_sample()
+            if counter <= hyp.FOOTPRINT:
+                next_cell, next_hidd = sess.run([current_cell, current_hidden],
+                                                feed_dict={X: data, H_last: next_hidd, C_last: next_cell})
+            else:
+                output_, loss_ = sess.run(
+                    [output, loss],
+                    feed_dict={X: data, H_last: next_hidd, C_last: next_cell})
+                average_sq_loss += loss_
+                test_logger.writerow([loss_])
+
+    average_sq_loss = average_sq_loss / hyp.Info.TEST_SIZE
+    print("test: average square loss is ", average_sq_loss)
+    test_logger.writerow(["this is the final average squared loss", average_sq_loss])
 
