@@ -26,7 +26,9 @@ with tf.name_scope("placeholders"):
     C_last = tf.placeholder(shape= [1,hyp.cell_dim], dtype = tf.float32, name = "last_cell")
 
 with tf.name_scope("to_gates"):
-    tiling_tensor = tf.constant(shape = [4,1], dtype = tf.int32, name = "tiling_tensor_cst")
-    input_data = tf.tile(X, tiling_tensor, name = "tiling_input")
-    hidden = tf.tile(H_last, tiling_tensor, name = "tiling_hidden")
-    concat_input = tf.stack
+    concat_input = tf.concat([X, H_last], axis =0, name = "input_concat")
+
+    forget_gate = tf.add(tf.matmul(concat_input, W_Forget, name = "f_w_m"),B_Forget, name = "f_b_a") #decides which to drop from cell
+    output_gate = tf.add(tf.matmul(concat_input, W_Output, name = "o_w_m"), B_Output, name = "o_b_a") #decides which to reveal to next_hidd/output
+    gate_gate = tf.add(tf.matmul(concat_input, W_Gate, name = "g_w_m"), B_Gate, name = "g_b_a") #decides which things to change in cell state
+    input_gate = tf.add(tf.matmul(concat_input, W_Input, name = "i_w_m"), B_Input, name = "i_b_a") #decides which of the changes to accept

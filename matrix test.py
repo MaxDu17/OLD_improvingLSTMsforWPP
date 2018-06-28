@@ -1,7 +1,7 @@
 import numpy as np
-import tensorflow as tf
-x = [1,1,1,1,1,1,1]
+
+x = [1]
 y = [2,2,2,2,2,2,2]
 
-k = np.tile(x, (3,1))
-print(k)
+#print(np.matmul(x,np.transpose(y)))
+print(np.concatenate([x,y], axis = 0))
