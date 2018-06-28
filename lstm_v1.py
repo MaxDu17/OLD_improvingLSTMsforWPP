@@ -81,3 +81,19 @@ with tf.Session() as sess:
 
     tf.train.write_graph(sess.graph_def, 'v1/GRAPHS/', 'graph.pbtxt')
     writer = tf.summary.FileWriter("v1/GRAPHS/", sess.graph)
+
+
+    for epoch in range(hyp.EPOCHS):
+        sm.next_epoch()
+        label = sm.get_label()
+        next_cell = np.zeros(shape=[1, hyp.cell_dim])
+        next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
+        for counter in range(hyp.FOOTPRINT+1):
+            data = sm.next_sample()
+            if counter <= hyp.FOOTPRINT:
+                next_cell, next_hidd = sess.run([current_cell, current_hidden],
+                                                feed_dict= {X:data, H_last:next_hidd, C_last:next_cell})
+            else:
+                next_cell, output_, loss_, summary, _ = sess.run([current_cell, output, loss, summary_op, optimizer],
+                                                feed_dict={X:data, Y:label,  H_last:next_hidd, C_last:next_cell})
+
