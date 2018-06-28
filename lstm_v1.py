@@ -67,7 +67,7 @@ with tf.name_scope("summaries_and_saver"):
     tf.summary.histogram("W_Input", W_Input)
     tf.summary.histogram("W_Output", W_Output)
     tf.summary.histogram("W_Gate", W_Gate)
-    
+
     tf.summary.histogram("Cell_State", current_cell)
 
     tf.summary.histogram("B_Forget", B_Forget)
@@ -122,11 +122,11 @@ with tf.Session() as sess:
         if epoch%10 == 0:
             print("predicted number: ", output_, ", real number: ", label)
 
-        if epoch%100 == 0:
+        if epoch%500 == 0:
             saver.save(sess, "v1/models/LSTMv1", global_step=epoch)
             print("saved model")
 
-        if epoch%500 == 0 & epoch>498:
+        if epoch%1000 == 0 and epoch>498:
             sm.create_validation_set()
             average_sq_loss = 0.0
             for i in range(hyp.VALIDATION_NUMBER):
