@@ -54,9 +54,7 @@ with tf.name_scope("output_gate"): #output gate values to hidden
     current_cell = tf.tanh(current_cell, name = "output_presquashing")
     current_hidden = tf.multiply(output_gate, current_cell)
     output = tf.add(tf.matmul(current_hidden, W_Hidden_to_Out, name = "WHTO_w_m"), B_Hidden_to_Out, name = "BHTO_b_a")
-    print(current_hidden)
-    print(W_Hidden_to_Out)
-    print(output)
+
 with tf.name_scope("loss"):
     loss = tf.square(tf.subtract(output, Y))
     loss = tf.reshape(loss, [])
@@ -69,6 +67,8 @@ with tf.name_scope("summaries_and_saver"):
     tf.summary.histogram("W_Input", W_Input)
     tf.summary.histogram("W_Output", W_Output)
     tf.summary.histogram("W_Gate", W_Gate)
+    
+    tf.summary.histogram("Cell_State", current_cell)
 
     tf.summary.histogram("B_Forget", B_Forget)
     tf.summary.histogram("B_Input", B_Input)
@@ -112,7 +112,7 @@ with tf.Session() as sess:
             else:
                 next_cell, output_, loss_, summary, _ = sess.run([current_cell, output, loss, summary_op, optimizer],
                                                 feed_dict={X:data, Y:label,  H_last:next_hidd, C_last:next_cell})
-                print(counter)
+
 
         writer.add_summary(summary, global_step=epoch)
         print("I finished epoch ", epoch, " out of ", hyp.EPOCHS, " epochs")
