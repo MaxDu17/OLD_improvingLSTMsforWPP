@@ -3,9 +3,9 @@ import tensorflow as tf
 x = [1,2,3,4,5,6,7]
 y = [2,2,2,2,2,2,2]
 
-k = tf.Variable(tf.zeros(shape = [1,1]))
+k = tf.Variable(tf.zeros(shape = [1,25]))
 d = tf.Variable(tf.zeros(shape = [25,1]))
-m = tf.concat([k, d],axis = 0)
+m = tf.matmul(k,d)
 
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())

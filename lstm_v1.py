@@ -20,7 +20,7 @@ with tf.name_scope("weights_and_biases"):
     B_Output = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="output_bias")
     B_Gate = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="gate_bias")
     B_Input = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="input_bias")
-    B_Hidden_to_Out = tf.Variable(tf.zeros(shape=[hyp.hidden_dim,1]), name = "outwards_propagating_bias")
+    B_Hidden_to_Out = tf.Variable(tf.zeros(shape=[1,1]), name = "outwards_propagating_bias")
 
 with tf.name_scope("placeholders"):
     X = tf.placeholder(shape = [1,1], dtype =  tf.float32, name = "input_placeholder") #waits for the prompt
@@ -30,8 +30,8 @@ with tf.name_scope("placeholders"):
 
 with tf.name_scope("to_gates"):
     X = tf.reshape(X, shape = [1,1])
-    H_last = tf.reshape(H_last, shape = [hyp.hidden_dim,1])
-    concat_input = tf.concat([X, H_last], axis = 0, name = "input_concat") #concatenates the inputs to one vector
+    H_last_ = tf.reshape(H_last, shape = [hyp.hidden_dim,1])
+    concat_input = tf.concat([X, H_last_], axis = 0, name = "input_concat") #concatenates the inputs to one vector
     concat_input = tf.transpose(concat_input)
     forget_gate = tf.add(tf.matmul(concat_input, W_Forget, name = "f_w_m"),B_Forget, name = "f_b_a") #decides which to drop from cell
     output_gate = tf.add(tf.matmul(concat_input, W_Output, name = "o_w_m"), B_Output, name = "o_b_a") #decides which to reveal to next_hidd/output
@@ -53,8 +53,10 @@ with tf.name_scope("suggestion_node"): #suggestion gate
 with tf.name_scope("output_gate"): #output gate values to hidden
     current_cell = tf.tanh(current_cell, name = "output_presquashing")
     current_hidden = tf.multiply(output_gate, current_cell)
-    output = tf.add(tf.multiply(current_hidden, W_Hidden_to_Out, name = "WHTO_w_m"), B_Hidden_to_Out, name = "BHTO_b_a")
-
+    output = tf.add(tf.matmul(current_hidden, W_Hidden_to_Out, name = "WHTO_w_m"), B_Hidden_to_Out, name = "BHTO_b_a")
+    print(current_hidden)
+    print(W_Hidden_to_Out)
+    print(output)
 with tf.name_scope("loss"):
     loss = tf.square(tf.subtract(output, Y))
 
@@ -91,17 +93,20 @@ with tf.Session() as sess:
     tf.train.write_graph(sess.graph_def, 'v1/GRAPHS/', 'graph.pbtxt')
     writer = tf.summary.FileWriter("v1/GRAPHS/", sess.graph)
 
+    global summary
+    global output_
 
     for epoch in range(hyp.EPOCHS):
+
         sm.next_epoch()
         label = sm.get_label()
         next_cell = np.zeros(shape=[1, hyp.cell_dim])
         next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
         loss_ = 0
-        for counter in range(hyp.FOOTPRINT+1):
+        for counter in range(hyp.FOOTPRINT):
             data = sm.next_sample()
             data = np.reshape(data, [1,1])
-            if counter <= hyp.FOOTPRINT:
+            if counter < hyp.FOOTPRINT:
                 next_cell, next_hidd = sess.run([current_cell, current_hidden],
                                                 feed_dict= {X:data, H_last:next_hidd, C_last:next_cell})
             else:
