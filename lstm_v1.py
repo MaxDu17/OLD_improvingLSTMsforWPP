@@ -74,8 +74,10 @@ with tf.name_scope("summaries_and_saver"):
     saver = tf.train.Saver()
 
 with tf.Session() as sess:
-    log_loss = open("v1/GRAPHS.csv", "w")
+    log_loss = open("v1/GRAPHS/LOSS.csv", "w")
+    validation = open("v1/GRAPHS/VALIDATION.csv", "w")
     logger = csv.writer(log_loss, lineterminator="\n")
+    validation_logger = csv.writer(validation, lineterminator="\n")
 
     sess.run(tf.global_variables_initializer())
 
@@ -88,6 +90,7 @@ with tf.Session() as sess:
         label = sm.get_label()
         next_cell = np.zeros(shape=[1, hyp.cell_dim])
         next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
+        loss_ = 0
         for counter in range(hyp.FOOTPRINT+1):
             data = sm.next_sample()
             if counter <= hyp.FOOTPRINT:
@@ -96,4 +99,41 @@ with tf.Session() as sess:
             else:
                 next_cell, output_, loss_, summary, _ = sess.run([current_cell, output, loss, summary_op, optimizer],
                                                 feed_dict={X:data, Y:label,  H_last:next_hidd, C_last:next_cell})
+        writer.add_summary(summary, global_step=epoch)
+        print("I finished epoch ", epoch, " out of ", hyp.EPOCHS, " epochs")
+        print("The squared loss for this sample is ", loss_)
+        carrier = [loss_]
+        logger.writerow(carrier)
+
+        if epoch%10 == 0:
+            print("predicted number: ", output_, ", real number: ", label)
+
+        if epoch%100 == 0:
+            saver.save(sess, "v1/models/LSTMv1", global_step=epoch)
+            print("saved model")
+
+        if epoch%500 == 0:
+            average_sq_loss = 0.0
+            for i in range(hyp.VALIDATION_NUMBER):
+                sm.next_epoch_valid()
+                label = sm.get_label()
+                next_cell = np.zeros(shape=[1, hyp.cell_dim])
+                next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
+
+                for counter in range(hyp.FOOTPRINT + 1):
+                    data = sm.next_sample()
+                    if counter <= hyp.FOOTPRINT:
+                        next_cell, next_hidd = sess.run([current_cell, current_hidden],
+                                                        feed_dict={X: data, H_last: next_hidd, C_last: next_cell})
+                    else:
+                        output_, loss_= sess.run(
+                            [output, loss],
+                            feed_dict={X: data, H_last: next_hidd, C_last: next_cell})
+                        average_sq_loss += loss_
+
+            average_sq_loss = average_sq_loss/hyp.VALIDATION_NUMBER
+            print("validation: average square loss is ", average_sq_loss)
+            carrier = [average_sq_loss]
+            validation_logger.writerow(carrier)
+
 

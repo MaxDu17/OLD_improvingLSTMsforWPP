@@ -3,7 +3,8 @@ class Hyperparameters: #the class that defines the hyperparameters is here
     LEARNING_RATE = 0.01
     EPOCHS = 2001
     TRAIN_PERCENT = 0.6
-    VALIDATION_PERCENT = 0.002
+    VALIDATION_PERCENT = 0.002 #nullifies for now
+    VALIDATION_NUMBER = 30
     cell_dim = 25
     hidden_dim = 25
     class Info: #not used in real code, just as metadata

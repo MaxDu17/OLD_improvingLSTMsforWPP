@@ -6,3 +6,6 @@ y = [2,2,2,2,2,2,2]
 #print(np.matmul(x,np.transpose(y)))
 #print(np.concatenate([x,y], axis = 0))
 print(np.multiply(x,y))
+
+for i in range(10):
+    print(i)
