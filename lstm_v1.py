@@ -40,9 +40,12 @@ with tf.name_scope("non-linearity"): #makes the gates into what they should be
     gate_gate = tf.tanh(gate_gate, name = "tanh_gate")
 
 with tf.name_scope("forget_gate"): #forget gate values and propagate
-    pass
-with tf.name_scope("output_gate"): #output gate values to hidden
-    pass
+    current_cell = tf.multiply(forget_gate, C_last, name = "forget_gating")
 
 with tf.name_scope("suggestion_node"): #suggestion gate
-    pass
+    suggestion_box = tf.multiply(input_gate, gate_gate, name = "input_determiner")
+    current_cell = tf.add(suggestion_box, current_cell, name = "input_and_gate_gating")
+with tf.name_scope("output_gate"): #output gate values to hidden
+    current_cell = tf.tanh(current_cell, name = "output_presquashing")
+    current_hidden = tf.multiply(output_gate, current_cell)
+    output = current_hidden
