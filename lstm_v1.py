@@ -59,6 +59,7 @@ with tf.name_scope("output_gate"): #output gate values to hidden
     print(output)
 with tf.name_scope("loss"):
     loss = tf.square(tf.subtract(output, Y))
+    loss = tf.reshape(loss, [])
 
 with tf.name_scope("optimizer"):
     optimizer = tf.train.AdamOptimizer(learning_rate=hyp.LEARNING_RATE).minimize(loss)
@@ -92,26 +93,27 @@ with tf.Session() as sess:
 
     tf.train.write_graph(sess.graph_def, 'v1/GRAPHS/', 'graph.pbtxt')
     writer = tf.summary.FileWriter("v1/GRAPHS/", sess.graph)
-
-    global summary
-    global output_
+    summary = None
 
     for epoch in range(hyp.EPOCHS):
 
         sm.next_epoch()
         label = sm.get_label()
+        label = np.reshape(label, [1, 1])
         next_cell = np.zeros(shape=[1, hyp.cell_dim])
         next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
         loss_ = 0
         for counter in range(hyp.FOOTPRINT):
             data = sm.next_sample()
             data = np.reshape(data, [1,1])
-            if counter < hyp.FOOTPRINT:
+            if counter < hyp.FOOTPRINT-1:
                 next_cell, next_hidd = sess.run([current_cell, current_hidden],
                                                 feed_dict= {X:data, H_last:next_hidd, C_last:next_cell})
             else:
                 next_cell, output_, loss_, summary, _ = sess.run([current_cell, output, loss, summary_op, optimizer],
                                                 feed_dict={X:data, Y:label,  H_last:next_hidd, C_last:next_cell})
+                print(counter)
+
         writer.add_summary(summary, global_step=epoch)
         print("I finished epoch ", epoch, " out of ", hyp.EPOCHS, " epochs")
         print("The squared loss for this sample is ", loss_)
@@ -124,18 +126,19 @@ with tf.Session() as sess:
             saver.save(sess, "v1/models/LSTMv1", global_step=epoch)
             print("saved model")
 
-        if epoch%500 == 0:
+        if epoch-500%500 == 0
             average_sq_loss = 0.0
             for i in range(hyp.VALIDATION_NUMBER):
                 sm.next_epoch_valid()
                 label = sm.get_label()
+                label = np.reshape(label, [1, 1])
                 next_cell = np.zeros(shape=[1, hyp.cell_dim])
                 next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
 
-                for counter in range(hyp.FOOTPRINT + 1):
+                for counter in range(hyp.FOOTPRINT):
                     data = sm.next_sample()
                     data = np.reshape(data, [1, 1])
-                    if counter <= hyp.FOOTPRINT:
+                    if counter < hyp.FOOTPRINT-1:
                         next_cell, next_hidd = sess.run([current_cell, current_hidden],
                                                         feed_dict={X: data, H_last: next_hidd, C_last: next_cell})
                     else:
@@ -154,13 +157,14 @@ with tf.Session() as sess:
 
         sm.next_epoch_test()
         label = sm.get_label()
+        label = np.reshape(label, [1, 1])
         next_cell = np.zeros(shape=[1, hyp.cell_dim])
         next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
 
-        for counter in range(hyp.FOOTPRINT + 1):
+        for counter in range(hyp.FOOTPRINT):
             data = sm.next_sample()
             data = np.reshape(data, [1, 1])
-            if counter <= hyp.FOOTPRINT:
+            if counter < hyp.FOOTPRINT-1:
                 next_cell, next_hidd = sess.run([current_cell, current_hidden],
                                                 feed_dict={X: data, H_last: next_hidd, C_last: next_cell})
             else:
