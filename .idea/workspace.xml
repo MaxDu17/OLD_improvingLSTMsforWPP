@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/lstm_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matrix test.py" beforeDir="false" afterPath="$PROJECT_DIR$/matrix test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,8 +37,8 @@
       <file leaf-file-name="lstm_v1.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lstm_v1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="33" column="59" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
+            <state relative-caret-position="323">
+              <caret line="55" column="120" lean-forward="true" selection-start-line="55" selection-start-column="120" selection-end-line="55" selection-end-column="120" />
               <folding>
                 <element signature="e#67#90#0" expanded="true" />
               </folding>
@@ -307,7 +306,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3962585" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.13435374" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -470,8 +469,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lstm_v1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="33" column="59" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
+        <state relative-caret-position="323">
+          <caret line="55" column="120" lean-forward="true" selection-start-line="55" selection-start-column="120" selection-end-line="55" selection-end-column="120" />
           <folding>
             <element signature="e#67#90#0" expanded="true" />
           </folding>

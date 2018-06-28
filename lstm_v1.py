@@ -14,11 +14,13 @@ with tf.name_scope("weights_and_biases"):
     W_Output = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1,hyp.cell_dim]), name="output_weight")
     W_Gate = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="gate_weight")
     W_Input = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="input_weight")
+    W_Hidden_to_Out = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim,1]), name = "outwards_propagating_weight")
 
     B_Forget = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name = "forget_bias")
     B_Output = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="output_bias")
     B_Gate = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="gate_bias")
     B_Input = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="input_bias")
+    B_Hidden_to_Out = tf.Variable(tf.zeros(shape=[hyp.hidden_dim,1]), name = "outwards_propagating_bias")
 
 with tf.name_scope("placeholders"):
     X = tf.placeholder(shape = [1,1], dtype =  tf.float32, name = "input_placeholder") #waits for the prompt
@@ -51,7 +53,7 @@ with tf.name_scope("suggestion_node"): #suggestion gate
 with tf.name_scope("output_gate"): #output gate values to hidden
     current_cell = tf.tanh(current_cell, name = "output_presquashing")
     current_hidden = tf.multiply(output_gate, current_cell)
-    output = current_hidden
+    output = tf.add(tf.multiply(current_hidden, W_Hidden_to_Out, name = "WHTO_w_m"), B_Hidden_to_Out, name = "BHTO_b_a")
 
 with tf.name_scope("loss"):
     loss = tf.square(tf.subtract(output, Y))
@@ -98,6 +100,7 @@ with tf.Session() as sess:
         loss_ = 0
         for counter in range(hyp.FOOTPRINT+1):
             data = sm.next_sample()
+            data = np.reshape(data, [1,1])
             if counter <= hyp.FOOTPRINT:
                 next_cell, next_hidd = sess.run([current_cell, current_hidden],
                                                 feed_dict= {X:data, H_last:next_hidd, C_last:next_cell})
@@ -126,6 +129,7 @@ with tf.Session() as sess:
 
                 for counter in range(hyp.FOOTPRINT + 1):
                     data = sm.next_sample()
+                    data = np.reshape(data, [1, 1])
                     if counter <= hyp.FOOTPRINT:
                         next_cell, next_hidd = sess.run([current_cell, current_hidden],
                                                         feed_dict={X: data, H_last: next_hidd, C_last: next_cell})
@@ -150,6 +154,7 @@ with tf.Session() as sess:
 
         for counter in range(hyp.FOOTPRINT + 1):
             data = sm.next_sample()
+            data = np.reshape(data, [1, 1])
             if counter <= hyp.FOOTPRINT:
                 next_cell, next_hidd = sess.run([current_cell, current_hidden],
                                                 feed_dict={X: data, H_last: next_hidd, C_last: next_cell})
