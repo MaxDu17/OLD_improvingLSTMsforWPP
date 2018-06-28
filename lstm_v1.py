@@ -9,7 +9,7 @@ sm = SetMaker()
 hyp = Hyperparameters()
 
 #constructing the big weight now
-with tf.name_scope("weights and biases"):
+with tf.name_scope("weights_and_biases"):
     W_Forget = tf.Variable(tf.random_normal(shape = [hyp.hidden_dim + 1,hyp.cell_dim]), name = "forget_weight")
     W_Output = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1,hyp.cell_dim]), name="output_weight")
     W_Gate = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="gate_weight")
@@ -27,8 +27,10 @@ with tf.name_scope("placeholders"):
     C_last = tf.placeholder(shape= [1,hyp.cell_dim], dtype = tf.float32, name = "last_cell") #last cell state
 
 with tf.name_scope("to_gates"):
+    X = tf.reshape(X, shape = [1,1])
+    H_last = tf.reshape(H_last, shape = [hyp.hidden_dim,1])
     concat_input = tf.concat([X, H_last], axis = 0, name = "input_concat") #concatenates the inputs to one vector
-
+    concat_input = tf.transpose(concat_input)
     forget_gate = tf.add(tf.matmul(concat_input, W_Forget, name = "f_w_m"),B_Forget, name = "f_b_a") #decides which to drop from cell
     output_gate = tf.add(tf.matmul(concat_input, W_Output, name = "o_w_m"), B_Output, name = "o_b_a") #decides which to reveal to next_hidd/output
     gate_gate = tf.add(tf.matmul(concat_input, W_Gate, name = "g_w_m"), B_Gate, name = "g_b_a") #decides which things to change in cell state
