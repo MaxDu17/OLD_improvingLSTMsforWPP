@@ -1,7 +1,8 @@
 """Maximilian Du 6-29-18
 LSTM implementation with wind data set
 Version 2 changes:
--adaptive loss function
+-relu at the end (whoops! Negative wind!)
+-trainable starter values to prevent zero starts
 -more markups
 -restore from past sessions
 """
@@ -28,6 +29,10 @@ with tf.name_scope("weights_and_biases"):
     B_Gate = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="gate_bias")
     B_Input = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="input_bias")
     B_Hidden_to_Out = tf.Variable(tf.zeros(shape=[1,1]), name = "outwards_propagating_bias")
+
+with tf.name_scope("starting_states")
+    H_begin = tf.Variable(tf.random_normal(shape = [1, hyp.hidden_dim], name = "starting_hidd_val"))
+    C_begin = tf.Variable(tf.random_normal(shape=[1, hyp.cell_dim], name="starting_cell_val"))
 
 with tf.name_scope("placeholders"):
     X = tf.placeholder(shape = [1,1], dtype =  tf.float32, name = "input_placeholder") #waits for the prompt
@@ -57,10 +62,12 @@ with tf.name_scope("forget_gate"): #forget gate values and propagate
 with tf.name_scope("suggestion_node"): #suggestion gate
     suggestion_box = tf.multiply(input_gate, gate_gate, name = "input_determiner")
     current_cell = tf.add(suggestion_box, current_cell, name = "input_and_gate_gating")
+
 with tf.name_scope("output_gate"): #output gate values to hidden
     current_cell = tf.tanh(current_cell, name = "output_presquashing")
     current_hidden = tf.multiply(output_gate, current_cell)
-    output = tf.add(tf.matmul(current_hidden, W_Hidden_to_Out, name = "WHTO_w_m"), B_Hidden_to_Out, name = "BHTO_b_a")
+    raw_output = tf.add(tf.matmul(current_hidden, W_Hidden_to_Out, name = "WHTO_w_m"), B_Hidden_to_Out, name = "BHTO_b_a")
+    output = tf.nn.relu(raw_output, name = "output")
 
 with tf.name_scope("loss"):
     loss = tf.square(tf.subtract(output, Y))
@@ -74,6 +81,7 @@ with tf.name_scope("summaries_and_saver"):
     tf.summary.histogram("W_Input", W_Input)
     tf.summary.histogram("W_Output", W_Output)
     tf.summary.histogram("W_Gate", W_Gate)
+    tf.summary.histogram("W_Hidden_to_Out", W_Hidden_to_Out)
 
     tf.summary.histogram("Cell_State", current_cell)
 
@@ -81,6 +89,7 @@ with tf.name_scope("summaries_and_saver"):
     tf.summary.histogram("B_Input", B_Input)
     tf.summary.histogram("B_Output", B_Output)
     tf.summary.histogram("B_Gate", B_Gate)
+    tf.summary.histogram("B_Hidden_to_Out", B_Hidden_to_Out)
 
     tf.summary.scalar("Loss", loss)
 
@@ -106,6 +115,7 @@ with tf.Session() as sess:
 
     tf.train.write_graph(sess.graph_def, 'v2/GRAPHS/', 'graph.pbtxt')
     writer = tf.summary.FileWriter("v2/GRAPHS/", sess.graph)
+
     summary = None
 
     for epoch in range(hyp.EPOCHS):
