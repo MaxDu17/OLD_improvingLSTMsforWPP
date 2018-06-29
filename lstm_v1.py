@@ -55,7 +55,7 @@ with tf.name_scope("suggestion_node"): #suggestion gate
 
 with tf.name_scope("output_gate"): #output gate values to hidden
     current_cell = tf.tanh(current_cell, name = "output_presquashing")
-    current_hidden = tf.multiply(output_gate, current_cell)
+    current_hidden = tf.multiply(output_gate, current_cell, name = "next_hidden")
     output = tf.add(tf.matmul(current_hidden, W_Hidden_to_Out, name = "WHTO_w_m"), B_Hidden_to_Out, name = "BHTO_b_a")
 
 with tf.name_scope("loss"):
