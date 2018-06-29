@@ -1,5 +1,10 @@
-"""Maximilian Du 6-28-18
-LSTM implementation with wind data set"""
+"""Maximilian Du 6-29-18
+LSTM implementation with wind data set
+Version 2 changes:
+-adaptive loss function
+-more markups
+-restore from past sessions
+"""
 import tensorflow as tf
 import numpy as np
 from pipeline import SetMaker
@@ -52,7 +57,6 @@ with tf.name_scope("forget_gate"): #forget gate values and propagate
 with tf.name_scope("suggestion_node"): #suggestion gate
     suggestion_box = tf.multiply(input_gate, gate_gate, name = "input_determiner")
     current_cell = tf.add(suggestion_box, current_cell, name = "input_and_gate_gating")
-
 with tf.name_scope("output_gate"): #output gate values to hidden
     current_cell = tf.tanh(current_cell, name = "output_presquashing")
     current_hidden = tf.multiply(output_gate, current_cell)
@@ -84,15 +88,15 @@ with tf.name_scope("summaries_and_saver"):
     saver = tf.train.Saver()
 
 with tf.Session() as sess:
-    ckpt = tf.train.get_checkpoint_state(os.path.dirname('v1/models/'))
+    ckpt = tf.train.get_checkpoint_state(os.path.dirname('v2/models/'))
     print(ckpt)
     if ckpt and ckpt.model_checkpoint_path:
         saver.restore(sess, ckpt.model_checkpoint_path)
 
     sm.create_training_set()
-    log_loss = open("v1/GRAPHS/LOSS.csv", "w")
-    validation = open("v1/GRAPHS/VALIDATION.csv", "w")
-    test = open("v1/GRAPHS/TEST.csv", "w")
+    log_loss = open("v2/GRAPHS/LOSS.csv", "w")
+    validation = open("v2/GRAPHS/VALIDATION.csv", "w")
+    test = open("v2/GRAPHS/TEST.csv", "w")
 
     logger = csv.writer(log_loss, lineterminator="\n")
     validation_logger = csv.writer(validation, lineterminator="\n")
@@ -100,8 +104,8 @@ with tf.Session() as sess:
 
     sess.run(tf.global_variables_initializer())
 
-    tf.train.write_graph(sess.graph_def, 'v1/GRAPHS/', 'graph.pbtxt')
-    writer = tf.summary.FileWriter("v1/GRAPHS/", sess.graph)
+    tf.train.write_graph(sess.graph_def, 'v2/GRAPHS/', 'graph.pbtxt')
+    writer = tf.summary.FileWriter("v2/GRAPHS/", sess.graph)
     summary = None
 
     for epoch in range(hyp.EPOCHS):
@@ -131,7 +135,7 @@ with tf.Session() as sess:
             print("predicted number: ", output_, ", real number: ", label)
 
         if epoch%500 == 0:
-            saver.save(sess, "v1/models/LSTMv1", global_step=epoch)
+            saver.save(sess, "v2/models/LSTMv2", global_step=epoch)
             print("saved model")
 
         if epoch%1000 == 0 and epoch>498:

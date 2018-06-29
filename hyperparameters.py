@@ -8,6 +8,9 @@ class Hyperparameters: #the class that defines the hyperparameters is here
     cell_dim = 25
     hidden_dim = 25
     TEST = True
+    SAVER_JUMP = 2000
+    SUMMARY_JUMP = 50
+
     class Info: #not used in real code, just as metadata
         DATASET_SIZE = 150120
         TRAIN_SIZE = 63072
