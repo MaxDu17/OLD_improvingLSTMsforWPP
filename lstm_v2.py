@@ -30,7 +30,7 @@ with tf.name_scope("weights_and_biases"):
     B_Input = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="input_bias")
     B_Hidden_to_Out = tf.Variable(tf.zeros(shape=[1,1]), name = "outwards_propagating_bias")
 
-with tf.name_scope("starting_states")
+with tf.name_scope("starting_states"):
     H_begin = tf.Variable(tf.random_normal(shape = [1, hyp.hidden_dim], name = "starting_hidd_val"))
     C_begin = tf.Variable(tf.random_normal(shape=[1, hyp.cell_dim], name="starting_cell_val"))
 
@@ -122,8 +122,8 @@ with tf.Session() as sess:
         sm.next_epoch()
         label = sm.get_label()
         label = np.reshape(label, [1, 1])
-        next_cell = np.zeros(shape=[1, hyp.cell_dim])
-        next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
+        next_cell = sess.run(C_begin, feed_dict = {})
+        next_hidd = sess.run(H_begin, feed_dict = {})
         loss_ = 0
         for counter in range(hyp.FOOTPRINT):
             data = sm.next_sample()
@@ -155,8 +155,8 @@ with tf.Session() as sess:
                 sm.next_epoch_valid()
                 label = sm.get_label()
                 label = np.reshape(label, [1, 1])
-                next_cell = np.zeros(shape=[1, hyp.cell_dim])
-                next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
+                next_cell = sess.run(C_begin, feed_dict={})
+                next_hidd = sess.run(H_begin, feed_dict={})
 
                 for counter in range(hyp.FOOTPRINT):
                     data = sm.next_sample()
@@ -182,8 +182,8 @@ with tf.Session() as sess:
         sm.next_epoch_test()
         label = sm.get_label()
         label = np.reshape(label, [1, 1])
-        next_cell = np.zeros(shape=[1, hyp.cell_dim])
-        next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
+        next_cell = sess.run(C_begin, feed_dict = {})
+        next_hidd = sess.run(H_begin, feed_dict = {})
 
         for counter in range(hyp.FOOTPRINT):
             data = sm.next_sample()
@@ -201,4 +201,3 @@ with tf.Session() as sess:
     average_sq_loss = average_sq_loss / hyp.Info.TEST_SIZE
     print("test: average square loss is ", average_sq_loss)
     test_logger.writerow(["this is the final average squared loss", average_sq_loss])
-
