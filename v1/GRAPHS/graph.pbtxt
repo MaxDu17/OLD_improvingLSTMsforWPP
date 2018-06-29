@@ -2175,7 +2175,7 @@ node {
   }
 }
 node {
-  name: "output_gate/Mul"
+  name: "output_gate/next_hidden"
   op: "Mul"
   input: "non-linearity/sigmoid_output"
   input: "output_gate/output_presquashing"
@@ -2189,7 +2189,7 @@ node {
 node {
   name: "output_gate/WHTO_w_m"
   op: "MatMul"
-  input: "output_gate/Mul"
+  input: "output_gate/next_hidden"
   input: "weights_and_biases/outwards_propagating_weight/read"
   attr {
     key: "T"
@@ -2563,7 +2563,7 @@ node {
 node {
   name: "optimizer/gradients/output_gate/WHTO_w_m_grad/MatMul_1"
   op: "MatMul"
-  input: "output_gate/Mul"
+  input: "output_gate/next_hidden"
   input: "optimizer/gradients/output_gate/BHTO_b_a_grad/tuple/control_dependency"
   attr {
     key: "T"
@@ -2631,7 +2631,7 @@ node {
   }
 }
 node {
-  name: "optimizer/gradients/output_gate/Mul_grad/Mul"
+  name: "optimizer/gradients/output_gate/next_hidden_grad/Mul"
   op: "Mul"
   input: "optimizer/gradients/output_gate/WHTO_w_m_grad/tuple/control_dependency"
   input: "output_gate/output_presquashing"
@@ -2643,7 +2643,7 @@ node {
   }
 }
 node {
-  name: "optimizer/gradients/output_gate/Mul_grad/Mul_1"
+  name: "optimizer/gradients/output_gate/next_hidden_grad/Mul_1"
   op: "Mul"
   input: "optimizer/gradients/output_gate/WHTO_w_m_grad/tuple/control_dependency"
   input: "non-linearity/sigmoid_output"
@@ -2655,16 +2655,16 @@ node {
   }
 }
 node {
-  name: "optimizer/gradients/output_gate/Mul_grad/tuple/group_deps"
+  name: "optimizer/gradients/output_gate/next_hidden_grad/tuple/group_deps"
   op: "NoOp"
-  input: "^optimizer/gradients/output_gate/Mul_grad/Mul"
-  input: "^optimizer/gradients/output_gate/Mul_grad/Mul_1"
+  input: "^optimizer/gradients/output_gate/next_hidden_grad/Mul"
+  input: "^optimizer/gradients/output_gate/next_hidden_grad/Mul_1"
 }
 node {
-  name: "optimizer/gradients/output_gate/Mul_grad/tuple/control_dependency"
+  name: "optimizer/gradients/output_gate/next_hidden_grad/tuple/control_dependency"
   op: "Identity"
-  input: "optimizer/gradients/output_gate/Mul_grad/Mul"
-  input: "^optimizer/gradients/output_gate/Mul_grad/tuple/group_deps"
+  input: "optimizer/gradients/output_gate/next_hidden_grad/Mul"
+  input: "^optimizer/gradients/output_gate/next_hidden_grad/tuple/group_deps"
   attr {
     key: "T"
     value {
@@ -2675,16 +2675,16 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@optimizer/gradients/output_gate/Mul_grad/Mul"
+        s: "loc:@optimizer/gradients/output_gate/next_hidden_grad/Mul"
       }
     }
   }
 }
 node {
-  name: "optimizer/gradients/output_gate/Mul_grad/tuple/control_dependency_1"
+  name: "optimizer/gradients/output_gate/next_hidden_grad/tuple/control_dependency_1"
   op: "Identity"
-  input: "optimizer/gradients/output_gate/Mul_grad/Mul_1"
-  input: "^optimizer/gradients/output_gate/Mul_grad/tuple/group_deps"
+  input: "optimizer/gradients/output_gate/next_hidden_grad/Mul_1"
+  input: "^optimizer/gradients/output_gate/next_hidden_grad/tuple/group_deps"
   attr {
     key: "T"
     value {
@@ -2695,7 +2695,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@optimizer/gradients/output_gate/Mul_grad/Mul_1"
+        s: "loc:@optimizer/gradients/output_gate/next_hidden_grad/Mul_1"
       }
     }
   }
@@ -2704,7 +2704,7 @@ node {
   name: "optimizer/gradients/non-linearity/sigmoid_output_grad/SigmoidGrad"
   op: "SigmoidGrad"
   input: "non-linearity/sigmoid_output"
-  input: "optimizer/gradients/output_gate/Mul_grad/tuple/control_dependency"
+  input: "optimizer/gradients/output_gate/next_hidden_grad/tuple/control_dependency"
   attr {
     key: "T"
     value {
@@ -2716,7 +2716,7 @@ node {
   name: "optimizer/gradients/output_gate/output_presquashing_grad/TanhGrad"
   op: "TanhGrad"
   input: "output_gate/output_presquashing"
-  input: "optimizer/gradients/output_gate/Mul_grad/tuple/control_dependency_1"
+  input: "optimizer/gradients/output_gate/next_hidden_grad/tuple/control_dependency_1"
   attr {
     key: "T"
     value {
@@ -8736,42 +8736,6 @@ node {
   input: "^summaries_and_saver/save/Assign_7"
   input: "^summaries_and_saver/save/Assign_8"
   input: "^summaries_and_saver/save/Assign_9"
-}
-node {
-  name: "init"
-  op: "NoOp"
-  input: "^optimizer/beta1_power/Assign"
-  input: "^optimizer/beta2_power/Assign"
-  input: "^weights_and_biases/forget_bias/Adam/Assign"
-  input: "^weights_and_biases/forget_bias/Adam_1/Assign"
-  input: "^weights_and_biases/forget_bias/Assign"
-  input: "^weights_and_biases/forget_weight/Adam/Assign"
-  input: "^weights_and_biases/forget_weight/Adam_1/Assign"
-  input: "^weights_and_biases/forget_weight/Assign"
-  input: "^weights_and_biases/gate_bias/Adam/Assign"
-  input: "^weights_and_biases/gate_bias/Adam_1/Assign"
-  input: "^weights_and_biases/gate_bias/Assign"
-  input: "^weights_and_biases/gate_weight/Adam/Assign"
-  input: "^weights_and_biases/gate_weight/Adam_1/Assign"
-  input: "^weights_and_biases/gate_weight/Assign"
-  input: "^weights_and_biases/input_bias/Adam/Assign"
-  input: "^weights_and_biases/input_bias/Adam_1/Assign"
-  input: "^weights_and_biases/input_bias/Assign"
-  input: "^weights_and_biases/input_weight/Adam/Assign"
-  input: "^weights_and_biases/input_weight/Adam_1/Assign"
-  input: "^weights_and_biases/input_weight/Assign"
-  input: "^weights_and_biases/output_bias/Adam/Assign"
-  input: "^weights_and_biases/output_bias/Adam_1/Assign"
-  input: "^weights_and_biases/output_bias/Assign"
-  input: "^weights_and_biases/output_weight/Adam/Assign"
-  input: "^weights_and_biases/output_weight/Adam_1/Assign"
-  input: "^weights_and_biases/output_weight/Assign"
-  input: "^weights_and_biases/outwards_propagating_bias/Adam/Assign"
-  input: "^weights_and_biases/outwards_propagating_bias/Adam_1/Assign"
-  input: "^weights_and_biases/outwards_propagating_bias/Assign"
-  input: "^weights_and_biases/outwards_propagating_weight/Adam/Assign"
-  input: "^weights_and_biases/outwards_propagating_weight/Adam_1/Assign"
-  input: "^weights_and_biases/outwards_propagating_weight/Assign"
 }
 versions {
   producer: 26

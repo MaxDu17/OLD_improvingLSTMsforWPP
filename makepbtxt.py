@@ -82,4 +82,4 @@ with tf.name_scope("summaries_and_saver"):
     saver = tf.train.Saver()
 
 with tf.Session() as sess:
-    tf.train.write_graph(sess.graph_def, 'GraphV2/GRAPHS/', 'graph.pbtxt')
+    tf.train.write_graph(sess.graph_def, 'v1/GRAPHS/', 'graph.pbtxt')

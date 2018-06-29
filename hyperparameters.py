@@ -16,6 +16,7 @@ class Hyperparameters: #the class that defines the hyperparameters is here
         TRAIN_SIZE = 63072
         #TEST_SIZE = 42048
         TEST_SIZE = 100
+        EVAULATE_TEST_SIZE = 1000
         VALID_SIZE = 210
         VALID_SIZE_LIMIT = 200 #highest number you can ask for
         #TEST_SIZE_LIMIT = 42038 #this is the last number you can ask for
