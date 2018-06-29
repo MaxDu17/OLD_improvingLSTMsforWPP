@@ -4,7 +4,9 @@ import tensorflow as tf
 import numpy as np
 from pipeline import SetMaker
 from pipeline import Hyperparameters
+import os
 import csv
+
 sm = SetMaker()
 hyp = Hyperparameters()
 
@@ -81,6 +83,11 @@ with tf.name_scope("summaries_and_saver"):
     saver = tf.train.Saver()
 
 with tf.Session() as sess:
+    ckpt = tf.train.get_checkpoint_state(os.path.dirname('v1/models/'))
+    print(ckpt)
+    if ckpt and ckpt.model_checkpoint_path:
+        saver.restore(sess, ckpt.model_checkpoint_path)
+
     sm.create_training_set()
     log_loss = open("v1/GRAPHS/LOSS.csv", "w")
     validation = open("v1/GRAPHS/VALIDATION.csv", "w")
@@ -147,6 +154,7 @@ with tf.Session() as sess:
                             [output, loss],
                             feed_dict={X: data, Y:label, H_last: next_hidd, C_last: next_cell})
                         average_sq_loss += loss_
+                sm.clear_valid_counter()
 
             average_sq_loss = average_sq_loss/hyp.VALIDATION_NUMBER
             print("validation: average square loss is ", average_sq_loss)

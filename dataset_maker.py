@@ -51,6 +51,9 @@ class SetMaker:
         self.valid_counter += 1
         self.batch_counter = 0
 
+    def clear_valid_counter(self):
+        self.valid_counter =0
+
     def clear_counter(self):
         self.counter = 0
 
