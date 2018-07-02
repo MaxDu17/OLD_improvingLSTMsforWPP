@@ -1,0 +1,6 @@
+model_checkpoint_path: "LSTMv2-40000"
+all_model_checkpoint_paths: "LSTMv2-38000"
+all_model_checkpoint_paths: "LSTMv2-38500"
+all_model_checkpoint_paths: "LSTMv2-39000"
+all_model_checkpoint_paths: "LSTMv2-39500"
+all_model_checkpoint_paths: "LSTMv2-40000"

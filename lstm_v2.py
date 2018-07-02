@@ -65,7 +65,7 @@ with tf.name_scope("suggestion_node"): #suggestion gate
 
 with tf.name_scope("output_gate"): #output gate values to hidden
     current_cell = tf.tanh(current_cell, name = "output_presquashing")
-    current_hidden = tf.multiply(output_gate, current_cell)
+    current_hidden = tf.multiply(output_gate, current_cell, name="next_hidden")
     raw_output = tf.add(tf.matmul(current_hidden, W_Hidden_to_Out, name = "WHTO_w_m"), B_Hidden_to_Out, name = "BHTO_b_a")
     output = tf.nn.relu(raw_output, name = "output")
 
@@ -195,13 +195,14 @@ with tf.Session() as sess:
         for counter in range(hyp.FOOTPRINT):
             data = sm.next_sample()
             data = np.reshape(data, [1, 1])
-            if counter < hyp.FOOTPRINT-1:
+            if counter < hyp.FOOTPRINT - 1:
                 next_cell, next_hidd = sess.run([current_cell, current_hidden],
                                                 feed_dict={X: data, H_last: next_hidd, C_last: next_cell})
             else:
-                output_, loss_ = sess.run(
-                    [output, loss],
-                    feed_dict={X: data, Y:label, H_last: next_hidd, C_last: next_cell})
+                next_cell, next_hidd, output_, loss_ = sess.run(
+                    [current_cell, current_hidden, output, loss],
+                    feed_dict={X: data, Y: label, H_last: next_hidd, C_last: next_cell})
+
                 RMS_loss += np.sqrt(loss_)
                 test_logger.writerow([loss_])
 
