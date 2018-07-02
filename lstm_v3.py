@@ -29,11 +29,7 @@ with tf.name_scope("weights_and_biases"):
     B_Gate = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="gate_bias")
     B_Input = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="input_bias")
     B_Hidden_to_Out = tf.Variable(tf.zeros(shape=[1,1]), name = "outwards_propagating_bias")
-'''
-with tf.name_scope("starting_states"):
-    H_begin = tf.Variable(tf.random_normal(shape = [1, hyp.hidden_dim], name = "starting_hidd_val"))
-    C_begin = tf.Variable(tf.random_normal(shape=[1, hyp.cell_dim], name="starting_cell_val"))
-'''
+
 with tf.name_scope("placeholders"):
     X = tf.placeholder(shape = [1,1], dtype =  tf.float32, name = "input_placeholder") #waits for the prompt
     Y = tf.placeholder(shape = [1,1], dtype = tf.float32, name = "label") #not used until the last cycle
@@ -70,11 +66,11 @@ with tf.name_scope("output_gate"): #output gate values to hidden
     output = tf.nn.relu(raw_output, name = "output")
 
 with tf.name_scope("loss"):
-    '''
-    loss = tf.square(tf.subtract(output, Y))
-    loss = tf.reshape(loss, [])
-    '''
-    loss = ml.abs_loss(output, Y)
+    loss_sq = tf.square(tf.subtract(output, Y))
+    loss_sq = tf.reshape(loss_sq, [])
+    loss_abs = tf.abs(tf.subtract(output, Y))
+    loss_abs = tf.reshape(loss_abs, [])
+    loss = tf.add(loss_sq, loss_abs)
 
 with tf.name_scope("optimizer"):
     optimizer = tf.train.AdamOptimizer(learning_rate=hyp.LEARNING_RATE).minimize(loss)
@@ -178,7 +174,6 @@ with tf.Session() as sess:
 
             average_sq_loss = average_sq_loss/hyp.VALIDATION_NUMBER
             print("validation: RMS loss is ", average_sq_loss)
-            raise Exception("I'm at validation, about to write")
             validation_logger.writerow([epoch, average_sq_loss])
 
             next_cell = next_cell_hold
@@ -209,5 +204,5 @@ with tf.Session() as sess:
                 test_logger.writerow([loss_])
 
     RMS_loss = RMS_loss / hyp.Info.TEST_SIZE
-    print("test: RNS loss average is ", RMS_loss)
-    test_logger.writerow(["this is the final average root mean squared loss", RMS_loss])
+    print("test: adaptive loss is ", RMS_loss)
+    test_logger.writerow(["final adaptive loss average", RMS_loss])
