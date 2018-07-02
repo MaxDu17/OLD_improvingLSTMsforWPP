@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/step_plotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/step_plotter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/self_prompt_LSTMv2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_feeder.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_feeder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_maker.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset_maker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyperparameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/hyperparameters.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,14 +20,11 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="step_plotter.py" pinned="false" current-in-tab="true">
+            <file leaf-file-name="step_plotter.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/step_plotter.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="102">
-                    <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-                    <folding>
-                      <element signature="e#0#18#0" expanded="true" />
-                    </folding>
+                  <state>
+                    <caret column="18" lean-forward="true" selection-start-column="18" selection-end-column="18" />
                   </state>
                 </provider>
               </entry>
@@ -49,11 +50,11 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="hyperparameters.py" pinned="false" current-in-tab="false">
+            <file leaf-file-name="hyperparameters.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/hyperparameters.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="374">
-                    <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+                  <state relative-caret-position="272">
+                    <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
                   </state>
                 </provider>
               </entry>
@@ -110,23 +111,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="run_frozen_LSTM_v2.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/run_frozen_LSTM_v2.py">
+      <file leaf-file-name="self_prompt_LSTMv2.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/self_prompt_LSTMv2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="53" column="45" lean-forward="true" selection-start-line="53" selection-start-column="45" selection-end-line="53" selection-end-column="45" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dataset_maker.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dataset_maker.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+            <state relative-caret-position="278">
+              <caret line="41" column="42" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -134,8 +123,20 @@
       <file leaf-file-name="data_feeder.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_feeder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+            <state relative-caret-position="357">
+              <caret line="21" column="40" lean-forward="true" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dataset_maker.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dataset_maker.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="404">
+              <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -163,6 +164,7 @@
       <find>print</find>
       <find>sm</find>
       <find>v1</find>
+      <find>pd.</find>
     </findStrings>
     <replaceStrings>
       <replace>v2</replace>
@@ -178,7 +180,6 @@
         <option value="$PROJECT_DIR$/../finalcode/parse_data.py" />
         <option value="$PROJECT_DIR$/LSTM_test.py" />
         <option value="$PROJECT_DIR$/ARIMA_test.py" />
-        <option value="$PROJECT_DIR$/data_feeder.py" />
         <option value="$PROJECT_DIR$/pipeline/test.py" />
         <option value="$PROJECT_DIR$/pipeline/dataset_maker.py" />
         <option value="$PROJECT_DIR$/pipeline/__init__.py" />
@@ -187,8 +188,6 @@
         <option value="$PROJECT_DIR$/save_v1.py" />
         <option value="$PROJECT_DIR$/lstm_v1.py" />
         <option value="$PROJECT_DIR$/naive_base_case.py" />
-        <option value="$PROJECT_DIR$/dataset_maker.py" />
-        <option value="$PROJECT_DIR$/hyperparameters.py" />
         <option value="$PROJECT_DIR$/testdatasetmaker.py" />
         <option value="$PROJECT_DIR$/save_v2.py" />
         <option value="$PROJECT_DIR$/run_frozen_LSTM_v1.py" />
@@ -196,6 +195,10 @@
         <option value="$PROJECT_DIR$/makepbtxt.py" />
         <option value="$PROJECT_DIR$/run_frozen_LSTM_v2.py" />
         <option value="$PROJECT_DIR$/step_plotter.py" />
+        <option value="$PROJECT_DIR$/self_prompt_LSTMv2.py" />
+        <option value="$PROJECT_DIR$/data_feeder.py" />
+        <option value="$PROJECT_DIR$/hyperparameters.py" />
+        <option value="$PROJECT_DIR$/dataset_maker.py" />
       </list>
     </option>
   </component>
@@ -229,7 +232,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/makepbtxt.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/naive_base_case.py" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
@@ -249,7 +252,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.step_plotter">
+  <component name="RunManager" selected="Python.data_feeder">
+    <configuration name="data_feeder" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CSIRE" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_feeder.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="makepbtxt" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CSIRE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -263,24 +284,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/makepbtxt.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="run_frozen_LSTM_v1" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="CSIRE" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_frozen_LSTM_v1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -343,17 +346,17 @@
     <list>
       <item itemvalue="Python.save_v2" />
       <item itemvalue="Python.run_frozen_LSTM_v2" />
-      <item itemvalue="Python.run_frozen_LSTM_v1" />
       <item itemvalue="Python.makepbtxt" />
       <item itemvalue="Python.step_plotter" />
+      <item itemvalue="Python.data_feeder" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.data_feeder" />
         <item itemvalue="Python.step_plotter" />
         <item itemvalue="Python.run_frozen_LSTM_v2" />
         <item itemvalue="Python.save_v2" />
         <item itemvalue="Python.makepbtxt" />
-        <item itemvalue="Python.run_frozen_LSTM_v1" />
       </list>
     </recent_temporary>
   </component>
@@ -423,6 +426,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
           <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -573,44 +579,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_feeder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset_maker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naive_base_case.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hyperparameters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testdatasetmaker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="12" lean-forward="true" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lstm_v1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -641,30 +609,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/makepbtxt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="88" column="28" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/save_v2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run_frozen_LSTM_v2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="53" column="45" lean-forward="true" selection-start-line="53" selection-start-column="45" selection-end-line="53" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -678,12 +626,80 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/run_frozen_LSTM_v2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="46" column="97" selection-start-line="46" selection-start-column="97" selection-end-line="46" selection-end-column="97" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/makepbtxt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="88" column="28" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/step_plotter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+        <state>
+          <caret column="18" lean-forward="true" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testdatasetmaker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="12" lean-forward="true" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BASECASE_v1v2.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naive_base_case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/self_prompt_LSTMv2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="41" column="42" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_feeder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="40" lean-forward="true" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hyperparameters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset_maker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
           </folding>
         </state>
       </provider>

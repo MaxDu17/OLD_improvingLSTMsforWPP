@@ -11,6 +11,9 @@ class SetMaker:
         self.training_set_size = 0
         self.valid_counter = 0
         self.validation_set_size = 0
+        self.self_prompt_counter = 0
+        self.running_list = list()
+        self.label_list = list()
 
     def test_database(self): #checks that the query is in good shape.
         test = self.dp.grab_list_range(10,20)
@@ -35,6 +38,8 @@ class SetMaker:
         #print(self.master_list)
 
     def next_epoch_test(self):
+        if self.test_counter == 0:
+            raise Exception("you forgot to initialize the test_counter! Execute create_training_set")
         if self.test_counter + self.hyp.FOOTPRINT + 1 > self.dp.dataset_size():
             raise ValueError("you have reached the end of the test set. Violation dataset_maker/next_epoch_test")
         self.master_list = list()
@@ -50,6 +55,7 @@ class SetMaker:
         self.master_list = self.dp.grab_list_range(self.valid_counter, self.valid_counter + self.hyp.FOOTPRINT + 1)
         self.valid_counter += self.hyp.FOOTPRINT
         self.batch_counter = 0
+
 
     def clear_valid_counter(self):
         self.valid_counter =0
@@ -68,3 +74,13 @@ class SetMaker:
             carrier = self.master_list[self.batch_counter]
             self.batch_counter += 1
             return carrier
+
+    def next_sample_list(self):
+        return self.master_list
+
+    def self_prompt(self, prediction, initialize):
+        if initialize:
+            self.create_training_set()
+            self.label_list = self.dp.grab_list_range(0, self.hyp.Info.RUN_TEST_SIZE)
+            self.running_list = self.dp.grab_list_range(0, self.hyp.RUN_PROMPT)
+            return self.label_list, self.running_list

@@ -10,13 +10,16 @@ class Hyperparameters: #the class that defines the hyperparameters is here
     TEST = True
     SAVER_JUMP = 2000
     SUMMARY_JUMP = 50
+    RUN_PROMPT = 25
 
     class Info: #not used in real code, just as metadata
         DATASET_SIZE = 150120
         TRAIN_SIZE = 63072
         #TEST_SIZE = 42048
         TEST_SIZE = 1000
+        TEST_START = 63072
         EVAULATE_TEST_SIZE = 1000
+        RUN_TEST_SIZE = 100
         VALID_SIZE = 210
         VALID_SIZE_LIMIT = 200 #highest number you can ask for
         #TEST_SIZE_LIMIT = 42038 #this is the last number you can ask for

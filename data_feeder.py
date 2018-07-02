@@ -20,4 +20,8 @@ class DataParser:
         subset = self.power_ds.query(command) #querys the pandas data frame
         clean = [round(k[0],3) for k in subset.values] #extracts the value and discards the index value
         return clean #returns the query in a form of a list
+    def grab_element(self, element):
+        array = self.power_ds.values
+        clean_array = [k[0] for k in array]
+        return clean_array[element]
 
