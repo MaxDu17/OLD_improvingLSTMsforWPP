@@ -79,8 +79,12 @@ class SetMaker:
         return self.master_list
 
     def self_prompt(self, prediction, initialize):
-        if initialize:
+        if initialize == True:
             self.create_training_set()
             self.label_list = self.dp.grab_list_range(0, self.hyp.Info.RUN_TEST_SIZE)
             self.running_list = self.dp.grab_list_range(0, self.hyp.RUN_PROMPT)
             return self.label_list, self.running_list
+        else:
+            self.running_list.pop(0)
+            self.running_list.append(prediction)
+            return self.running_list
