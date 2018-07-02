@@ -1,8 +1,9 @@
 from pipeline import SetMaker
 
 sm = SetMaker()
-'''
+
 sm.create_training_set()
+'''
 sm.create_validation_set()
 sm.next_epoch_test()
 
@@ -19,11 +20,7 @@ for j in range(26):
     print("xxxx")
 '''
 
-label_list, running_list = sm.self_prompt(prediction = None,  initialize  = True)
+labels, prompt = sm.return_split_lists()
 
-
-
-running_list = sm.self_prompt(3.1415, initialize = False)
-
-print(label_list[1:26])
-print(running_list)
+print(labels)
+print(prompt)

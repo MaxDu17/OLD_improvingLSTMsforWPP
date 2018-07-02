@@ -26,7 +26,7 @@ with tf.Graph().as_default() as graph:
     current_cell = graph.get_tensor_by_name("output_gate/output_presquashing:0")
 
 with tf.Session(graph=graph) as sess:
-    sm.create_training_set()
+    sm.create_training_set() #this is just to allow the math to work
     test = open("v2/GRAPHS/RUN_TEST.csv", "w")
     test_logger = csv.writer(test, lineterminator="\n")
     carrier = ["true_values", "predicted_values", "abs_error"]
@@ -34,22 +34,22 @@ with tf.Session(graph=graph) as sess:
     RMS_loss = 0.0
     next_cell = np.zeros(shape=[1, hyp.cell_dim])
     next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
-    for test in range(hyp.Info.EVAULATE_TEST_SIZE): #this will be replaced later
-        print(test)
-        sm.next_epoch_test()
-        label_ = sm.get_label()
+    labels, prompt = sm.return_split_lists()
+    counter = 0
+    for value in prompt:
+        value_ = np.reshape(value, [1, 1])
+        next_cell, next_hidd, output_ = sess.run(
+            [current_cell, current_hidden, output],
+            feed_dict={input: value_, H_last: next_hidd, C_last: next_cell}) #discard outputs until the last cycle
 
-        for counter in range(hyp.FOOTPRINT):
-            data = sm.next_sample()
-            data = np.reshape(data, [1, 1])
-            if counter < hyp.FOOTPRINT - 1:
-                next_cell, next_hidd = sess.run([current_cell, current_hidden],
-                                                feed_dict={input: data, H_last: next_hidd, C_last: next_cell})
-            else:
-                next_cell, next_hidd, output_ = sess.run(
-                    [current_cell, current_hidden, output],
-                    feed_dict={input: data, H_last: next_hidd, C_last: next_cell})
-
-                carrier = [label_, output_[0][0], np.sqrt(np.square((label_ - output_)[0][0]))]
-                test_logger.writerow(carrier)
+    for test in labels: #this will be replaced later
+        counter +=1
+        print(counter)
+        output_ = np.reshape(output_, [1, 1])
+        test_ = np.reshape(test, [1,1])
+        next_cell, next_hidd, output_ = sess.run(
+            [current_cell, current_hidden, output],
+            feed_dict={input: test_, H_last: next_hidd, C_last: next_cell})
+        carrier = [test, output_[0][0], np.sqrt(np.square((test - output_)[0][0]))]
+        test_logger.writerow(carrier)
 
