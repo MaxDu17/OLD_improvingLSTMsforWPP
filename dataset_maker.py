@@ -29,7 +29,7 @@ class SetMaker:
         if self.counter + self.hyp.FOOTPRINT+1 > self.training_set_size:
             self.clear_counter()
         self.master_list = self.dp.grab_list_range(self.counter, self.counter+self.hyp.FOOTPRINT+1)
-        self.counter += 1
+        self.counter += self.hyp.FOOTPRINT
         self.batch_counter = 0
         #print(self.counter) #for debugging purposes
         #print(self.master_list)
@@ -39,7 +39,7 @@ class SetMaker:
             raise ValueError("you have reached the end of the test set. Violation dataset_maker/next_epoch_test")
         self.master_list = list()
         self.master_list = self.dp.grab_list_range(self.test_counter, self.test_counter + self.hyp.FOOTPRINT + 1)
-        self.test_counter += 1
+        self.test_counter += self.hyp.FOOTPRINT
         self.batch_counter = 0
 
     def next_epoch_valid(self):
@@ -48,7 +48,7 @@ class SetMaker:
                              " for boundary cases. Violation dataset_maker/next_epoch_valid")
         self.master_list = list()
         self.master_list = self.dp.grab_list_range(self.valid_counter, self.valid_counter + self.hyp.FOOTPRINT + 1)
-        self.valid_counter += 1
+        self.valid_counter += self.hyp.FOOTPRINT
         self.batch_counter = 0
 
     def clear_valid_counter(self):

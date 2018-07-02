@@ -2,9 +2,9 @@
 LSTM implementation with wind data set
 Version 2 changes:
 -relu at the end (whoops! Negative wind!)
--trainable starter values to prevent zero starts
+-continuous thread
 -more markups
--restore from past sessions
+
 """
 import tensorflow as tf
 import numpy as np
@@ -29,11 +29,11 @@ with tf.name_scope("weights_and_biases"):
     B_Gate = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="gate_bias")
     B_Input = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="input_bias")
     B_Hidden_to_Out = tf.Variable(tf.zeros(shape=[1,1]), name = "outwards_propagating_bias")
-
+'''
 with tf.name_scope("starting_states"):
     H_begin = tf.Variable(tf.random_normal(shape = [1, hyp.hidden_dim], name = "starting_hidd_val"))
     C_begin = tf.Variable(tf.random_normal(shape=[1, hyp.cell_dim], name="starting_cell_val"))
-
+'''
 with tf.name_scope("placeholders"):
     X = tf.placeholder(shape = [1,1], dtype =  tf.float32, name = "input_placeholder") #waits for the prompt
     Y = tf.placeholder(shape = [1,1], dtype = tf.float32, name = "label") #not used until the last cycle
@@ -117,13 +117,14 @@ with tf.Session() as sess:
     writer = tf.summary.FileWriter("v2/GRAPHS/", sess.graph)
 
     summary = None
+    next_cell = np.zeros(shape=[1, hyp.cell_dim])
+    next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
 
     for epoch in range(hyp.EPOCHS):
+
         sm.next_epoch()
         label = sm.get_label()
         label = np.reshape(label, [1, 1])
-        next_cell = sess.run(C_begin, feed_dict = {})
-        next_hidd = sess.run(H_begin, feed_dict = {})
         loss_ = 0
         for counter in range(hyp.FOOTPRINT):
             data = sm.next_sample()
@@ -132,16 +133,15 @@ with tf.Session() as sess:
                 next_cell, next_hidd = sess.run([current_cell, current_hidden],
                                                 feed_dict= {X:data, H_last:next_hidd, C_last:next_cell})
             else:
-                next_cell, output_, loss_, summary, _ = sess.run([current_cell, output, loss, summary_op, optimizer],
+                next_cell, next_hidd, output_, loss_, summary, _ = sess.run([current_cell, current_hidden, output, loss, summary_op, optimizer],
                                                 feed_dict={X:data, Y:label,  H_last:next_hidd, C_last:next_cell})
 
-
-        writer.add_summary(summary, global_step=epoch)
-        print("I finished epoch ", epoch, " out of ", hyp.EPOCHS, " epochs")
-        print("The squared loss for this sample is ", loss_)
         logger.writerow([loss_])
 
         if epoch%10 == 0:
+            writer.add_summary(summary, global_step=epoch)
+            print("I finished epoch ", epoch, " out of ", hyp.EPOCHS, " epochs")
+            print("The RMS loss for this sample is ", np.sqrt(loss_))
             print("predicted number: ", output_, ", real number: ", label)
 
         if epoch%500 == 0:
@@ -149,14 +149,17 @@ with tf.Session() as sess:
             print("saved model")
 
         if epoch%1000 == 0 and epoch>498:
+            next_cell_hold = next_cell
+            next_hidd_hold = next_hidd
             sm.create_validation_set()
             average_sq_loss = 0.0
+            next_cell = np.zeros(shape=[1, hyp.cell_dim])
+            next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
             for i in range(hyp.VALIDATION_NUMBER):
+
                 sm.next_epoch_valid()
                 label = sm.get_label()
                 label = np.reshape(label, [1, 1])
-                next_cell = sess.run(C_begin, feed_dict={})
-                next_hidd = sess.run(H_begin, feed_dict={})
 
                 for counter in range(hyp.FOOTPRINT):
                     data = sm.next_sample()
@@ -165,25 +168,29 @@ with tf.Session() as sess:
                         next_cell, next_hidd = sess.run([current_cell, current_hidden],
                                                         feed_dict={X: data, H_last: next_hidd, C_last: next_cell})
                     else:
-                        output_, loss_= sess.run(
-                            [output, loss],
+                        next_cell, next_hidd, output_, loss_= sess.run(
+                            [current_cell, current_hidden, output, loss],
                             feed_dict={X: data, Y:label, H_last: next_hidd, C_last: next_cell})
-                        average_sq_loss += loss_
+                        average_sq_loss += np.sqrt(loss_)
+
                 sm.clear_valid_counter()
 
             average_sq_loss = average_sq_loss/hyp.VALIDATION_NUMBER
-            print("validation: average square loss is ", average_sq_loss)
+            print("validation: RMS loss is ", average_sq_loss)
             validation_logger.writerow([epoch, average_sq_loss])
 
+            next_cell = next_cell_hold
+            next_hidd = next_hidd_hold
 
-    average_sq_loss = 0.0
+    RMS_loss = 0.0
+    next_cell = np.zeros(shape=[1, hyp.cell_dim])
+    next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
     for test in range(hyp.Info.TEST_SIZE): #this will be replaced later
 
         sm.next_epoch_test()
         label = sm.get_label()
         label = np.reshape(label, [1, 1])
-        next_cell = sess.run(C_begin, feed_dict = {})
-        next_hidd = sess.run(H_begin, feed_dict = {})
+
 
         for counter in range(hyp.FOOTPRINT):
             data = sm.next_sample()
@@ -195,9 +202,9 @@ with tf.Session() as sess:
                 output_, loss_ = sess.run(
                     [output, loss],
                     feed_dict={X: data, Y:label, H_last: next_hidd, C_last: next_cell})
-                average_sq_loss += loss_
+                RMS_loss += np.sqrt(loss_)
                 test_logger.writerow([loss_])
 
-    average_sq_loss = average_sq_loss / hyp.Info.TEST_SIZE
-    print("test: average square loss is ", average_sq_loss)
-    test_logger.writerow(["this is the final average squared loss", average_sq_loss])
+    RMS_loss = RMS_loss / hyp.Info.TEST_SIZE
+    print("test: RNS loss average is ", RMS_loss)
+    test_logger.writerow(["this is the final average root mean squared loss", RMS_loss])
