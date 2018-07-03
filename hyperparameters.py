@@ -1,12 +1,12 @@
 class Hyperparameters: #the class that defines the hyperparameters is here
     FOOTPRINT = 9 #how many steps back you take. This is a critical adjustment point
     LEARNING_RATE = 0.001
-    EPOCHS = 60001
+    EPOCHS = 40001
     TRAIN_PERCENT = 0.6
     VALIDATION_PERCENT = 0.002 #nullifies for now
     VALIDATION_NUMBER = 30
-    cell_dim = 40
-    hidden_dim = 40
+    cell_dim = 25
+    hidden_dim = 25
     TEST = True
     SAVER_JUMP = 2000
     SUMMARY_JUMP = 50

@@ -6,7 +6,7 @@ import csv
 
 hyp = Hyperparameters()
 sm = SetMaker()
-pbfilename = "v3_1/models/LSTM_v3_1_frozen.pb"
+pbfilename = "v2/models/LSTM_v2_frozen.pb"
 
 
 with tf.gfile.GFile(pbfilename, "rb") as f:
