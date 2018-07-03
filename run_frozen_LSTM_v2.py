@@ -27,7 +27,7 @@ with tf.Graph().as_default() as graph:
 
 with tf.Session(graph=graph) as sess:
     sm.create_training_set()
-    test = open("v3_1/GRAPHS/EVALUATE_TEST.csv", "w")
+    test = open("v2/GRAPHS/FOREIGN_TEST.csv", "w")
     test_logger = csv.writer(test, lineterminator="\n")
     carrier = ["true_values", "predicted_values", "abs_error"]
     test_logger.writerow(carrier)

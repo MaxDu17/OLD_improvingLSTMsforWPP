@@ -1,12 +1,12 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-upper_bound = 200
+upper_bound = 1000
 lower_bound = 0
 step_length = 5
-version_number = 1
+version_number = 2
 x = np.arange(1,step_length*(upper_bound-lower_bound),step_length)
-file_name = "v" + str(version_number) + "/GRAPHS/EVALUATE_TEST.csv"
+file_name = "v" + str(version_number) + "/GRAPHS/FOREIGN_TEST.csv"
 data = pd.read_csv(file_name)
 
 true_value = data[["true_values"]]

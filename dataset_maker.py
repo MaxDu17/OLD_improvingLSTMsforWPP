@@ -15,6 +15,9 @@ class SetMaker:
         self.running_list = list()
         self.label_list = list()
 
+    def use_foreign(self, file_name): #wrapper function
+        self.dp.use_foreign(file_name)
+
     def test_database(self): #checks that the query is in good shape.
         test = self.dp.grab_list_range(10,20)
         print(len(test))
