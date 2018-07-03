@@ -66,11 +66,15 @@ with tf.name_scope("output_gate"): #output gate values to hidden
     output = tf.nn.relu(raw_output, name = "output")
 
 with tf.name_scope("loss"):
+    '''
     loss_sq = tf.square(tf.subtract(output, Y))
     loss_sq = tf.reshape(loss_sq, [])
     loss_abs = tf.abs(tf.subtract(output, Y))
     loss_abs = tf.reshape(loss_abs, [])
     loss = tf.add(loss_sq, loss_abs)
+    '''
+    loss = tf.square(tf.subtract(output, Y))
+    loss = tf.reshape(loss, [])
 
 with tf.name_scope("optimizer"):
     optimizer = tf.train.AdamOptimizer(learning_rate=hyp.LEARNING_RATE).minimize(loss)
@@ -96,15 +100,15 @@ with tf.name_scope("summaries_and_saver"):
     saver = tf.train.Saver()
 
 with tf.Session() as sess:
-    ckpt = tf.train.get_checkpoint_state(os.path.dirname('v3/models/'))
+    ckpt = tf.train.get_checkpoint_state(os.path.dirname('v3_1/models/'))
     print(ckpt)
     if ckpt and ckpt.model_checkpoint_path:
         saver.restore(sess, ckpt.model_checkpoint_path)
 
     sm.create_training_set()
-    log_loss = open("v3/GRAPHS/LOSS.csv", "w")
-    validation = open("v3/GRAPHS/VALIDATION.csv", "w")
-    test = open("v3/GRAPHS/TEST.csv", "w")
+    log_loss = open("v3_1/GRAPHS/LOSS.csv", "w")
+    validation = open("v3_1/GRAPHS/VALIDATION.csv", "w")
+    test = open("v3_1/GRAPHS/TEST.csv", "w")
 
     logger = csv.writer(log_loss, lineterminator="\n")
     validation_logger = csv.writer(validation, lineterminator="\n")
@@ -112,8 +116,8 @@ with tf.Session() as sess:
 
     sess.run(tf.global_variables_initializer())
 
-    tf.train.write_graph(sess.graph_def, 'v3/GRAPHS/', 'graph.pbtxt')
-    writer = tf.summary.FileWriter("v3/GRAPHS/", sess.graph)
+    tf.train.write_graph(sess.graph_def, 'v3_1/GRAPHS/', 'graph.pbtxt')
+    writer = tf.summary.FileWriter("v3_1/GRAPHS/", sess.graph)
 
     summary = None
     next_cell = np.zeros(shape=[1, hyp.cell_dim])
@@ -144,12 +148,12 @@ with tf.Session() as sess:
             print("predicted number: ", output_, ", real number: ", label)
 
         if epoch%1000 == 0 and epoch>498:
-            saver.save(sess, "v3/models/LSTMv3", global_step=epoch)
+            saver.save(sess, "v3_1/models/LSTMv3", global_step=epoch)
             print("saved model")
             next_cell_hold = next_cell
             next_hidd_hold = next_hidd
             sm.create_validation_set()
-            average_sq_loss = 0.0
+            average_rms_loss = 0.0
             next_cell = np.zeros(shape=[1, hyp.cell_dim])
             next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
             for i in range(hyp.VALIDATION_NUMBER):
@@ -168,13 +172,13 @@ with tf.Session() as sess:
                         next_cell, next_hidd, output_, loss_= sess.run(
                             [current_cell, current_hidden, output, loss],
                             feed_dict={X: data, Y:label, H_last: next_hidd, C_last: next_cell})
-                        average_sq_loss += np.sqrt(loss_)
+                        average_rms_loss += np.sqrt(loss_)
 
                 sm.clear_valid_counter()
 
-            average_sq_loss = average_sq_loss/hyp.VALIDATION_NUMBER
-            print("validation: RMS loss is ", average_sq_loss)
-            validation_logger.writerow([epoch, average_sq_loss])
+            average_rms_loss = average_rms_loss/hyp.VALIDATION_NUMBER
+            print("validation: RMS loss is ", average_rms_loss)
+            validation_logger.writerow([epoch, average_rms_loss])
 
             next_cell = next_cell_hold
             next_hidd = next_hidd_hold
