@@ -1,3 +1,11 @@
+"""
+This program takes a set of coordinates and finds the best matching pair on a giant
+grid of coordinates courtesy of the key given in the grib file. This will
+be later used to grab a single value out of a a giant grib dataset in order to collect
+the weather data needed for the location.
+Target.csv is the coordinates that will be matched as closely as possible in the giant csv.
+Results are saved in "best_coordinates_ruc2anl_130.csv"
+"""
 import csv
 import pandas as pd
 
@@ -41,17 +49,17 @@ for i in range(len(frame_lat)):
             best_error = total_error
             best_i = i
             best_j = j
-_ = open("best_coordinate.csv", "w")
+_ = open("best_coordinate_ruc2anl_130.csv", "w")
 writer_ = csv.writer(_, lineterminator ="\n")
-carrier = [best_i, best_j]
-writer_.writerow(carrier)
+writer_.writerow(["row", "column"])
+writer_.writerow([best_i, best_j])
 best_i +=1
 best_j +=1 #this is to offset the results to correspond with the spreadsheet, which starts at 1
 first_letter = int(best_j/26)
 last_letter = inverted_alphabet_dict[best_j - (first_letter*26)]
 first_letter = inverted_alphabet_dict[first_letter]
-print("row number: " + str(best_i))
-print("column number: " + str(best_j))
+print("excel row number: " + str(best_i))
+print("excel column number: " + str(best_j))
 print("this is->  "+ first_letter+last_letter+ "  <-in excel")
 print("best option: " + str([frame_lat[best_i][best_j],frame_lon[best_i][best_j]]))
 print("target option: " + str(target))

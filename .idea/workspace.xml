@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/weather_data and parser/find_coordinate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weather_data and parser/get_best_pt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_frozen_LSTM_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_frozen_LSTM_v2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/step_plotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/step_plotter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/lats.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/lons.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/test.grb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather_data and parser/best_coordinate.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather_data and parser/ftp_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather_data and parser/ftp_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather_data and parser/get_best_pt.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather_data and parser/get_best_pt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather_data and parser/grabber.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather_data and parser/grabber.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather_data and parser/ruc2anl_130_20110101_0000_000.grb2" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,8 +23,8 @@
             <file leaf-file-name="step_plotter.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/step_plotter.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="34">
-                    <caret line="2" column="31" lean-forward="true" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+                  <state relative-caret-position="340">
+                    <caret line="20" column="46" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
                     <folding>
                       <element signature="e#0#18#0" expanded="true" />
                     </folding>
@@ -53,47 +50,26 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="grabber.py" pinned="false" current-in-tab="false">
+            <file leaf-file-name="grabber.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/weather_data and parser/grabber.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="34">
-                    <caret line="2" column="9" lean-forward="true" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+                  <state relative-caret-position="459">
+                    <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
                     <folding>
-                      <element signature="e#0#13#0" expanded="true" />
+                      <element signature="e#0#22#0" expanded="true" />
                     </folding>
                   </state>
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="get_best_pt.py" pinned="false" current-in-tab="true">
+            <file leaf-file-name="get_best_pt.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/weather_data and parser/get_best_pt.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="442">
-                    <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+                  <state relative-caret-position="242">
+                    <caret line="36" column="10" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
                     <folding>
                       <element signature="e#0#10#0" expanded="true" />
                     </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="find_coordinate.py" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/weather_data and parser/find_coordinate.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="136">
-                    <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-                    <folding>
-                      <element signature="e#0#18#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="ftp_test.py" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/weather_data and parser/ftp_test.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="102">
-                    <caret line="6" column="17" lean-forward="true" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
                   </state>
                 </provider>
               </entry>
@@ -118,7 +94,7 @@
         <entry file="file://$PROJECT_DIR$/lstm_v3.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
-              <caret line="111" lean-forward="true" selection-start-line="111" selection-end-line="111" />
+              <caret line="111" selection-start-line="111" selection-end-line="111" />
             </state>
           </provider>
         </entry>
@@ -127,7 +103,7 @@
         <entry file="file://$PROJECT_DIR$/run_frozen_LSTM_v2.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="173">
-              <caret line="30" column="55" lean-forward="true" selection-start-line="30" selection-start-column="55" selection-end-line="30" selection-end-column="55" />
+              <caret line="30" column="55" selection-start-line="30" selection-start-column="55" selection-end-line="30" selection-end-column="55" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -147,11 +123,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data_feeder.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="data_feeder.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_feeder.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
-              <caret line="17" column="39" lean-forward="true" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+              <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ftp_test.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/weather_data and parser/ftp_test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -232,13 +217,14 @@
         <option value="$PROJECT_DIR$/data_feeder.py" />
         <option value="$PROJECT_DIR$/lstm_v5.py" />
         <option value="$PROJECT_DIR$/lstm_v3.py" />
-        <option value="$PROJECT_DIR$/weather_data and parser/grabber.py" />
         <option value="$PROJECT_DIR$/save_v2.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/get_metadata.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/find_coordinate.py" />
         <option value="$PROJECT_DIR$/run_frozen_LSTM_v2.py" />
         <option value="$PROJECT_DIR$/step_plotter.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/get_best_pt.py" />
+        <option value="$PROJECT_DIR$/weather_data and parser/ftp_test.py" />
+        <option value="$PROJECT_DIR$/weather_data and parser/grabber.py" />
       </list>
     </option>
   </component>
@@ -292,8 +278,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.get_best_pt">
-    <configuration name="find_coordinate" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.grabber">
+    <configuration name="ftp_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CSIRE" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -305,7 +291,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/weather_data and parser/find_coordinate.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/weather_data and parser/ftp_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -329,6 +315,24 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="grabber" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CSIRE" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/weather_data and parser" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/weather_data and parser/grabber.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="run_frozen_LSTM_v2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CSIRE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -342,24 +346,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_frozen_LSTM_v2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="save_v2" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="CSIRE" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/save_v2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -384,19 +370,19 @@
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list>
-      <item itemvalue="Python.save_v2" />
-      <item itemvalue="Python.find_coordinate" />
       <item itemvalue="Python.run_frozen_LSTM_v2" />
       <item itemvalue="Python.step_plotter" />
       <item itemvalue="Python.get_best_pt" />
+      <item itemvalue="Python.grabber" />
+      <item itemvalue="Python.ftp_test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.grabber" />
+        <item itemvalue="Python.ftp_test" />
         <item itemvalue="Python.get_best_pt" />
         <item itemvalue="Python.step_plotter" />
         <item itemvalue="Python.run_frozen_LSTM_v2" />
-        <item itemvalue="Python.find_coordinate" />
-        <item itemvalue="Python.save_v2" />
       </list>
     </recent_temporary>
   </component>
@@ -423,7 +409,7 @@
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5692803" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.40923738" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -698,7 +684,7 @@
     <entry file="file://$PROJECT_DIR$/lstm_v3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="111" lean-forward="true" selection-start-line="111" selection-end-line="111" />
+          <caret line="111" selection-start-line="111" selection-end-line="111" />
         </state>
       </provider>
     </entry>
@@ -716,39 +702,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/weather_data and parser/ftp_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="17" lean-forward="true" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/step_plotter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="31" lean-forward="true" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/run_frozen_LSTM_v2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="173">
-          <caret line="30" column="55" lean-forward="true" selection-start-line="30" selection-start-column="55" selection-end-line="30" selection-end-column="55" />
+          <caret line="30" column="55" selection-start-line="30" selection-start-column="55" selection-end-line="30" selection-end-column="55" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/weather_data and parser/grabber.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="9" lean-forward="true" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -756,7 +715,7 @@
     <entry file="file://$PROJECT_DIR$/data_feeder.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="17" column="39" lean-forward="true" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -772,10 +731,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/weather_data and parser/get_best_pt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+        <state relative-caret-position="242">
+          <caret line="36" column="10" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/step_plotter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="46" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/weather_data and parser/ftp_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/weather_data and parser/grabber.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
