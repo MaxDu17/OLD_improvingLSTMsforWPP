@@ -100,15 +100,15 @@ with tf.name_scope("summaries_and_saver"):
     saver = tf.train.Saver()
 
 with tf.Session() as sess:
-    ckpt = tf.train.get_checkpoint_state(os.path.dirname('v3_1/models/'))
+    ckpt = tf.train.get_checkpoint_state(os.path.dirname('v3/models/'))
     print(ckpt)
     if ckpt and ckpt.model_checkpoint_path:
         saver.restore(sess, ckpt.model_checkpoint_path)
 
     sm.create_training_set()
-    log_loss = open("v3_1/GRAPHS/LOSS.csv", "w")
-    validation = open("v3_1/GRAPHS/VALIDATION.csv", "w")
-    test = open("v3_1/GRAPHS/TEST.csv", "w")
+    log_loss = open("2011/v3/GRAPHS/LOSS.csv", "w")
+    validation = open("2011/v3/GRAPHS/VALIDATION.csv", "w")
+    test = open("2011/v3/GRAPHS/TEST.csv", "w")
 
     logger = csv.writer(log_loss, lineterminator="\n")
     validation_logger = csv.writer(validation, lineterminator="\n")
@@ -116,8 +116,8 @@ with tf.Session() as sess:
 
     sess.run(tf.global_variables_initializer())
 
-    tf.train.write_graph(sess.graph_def, 'v3_1/GRAPHS/', 'graph.pbtxt')
-    writer = tf.summary.FileWriter("v3_1/GRAPHS/", sess.graph)
+    tf.train.write_graph(sess.graph_def, '2011/v3/GRAPHS/', 'graph.pbtxt')
+    writer = tf.summary.FileWriter("2011/v3/GRAPHS/", sess.graph)
 
     summary = None
     next_cell = np.zeros(shape=[1, hyp.cell_dim])
@@ -144,11 +144,11 @@ with tf.Session() as sess:
         if epoch%10 == 0:
             writer.add_summary(summary, global_step=epoch)
             print("I finished epoch ", epoch, " out of ", hyp.EPOCHS, " epochs")
-            print("The abs loss for this sample is ", loss_)
+            print("The abs loss for this sample is ", np.sqrt(loss_))
             print("predicted number: ", output_, ", real number: ", label)
 
         if epoch%1000 == 0 and epoch>498:
-            saver.save(sess, "v3_1/models/LSTMv3", global_step=epoch)
+            saver.save(sess, "2011/v3/models/LSTMv3", global_step=epoch)
             print("saved model")
             next_cell_hold = next_cell
             next_hidd_hold = next_hidd
@@ -208,5 +208,5 @@ with tf.Session() as sess:
                 test_logger.writerow([loss_])
 
     RMS_loss = RMS_loss / hyp.Info.TEST_SIZE
-    print("test: adaptive loss is ", RMS_loss)
+    print("test: rms loss is ", RMS_loss)
     test_logger.writerow(["final adaptive loss average", RMS_loss])

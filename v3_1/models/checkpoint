@@ -1,6 +1,0 @@
-model_checkpoint_path: "LSTMv3-60000"
-all_model_checkpoint_paths: "LSTMv3-56000"
-all_model_checkpoint_paths: "LSTMv3-57000"
-all_model_checkpoint_paths: "LSTMv3-58000"
-all_model_checkpoint_paths: "LSTMv3-59000"
-all_model_checkpoint_paths: "LSTMv3-60000"

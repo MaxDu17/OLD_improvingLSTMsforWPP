@@ -1,7 +1,7 @@
 """Maximilian Du 7-2-18
 LSTM implementation with wind data set
 Version 5 changes:
--peephole
+
 
 """
 import tensorflow as tf
