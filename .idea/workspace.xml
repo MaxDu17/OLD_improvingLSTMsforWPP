@@ -2,141 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/weather_data and parser/get_metadata.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012DATA.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_feeder.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_feeder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ftp_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lstm_v3.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lstm_v5.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v5.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/save_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/save_v2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.grb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/GRAPHS/EVALUATE_TEST.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/GRAPHS/LOSS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/GRAPHS/TEST.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/GRAPHS/VALIDATION.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/GRAPHS/graph.pbtxt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/models/LSTM_v1_frozen.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/models/LSTMv1-18000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/models/LSTMv1-18000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/models/LSTMv1-18000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/models/LSTMv1-18500.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/models/LSTMv1-18500.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/models/LSTMv1-18500.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/models/LSTMv1-19000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/models/LSTMv1-19000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/models/LSTMv1-19000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/models/LSTMv1-19500.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/models/LSTMv1-19500.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/models/LSTMv1-19500.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/models/LSTMv1-20000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/models/LSTMv1-20000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/models/LSTMv1-20000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1/models/checkpoint" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/FOREIGN_LOG/FOREIGN_TEST_1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/FOREIGN_LOG/FOREIGN_TEST_10.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/FOREIGN_LOG/FOREIGN_TEST_11.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/FOREIGN_LOG/FOREIGN_TEST_12.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/FOREIGN_LOG/FOREIGN_TEST_2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/FOREIGN_LOG/FOREIGN_TEST_3.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/FOREIGN_LOG/FOREIGN_TEST_4.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/FOREIGN_LOG/FOREIGN_TEST_5.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/FOREIGN_LOG/FOREIGN_TEST_6.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/FOREIGN_LOG/FOREIGN_TEST_7.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/FOREIGN_LOG/FOREIGN_TEST_8.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/FOREIGN_LOG/FOREIGN_TEST_9.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/GRAPHS/EVALUATE_TEST.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/GRAPHS/FOREIGN_TEST.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/GRAPHS/LOSS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/GRAPHS/RUN_TEST.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/GRAPHS/TEST.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/GRAPHS/VALIDATION.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/GRAPHS/events.out.tfevents.1530537873.DESKTOP-A14IBSC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/GRAPHS/graph.pbtxt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/models/LSTM_v2_frozen.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/models/LSTMv2-38000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/models/LSTMv2-38000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/models/LSTMv2-38000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/models/LSTMv2-38500.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/models/LSTMv2-38500.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/models/LSTMv2-38500.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/models/LSTMv2-39000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/models/LSTMv2-39000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/models/LSTMv2-39000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/models/LSTMv2-39500.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/models/LSTMv2-39500.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/models/LSTMv2-39500.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/models/LSTMv2-40000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/models/LSTMv2-40000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/models/LSTMv2-40000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/models/checkpoint" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/GRAPHS/EVALUATE_TEST.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/GRAPHS/LOSS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/GRAPHS/TEST.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/GRAPHS/VALIDATION.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/GRAPHS/events.out.tfevents.1530562636.DESKTOP-A14IBSC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/GRAPHS/graph.pbtxt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/models/LSTM_v3_frozen.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/models/LSTMv3-36000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/models/LSTMv3-36000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/models/LSTMv3-36000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/models/LSTMv3-37000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/models/LSTMv3-37000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/models/LSTMv3-37000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/models/LSTMv3-38000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/models/LSTMv3-38000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/models/LSTMv3-38000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/models/LSTMv3-39000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/models/LSTMv3-39000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/models/LSTMv3-39000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/models/LSTMv3-40000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/models/LSTMv3-40000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/models/LSTMv3-40000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3/models/checkpoint" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/GRAPHS/EVALUATE_TEST.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/GRAPHS/LOSS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/GRAPHS/TEST.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/GRAPHS/VALIDATION.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/GRAPHS/events.out.tfevents.1530633506.DESKTOP-A14IBSC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/GRAPHS/graph.pbtxt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/models/LSTM_v3_1_frozen.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/models/LSTMv3-56000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/models/LSTMv3-56000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/models/LSTMv3-56000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/models/LSTMv3-57000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/models/LSTMv3-57000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/models/LSTMv3-57000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/models/LSTMv3-58000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/models/LSTMv3-58000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/models/LSTMv3-58000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/models/LSTMv3-59000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/models/LSTMv3-59000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/models/LSTMv3-59000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/models/LSTMv3-60000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/models/LSTMv3-60000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/models/LSTMv3-60000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v3_1/models/checkpoint" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v4/GRAPHS/LOSS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v4/GRAPHS/TEST.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v4/GRAPHS/VALIDATION.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v4/GRAPHS/events.out.tfevents.1530644067.DESKTOP-A14IBSC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v4/GRAPHS/graph.pbtxt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v4/models/LSTMv4-36000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v4/models/LSTMv4-36000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v4/models/LSTMv4-36000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v4/models/LSTMv4-37000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v4/models/LSTMv4-37000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v4/models/LSTMv4-37000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v4/models/LSTMv4-38000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v4/models/LSTMv4-38000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v4/models/LSTMv4-38000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v4/models/LSTMv4-39000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v4/models/LSTMv4-39000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v4/models/LSTMv4-39000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v4/models/LSTMv4-40000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v4/models/LSTMv4-40000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v4/models/LSTMv4-40000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v4/models/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather_data and parser/get_metadata.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather_data and parser/get_metadata.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -171,11 +38,11 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="save_v2.py" pinned="false" current-in-tab="true">
+            <file leaf-file-name="save_v2.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/save_v2.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="272">
-                    <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+                  <state relative-caret-position="255">
+                    <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
                   </state>
                 </provider>
               </entry>
@@ -201,11 +68,11 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="get_metadata.py" pinned="false" current-in-tab="false">
+            <file leaf-file-name="get_metadata.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/weather_data and parser/get_metadata.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="119">
-                    <caret line="7" column="37" lean-forward="true" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+                  <state relative-caret-position="204">
+                    <caret line="12" column="32" lean-forward="true" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
                     <folding>
                       <element signature="e#0#13#0" expanded="true" />
                     </folding>
@@ -232,8 +99,8 @@
       <file leaf-file-name="lstm_v3.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lstm_v3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1795">
-              <caret line="158" column="50" selection-start-line="158" selection-start-column="50" selection-end-line="158" selection-end-column="50" />
+            <state relative-caret-position="146">
+              <caret line="61" column="64" lean-forward="true" selection-start-line="61" selection-start-column="64" selection-end-line="61" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -346,16 +213,16 @@
         <option value="$PROJECT_DIR$/run_foreign.py" />
         <option value="$PROJECT_DIR$/grabber.py" />
         <option value="$PROJECT_DIR$/ftp_test.py" />
-        <option value="$PROJECT_DIR$/weather_data and parser/get_metadata.py" />
         <option value="$PROJECT_DIR$/data_feeder.py" />
         <option value="$PROJECT_DIR$/lstm_v5.py" />
         <option value="$PROJECT_DIR$/lstm_v3.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/grabber.py" />
         <option value="$PROJECT_DIR$/save_v2.py" />
+        <option value="$PROJECT_DIR$/weather_data and parser/get_metadata.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="3194" />
     <option name="width" value="972" />
     <option name="height" value="1046" />
@@ -868,25 +735,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lstm_v3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1795">
-          <caret line="158" column="50" selection-start-line="158" selection-start-column="50" selection-end-line="158" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/weather_data and parser/get_metadata.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="37" lean-forward="true" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="146">
+          <caret line="61" column="64" lean-forward="true" selection-start-line="61" selection-start-column="64" selection-end-line="61" selection-end-column="64" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/save_v2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="255">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/weather_data and parser/get_metadata.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="32" lean-forward="true" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

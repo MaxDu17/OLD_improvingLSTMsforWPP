@@ -1,8 +1,13 @@
 import pygrib
 import csv
-writer = open("data.csv", "w")
-writer_object = csv.writer(writer, lineterminator="\n")
-test_file = "test.grb"
+writerlat = open("data.csv", "w")
+writer_objectlat = csv.writer(writerlat, lineterminator="\n")
+
+writerlon = open("data.csv", "w")
+writer_objectlon = csv.writer(writerlon, lineterminator="\n")
+test_file = "ruc2anl_130_20110101_0000_000.grb2"
 opened_file = pygrib.open(test_file)
-for i in range(100):
-    carrier = opened_file.select()[i]
+selection = opened_file.select()[0]
+lats, lons = selection.latlons()
+writer_objectlat.writerows(lats)
+writer_objectlon.writerows(lons)
