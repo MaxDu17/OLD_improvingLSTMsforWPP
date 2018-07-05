@@ -29,7 +29,7 @@ test_logger = csv.writer(test, lineterminator="\n")
 path_name_root = "C:/Users/Max Du/Dropbox/My Academics/CSIRE/data 2012/"
 big_list = list()
 
-for i in range(3):
+for i in range(12):
     sm = SetMaker()
     path_name = path_name_root + str(i+1) + ".csv"
     sm.use_foreign(path_name)
