@@ -37,26 +37,30 @@ keepers = [223,230,300,295,310] #the data points to keep
 
 point_to_keep_i =186
 point_to_keep_j = 388 #among the large list, it is this single point that we want to keep. This changes with location
-
+lowbound = list()
 headers = ["year", "month", "date", "hour", "surface_pressure", "2M_temperature", "wind_gust_speed",
            "2M_rel_humidity", "surface_temperature"]
 error_headers = ["year", "month", "date"]
 
 try:
     k = open("ruc2anl_130_TOTALSET.csv")
+    print("existing file detected!")
     r = csv.reader(k) #this is crash protection to ensure that everything doesn't get erased
-    lines = list(r)
+    lines = int(list(r))
     lowbound = lines.pop()
+    print("starting from (Y,M,D,H):", str(lowbound[0:3]))
     k.close()
     big_data_ = open("ruc2anl_130_TOTALSET.csv", "w")  # here we get the large file
     big_data = csv.writer(big_data_, lineterminator="\n")
     big_data.writerows(lines)  # we write the headers here
 except:
+    print("starting from scratch")
     big_data_ = open("ruc2anl_130_TOTALSET.csv", "w") #here we get the large file
     big_data = csv.writer(big_data_, lineterminator = "\n")
     big_data.writerow(headers) #we write the headers here
+    lowbound = [1,1,0]
 
-error_file_ = open("error_file.csv")
+error_file_ = open("error_file.csv", "w")
 error_file = csv.writer(error_file_, lineterminator = "\n")
 error_file.writerow(error_headers)
 
@@ -77,7 +81,7 @@ for l in range(lowbound[0],13):
     print("I'm on month: " + str(l))
     for j in range(lowbound[1],32):
         print("I'm on day: " + str(j))
-        for i in range(lowbond[2],24):
+        for i in range(lowbound[2],24):
             print("I'm on hour: " + str(i))
             constructed_directory = "/RUC/analysis_only/" + year + date_dict[l] + "/" + year + date_dict[l] + date_dict[j]
             try:

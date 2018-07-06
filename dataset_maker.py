@@ -50,6 +50,17 @@ class SetMaker:
         self.test_counter += self.hyp.FOOTPRINT
         self.batch_counter = 0
 
+    def next_epoch_test_continuous(self):
+        if self.test_counter == 0:
+            raise Exception("you forgot to initialize the test_counter! Execute create_training_set")
+        if self.test_counter + self.hyp.FOOTPRINT + 1 > self.dp.dataset_size():
+            raise ValueError("you have reached the end of the test set. Violation dataset_maker/next_epoch_test")
+        self.master_list = list()
+        self.master_list = self.dp.grab_list_range(self.test_counter, self.test_counter + 2)
+        self.test_counter += 1
+        self.batch_counter = 0
+        return self.master_list
+
     def next_epoch_valid(self):
         if self.valid_counter + self.hyp.FOOTPRINT + 1 > self.validation_set_size:
             raise ValueError("you have reached the end of the validation. Please check your code"

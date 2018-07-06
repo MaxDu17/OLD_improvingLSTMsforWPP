@@ -34,22 +34,26 @@ with tf.Session(graph=graph) as sess:
     RMS_loss = 0.0
     next_cell = np.zeros(shape=[1, hyp.cell_dim])
     next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
-    for test in range(hyp.Info.EVAULATE_TEST_SIZE): #this will be replaced later
+
+    for counter in range(hyp.FOOTPRINT): #prompts the network
+        print("building up the states" + str(counter))
+        sm.next_epoch_test()
+        data = sm.next_sample()
+        data = np.reshape(data, [1, 1])
+        next_cell, next_hidd = sess.run([current_cell, current_hidden],
+                                        feed_dict={input: data, H_last: next_hidd, C_last: next_cell})
+
+    for test in range(hyp.Info.EVAULATE_TEST_SIZE): #now for every feed, we ask for a result
         print(test)
         sm.next_epoch_test()
         label_ = sm.get_label()
+        data = sm.next_sample()
+        data = np.reshape(data, [1, 1])
         #this gets each 10th
-        for counter in range(hyp.FOOTPRINT):
-            data = sm.next_sample()
-            data = np.reshape(data, [1, 1])
-            if counter < hyp.FOOTPRINT - 1:
-                next_cell, next_hidd = sess.run([current_cell, current_hidden],
-                                                feed_dict={input: data, H_last: next_hidd, C_last: next_cell})
-            else:
-                next_cell, next_hidd, output_ = sess.run(
-                    [current_cell, current_hidden, output],
-                    feed_dict={input: data, H_last: next_hidd, C_last: next_cell})
+        next_cell, next_hidd, output_ = sess.run(
+            [current_cell, current_hidden, output],
+            feed_dict={input: data, H_last: next_hidd, C_last: next_cell})
 
-                carrier = [label_, output_[0][0], np.sqrt(np.square((label_ - output_)[0][0]))]
-                test_logger.writerow(carrier)
+        carrier = [label_, output_[0][0], np.sqrt(np.square((label_ - output_)[0][0]))]
+        test_logger.writerow(carrier)
 
