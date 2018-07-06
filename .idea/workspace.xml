@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/get_all_data_labels.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather_data and parser/get_all_data_labels.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weather_data and parser/grabber.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather_data and parser/grabber.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/ruc2anl_130_20120101_0000_000.grb2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/ruc2anl_130_20120101_0100_000.grb2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/ruc2anl_130_20120101_0200_000.grb2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/ruc2anl_130_20120101_0300_000.grb2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/ruc2anl_130_20120101_0400_000.grb2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/ruc2anl_130_20120101_0500_000.grb2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/ruc2anl_130_20120101_0600_000.grb2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/ruc2anl_130_20120101_0700_000.grb2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/ruc2anl_130_20120101_0800_000.grb2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/ruc2anl_130_20120101_0900_000.grb2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather_data and parser/ruc2anl_130_TOTALSET.csv" beforeDir="false" afterPath="$PROJECT_DIR$/weather_data and parser/ruc2anl_130_TOTALSET.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -82,8 +71,8 @@
             <file leaf-file-name="grabber.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/weather_data and parser/grabber.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="272">
-                    <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+                  <state relative-caret-position="177">
+                    <caret line="45" column="40" lean-forward="true" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
                     <folding>
                       <element signature="e#0#22#0" expanded="true" />
                     </folding>
@@ -777,8 +766,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/weather_data and parser/grabber.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+        <state relative-caret-position="177">
+          <caret line="45" column="40" lean-forward="true" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>
