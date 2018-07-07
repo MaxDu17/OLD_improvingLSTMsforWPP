@@ -56,7 +56,7 @@ class SetMaker:
         if self.test_counter + self.hyp.FOOTPRINT + 1 > self.dp.dataset_size():
             raise ValueError("you have reached the end of the test set. Violation dataset_maker/next_epoch_test")
         self.master_list = list()
-        self.master_list = self.dp.grab_list_range(self.test_counter, self.test_counter + 2)
+        self.master_list = self.dp.grab_list_range(self.test_counter+1, self.test_counter + 3)
         self.test_counter += 1
         self.batch_counter = 0
         return self.master_list

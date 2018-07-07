@@ -1,11 +1,11 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-upper_bound = 100
+upper_bound = 1000
 lower_bound = 0
 step_length = 1
 version_number = 2
-x = np.arange(1,step_length*(upper_bound+1),step_length)
+x = np.arange(0,step_length*(upper_bound-lower_bound),step_length)
 file_name = "2012/v" + str(version_number) + "/GRAPHS/EVALUATE_TEST.csv"
 data = pd.read_csv(file_name)
 

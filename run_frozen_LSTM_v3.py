@@ -45,15 +45,15 @@ with tf.Session(graph=graph) as sess:
 
     for test in range(hyp.Info.EVAULATE_TEST_SIZE): #now for every feed, we ask for a result
         print(test)
-        sm.next_epoch_test()
-        label_ = sm.get_label()
-        data = sm.next_sample()
-        data = np.reshape(data, [1, 1])
+        data = sm.next_epoch_test_continuous()
+
+        label = np.reshape(data[1], [1, 1])
+        input_data = np.reshape(data[0],[1,1])
         #this gets each 10th
         next_cell, next_hidd, output_ = sess.run(
             [current_cell, current_hidden, output],
-            feed_dict={input: data, H_last: next_hidd, C_last: next_cell})
+            feed_dict={input: input_data, H_last: next_hidd, C_last: next_cell})
 
-        carrier = [label_, output_[0][0], np.sqrt(np.square((label_ - output_)[0][0]))]
+        carrier = [data[1], output_[0][0], np.sqrt(np.square((data[1] - output_)[0][0]))]
         test_logger.writerow(carrier)
 
