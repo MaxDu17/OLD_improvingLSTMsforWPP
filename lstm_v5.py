@@ -3,6 +3,7 @@ LSTM implementation with wind data set
 Version 5 changes:
 -peephole
 -fixed truncation error for the cell state
+-reduced the amount of reshapes
 """
 import tensorflow as tf
 import numpy as np
@@ -18,7 +19,7 @@ ml = My_Loss()
 
 #constructing the big weight now
 with tf.name_scope("weights_and_biases"):
-    W_Forget = tf.Variable(tf.random_normal(shape = [hyp.hidden_dim + hyp.cell_dim + 1,hyp.cell_dim]), name = "forget_weight")
+    W_Forget = tf.Variable(tf.random_normal(shape = [hyp.hidden_dim + hyp.cell_dim + 1,hyp.cell_dim]), name = "forget_weight") #note that the rows are the concatenated cell, hidden, and input states. This is peephole usage
     W_Output = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + hyp.cell_dim + 1,hyp.cell_dim]), name="output_weight")
     W_Gate = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + hyp.cell_dim + 1, hyp.cell_dim]), name="gate_weight")
     W_Input = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + hyp.cell_dim + 1, hyp.cell_dim]), name="input_weight")
@@ -38,21 +39,20 @@ with tf.name_scope("placeholders"):
 
 with tf.name_scope("to_gates"):
     #output gate is not here, as it requires the changed cell state, which is not here yet
-    X = tf.reshape(X, shape = [1,1])
-    H_last_ = tf.reshape(H_last, shape = [hyp.hidden_dim,1])
-    concat_input = tf.concat([X, H_last_, C_last], axis = 0, name = "input_concat") #concatenates the inputs to one vector
-    concat_input = tf.transpose(concat_input)
+
+    concat_input = tf.concat([X, H_last, C_last], axis = 1, name = "input_concat") #concatenates the inputs to one vector
     forget_gate = tf.add(tf.matmul(concat_input, W_Forget, name = "f_w_m"),B_Forget, name = "f_b_a") #decides which to drop from cell
     gate_gate = tf.add(tf.matmul(concat_input, W_Gate, name = "g_w_m"), B_Gate, name = "g_b_a") #decides which things to change in cell state
     input_gate = tf.add(tf.matmul(concat_input, W_Input, name = "i_w_m"), B_Input, name = "i_b_a") #decides which of the changes to accept
 
 with tf.name_scope("non-linearity"): #makes the gates into what they should be
-    #output gate is not here for the same reason explained in the previous name scope. 
+    #output gate is not here for the same reason explained in the previous name scope.
     forget_gate = tf.sigmoid(forget_gate, name = "sigmoid_forget")
     input_gate = tf.sigmoid(input_gate, name="sigmoid_input")
     gate_gate = tf.tanh(gate_gate, name = "tanh_gate")
 
 with tf.name_scope("forget_gate"): #forget gate values and propagate
+
     current_cell = tf.multiply(forget_gate, C_last, name = "forget_gating")
 
 with tf.name_scope("suggestion_node"): #suggestion gate
@@ -60,19 +60,19 @@ with tf.name_scope("suggestion_node"): #suggestion gate
     current_cell = tf.add(suggestion_box, current_cell, name = "input_and_gate_gating")
 
 with tf.name_scope("output_gate"): #output gate values to hidden
-    concat_output_input = tf.concat([X, H_last_, current_cell], axis = 0, name = "output_input_concat") #here, the processed current cell is concatenated and prepared for output
+    concat_output_input = tf.concat([X, H_last, current_cell], axis = 1, name = "input_concat") #concatenates the inputs to one vector #here, the processed current cell is concatenated and prepared for output
     output_gate = tf.add(tf.matmul(concat_output_input, W_Output, name="o_w_m"), B_Output, name="o_b_a") #we are making the output gates now, with the peephole.
-    output_gate = tf.sigmoid(output_gate, name="sigmoid_output") #the gate is complete
-
-    current_cell_ = tf.tanh(current_cell, name = "output_presquashing") #squashing the current cell, branching off now. Note the underscore, means saving a cop.
-
+    output_gate = tf.sigmoid(output_gate, name="sigmoid_output") #the gate is complete. Note that the two lines were supposed to be back in "to gates" and "non-linearity", but it is necessary to put it here
+    current_cell_ = tf.tanh(current_cell, name = "cell_squashing") #squashing the current cell, branching off now. Note the underscore, means saving a copy.
     current_hidden = tf.multiply(output_gate, current_cell_, name="next_hidden") #we are making the hidden by element-wise multiply of the squashed states
+    print(current_cell)
     raw_output = tf.add(tf.matmul(current_hidden, W_Hidden_to_Out, name = "WHTO_w_m"), B_Hidden_to_Out, name = "BHTO_b_a") #now, we are propagating outwards
+
     output = tf.nn.relu(raw_output, name = "output") #makes sure it is not zero.
 
 with tf.name_scope("loss"):
     loss = tf.square(tf.subtract(output, Y))
-    loss = tf.reshape(loss, [])
+    loss = tf.reduce_sum(loss)
 
 with tf.name_scope("optimizer"):
     optimizer = tf.train.AdamOptimizer(learning_rate=hyp.LEARNING_RATE).minimize(loss)
@@ -83,6 +83,11 @@ with tf.name_scope("summaries_and_saver"):
     tf.summary.histogram("W_Output", W_Output)
     tf.summary.histogram("W_Gate", W_Gate)
     tf.summary.histogram("W_Hidden_to_Out", W_Hidden_to_Out)
+
+    tf.summary.histogram("Forget", forget_gate)
+    tf.summary.histogram("Input", input_gate)
+    tf.summary.histogram("Output", output_gate)
+    tf.summary.histogram("Gate", gate_gate)
 
     tf.summary.histogram("Cell_State", current_cell)
 
@@ -99,9 +104,15 @@ with tf.name_scope("summaries_and_saver"):
 
 with tf.Session() as sess:
     ckpt = tf.train.get_checkpoint_state(os.path.dirname('2012/v5/models/'))
-    print(ckpt)
     if ckpt and ckpt.model_checkpoint_path:
-        saver.restore(sess, ckpt.model_checkpoint_path)
+        query = input("checkpoint detected! Would you like to restore from <" + ckpt.model_checkpoint_path + "> ?(y or n)\n")
+        if query == 'y':
+            saver.restore(sess, ckpt.model_checkpoint_path)
+            if np.sum(B_Forget.eval()) != 0:
+                print("session restored!")
+        else:
+            print("session discarded!")
+
 
     sm.create_training_set()
     log_loss = open("2012/v5/GRAPHS/LOSS.csv", "w")
@@ -145,7 +156,7 @@ with tf.Session() as sess:
             print("The abs loss for this sample is ", loss_)
             print("predicted number: ", output_, ", real number: ", label)
 
-        if epoch%1000 == 0 and epoch>498:
+        if epoch%2000 == 0 and epoch>498:
             saver.save(sess, "2012/v5/models/LSTMv5", global_step=epoch)
             print("saved model")
             next_cell_hold = next_cell

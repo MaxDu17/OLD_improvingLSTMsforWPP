@@ -1,7 +1,7 @@
 class Hyperparameters: #the class that defines the hyperparameters is here
     FOOTPRINT = 9 #how many steps back you take. This is a critical adjustment point
-    LEARNING_RATE = 0.001
-    EPOCHS = 40001
+    LEARNING_RATE = 0.005
+    EPOCHS = 60001
     TRAIN_PERCENT = 0.6
     VALIDATION_PERCENT = 0.002 #nullifies for now
     VALIDATION_NUMBER = 30
