@@ -1,14 +1,18 @@
 from pipeline import SetMaker
-
+import time
 sm = SetMaker()
 
 sm.create_training_set()
 sm.next_epoch_test()
-for i in range(9):
-    a = sm.next_sample()
-    print(a)
-k = sm.get_label()
-print(k)
+
+input("This program makes sure that the LSTM is being honest.\nIt checks the function "
+              "\"next_epoch_test_pair\" and emulates the testing program.\nPress enter to continue.\n")
+
+print("\t\t\tTHE OUTPUT IS INTENTIONALLY SLOWED DOWN\n")
 for i in range(10):
-    test = sm.next_epoch_test_continuous()
-    print(test)
+    time.sleep(1)
+    data, label = sm.next_epoch_test_pair()
+    print("epoch " + str(i))
+    print("Data point fed in: " + str(data))
+    print("Label/next data point: " + str(label))
+    print("----------------------------------------------------------------\n")

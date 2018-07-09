@@ -18,11 +18,6 @@ class SetMaker:
     def use_foreign(self, file_name): #wrapper function
         self.dp.use_foreign(file_name)
 
-    def test_database(self): #checks that the query is in good shape.
-        test = self.dp.grab_list_range(10,20)
-        print(len(test))
-        print(test)
-
     def create_training_set(self):
         self.training_set_size = self.hyp.TRAIN_PERCENT * self.dp.dataset_size()
         self.test_counter = self.training_set_size
@@ -60,7 +55,7 @@ class SetMaker:
         self.test_counter += 1
         self.batch_counter = 0
 
-    def next_epoch_test_continuous(self):
+    def next_epoch_test_pair(self): #gives in pairs: one data and one label, then shift one.
         if self.test_counter == 0:
             raise Exception("you forgot to initialize the test_counter! Execute create_training_set")
         if self.test_counter + self.hyp.FOOTPRINT + 1 > self.dp.dataset_size():
@@ -69,7 +64,9 @@ class SetMaker:
         self.master_list = self.dp.grab_list_range(self.test_counter+1, self.test_counter + 3)
         self.test_counter += 1
         self.batch_counter = 0
-        return self.master_list
+        data = self.master_list[0]
+        label = self.master_list[1]
+        return data, label
 
     def next_epoch_valid(self):
         if self.valid_counter + self.hyp.FOOTPRINT + 1 > self.validation_set_size:

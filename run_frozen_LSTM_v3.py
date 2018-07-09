@@ -6,7 +6,7 @@ import csv
 
 hyp = Hyperparameters()
 sm = SetMaker()
-pbfilename = "2011/v3/models/LSTM_v3_frozen.pb"
+pbfilename = "2012/v2/models/LSTM_v2_frozen.pb"
 
 
 with tf.gfile.GFile(pbfilename, "rb") as f:
@@ -27,7 +27,7 @@ with tf.Graph().as_default() as graph:
 
 with tf.Session(graph=graph) as sess:
     sm.create_training_set()
-    test = open("2012/v2/GRAPHS/EVALUATE_TEST.csv", "w")
+    test = open("2012/v2/GRAPHS/ONE-ONE-FEED.csv", "w")
     test_logger = csv.writer(test, lineterminator="\n")
     carrier = ["true_values", "predicted_values", "abs_error"]
     test_logger.writerow(carrier)
@@ -37,23 +37,21 @@ with tf.Session(graph=graph) as sess:
 
     for counter in range(hyp.FOOTPRINT): #prompts the network
         print("building up the states" + str(counter))
-        sm.next_epoch_test()
-        data = sm.next_sample()
+        data, _ = sm.next_epoch_test_pair() #label is ignored in the state-building
         data = np.reshape(data, [1, 1])
         next_cell, next_hidd = sess.run([current_cell, current_hidden],
                                         feed_dict={input: data, H_last: next_hidd, C_last: next_cell})
 
     for test in range(hyp.Info.EVAULATE_TEST_SIZE): #now for every feed, we ask for a result
         print(test)
-        data = sm.next_epoch_test_continuous()
+        data, label = sm.next_epoch_test_pair() #this gives you a single value, and the label for it
 
-        label = np.reshape(data[1], [1, 1])
-        input_data = np.reshape(data[0],[1,1])
+        input_data = np.reshape(data,[1,1])
         #this gets each 10th
         next_cell, next_hidd, output_ = sess.run(
             [current_cell, current_hidden, output],
             feed_dict={input: input_data, H_last: next_hidd, C_last: next_cell})
 
-        carrier = [data[1], output_[0][0], np.sqrt(np.square((data[1] - output_)[0][0]))]
+        carrier = [label, output_[0][0], np.sqrt(np.square((label - output_)[0][0]))]
         test_logger.writerow(carrier)
 
