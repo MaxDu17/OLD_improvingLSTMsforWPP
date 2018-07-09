@@ -1,8 +1,8 @@
 """Maximilian Du 7-2-18
 LSTM implementation with wind data set
 Version 5 changes:
-
-
+-peephole
+-fixed truncation error for the cell state
 """
 import tensorflow as tf
 import numpy as np
@@ -18,10 +18,10 @@ ml = My_Loss()
 
 #constructing the big weight now
 with tf.name_scope("weights_and_biases"):
-    W_Forget = tf.Variable(tf.random_normal(shape = [hyp.hidden_dim + 1,hyp.cell_dim]), name = "forget_weight")
-    W_Output = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1,hyp.cell_dim]), name="output_weight")
-    W_Gate = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="gate_weight")
-    W_Input = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="input_weight")
+    W_Forget = tf.Variable(tf.random_normal(shape = [hyp.hidden_dim + hyp.cell_dim + 1,hyp.cell_dim]), name = "forget_weight")
+    W_Output = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + hyp.cell_dim + 1,hyp.cell_dim]), name="output_weight")
+    W_Gate = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + hyp.cell_dim + 1, hyp.cell_dim]), name="gate_weight")
+    W_Input = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + hyp.cell_dim + 1, hyp.cell_dim]), name="input_weight")
     W_Hidden_to_Out = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim,1]), name = "outwards_propagating_weight")
 
     B_Forget = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name = "forget_bias")
@@ -37,18 +37,18 @@ with tf.name_scope("placeholders"):
     C_last = tf.placeholder(shape= [1,hyp.cell_dim], dtype = tf.float32, name = "last_cell") #last cell state
 
 with tf.name_scope("to_gates"):
+    #output gate is not here, as it requires the changed cell state, which is not here yet
     X = tf.reshape(X, shape = [1,1])
     H_last_ = tf.reshape(H_last, shape = [hyp.hidden_dim,1])
-    concat_input = tf.concat([X, H_last_], axis = 0, name = "input_concat") #concatenates the inputs to one vector
+    concat_input = tf.concat([X, H_last_, C_last], axis = 0, name = "input_concat") #concatenates the inputs to one vector
     concat_input = tf.transpose(concat_input)
     forget_gate = tf.add(tf.matmul(concat_input, W_Forget, name = "f_w_m"),B_Forget, name = "f_b_a") #decides which to drop from cell
-    output_gate = tf.add(tf.matmul(concat_input, W_Output, name = "o_w_m"), B_Output, name = "o_b_a") #decides which to reveal to next_hidd/output
     gate_gate = tf.add(tf.matmul(concat_input, W_Gate, name = "g_w_m"), B_Gate, name = "g_b_a") #decides which things to change in cell state
     input_gate = tf.add(tf.matmul(concat_input, W_Input, name = "i_w_m"), B_Input, name = "i_b_a") #decides which of the changes to accept
 
 with tf.name_scope("non-linearity"): #makes the gates into what they should be
+    #output gate is not here for the same reason explained in the previous name scope. 
     forget_gate = tf.sigmoid(forget_gate, name = "sigmoid_forget")
-    output_gate = tf.sigmoid(output_gate, name="sigmoid_output")
     input_gate = tf.sigmoid(input_gate, name="sigmoid_input")
     gate_gate = tf.tanh(gate_gate, name = "tanh_gate")
 
@@ -60,19 +60,17 @@ with tf.name_scope("suggestion_node"): #suggestion gate
     current_cell = tf.add(suggestion_box, current_cell, name = "input_and_gate_gating")
 
 with tf.name_scope("output_gate"): #output gate values to hidden
-    current_cell = tf.tanh(current_cell, name = "output_presquashing")
-    current_hidden = tf.multiply(output_gate, current_cell, name="next_hidden")
-    raw_output = tf.add(tf.matmul(current_hidden, W_Hidden_to_Out, name = "WHTO_w_m"), B_Hidden_to_Out, name = "BHTO_b_a")
-    output = tf.nn.relu(raw_output, name = "output")
+    concat_output_input = tf.concat([X, H_last_, current_cell], axis = 0, name = "output_input_concat") #here, the processed current cell is concatenated and prepared for output
+    output_gate = tf.add(tf.matmul(concat_output_input, W_Output, name="o_w_m"), B_Output, name="o_b_a") #we are making the output gates now, with the peephole.
+    output_gate = tf.sigmoid(output_gate, name="sigmoid_output") #the gate is complete
+
+    current_cell_ = tf.tanh(current_cell, name = "output_presquashing") #squashing the current cell, branching off now. Note the underscore, means saving a cop.
+
+    current_hidden = tf.multiply(output_gate, current_cell_, name="next_hidden") #we are making the hidden by element-wise multiply of the squashed states
+    raw_output = tf.add(tf.matmul(current_hidden, W_Hidden_to_Out, name = "WHTO_w_m"), B_Hidden_to_Out, name = "BHTO_b_a") #now, we are propagating outwards
+    output = tf.nn.relu(raw_output, name = "output") #makes sure it is not zero.
 
 with tf.name_scope("loss"):
-    '''
-    loss_sq = tf.square(tf.subtract(output, Y))
-    loss_sq = tf.reshape(loss_sq, [])
-    loss_abs = tf.abs(tf.subtract(output, Y))
-    loss_abs = tf.reshape(loss_abs, [])
-    loss = tf.add(loss_sq, loss_abs)
-    '''
     loss = tf.square(tf.subtract(output, Y))
     loss = tf.reshape(loss, [])
 
@@ -100,15 +98,15 @@ with tf.name_scope("summaries_and_saver"):
     saver = tf.train.Saver()
 
 with tf.Session() as sess:
-    ckpt = tf.train.get_checkpoint_state(os.path.dirname('v3_1/models/'))
+    ckpt = tf.train.get_checkpoint_state(os.path.dirname('2012/v5/models/'))
     print(ckpt)
     if ckpt and ckpt.model_checkpoint_path:
         saver.restore(sess, ckpt.model_checkpoint_path)
 
     sm.create_training_set()
-    log_loss = open("v3_1/GRAPHS/LOSS.csv", "w")
-    validation = open("v3_1/GRAPHS/VALIDATION.csv", "w")
-    test = open("v3_1/GRAPHS/TEST.csv", "w")
+    log_loss = open("2012/v5/GRAPHS/LOSS.csv", "w")
+    validation = open("2012/v5/GRAPHS/VALIDATION.csv", "w")
+    test = open("2012/v5/GRAPHS/TEST.csv", "w")
 
     logger = csv.writer(log_loss, lineterminator="\n")
     validation_logger = csv.writer(validation, lineterminator="\n")
@@ -116,8 +114,8 @@ with tf.Session() as sess:
 
     sess.run(tf.global_variables_initializer())
 
-    tf.train.write_graph(sess.graph_def, 'v3_1/GRAPHS/', 'graph.pbtxt')
-    writer = tf.summary.FileWriter("v3_1/GRAPHS/", sess.graph)
+    tf.train.write_graph(sess.graph_def, '2012/v5/GRAPHS/', 'graph.pbtxt')
+    writer = tf.summary.FileWriter("2012/v5/GRAPHS/", sess.graph)
 
     summary = None
     next_cell = np.zeros(shape=[1, hyp.cell_dim])
@@ -148,7 +146,7 @@ with tf.Session() as sess:
             print("predicted number: ", output_, ", real number: ", label)
 
         if epoch%1000 == 0 and epoch>498:
-            saver.save(sess, "v3_1/models/LSTMv3", global_step=epoch)
+            saver.save(sess, "2012/v5/models/LSTMv5", global_step=epoch)
             print("saved model")
             next_cell_hold = next_cell
             next_hidd_hold = next_hidd

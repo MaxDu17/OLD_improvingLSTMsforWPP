@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/2012/v0/FOREIGN_LOG/FOREIGN_TEST_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v0/FOREIGN_LOG/FOREIGN_TEST_2.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_foreign_base_case.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_foreign_base_case.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lstm_v5.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v5.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -102,50 +101,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="lstm_v5.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="lstm_v5.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lstm_v5.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="21" column="97" selection-start-line="21" selection-start-column="97" selection-end-line="21" selection-end-column="97" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="universal_run_frozenLSTM.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/universal_run_frozenLSTM.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="36" selection-start-line="36" selection-end-line="37" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="run_foreign.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/run_foreign.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-74">
-              <caret line="42" column="50" selection-start-line="42" selection-start-column="50" selection-end-line="42" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="run_foreign_base_case.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/run_foreign_base_case.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="run_frozen_LSTM_v1.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/run_frozen_LSTM_v1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="374">
+              <caret line="49" column="87" selection-start-line="49" selection-start-column="87" selection-end-line="49" selection-end-column="87" />
             </state>
           </provider>
         </entry>
@@ -165,8 +125,8 @@
       <file leaf-file-name="data_feeder.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_feeder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="289">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -199,8 +159,8 @@
       <find>v</find>
       <find>v3/</find>
       <find>v3_1</find>
-      <find>v3</find>
       <find>print</find>
+      <find>v3</find>
     </findStrings>
     <replaceStrings>
       <replace>v2</replace>
@@ -238,7 +198,6 @@
         <option value="$PROJECT_DIR$/plottest.py" />
         <option value="$PROJECT_DIR$/grabber.py" />
         <option value="$PROJECT_DIR$/ftp_test.py" />
-        <option value="$PROJECT_DIR$/lstm_v5.py" />
         <option value="$PROJECT_DIR$/lstm_v3.py" />
         <option value="$PROJECT_DIR$/save_v2.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/get_metadata.py" />
@@ -260,10 +219,11 @@
         <option value="$PROJECT_DIR$/universal_run_frozenLSTM.py" />
         <option value="$PROJECT_DIR$/run_foreign.py" />
         <option value="$PROJECT_DIR$/run_foreign_base_case.py" />
+        <option value="$PROJECT_DIR$/lstm_v5.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="3194" />
     <option name="width" value="972" />
     <option name="height" value="1046" />
@@ -436,13 +396,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="3194" y="0" width="972" height="1046" extended-state="0" />
+    <frame x="3192" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.033472802" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.016666668" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3802363" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.06376196" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -700,13 +660,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lstm_v5.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="21" column="97" selection-start-line="21" selection-start-column="97" selection-end-line="21" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/run_frozen_LSTM_v1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -717,24 +670,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_feeder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/step_plotter_single.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/universal_run_frozenLSTM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="36" selection-start-line="36" selection-end-line="37" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -745,6 +684,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/run_foreign_base_case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/run_foreign.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-74">
@@ -752,10 +698,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_foreign_base_case.py">
+    <entry file="file://$PROJECT_DIR$/universal_run_frozenLSTM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+        <state relative-caret-position="222">
+          <caret line="36" selection-start-line="36" selection-end-line="37" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_feeder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lstm_v5.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="49" column="87" selection-start-line="49" selection-start-column="87" selection-end-line="49" selection-end-column="87" />
         </state>
       </provider>
     </entry>
