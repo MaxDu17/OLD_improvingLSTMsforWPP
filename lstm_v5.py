@@ -159,6 +159,7 @@ with tf.Session() as sess:
         if epoch%2000 == 0 and epoch>498:
             saver.save(sess, "2012/v5/models/LSTMv5", global_step=epoch)
             print("saved model")
+            '''
             next_cell_hold = next_cell
             next_hidd_hold = next_hidd
             sm.create_validation_set()
@@ -168,21 +169,28 @@ with tf.Session() as sess:
             for i in range(hyp.VALIDATION_NUMBER):
 
                 sm.next_epoch_valid()
-                label = sm.get_label()
-                label = np.reshape(label, [1, 1])
-
+                label_ = sm.get_label()
+                # this gets each 10th
                 for counter in range(hyp.FOOTPRINT):
                     data = sm.next_sample()
                     data = np.reshape(data, [1, 1])
-                    if counter < hyp.FOOTPRINT-1:
-                        next_cell, next_hidd = sess.run([current_cell, current_hidden],
-                                                        feed_dict={X: data, H_last: next_hidd, C_last: next_cell})
-                    else:
-                        next_cell, next_hidd, output_, loss_= sess.run(
-                            [current_cell, current_hidden, output, loss],
-                            feed_dict={X: data, Y:label, H_last: next_hidd, C_last: next_cell})
-                        average_rms_loss += np.sqrt(loss_)
+                    if counter < hyp.FOOTPRINT - 1:
 
+                        next_cell, next_hidd = sess.run([current_cell, current_hidden],
+                                                        feed_dict={input: data, H_last: next_hidd, C_last: next_cell})
+                        if counter == 0:
+                            hidden_saver = next_hidd  # saves THIS state for the next round
+                            cell_saver = next_cell
+                    else:
+                        next_cell, next_hidd, output_, loss_ = sess.run(
+                            [current_cell, current_hidden, output, loss],
+                            feed_dict={input: data, H_last: next_hidd, C_last: next_cell})
+
+                        carrier = [label_, output_[0][0], np.sqrt(loss)]
+                        test_logger.writerow(carrier)
+                next_cell = cell_saver
+                next_hidden = hidden_saver
+                average_rms_loss += np.sqrt(loss_)
                 sm.clear_valid_counter()
 
             average_rms_loss = average_rms_loss/hyp.VALIDATION_NUMBER
@@ -191,31 +199,35 @@ with tf.Session() as sess:
 
             next_cell = next_cell_hold
             next_hidd = next_hidd_hold
-
+            '''
     RMS_loss = 0.0
     next_cell = np.zeros(shape=[1, hyp.cell_dim])
     next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
     for test in range(hyp.Info.TEST_SIZE): #this will be replaced later
 
-        sm.next_epoch_test()
-        label = sm.get_label()
-        label = np.reshape(label, [1, 1])
-
-
+        sm.next_epoch_test_single_shift()
+        label_ = sm.get_label()
+        # this gets each 10th
         for counter in range(hyp.FOOTPRINT):
             data = sm.next_sample()
             data = np.reshape(data, [1, 1])
             if counter < hyp.FOOTPRINT - 1:
+
                 next_cell, next_hidd = sess.run([current_cell, current_hidden],
-                                                feed_dict={X: data, H_last: next_hidd, C_last: next_cell})
+                                                feed_dict={input: data, H_last: next_hidd, C_last: next_cell})
+                if counter == 0:
+                    hidden_saver = next_hidd  # saves THIS state for the next round
+                    cell_saver = next_cell
             else:
                 next_cell, next_hidd, output_, loss_ = sess.run(
                     [current_cell, current_hidden, output, loss],
-                    feed_dict={X: data, Y: label, H_last: next_hidd, C_last: next_cell})
+                    feed_dict={input: data, H_last: next_hidd, C_last: next_cell})
 
-                RMS_loss += np.sqrt(loss_)
-                test_logger.writerow([loss_])
+                carrier = [label_, output_[0][0], np.sqrt(loss)]
+                test_logger.writerow(carrier)
+        next_cell = cell_saver
+        next_hidden = hidden_saver
 
     RMS_loss = RMS_loss / hyp.Info.TEST_SIZE
-    print("test: adaptive loss is ", RMS_loss)
+    print("test: rms loss is ", RMS_loss)
     test_logger.writerow(["final adaptive loss average", RMS_loss])

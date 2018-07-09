@@ -77,7 +77,7 @@ class SetMaker:
                              " for boundary cases. Violation dataset_maker/next_epoch_valid")
         self.master_list = list()
         self.master_list = self.dp.grab_list_range(self.valid_counter, self.valid_counter + self.hyp.FOOTPRINT + 1)
-        self.valid_counter += self.hyp.FOOTPRINT
+        self.valid_counter += 1
         self.batch_counter = 0
 
 
