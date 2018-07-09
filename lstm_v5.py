@@ -207,6 +207,7 @@ with tf.Session() as sess:
 
         sm.next_epoch_test_single_shift()
         label_ = sm.get_label()
+        label = np.reshape(label_, [1, 1])
         # this gets each 10th
         for counter in range(hyp.FOOTPRINT):
             data = sm.next_sample()
@@ -214,14 +215,14 @@ with tf.Session() as sess:
             if counter < hyp.FOOTPRINT - 1:
 
                 next_cell, next_hidd = sess.run([current_cell, current_hidden],
-                                                feed_dict={input: data, H_last: next_hidd, C_last: next_cell})
+                                                feed_dict={X: data, H_last: next_hidd, C_last: next_cell})
                 if counter == 0:
                     hidden_saver = next_hidd  # saves THIS state for the next round
                     cell_saver = next_cell
             else:
                 next_cell, next_hidd, output_, loss_ = sess.run(
                     [current_cell, current_hidden, output, loss],
-                    feed_dict={input: data, H_last: next_hidd, C_last: next_cell})
+                    feed_dict={X: data, Y: label, H_last: next_hidd, C_last: next_cell})
 
                 carrier = [label_, output_[0][0], np.sqrt(loss)]
                 test_logger.writerow(carrier)

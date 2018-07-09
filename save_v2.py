@@ -5,7 +5,7 @@ MODEL_NAME = 'LSTM_v5_frozen'
 # Freeze the graph
 
 input_graph_path = "2012/v5/GRAPHS/graph.pbtxt"
-checkpoint_path = "2012/v5/models/LSTMv5-60000"
+checkpoint_path = "2012/v5/models/LSTMv5-40000"
 input_saver_def_path = ""
 input_binary = False
 output_node_names = "output_gate/output"
