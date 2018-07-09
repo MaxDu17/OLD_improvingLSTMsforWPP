@@ -7854,7 +7854,7 @@ node {
   name: "summaries_and_saver/Cell_State"
   op: "HistogramSummary"
   input: "summaries_and_saver/Cell_State/tag"
-  input: "suggestion_node/input_and_gate_gating"
+  input: "output_gate/cell_squashing"
   attr {
     key: "T"
     value {

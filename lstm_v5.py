@@ -63,9 +63,9 @@ with tf.name_scope("output_gate"): #output gate values to hidden
     concat_output_input = tf.concat([X, H_last, current_cell], axis = 1, name = "input_concat") #concatenates the inputs to one vector #here, the processed current cell is concatenated and prepared for output
     output_gate = tf.add(tf.matmul(concat_output_input, W_Output, name="o_w_m"), B_Output, name="o_b_a") #we are making the output gates now, with the peephole.
     output_gate = tf.sigmoid(output_gate, name="sigmoid_output") #the gate is complete. Note that the two lines were supposed to be back in "to gates" and "non-linearity", but it is necessary to put it here
-    current_cell_ = tf.tanh(current_cell, name = "cell_squashing") #squashing the current cell, branching off now. Note the underscore, means saving a copy.
-    current_hidden = tf.multiply(output_gate, current_cell_, name="next_hidden") #we are making the hidden by element-wise multiply of the squashed states
-    print(current_cell)
+    current_cell = tf.tanh(current_cell, name = "cell_squashing") #squashing the current cell, branching off now. Note the underscore, means saving a copy.
+    current_hidden = tf.multiply(output_gate, current_cell, name="next_hidden") #we are making the hidden by element-wise multiply of the squashed states
+
     raw_output = tf.add(tf.matmul(current_hidden, W_Hidden_to_Out, name = "WHTO_w_m"), B_Hidden_to_Out, name = "BHTO_b_a") #now, we are propagating outwards
 
     output = tf.nn.relu(raw_output, name = "output") #makes sure it is not zero.
