@@ -38,16 +38,17 @@ with tf.name_scope("placeholders"):
 with tf.name_scope("to_gates"):
     concat_input = tf.concat([X, H_last], axis = 1, name = "input_concat") #concatenates the inputs to one vector
     forget_gate = tf.add(tf.matmul(concat_input, W_Forget_and_Input, name = "f_w_m"),B_Forget_and_Input, name = "f_b_a") #decides which to drop from cell
-    forget_gate_negated = tf.scalar_mul(-1, forget_gate)
-    print(forget_gate)
-    input_gate = tf.add(tf.ones([1, hyp.cell_dim]), forget_gate_negated, name = "making_input_gate")
-    print(input_gate)
+
     gate_gate = tf.add(tf.matmul(concat_input, W_Gate, name = "g_w_m"), B_Gate, name = "g_b_a") #decides which things to change in cell state
     output_gate = tf.add(tf.matmul(concat_input, W_Output, name="o_w_m"), B_Output, name="o_b_a")
 
 with tf.name_scope("non-linearity"): #makes the gates into what they should be
     forget_gate = tf.sigmoid(forget_gate, name = "sigmoid_forget")
+
+    forget_gate_negated = tf.scalar_mul(-1, forget_gate) #this has to be here because it is after the nonlin
+    input_gate = tf.add(tf.ones([1, hyp.cell_dim]), forget_gate_negated, name="making_input_gate")
     input_gate = tf.sigmoid(input_gate, name="sigmoid_input")
+
     gate_gate = tf.tanh(gate_gate, name = "tanh_gate")
     output_gate = tf.sigmoid(output_gate, name="sigmoid_output")
 with tf.name_scope("forget_gate"): #forget gate values and propagate
@@ -218,7 +219,7 @@ with tf.Session() as sess:
                     [current_cell, current_hidden, output, loss],
                     feed_dict={X: data, Y: label, H_last: next_hidd, C_last: next_cell})
 
-                carrier = [label_, output_[0][0], np.sqrt(loss)]
+                carrier = [label_, output_[0][0], np.sqrt(loss_)]
                 test_logger.writerow(carrier)
         next_cell = cell_saver
         next_hidden = hidden_saver

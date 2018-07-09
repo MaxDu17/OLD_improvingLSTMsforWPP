@@ -6,7 +6,7 @@ import csv
 
 hyp = Hyperparameters()
 sm = SetMaker()
-pbfilename = "2012/v5/models/LSTM_v5_frozen.pb"
+pbfilename = "2012/v6/models/LSTM_v6_frozen.pb"
 
 
 with tf.gfile.GFile(pbfilename, "rb") as f:
@@ -27,7 +27,7 @@ with tf.Graph().as_default() as graph:
 
 with tf.Session(graph=graph) as sess:
     sm.create_training_set()
-    test = open("2012/v5/GRAPHS/EVALUATE_TEST.csv", "w")
+    test = open("2012/v6/GRAPHS/EVALUATE_TEST.csv", "w")
     test_logger = csv.writer(test, lineterminator="\n")
     carrier = ["true_values", "predicted_values", "abs_error"]
     test_logger.writerow(carrier)
