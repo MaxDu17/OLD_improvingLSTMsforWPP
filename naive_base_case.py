@@ -6,13 +6,14 @@ hyp = Hyperparameters()
 sm = SetMaker()
 
 sm.create_training_set()
-test = open("BASECASE_v1v2.csv", "w")
+test = open("2012/v0/graphs/EVALUATE_TEST.csv", "w")
 test_logger = csv.writer(test, lineterminator="\n")
 test_logger.writerow(["true_values", "predicted_values", "abs_loss"])
 for i in range(hyp.Info.EVAULATE_TEST_SIZE):
     m = list()
-    sm.next_epoch_test()
+    sm.next_epoch_test_single_shift()
     for k in range(9):
+
         m.append(sm.next_sample())
     truth = sm.get_label()
     naive_result = m[8]
