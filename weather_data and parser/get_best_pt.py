@@ -11,8 +11,8 @@ import pandas as pd
 
 #i is rows, j is columns
 
-data_lat = pd.read_csv("lats_ruc2anl_130.csv", header=None)
-data_lon = pd.read_csv("lons_ruc2anl_130.csv",header=None)
+data_lat = pd.read_csv("lats_ruc2_130.csv", header=None)
+data_lon = pd.read_csv("lons_ruc2_130.csv",header=None)
 
 target_frame = pd.read_csv("target.csv")
 lat_ = target_frame[["lat"]]
@@ -49,7 +49,7 @@ for i in range(len(frame_lat)):
             best_error = total_error
             best_i = i
             best_j = j
-_ = open("best_coordinate_ruc2anl_130.csv", "w")
+_ = open("best_coordinate_ruc2_130.csv", "w")
 writer_ = csv.writer(_, lineterminator ="\n")
 writer_.writerow(["row", "column"])
 writer_.writerow([best_i, best_j])
