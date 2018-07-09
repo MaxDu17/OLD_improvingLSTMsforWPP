@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/dataset_maker.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset_maker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_frozen_LSTM_v3.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_frozen_LSTM_v3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_feeder.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_feeder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testdatasetmaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/testdatasetmaker.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -82,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testdatasetmaker.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="testdatasetmaker.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testdatasetmaker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="19" lean-forward="true" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+            <state relative-caret-position="306">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -94,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data_feeder.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="data_feeder.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data_feeder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="119">
+              <caret line="7" column="71" selection-start-line="7" selection-start-column="71" selection-end-line="7" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -182,7 +181,6 @@
         <option value="$PROJECT_DIR$/run_frozen_LSTM_v1.py" />
         <option value="$PROJECT_DIR$/step_plotter.py" />
         <option value="$PROJECT_DIR$/naive_base_case.py" />
-        <option value="$PROJECT_DIR$/data_feeder.py" />
         <option value="$PROJECT_DIR$/step_plotter_single.py" />
         <option value="$PROJECT_DIR$/universal_run_frozenLSTM.py" />
         <option value="$PROJECT_DIR$/run_foreign.py" />
@@ -194,6 +192,7 @@
         <option value="$PROJECT_DIR$/dataset_maker.py" />
         <option value="$PROJECT_DIR$/run_frozen_LSTM_v3.py" />
         <option value="$PROJECT_DIR$/testdatasetmaker.py" />
+        <option value="$PROJECT_DIR$/data_feeder.py" />
       </list>
     </option>
   </component>
@@ -378,7 +377,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5198711" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23737916" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -656,13 +655,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_feeder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dataset_maker.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -682,11 +674,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/testdatasetmaker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="19" lean-forward="true" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+        <state relative-caret-position="306">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_feeder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="71" selection-start-line="7" selection-start-column="71" selection-end-line="7" selection-end-column="71" />
         </state>
       </provider>
     </entry>

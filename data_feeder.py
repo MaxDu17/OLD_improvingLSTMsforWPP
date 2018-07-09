@@ -4,6 +4,8 @@ class DataParser:
     """
     this database has a query interval of [x, y)
     meaning that xth number is included, while the yth number is not
+
+    This is the lowest level library; everything else depends on this.
     """
     def __init__(self):
         #self.data = pd.read_csv("Training_sets/83863-2011.csv", skiprows = 3) #read file
