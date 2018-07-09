@@ -18,7 +18,7 @@ for i in range(12):
     test_logger = csv.writer(test, lineterminator="\n")
     carrier = ["true_values", "predicted_values", "abs_error"]
     test_logger.writerow(carrier)
-
+    print(i)
     for i in range(hyp.Info.EVAULATE_TEST_SIZE):
         m = list()
         sm.next_epoch_test_single_shift()
