@@ -2,7 +2,6 @@
 LSTM implementation with wind data set
 Version 5 changes:
 -peephole
--fixed truncation error for the cell state
 -reduced the amount of reshapes
 """
 import tensorflow as tf
