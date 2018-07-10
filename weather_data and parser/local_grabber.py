@@ -44,6 +44,8 @@ point_to_keep_j = 388 #among the large list, it is this single point that we wan
 headers = ["year", "month", "date", "hour"]
 
 delta = [0,0,2,2,0,2,2,0,2,2,0,2,2,0,2,2,0,2,2] #this compensates for the index-hopping that the dataset does
+gate_delta = [0,0,1,1,1]
+lower_bound = list()
 
 for i in range(19):
     for j in range(5):
@@ -59,33 +61,33 @@ try:
     r = csv.reader(k) #this is crash protection to ensure that everything doesn't get erased
     lines = list(r)
     lines = lines[1:len(lines) + 1]
-    print(lines)
-    for i in range(len(lines[1:])):
+
+    for i in range(len(lines[1:])): #this is a 'dumb' way of casting a list
         for single in lines[i]:
             single = int(single)
 
     input("loaded previous data: " + str(len(lines)) + " lines of data. Press enter to continue")
     k.close()
-    big_data_ = open("2011_TOTALSET_.csv", "w")  # here we get the large file
+    big_data_ = open("2011_TOTALSET.csv", "w")  # here we get the large file
     big_data = csv.writer(big_data_, lineterminator="\n")
     big_data.writerow(headers)
+    lower_bound = lines.pop() #removes a layer
     big_data.writerows(lines)  # we write the headers here
 
+
 except:
-    raise Exception("YOU SHALL NOT PASS")
     input("no filled file detected. Starting from scratch. Press enter to continue")
     big_data_ = open("2011_TOTALSET.csv", "w") #here we get the large file
     big_data = csv.writer(big_data_, lineterminator = "\n")
     big_data.writerow(headers) #we write the headers here
 
-raise Exception("YOU SHALL NOT PASS")
 error_file_ = open("error_file.csv", "w")
 error_file = csv.writer(error_file_, lineterminator = "\n")
 error_file.writerow(error_headers)
 
-for l in range(1,13):
+for l in range(lower_bound[1],13):
     print("I'm on month: " + str(l))
-    for j in range(1,32):
+    for j in range(lower_bound[2],32):
         print("I'm on day: " + str(j))
         base_template = [2011, l, j, 0]
         for i in range(0,19):
@@ -106,9 +108,11 @@ for l in range(1,13):
                 continue
 
 
-
-            for number in keepers:
+            ok_list = gate_delta * delta[i]
+            ok_list = ok_list + keepers
+            for number in ok_list:
                 selection = opened_file.select()[number]
+                print(selection)
                 selection_ = selection.values
                 single_pt = selection_[point_to_keep_i][point_to_keep_j]
                 base_template.append(single_pt)
