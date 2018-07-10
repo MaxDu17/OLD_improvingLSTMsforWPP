@@ -1,9 +1,9 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-upper_bound = 100
-lower_bound = 0
-version_number_1 = 2
+upper_bound = 600
+lower_bound = 500
+version_number_1 = 6
 
 x = np.arange(0,(upper_bound-lower_bound),1)
 

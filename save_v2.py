@@ -1,17 +1,17 @@
 import tensorflow as tf
 from tensorflow.python.tools import freeze_graph
-MODEL_NAME = 'LSTM_v6_frozen'
+MODEL_NAME = 'LSTM_v7_frozen'
 
 # Freeze the graph
 
-input_graph_path = "2012/v6/GRAPHS/graph.pbtxt"
-checkpoint_path = "2012/v6/models/LSTMv6-40000"
+input_graph_path = "2012/v7/GRAPHS/graph.pbtxt"
+checkpoint_path = "2012/v7/models/LSTMv7-80000"
 input_saver_def_path = ""
 input_binary = False
 output_node_names = "output_gate/output"
 restore_op_name = "save/restore_all"
 filename_tensor_name = "save/Const:0"
-output_frozen_graph_name = '2012/v6/models/'+MODEL_NAME+'.pb'
+output_frozen_graph_name = '2012/v7/models/'+MODEL_NAME+'.pb'
 
 clear_devices = True
 
