@@ -57,7 +57,6 @@ try:
     r = csv.reader(k) #this is crash protection to ensure that everything doesn't get erased
     lines = list(r)
     lines = [int(m) for m in k]
-    print(lines)
     input("loaded previous data: " + str(len(lines)) + " lines of data. Press enter to continue")
     k.close()
     big_data_ = open("2011_TOTALSET.csv")  # here we get the large file
@@ -82,12 +81,13 @@ for l in range(1,13):
             print("I'm on forecast hour " + str(i))
             address = file_path + base_command + year + date_dict[l]+date_dict[j] + hour_big +\
                 base_command + year + date_dict[l]+date_dict[j] + hour_sub + time_dict[i] + ".grb2"
-            
+
             try:
                 opened_file = pygrib.open(address)
             except:
                 if j == 31:
                     print("whoops! This month doesn't have a 31! No problem! Passing ........")
+                    base_template = []
                 else:
                     print("file not found, this is recorded in the database")
                     error_file.writerow([l, j, hour_sub, "forecast hour " + str(i)])
