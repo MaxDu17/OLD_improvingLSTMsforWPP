@@ -54,16 +54,22 @@ for i in range(19):
 
 error_headers = headers
 try:
-    k = open("2011_TOTALSET.csv", "rb")
+    k = open("2011_TOTALSET.csv", "r")
     print("existing file detected!")
     r = csv.reader(k) #this is crash protection to ensure that everything doesn't get erased
     lines = list(r)
+    lines = lines[1:len(lines) + 1]
     print(lines)
+    for i in range(len(lines[1:])):
+        for single in lines[i]:
+            single = int(single)
+
     input("loaded previous data: " + str(len(lines)) + " lines of data. Press enter to continue")
     k.close()
-    big_data_ = open("2011_TOTALSET_.csv", "wb")  # here we get the large file
+    big_data_ = open("2011_TOTALSET_.csv", "w")  # here we get the large file
     big_data = csv.writer(big_data_, lineterminator="\n")
-    big_data.writerows([lines])  # we write the headers here
+    big_data.writerow(headers)
+    big_data.writerows(lines)  # we write the headers here
 
 except:
     raise Exception("YOU SHALL NOT PASS")
@@ -72,6 +78,7 @@ except:
     big_data = csv.writer(big_data_, lineterminator = "\n")
     big_data.writerow(headers) #we write the headers here
 
+raise Exception("YOU SHALL NOT PASS")
 error_file_ = open("error_file.csv", "w")
 error_file = csv.writer(error_file_, lineterminator = "\n")
 error_file.writerow(error_headers)
