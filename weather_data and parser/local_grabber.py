@@ -7,7 +7,7 @@ import pygrib #library that only works in linux
 hour_big = "00.g2/"
 hour_sub = "_0000_" #change me!
 
-file_path = "~/DRIVE/data/0000/"
+file_path = "/home/max/DRIVE/data/0000/"
 base_command = 'ruc2_130_'
 year = '2011'
 suffix = "_000.grb2"
@@ -45,7 +45,7 @@ headers = ["year", "month", "date", "hour"]
 
 for i in range(19):
     for j in range(5):
-        time = "forcast " + str(i) + "-"
+        time = "forecast " + str(i) + "-"
         category = category_dict[j]
         concat = time + category
         headers.append(concat)
@@ -57,6 +57,7 @@ try:
     r = csv.reader(k) #this is crash protection to ensure that everything doesn't get erased
     lines = list(r)
     lines = [int(m) for m in k]
+    print(lines)
     input("loaded previous data: " + str(len(lines)) + " lines of data. Press enter to continue")
     k.close()
     big_data_ = open("2011_TOTALSET.csv")  # here we get the large file
@@ -81,6 +82,7 @@ for l in range(1,13):
             print("I'm on forecast hour " + str(i))
             address = file_path + base_command + year + date_dict[l]+date_dict[j] + hour_big +\
                 base_command + year + date_dict[l]+date_dict[j] + hour_sub + time_dict[i] + ".grb2"
+            
             try:
                 opened_file = pygrib.open(address)
             except:
