@@ -43,19 +43,20 @@ headers = ["year", "month", "date", "hour", "surface_pressure", "2M_temperature"
 error_headers = ["year", "month", "date"]
 
 try:
-    k = open("ruc2anl_130_TOTALSET.csv")
+    k = open("2011_TOTALSET.csv")
     print("existing file detected!")
     r = csv.reader(k) #this is crash protection to ensure that everything doesn't get erased
-    lines = int(list(r))
+    lines = list(r)
+    lines = [int(m) for m in k]
     lowbound = lines.pop()
     print("starting from (Y,M,D,H):", str(lowbound[0:3]))
     k.close()
-    big_data_ = open("ruc2anl_130_TOTALSET.csv", "w")  # here we get the large file
+    big_data_ = open("2011_TOTALSET.csv")  # here we get the large file
     big_data = csv.writer(big_data_, lineterminator="\n")
     big_data.writerows(lines)  # we write the headers here
 except:
     print("starting from scratch")
-    big_data_ = open("ruc2anl_130_TOTALSET.csv", "w") #here we get the large file
+    big_data_ = open("2011_TOTALSET.csv", "w") #here we get the large file
     big_data = csv.writer(big_data_, lineterminator = "\n")
     big_data.writerow(headers) #we write the headers here
     lowbound = [1,1,0]
@@ -64,18 +65,6 @@ error_file_ = open("error_file.csv", "w")
 error_file = csv.writer(error_file_, lineterminator = "\n")
 error_file.writerow(error_headers)
 
-ftp = FTP("nomads.ncdc.noaa.gov")#logging into ftp w/noaa
-
-while True: #keeps on logging in until you get a hit
-    try:
-        ftp.login()
-        break
-    except:
-        time.sleep(1)
-
-constructed_directory = "/RUC/analysis_only/" + year + date_dict[1] + "/" + year + date_dict[1] + date_dict[1]
-#constructed directory is the query command that accesses a specific file location
-ftp.cwd(constructed_directory)
 
 for l in range(lowbound[0],13):
     print("I'm on month: " + str(l))
@@ -83,17 +72,16 @@ for l in range(lowbound[0],13):
         print("I'm on day: " + str(j))
         for i in range(lowbound[2],24):
             print("I'm on hour: " + str(i))
-            constructed_directory = "/RUC/analysis_only/" + year + date_dict[l] + "/" + year + date_dict[l] + date_dict[j]
+
             try:
-                ftp.cwd(constructed_directory)
+                pass # do something here
             except:
                 print("I am not in the right date for the month! Not a problem! Passing...")
                 continue
 
-            constructed_command = key_word + base_command + year + date_dict[l] + date_dict[j] +  "_" + time_dict[i] + suffix
-            #constructed_file_path = base_command + year + date_dict[2] + date_dict[2] +  "_" + time_dict[i] + suffix
+
             try:
-                ftp.retrbinary(constructed_command, open("temp.grb2", 'wb').write)
+                pass #do somethign here
             except:
                 print("file not found, this is recorded in the database")
                 error_file.writerow([l,j,i])

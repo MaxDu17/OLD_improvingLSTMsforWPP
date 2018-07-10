@@ -6,7 +6,7 @@ import csv
 
 hyp = Hyperparameters()
 sm = SetMaker()
-pbfilename = "2012/v2/models/LSTM_v2_frozen.pb"
+pbfilename = "2012/v7/models/LSTM_v7_frozen.pb"
 
 with tf.gfile.GFile(pbfilename, "rb") as f:
     graph_def = tf.GraphDef()
@@ -22,7 +22,7 @@ with tf.Graph().as_default() as graph:
     H_last = graph.get_tensor_by_name("placeholders/last_hidden:0")
     current_hidden = graph.get_tensor_by_name("output_gate/next_hidden:0")
     C_last = graph.get_tensor_by_name("placeholders/last_cell:0")
-    current_cell = graph.get_tensor_by_name("output_gate/output_presquashing:0")
+    current_cell = graph.get_tensor_by_name("output_gate/cell_squashing:0")
 
 
 path_name_root = "C:/Users/Max Du/Dropbox/My Academics/CSIRE/data 2012/"
@@ -31,7 +31,7 @@ for i in range(12):
     sm = SetMaker()
     path_name = path_name_root + str(i+1) + ".csv"
     sm.use_foreign(path_name)
-    csv_name = "2012/v2/FOREIGN_LOG/FOREIGN_TEST_" + str(i+1) + ".csv"
+    csv_name = "2012/v7/FOREIGN_LOG/FOREIGN_TEST_" + str(i+1) + ".csv"
     with tf.Session(graph=graph) as sess:
         sm.create_training_set()
         test = open(csv_name, "w")
