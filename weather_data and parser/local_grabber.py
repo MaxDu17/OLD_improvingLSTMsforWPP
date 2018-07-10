@@ -4,8 +4,10 @@ import os
 import time
 import pygrib #library that only works in linux
 
-hour = "0000"
-file_path = "/DRIVE/data/000/"
+hour_big = "00.g2/"
+hour_sub = "_0000_" #change me!
+
+file_path = "~/DRIVE/data/0000/"
 base_command = 'ruc2_130_'
 year = '2011'
 suffix = "_000.grb2"
@@ -30,7 +32,7 @@ time_dict = {
     10: "010", 11: "011", 12: "012",
     13: "013", 14: "014", 15: "015",
     16: "016", 17: "017", 18: "018", 0:"000",
-} #how time is expressed
+} #how forcast time is expressed
 
 category_dict = {0: "surface_pressure", 1: "temp@2M", 2: "wind_gust_speed", 3: "2_M_rel_humid", 4: "temp_gnd_lvl"}
 
@@ -38,11 +40,12 @@ keepers = [223,230,300,295,310] #the data points to keep
 
 point_to_keep_i =186
 point_to_keep_j = 388 #among the large list, it is this single point that we want to keep. This changes with location
-lowbound = list()
+
 headers = ["year", "month", "date", "hour"]
+
 for i in range(19):
     for j in range(5):
-        time = "+" + str(i) + "-"
+        time = "forcast " + str(i) + "-"
         category = category_dict[j]
         concat = time + category
         headers.append(concat)
@@ -54,48 +57,43 @@ try:
     r = csv.reader(k) #this is crash protection to ensure that everything doesn't get erased
     lines = list(r)
     lines = [int(m) for m in k]
-    lowbound = lines.pop()
-    print("starting from (Y,M,D,H):", str(lowbound[0:3]))
+    input("loaded previous data: " + str(len(lines)) + " lines of data. Press enter to continue")
     k.close()
     big_data_ = open("2011_TOTALSET.csv")  # here we get the large file
     big_data = csv.writer(big_data_, lineterminator="\n")
     big_data.writerows(lines)  # we write the headers here
 except:
-    print("starting from scratch")
+    input("no filled file detected. Starting from scratch. Press enter to continue")
     big_data_ = open("2011_TOTALSET.csv", "w") #here we get the large file
     big_data = csv.writer(big_data_, lineterminator = "\n")
     big_data.writerow(headers) #we write the headers here
-    lowbound = [1,1,0]
 
 error_file_ = open("error_file.csv", "w")
 error_file = csv.writer(error_file_, lineterminator = "\n")
 error_file.writerow(error_headers)
 
-i, j = 0
-for l in range(lowbound[0],13):
+for l in range(1,13):
     print("I'm on month: " + str(l))
-    for j in range(lowbound[1],32):
+    for j in range(1,32):
         print("I'm on day: " + str(j))
-        for i in range(lowbound[2],19):
+        base_template = [2011, l, j, 0]
+        for i in range(0,19):
             print("I'm on forecast hour " + str(i))
-            command =
+            address = file_path + base_command + year + date_dict[l]+date_dict[j] + hour_big +\
+                base_command + year + date_dict[l]+date_dict[j] + hour_sub + time_dict[i] + ".grb2"
             try:
-
+                opened_file = pygrib.open(address)
             except:
-                print("whoops! This month doesn't have a 31! No problem! Passing ........")
+                if j == 31:
+                    print("whoops! This month doesn't have a 31! No problem! Passing ........")
+                else:
+                    print("file not found, this is recorded in the database")
+                    error_file.writerow([l, j, hour_sub, "forecast hour " + str(i)])
+                    base_template.extend(["err","err","err","err","err",]) #makes it robust to missing files
                 continue
 
 
-            try:
-                pass #do somethign here
-            except:
-                print("file not found, this is recorded in the database")
-                error_file.writerow([l,j,i])
 
-                continue
-
-
-            base_template = [2011, l, j, i]
             for number in keepers:
                 selection = opened_file.select()[number]
                 selection_ = selection.values
@@ -103,4 +101,4 @@ for l in range(lowbound[0],13):
                 base_template.append(single_pt)
                 print("extracting: " + str(number))
 
-            big_data.writerow(base_template)
+        big_data.writerow(base_template)
