@@ -4,8 +4,9 @@ import os
 import time
 import pygrib #library that only works in linux
 
-key_word = "RETR "
-base_command = 'ruc2anl_130_'
+hour = "0000"
+file_path = "/DRIVE/data/000/"
+base_command = 'ruc2_130_'
 year = '2011'
 suffix = "_000.grb2"
 date_dict = {
@@ -23,25 +24,30 @@ date_dict = {
 } #how date is expressed
 
 time_dict = {
-    1: "0100", 2: "0200", 3: "0300",
-    4: "0400", 5: "0500", 6: "0600",
-    7: "0700", 8: "0800", 9: "0900",
-    10: "1000", 11: "1100", 12: "1200",
-    13: "1300", 14: "1400", 15: "1500",
-    16: "1600", 17: "1700", 18: "1800",
-    19: "1900", 20: "2000", 21: "2100",
-    22: "2200",23: "2300", 0:"0000",
+    1: "001", 2: "002", 3: "003",
+    4: "004", 5: "005", 6: "006",
+    7: "007", 8: "008", 9: "009",
+    10: "010", 11: "011", 12: "012",
+    13: "013", 14: "014", 15: "015",
+    16: "016", 17: "017", 18: "018", 0:"000",
 } #how time is expressed
+
+category_dict = {0: "surface_pressure", 1: "temp@2M", 2: "wind_gust_speed", 3: "2_M_rel_humid", 4: "temp_gnd_lvl"}
 
 keepers = [223,230,300,295,310] #the data points to keep
 
 point_to_keep_i =186
 point_to_keep_j = 388 #among the large list, it is this single point that we want to keep. This changes with location
 lowbound = list()
-headers = ["year", "month", "date", "hour", "surface_pressure", "2M_temperature", "wind_gust_speed",
-           "2M_rel_humidity", "surface_temperature"]
-error_headers = ["year", "month", "date"]
+headers = ["year", "month", "date", "hour"]
+for i in range(19):
+    for j in range(5):
+        time = "+" + str(i) + "-"
+        category = category_dict[j]
+        concat = time + category
+        headers.append(concat)
 
+error_headers = headers
 try:
     k = open("2011_TOTALSET.csv")
     print("existing file detected!")
@@ -65,18 +71,18 @@ error_file_ = open("error_file.csv", "w")
 error_file = csv.writer(error_file_, lineterminator = "\n")
 error_file.writerow(error_headers)
 
-
+i, j = 0
 for l in range(lowbound[0],13):
     print("I'm on month: " + str(l))
     for j in range(lowbound[1],32):
         print("I'm on day: " + str(j))
-        for i in range(lowbound[2],24):
-            print("I'm on hour: " + str(i))
-
+        for i in range(lowbound[2],19):
+            print("I'm on forecast hour " + str(i))
+            command =
             try:
-                pass # do something here
+
             except:
-                print("I am not in the right date for the month! Not a problem! Passing...")
+                print("whoops! This month doesn't have a 31! No problem! Passing ........")
                 continue
 
 
@@ -85,10 +91,9 @@ for l in range(lowbound[0],13):
             except:
                 print("file not found, this is recorded in the database")
                 error_file.writerow([l,j,i])
-                big_data.writerow(["error------------------------------------------------"])
+
                 continue
 
-            opened_file = pygrib.open("temp.grb2")
 
             base_template = [2011, l, j, i]
             for number in keepers:
