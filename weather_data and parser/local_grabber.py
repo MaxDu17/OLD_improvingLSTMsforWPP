@@ -43,6 +43,8 @@ point_to_keep_j = 388 #among the large list, it is this single point that we wan
 
 headers = ["year", "month", "date", "hour"]
 
+delta = [0,0,2,2,0,2,2,0,2,2,0,2,2,0,2,2,0,2,2] #this compensates for the index-hopping that the dataset does
+
 for i in range(19):
     for j in range(5):
         time = "forecast " + str(i) + "-"
@@ -52,17 +54,19 @@ for i in range(19):
 
 error_headers = headers
 try:
-    k = open("2011_TOTALSET.csv")
+    k = open("2011_TOTALSET.csv", "rb")
     print("existing file detected!")
     r = csv.reader(k) #this is crash protection to ensure that everything doesn't get erased
     lines = list(r)
-    lines = [int(m) for m in k]
+    print(lines)
     input("loaded previous data: " + str(len(lines)) + " lines of data. Press enter to continue")
     k.close()
-    big_data_ = open("2011_TOTALSET.csv")  # here we get the large file
+    big_data_ = open("2011_TOTALSET_.csv", "wb")  # here we get the large file
     big_data = csv.writer(big_data_, lineterminator="\n")
-    big_data.writerows(lines)  # we write the headers here
+    big_data.writerows([lines])  # we write the headers here
+
 except:
+    raise Exception("YOU SHALL NOT PASS")
     input("no filled file detected. Starting from scratch. Press enter to continue")
     big_data_ = open("2011_TOTALSET.csv", "w") #here we get the large file
     big_data = csv.writer(big_data_, lineterminator = "\n")
