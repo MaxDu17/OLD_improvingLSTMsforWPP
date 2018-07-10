@@ -2,29 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/2012/v5/long_train80001/GRAPHS/events.out.tfevents.1531229686.DESKTOP-A14IBSC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/GRAPHS/LOSS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v7/GRAPHS/LOSS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/GRAPHS/TEST.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v7/GRAPHS/TEST.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/GRAPHS/VALIDATION.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v7/GRAPHS/VALIDATION.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/GRAPHS/events.out.tfevents.1531231524.DESKTOP-A14IBSC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models/LSTMv7-44000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models/LSTMv7-44000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models/LSTMv7-44000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models/LSTMv7-46000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models/LSTMv7-46000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models/LSTMv7-46000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models/LSTMv7-48000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models/LSTMv7-48000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models/LSTMv7-48000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models/LSTMv7-50000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models/LSTMv7-50000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models/LSTMv7-50000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models/LSTMv7-52000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models/LSTMv7-52000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v7/models/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lstm_v7.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v7.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runfrozenLSTMv5.py" beforeDir="false" afterPath="$PROJECT_DIR$/runfrozenLSTMv5.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/save_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/save_v2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/step_plotter_single.py" beforeDir="false" afterPath="$PROJECT_DIR$/step_plotter_single.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,7 +20,7 @@
               <entry file="file://$PROJECT_DIR$/runfrozenLSTMv5.py">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="204">
-                    <caret line="16" column="34" lean-forward="true" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+                    <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
                   </state>
                 </provider>
               </entry>
@@ -125,7 +102,7 @@
         <entry file="file://$PROJECT_DIR$/lstm_v7.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="342">
-              <caret line="226" column="34" lean-forward="true" selection-start-line="226" selection-start-column="34" selection-end-line="226" selection-end-column="34" />
+              <caret line="226" column="34" selection-start-line="226" selection-start-column="34" selection-end-line="226" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -142,8 +119,8 @@
       <file leaf-file-name="step_plotter_single.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/step_plotter_single.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+            <state relative-caret-position="427">
+              <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -778,21 +755,21 @@
     <entry file="file://$PROJECT_DIR$/lstm_v7.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
-          <caret line="226" column="34" lean-forward="true" selection-start-line="226" selection-start-column="34" selection-end-line="226" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/step_plotter_single.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+          <caret line="226" column="34" selection-start-line="226" selection-start-column="34" selection-end-line="226" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/runfrozenLSTMv5.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="16" column="34" lean-forward="true" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/step_plotter_single.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
         </state>
       </provider>
     </entry>
