@@ -16,8 +16,8 @@ hyp = Hyperparameters()
 model = Model()
 
 
-output_1, current_cell_1, current_hidden_1 = model.create_graph(layer_number = 1)
-output, current_cell_2, current_hidden_2 = model.create_graph(layer_number = 2)
+output1, current_cell_1, current_hidden_1 = model.create_graph(layer_number = 1)
+output2, current_cell_2, current_hidden2 = model.create_graph(layer_number = 2)
 
 with tf.name_scope("placeholders"):
     Y = tf.placeholder(shape=[1, 1], dtype=tf.float32, name="label")  # not used until the last cycle
@@ -30,23 +30,8 @@ with tf.name_scope("optimizer"):
     optimizer = tf.train.AdamOptimizer(learning_rate=hyp.LEARNING_RATE).minimize(loss)
 
 with tf.name_scope("summaries_and_saver"):
-    tf.summary.histogram("W_Forget_and_Input", model.W_Forget_and_Input)
-    tf.summary.histogram("W_Output", model.W_Output)
-    tf.summary.histogram("W_Gate", model.W_Gate)
-    tf.summary.histogram("W_Hidden_to_Out", model.W_Hidden_to_Out)
-
-    tf.summary.histogram("Forget", model.forget_gate)
-    tf.summary.histogram("Input", model.input_gate)
-    tf.summary.histogram("Output", model.output_gate)
-    tf.summary.histogram("Gate", model.gate_gate)
-
     tf.summary.histogram("Cell_State", current_cell_1)
     tf.summary.histogram("Cell_State", current_cell_2)
-
-    tf.summary.histogram("B_Forget_and_Input", model.B_Forget_and_Input)
-    tf.summary.histogram("B_Output", model.B_Output)
-    tf.summary.histogram("B_Gate", model.B_Gate)
-    tf.summary.histogram("B_Hidden_to_Out", model.B_Hidden_to_Out)
 
     tf.summary.scalar("Loss", loss)
 

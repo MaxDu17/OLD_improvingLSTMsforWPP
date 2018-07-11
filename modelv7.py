@@ -59,12 +59,28 @@ class Model:
                 self.concat_output_input = tf.concat([self.X, self.H_last, self.current_cell], axis=1,name="input_concat")  # concatenates the inputs to one vector #here, the processed current cell is concatenated and prepared for output
                 self.output_gate = tf.add(tf.matmul(self.concat_output_input, self.W_Output, name="o_w_m"), self.B_Output,name="o_b_a")  # we are making the output gates now, with the peephole.
                 self.output_gate = tf.sigmoid(self.output_gate,name="sigmoid_output")  # the gate is complete. Note that the two lines were supposed to be back in "to gates" and "non-linearity", but it is necessary to put it here
-                self.current_cell = tf.tanh(self.current_cell,name="cell_squashing")  # squashing the current cell, branching off now. Note the underscore, means saving a copy.
-                self.current_hidden = tf.multiply(self.output_gate, self.current_cell,name="next_hidden")  # we are making the hidden by element-wise multiply of the squashed states
 
-                self.raw_output = tf.add(tf.matmul(self.current_hidden, self.W_Hidden_to_Out, name="WHTO_w_m"), self.B_Hidden_to_Out,name="BHTO_b_a")  # now, we are propagating outwards
+                vars(self)['current_cell' + str(layer_number)] = tf.tanh(self.current_cell,name="cell_squashing")  # squashing the current cell, branching off now. Note the underscore, means saving a copy.
+                vars(self)['current_hidden' + str(layer_number)]  = tf.multiply(self.output_gate, self.current_cell,name="next_hidden")  # we are making the hidden by element-wise multiply of the squashed states
+
+                self.raw_output = tf.add(tf.matmul( vars(self)['current_hidden' + str(layer_number)] , self.W_Hidden_to_Out, name="WHTO_w_m"), self.B_Hidden_to_Out,name="BHTO_b_a")  # now, we are propagating outwards
 
                 self.output = tf.nn.relu(self.raw_output, name="output")  # makes sure it is not zero.
+            with tf.name_scope("summaries_and_saver"):
+                tf.summary.histogram("W_Forget_and_Input", self.W_Forget_and_Input)
+                tf.summary.histogram("W_Output", self.W_Output)
+                tf.summary.histogram("W_Gate", self.W_Gate)
+                tf.summary.histogram("W_Hidden_to_Out", self.W_Hidden_to_Out)
+
+                tf.summary.histogram("Forget", self.forget_gate)
+                tf.summary.histogram("Input", self.input_gate)
+                tf.summary.histogram("Output", self.output_gate)
+                tf.summary.histogram("Gate", self.gate_gate)
+
+                tf.summary.histogram("B_Forget_and_Input", self.B_Forget_and_Input)
+                tf.summary.histogram("B_Output", self.B_Output)
+                tf.summary.histogram("B_Gate", self.B_Gate)
+                tf.summary.histogram("B_Hidden_to_Out",self.B_Hidden_to_Out)
 
             return self.output, self.current_cell, self.current_hidden
 
