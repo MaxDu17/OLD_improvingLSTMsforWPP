@@ -41,9 +41,7 @@ class Model:
 
             with tf.name_scope("non-linearity"): #makes the gates into what they should be
                 self.forget_gate = tf.sigmoid(self.forget_gate, name = "sigmoid_forget")
-
-                self.forget_gate_negated = tf.scalar_mul(-1, self.forget_gate) #this has to be here because it is after the nonlin
-                self.input_gate = tf.add(tf.ones([1, hyp.cell_dim]), self.forget_gate_negated, name="making_input_gate")
+                self.input_gate = tf.subtract(tf.ones([1, hyp.cell_dim]), self.forget_gate, name="making_input_gate")
                 self.input_gate = tf.sigmoid(self.input_gate, name="sigmoid_input")
 
                 self.gate_gate = tf.tanh(self.gate_gate, name = "tanh_gate")

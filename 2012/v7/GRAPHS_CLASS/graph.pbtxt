@@ -1470,39 +1470,6 @@ node {
   }
 }
 node {
-  name: "layer_1/non-linearity/scalar"
-  op: "Const"
-  attr {
-    key: "dtype"
-    value {
-      type: DT_FLOAT
-    }
-  }
-  attr {
-    key: "value"
-    value {
-      tensor {
-        dtype: DT_FLOAT
-        tensor_shape {
-        }
-        float_val: -1.0
-      }
-    }
-  }
-}
-node {
-  name: "layer_1/non-linearity/mul"
-  op: "Mul"
-  input: "layer_1/non-linearity/scalar"
-  input: "layer_1/non-linearity/sigmoid_forget"
-  attr {
-    key: "T"
-    value {
-      type: DT_FLOAT
-    }
-  }
-}
-node {
   name: "layer_1/non-linearity/ones"
   op: "Const"
   attr {
@@ -1531,9 +1498,9 @@ node {
 }
 node {
   name: "layer_1/non-linearity/making_input_gate"
-  op: "Add"
+  op: "Sub"
   input: "layer_1/non-linearity/ones"
-  input: "layer_1/non-linearity/mul"
+  input: "layer_1/non-linearity/sigmoid_forget"
   attr {
     key: "T"
     value {
@@ -2968,8 +2935,20 @@ node {
   }
 }
 node {
+  name: "optimizer/gradients/layer_1/non-linearity/making_input_gate_grad/Neg"
+  op: "Neg"
+  input: "optimizer/gradients/layer_1/non-linearity/sigmoid_input_grad/SigmoidGrad"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
   name: "optimizer/gradients/layer_1/non-linearity/making_input_gate_grad/tuple/group_deps"
   op: "NoOp"
+  input: "^optimizer/gradients/layer_1/non-linearity/making_input_gate_grad/Neg"
   input: "^optimizer/gradients/layer_1/non-linearity/sigmoid_input_grad/SigmoidGrad"
 }
 node {
@@ -2995,7 +2974,7 @@ node {
 node {
   name: "optimizer/gradients/layer_1/non-linearity/making_input_gate_grad/tuple/control_dependency_1"
   op: "Identity"
-  input: "optimizer/gradients/layer_1/non-linearity/sigmoid_input_grad/SigmoidGrad"
+  input: "optimizer/gradients/layer_1/non-linearity/making_input_gate_grad/Neg"
   input: "^optimizer/gradients/layer_1/non-linearity/making_input_gate_grad/tuple/group_deps"
   attr {
     key: "T"
@@ -3007,7 +2986,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@optimizer/gradients/layer_1/non-linearity/sigmoid_input_grad/SigmoidGrad"
+        s: "loc:@optimizer/gradients/layer_1/non-linearity/making_input_gate_grad/Neg"
       }
     }
   }
@@ -3058,214 +3037,40 @@ node {
   }
 }
 node {
-  name: "optimizer/gradients/layer_1/non-linearity/mul_grad/Shape"
-  op: "Const"
+  name: "optimizer/gradients/AddN_1"
+  op: "AddN"
+  input: "optimizer/gradients/layer_1/forget_gate/forget_gating_grad/tuple/control_dependency"
+  input: "optimizer/gradients/layer_1/non-linearity/making_input_gate_grad/tuple/control_dependency_1"
   attr {
-    key: "dtype"
+    key: "N"
     value {
-      type: DT_INT32
+      i: 2
     }
   }
-  attr {
-    key: "value"
-    value {
-      tensor {
-        dtype: DT_INT32
-        tensor_shape {
-          dim {
-          }
-        }
-      }
-    }
-  }
-}
-node {
-  name: "optimizer/gradients/layer_1/non-linearity/mul_grad/Shape_1"
-  op: "Const"
-  attr {
-    key: "dtype"
-    value {
-      type: DT_INT32
-    }
-  }
-  attr {
-    key: "value"
-    value {
-      tensor {
-        dtype: DT_INT32
-        tensor_shape {
-          dim {
-            size: 2
-          }
-        }
-        tensor_content: "\001\000\000\000\031\000\000\000"
-      }
-    }
-  }
-}
-node {
-  name: "optimizer/gradients/layer_1/non-linearity/mul_grad/BroadcastGradientArgs"
-  op: "BroadcastGradientArgs"
-  input: "optimizer/gradients/layer_1/non-linearity/mul_grad/Shape"
-  input: "optimizer/gradients/layer_1/non-linearity/mul_grad/Shape_1"
   attr {
     key: "T"
     value {
-      type: DT_INT32
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@optimizer/gradients/layer_1/forget_gate/forget_gating_grad/Mul"
+      }
     }
   }
 }
 node {
-  name: "optimizer/gradients/layer_1/non-linearity/mul_grad/Mul"
-  op: "Mul"
-  input: "optimizer/gradients/layer_1/non-linearity/making_input_gate_grad/tuple/control_dependency_1"
+  name: "optimizer/gradients/layer_1/non-linearity/sigmoid_forget_grad/SigmoidGrad"
+  op: "SigmoidGrad"
   input: "layer_1/non-linearity/sigmoid_forget"
+  input: "optimizer/gradients/AddN_1"
   attr {
     key: "T"
     value {
       type: DT_FLOAT
-    }
-  }
-}
-node {
-  name: "optimizer/gradients/layer_1/non-linearity/mul_grad/Sum"
-  op: "Sum"
-  input: "optimizer/gradients/layer_1/non-linearity/mul_grad/Mul"
-  input: "optimizer/gradients/layer_1/non-linearity/mul_grad/BroadcastGradientArgs"
-  attr {
-    key: "T"
-    value {
-      type: DT_FLOAT
-    }
-  }
-  attr {
-    key: "Tidx"
-    value {
-      type: DT_INT32
-    }
-  }
-  attr {
-    key: "keep_dims"
-    value {
-      b: false
-    }
-  }
-}
-node {
-  name: "optimizer/gradients/layer_1/non-linearity/mul_grad/Reshape"
-  op: "Reshape"
-  input: "optimizer/gradients/layer_1/non-linearity/mul_grad/Sum"
-  input: "optimizer/gradients/layer_1/non-linearity/mul_grad/Shape"
-  attr {
-    key: "T"
-    value {
-      type: DT_FLOAT
-    }
-  }
-  attr {
-    key: "Tshape"
-    value {
-      type: DT_INT32
-    }
-  }
-}
-node {
-  name: "optimizer/gradients/layer_1/non-linearity/mul_grad/Mul_1"
-  op: "Mul"
-  input: "layer_1/non-linearity/scalar"
-  input: "optimizer/gradients/layer_1/non-linearity/making_input_gate_grad/tuple/control_dependency_1"
-  attr {
-    key: "T"
-    value {
-      type: DT_FLOAT
-    }
-  }
-}
-node {
-  name: "optimizer/gradients/layer_1/non-linearity/mul_grad/Sum_1"
-  op: "Sum"
-  input: "optimizer/gradients/layer_1/non-linearity/mul_grad/Mul_1"
-  input: "optimizer/gradients/layer_1/non-linearity/mul_grad/BroadcastGradientArgs:1"
-  attr {
-    key: "T"
-    value {
-      type: DT_FLOAT
-    }
-  }
-  attr {
-    key: "Tidx"
-    value {
-      type: DT_INT32
-    }
-  }
-  attr {
-    key: "keep_dims"
-    value {
-      b: false
-    }
-  }
-}
-node {
-  name: "optimizer/gradients/layer_1/non-linearity/mul_grad/Reshape_1"
-  op: "Reshape"
-  input: "optimizer/gradients/layer_1/non-linearity/mul_grad/Sum_1"
-  input: "optimizer/gradients/layer_1/non-linearity/mul_grad/Shape_1"
-  attr {
-    key: "T"
-    value {
-      type: DT_FLOAT
-    }
-  }
-  attr {
-    key: "Tshape"
-    value {
-      type: DT_INT32
-    }
-  }
-}
-node {
-  name: "optimizer/gradients/layer_1/non-linearity/mul_grad/tuple/group_deps"
-  op: "NoOp"
-  input: "^optimizer/gradients/layer_1/non-linearity/mul_grad/Reshape"
-  input: "^optimizer/gradients/layer_1/non-linearity/mul_grad/Reshape_1"
-}
-node {
-  name: "optimizer/gradients/layer_1/non-linearity/mul_grad/tuple/control_dependency"
-  op: "Identity"
-  input: "optimizer/gradients/layer_1/non-linearity/mul_grad/Reshape"
-  input: "^optimizer/gradients/layer_1/non-linearity/mul_grad/tuple/group_deps"
-  attr {
-    key: "T"
-    value {
-      type: DT_FLOAT
-    }
-  }
-  attr {
-    key: "_class"
-    value {
-      list {
-        s: "loc:@optimizer/gradients/layer_1/non-linearity/mul_grad/Reshape"
-      }
-    }
-  }
-}
-node {
-  name: "optimizer/gradients/layer_1/non-linearity/mul_grad/tuple/control_dependency_1"
-  op: "Identity"
-  input: "optimizer/gradients/layer_1/non-linearity/mul_grad/Reshape_1"
-  input: "^optimizer/gradients/layer_1/non-linearity/mul_grad/tuple/group_deps"
-  attr {
-    key: "T"
-    value {
-      type: DT_FLOAT
-    }
-  }
-  attr {
-    key: "_class"
-    value {
-      list {
-        s: "loc:@optimizer/gradients/layer_1/non-linearity/mul_grad/Reshape_1"
-      }
     }
   }
 }
@@ -3360,44 +3165,6 @@ node {
       list {
         s: "loc:@optimizer/gradients/layer_1/to_gates/g_w_m_grad/MatMul_1"
       }
-    }
-  }
-}
-node {
-  name: "optimizer/gradients/AddN_1"
-  op: "AddN"
-  input: "optimizer/gradients/layer_1/forget_gate/forget_gating_grad/tuple/control_dependency"
-  input: "optimizer/gradients/layer_1/non-linearity/mul_grad/tuple/control_dependency_1"
-  attr {
-    key: "N"
-    value {
-      i: 2
-    }
-  }
-  attr {
-    key: "T"
-    value {
-      type: DT_FLOAT
-    }
-  }
-  attr {
-    key: "_class"
-    value {
-      list {
-        s: "loc:@optimizer/gradients/layer_1/forget_gate/forget_gating_grad/Mul"
-      }
-    }
-  }
-}
-node {
-  name: "optimizer/gradients/layer_1/non-linearity/sigmoid_forget_grad/SigmoidGrad"
-  op: "SigmoidGrad"
-  input: "layer_1/non-linearity/sigmoid_forget"
-  input: "optimizer/gradients/AddN_1"
-  attr {
-    key: "T"
-    value {
-      type: DT_FLOAT
     }
   }
 }

@@ -2,9 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/lstm_v8_model7_based.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/GRAPHS_CLASS/LOSS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v7/GRAPHS_CLASS/LOSS.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/GRAPHS_CLASS/TEST.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v7/GRAPHS_CLASS/TEST.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/GRAPHS_CLASS/VALIDATION.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v7/GRAPHS_CLASS/VALIDATION.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/GRAPHS_CLASS/events.out.tfevents.1531324124.DESKTOP-A14IBSC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/GRAPHS_CLASS/graph.pbtxt" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v7/GRAPHS_CLASS/graph.pbtxt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-72000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-72000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-72000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-74000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-74000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-74000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-76000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-76000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-76000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-78000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-78000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-78000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-80000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-80000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-80000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v7/models_CLASS/checkpoint" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dataset_maker.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset_maker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lstm_v7.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v7.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lstm_v7_model_based.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v7_model_based.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelv7.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelv7.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,8 +80,8 @@
       <file leaf-file-name="hyperparameters.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hyperparameters.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="26" selection-start-line="18" selection-start-column="24" selection-end-line="19" selection-end-column="26" />
+            <state relative-caret-position="51">
+              <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -85,8 +107,8 @@
       <file leaf-file-name="modelv7.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modelv7.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+            <state relative-caret-position="629">
+              <caret line="37" selection-start-line="37" selection-end-line="37" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -97,8 +119,8 @@
       <file leaf-file-name="dataset_maker.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataset_maker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-187">
-              <caret line="22" column="50" lean-forward="true" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+            <state relative-caret-position="217">
+              <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
               </folding>
@@ -106,16 +128,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lstm_v7_model_based.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="lstm_v7_model_based.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lstm_v7_model_based.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="77" column="63" lean-forward="true" selection-start-line="77" selection-start-column="63" selection-end-line="77" selection-end-column="63" />
+            <state relative-caret-position="145">
+              <caret line="35" selection-start-line="35" selection-end-line="35" />
               <folding>
                 <element signature="e#126#149#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lstm_v8_model7_based.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lstm_v8_model7_based.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="lstm_v7.py" pinned="false" current-in-tab="false">
@@ -177,6 +204,7 @@
       <find>print</find>
       <find>multirn</find>
       <find>2012</find>
+      <find>forget</find>
     </findStrings>
     <replaceStrings>
       <replace>v2</replace>
@@ -243,10 +271,10 @@
         <option value="$PROJECT_DIR$/weather_data and parser/grabber_debugger.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/local_grabber.py" />
         <option value="$PROJECT_DIR$/pipeline/__init__.py" />
-        <option value="$PROJECT_DIR$/modelv7.py" />
-        <option value="$PROJECT_DIR$/dataset_maker.py" />
         <option value="$PROJECT_DIR$/lstm_v7_model_based.py" />
         <option value="$PROJECT_DIR$/lstm_v7.py" />
+        <option value="$PROJECT_DIR$/dataset_maker.py" />
+        <option value="$PROJECT_DIR$/modelv7.py" />
       </list>
     </option>
   </component>
@@ -431,7 +459,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.08501594" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.47396386" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -454,13 +482,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../finalcode/run_frozen_net.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Miniconda3/Lib/site-packages/tensorflow/python/ops/variables.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-8262">
@@ -728,13 +749,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hyperparameters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="26" selection-start-line="18" selection-start-column="24" selection-end-line="19" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/save_v2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -766,26 +780,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modelv7.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset_maker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-187">
-          <caret line="22" column="50" lean-forward="true" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testdatasetmaker.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -793,6 +787,13 @@
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hyperparameters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -806,15 +807,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dataset_maker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelv7.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lstm_v7_model_based.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="77" column="63" lean-forward="true" selection-start-line="77" selection-start-column="63" selection-end-line="77" selection-end-column="63" />
+        <state relative-caret-position="145">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
           <folding>
             <element signature="e#126#149#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lstm_v8_model7_based.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">

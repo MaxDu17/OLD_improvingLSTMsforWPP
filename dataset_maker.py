@@ -31,6 +31,7 @@ class SetMaker:
         if self.counter + self.hyp.FOOTPRINT+1 > self.training_set_size:
             self.clear_counter()
             carrier = True
+            print("wraparound")
         self.master_list = self.dp.grab_list_range(self.counter, self.counter+self.hyp.FOOTPRINT+1)
         self.counter += self.hyp.FOOTPRINT
         self.batch_counter = 0
