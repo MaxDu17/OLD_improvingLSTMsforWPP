@@ -62,18 +62,14 @@ try:
     lines = list(r)
     lines = lines[1:len(lines) + 1]
     for i in range(len(lines)): #this is a 'dumb' way of casting a list
-        print("hi")
-        print(len(lines[0]))
         for j in range(len(lines[0])):
             lines[i][j] = float(lines[i][j])
-            print(lines[i][j])
     input("loaded previous data: " + str(len(lines)) + " lines of data. Press enter to continue")
     k.close()
     big_data_ = open("2011_TOTALSET.csv", "w")  # here we get the large file
     big_data = csv.writer(big_data_, lineterminator="\n")
     big_data.writerow(headers)
     lower_bound = lines.pop() #removes a layer
-    print(lower_bound)
     big_data.writerows(lines)  # we write the headers here
 
 
@@ -87,9 +83,10 @@ except:
 error_file_ = open("error_file.csv", "w")
 error_file = csv.writer(error_file_, lineterminator = "\n")
 error_file.writerow(error_headers)
-for l in range(lower_bound[1],13):
+
+for l in range(int(lower_bound[1]),13):
     print("I'm on month: " + str(l))
-    for j in range(lower_bound[2],32):
+    for j in range(int(lower_bound[2]),32):
         print("I'm on day: " + str(j))
         base_template = [2011, l, j, 0]
         for i in range(0,19):
@@ -110,15 +107,13 @@ for l in range(lower_bound[1],13):
                 continue
 
             delta_list = [k * delta[i] for k in gate_delta]
-            print(delta_list)
             ok_list = [sum(x) for x in zip(delta_list, keepers)]
-            print(ok_list)
             for number in ok_list:
                 selection = opened_file.select()[number]
                 print(selection)
                 selection_ = selection.values
                 single_pt = selection_[point_to_keep_i][point_to_keep_j]
                 base_template.append(single_pt)
-                print("extracting: " + str(number))
+                print("extracting: " + str(number) + "\n")
 
         big_data.writerow(base_template)
