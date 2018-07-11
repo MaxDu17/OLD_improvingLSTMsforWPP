@@ -47,7 +47,7 @@ delta = [0,0,2,2,0,2,2,0,2,2,0,2,2,0,2,2,0,2,2] #this compensates for the index-
 gate_delta = [0,0,1,1,1]
 lower_bound = list()
 
-for i in range(19):
+for i in range(3):
     for j in range(5):
         time = "forecast " + str(i) + "-"
         category = category_dict[j]
@@ -69,7 +69,7 @@ try:
     big_data_ = open("2011_TOTALSET.csv", "w")  # here we get the large file
     big_data = csv.writer(big_data_, lineterminator="\n")
     big_data.writerow(headers)
-    lower_bound = lines.pop() #removes a layer
+    lower_bound = lines.pop()
     big_data.writerows(lines)  # we write the headers here
 
 
@@ -89,7 +89,7 @@ for l in range(int(lower_bound[1]),13):
     for j in range(int(lower_bound[2]),32):
         print("I'm on day: " + str(j))
         base_template = [2011, l, j, 0]
-        for i in range(0,19):
+        for i in range(0,3):
             print("I'm on forecast hour " + str(i))
             address = file_path + base_command + year + date_dict[l]+date_dict[j] + hour_big +\
                 base_command + year + date_dict[l]+date_dict[j] + hour_sub + time_dict[i] + ".grb2"
@@ -102,7 +102,7 @@ for l in range(int(lower_bound[1]),13):
                     base_template = []
                 else:
                     print("file not found, this is recorded in the database")
-                    error_file.writerow([l, j, hour_sub, "forecast hour " + str(i)])
+                    error_file.writerow([2011, l, j, hour_sub, "forecast hour " + str(i)])
                     base_template.extend(["err","err","err","err","err",]) #makes it robust to missing files
                 continue
 
@@ -114,6 +114,6 @@ for l in range(int(lower_bound[1]),13):
                 selection_ = selection.values
                 single_pt = selection_[point_to_keep_i][point_to_keep_j]
                 base_template.append(single_pt)
-                print("extracting: " + str(number) + "\n")
+                print("extracted: " + str(number) + "\n")
 
         big_data.writerow(base_template)
