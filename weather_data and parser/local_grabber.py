@@ -61,11 +61,12 @@ try:
     r = csv.reader(k) #this is crash protection to ensure that everything doesn't get erased
     lines = list(r)
     lines = lines[1:len(lines) + 1]
-'''
-    for i in range(len(lines[1:])): #this is a 'dumb' way of casting a list
+    for i in range(len(lines)): #this is a 'dumb' way of casting a list
+        print("hi")
+        print(len(lines[0]))
         for j in range(len(lines[0])):
-            lines[i][j] = int(lines[i][j])
-'''
+            lines[i][j] = float(lines[i][j])
+            print(lines[i][j])
     input("loaded previous data: " + str(len(lines)) + " lines of data. Press enter to continue")
     k.close()
     big_data_ = open("2011_TOTALSET.csv", "w")  # here we get the large file
@@ -81,11 +82,11 @@ except:
     big_data_ = open("2011_TOTALSET.csv", "w") #here we get the large file
     big_data = csv.writer(big_data_, lineterminator = "\n")
     big_data.writerow(headers) #we write the headers here
+    lower_bound = [2011,1,1,0]
 
 error_file_ = open("error_file.csv", "w")
 error_file = csv.writer(error_file_, lineterminator = "\n")
 error_file.writerow(error_headers)
-raise Exception("YOU SHALL NOT PASS")
 for l in range(lower_bound[1],13):
     print("I'm on month: " + str(l))
     for j in range(lower_bound[2],32):
@@ -109,8 +110,10 @@ for l in range(lower_bound[1],13):
                 continue
 
 
-            ok_list = gate_delta * delta[i]
-            ok_list = ok_list + keepers
+            delta_list = gate_delta * delta[i]
+            print(gate_delta)
+            ok_list = delta_list + keepers
+            print(ok_list)
             for number in ok_list:
                 selection = opened_file.select()[number]
                 print(selection)
