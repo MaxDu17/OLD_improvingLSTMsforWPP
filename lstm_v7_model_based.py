@@ -83,10 +83,14 @@ with tf.Session() as sess:
 
     for epoch in range(hyp.EPOCHS):
 
-        sm.next_epoch()
+        reset = sm.next_epoch()
         label = sm.get_label()
         label = np.reshape(label, [1, 1])
         loss_ = 0
+        if reset: #this allows for hidden states to reset after the training set loops back around
+            next_cell = np.zeros(shape=[1, hyp.cell_dim])
+            next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
+
         for counter in range(hyp.FOOTPRINT):
             data = sm.next_sample()
             data = np.reshape(data, [1,1])

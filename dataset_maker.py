@@ -26,14 +26,15 @@ class SetMaker:
         self.validation_set_size = int(self.hyp.VALIDATION_PERCENT * self.dp.dataset_size()) #just casting to whole #
 
     def next_epoch(self):
+        carrier = False
         self.master_list = list()
         if self.counter + self.hyp.FOOTPRINT+1 > self.training_set_size:
             self.clear_counter()
+            carrier = True
         self.master_list = self.dp.grab_list_range(self.counter, self.counter+self.hyp.FOOTPRINT+1)
         self.counter += self.hyp.FOOTPRINT
         self.batch_counter = 0
-        #print(self.counter) #for debugging purposes
-        #print(self.master_list)
+        return carrier
 
     def next_epoch_test(self):
         if self.test_counter == 0:

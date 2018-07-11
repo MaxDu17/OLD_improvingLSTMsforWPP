@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/2012/v7/asdfghjkl;'.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_maker.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset_maker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lstm_v7.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v7.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lstm_v7_model_based.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v7_model_based.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelv7.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelv7.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -82,18 +82,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testdatasetmaker.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testdatasetmaker.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="modelv7.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modelv7.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -106,13 +94,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lstm_v7.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lstm_v7.py">
+      <file leaf-file-name="dataset_maker.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dataset_maker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="32" column="104" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="104" />
+            <state relative-caret-position="-187">
+              <caret line="22" column="50" lean-forward="true" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
               <folding>
-                <element signature="e#126#149#0" expanded="true" />
+                <element signature="e#0#34#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -121,10 +109,34 @@
       <file leaf-file-name="lstm_v7_model_based.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lstm_v7_model_based.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="129" column="132" lean-forward="true" selection-start-line="129" selection-start-column="132" selection-end-line="129" selection-end-column="132" />
+            <state relative-caret-position="320">
+              <caret line="77" column="63" lean-forward="true" selection-start-line="77" selection-start-column="63" selection-end-line="77" selection-end-column="63" />
               <folding>
                 <element signature="e#126#149#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lstm_v7.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lstm_v7.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="561">
+              <caret line="141" selection-start-line="141" selection-end-line="141" />
+              <folding>
+                <element signature="e#126#149#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testdatasetmaker.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testdatasetmaker.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -214,7 +226,6 @@
         <option value="$PROJECT_DIR$/naive_base_case.py" />
         <option value="$PROJECT_DIR$/universal_run_frozenLSTM.py" />
         <option value="$PROJECT_DIR$/run_foreign_base_case.py" />
-        <option value="$PROJECT_DIR$/dataset_maker.py" />
         <option value="$PROJECT_DIR$/run_frozen_LSTM_v3.py" />
         <option value="$PROJECT_DIR$/testdatasetmaker.py" />
         <option value="$PROJECT_DIR$/data_feeder.py" />
@@ -230,11 +241,12 @@
         <option value="$PROJECT_DIR$/run_foreign.py" />
         <option value="$PROJECT_DIR$/grabber_debugger.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/grabber_debugger.py" />
-        <option value="$PROJECT_DIR$/lstm_v7.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/local_grabber.py" />
         <option value="$PROJECT_DIR$/pipeline/__init__.py" />
         <option value="$PROJECT_DIR$/modelv7.py" />
+        <option value="$PROJECT_DIR$/dataset_maker.py" />
         <option value="$PROJECT_DIR$/lstm_v7_model_based.py" />
+        <option value="$PROJECT_DIR$/lstm_v7.py" />
       </list>
     </option>
   </component>
@@ -268,7 +280,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/weather_data and parser/get_all_data_labels.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/dataset_maker.py" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
@@ -419,7 +431,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.53453773" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.08501594" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -628,16 +640,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataset_maker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/one-one-run-test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-559">
@@ -757,26 +759,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testdatasetmaker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lstm_v7.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="32" column="104" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="104" />
-          <folding>
-            <element signature="e#126#149#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/runfrozenLSTMv5.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -794,10 +776,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dataset_maker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-187">
+          <caret line="22" column="50" lean-forward="true" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testdatasetmaker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lstm_v7.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="141" selection-start-line="141" selection-end-line="141" />
+          <folding>
+            <element signature="e#126#149#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lstm_v7_model_based.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="129" column="132" lean-forward="true" selection-start-line="129" selection-start-column="132" selection-end-line="129" selection-end-column="132" />
+        <state relative-caret-position="320">
+          <caret line="77" column="63" lean-forward="true" selection-start-line="77" selection-start-column="63" selection-end-line="77" selection-end-column="63" />
           <folding>
             <element signature="e#126#149#0" expanded="true" />
           </folding>
