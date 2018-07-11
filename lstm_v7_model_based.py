@@ -7,7 +7,6 @@ import tensorflow as tf
 import numpy as np
 from pipeline import SetMaker
 from pipeline import Hyperparameters
-from pipeline import My_Loss
 from pipeline import Model
 import os
 import csv
@@ -21,6 +20,7 @@ output, current_cell, current_hidden = model.create_graph(layer_number = 1)
 
 with tf.name_scope("placeholders"):
     Y = tf.placeholder(shape=[1, 1], dtype=tf.float32, name="label")  # not used until the last cycle
+
 with tf.name_scope("loss"):
     loss = tf.square(tf.subtract(output, Y))
     loss = tf.reduce_sum(loss)
@@ -92,10 +92,10 @@ with tf.Session() as sess:
             data = np.reshape(data, [1,1])
             if counter < hyp.FOOTPRINT-1:
                 next_cell, next_hidd = sess.run([current_cell, current_hidden],
-                                                feed_dict= {X:data, model.H_last:next_hidd, model.C_last:next_cell})
+                                                feed_dict= {model.X:data, model.H_last:next_hidd, model.C_last:next_cell})
             else:
                 next_cell, next_hidd, output_, loss_, summary, _ = sess.run([current_cell, current_hidden, output, loss, summary_op, optimizer],
-                                                feed_dict={X:data, Y:label,  model.H_last:next_hidd, model.C_last:next_cell})
+                                                feed_dict={model.X:data, Y:label,  model.H_last:next_hidd, model.C_last:next_cell})
 
         logger.writerow([loss_])
 
@@ -127,14 +127,14 @@ with tf.Session() as sess:
                     if counter < hyp.FOOTPRINT - 1:
 
                         next_cell, next_hidd = sess.run([current_cell, current_hidden],
-                                                        feed_dict={X: data, model.H_last: next_hidd, model.C_last: next_cell})
+                                                        feed_dict={model.X: data, model.H_last: next_hidd, model.C_last: next_cell})
                         if counter == 0:
                             hidden_saver = next_hidd  # saves THIS state for the next round
                             cell_saver = next_cell
                     else:
                         next_cell, next_hidd, output_, loss_ = sess.run(
                             [current_cell, current_hidden, output, loss],
-                            feed_dict={X: data, Y: label, model.H_last: next_hidd, model.C_last: next_cell})
+                            feed_dict={model.X: data, Y: label, model.H_last: next_hidd, model.C_last: next_cell})
 
 
                 next_cell = cell_saver
@@ -163,14 +163,14 @@ with tf.Session() as sess:
             if counter < hyp.FOOTPRINT - 1:
 
                 next_cell, next_hidd = sess.run([current_cell, current_hidden],
-                                                feed_dict={X: data, model.H_last: next_hidd, model.C_last: next_cell})
+                                                feed_dict={model.X: data, model.H_last: next_hidd, model.C_last: next_cell})
                 if counter == 0:
                     hidden_saver = next_hidd  # saves THIS state for the next round
                     cell_saver = next_cell
             else:
                 next_cell, next_hidd, output_, loss_ = sess.run(
                     [current_cell, current_hidden, output, loss],
-                    feed_dict={X: data, Y: label, model.H_last: next_hidd, model.C_last: next_cell})
+                    feed_dict={model.X: data, Y: label, model.H_last: next_hidd, model.C_last: next_cell})
 
                 carrier = [label_, output_[0][0], np.sqrt(loss_)]
                 test_logger.writerow(carrier)

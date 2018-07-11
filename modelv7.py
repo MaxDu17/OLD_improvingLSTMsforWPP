@@ -13,7 +13,7 @@ ml = My_Loss()
 class Model:
 
     def create_graph(self, layer_number):
-        with tf.name_scope("layer " + str(layer_number)):
+        with tf.name_scope("layer_" + str(layer_number)):
 
             with tf.name_scope("weights_and_biases"):
                 self.W_Forget_and_Input = tf.Variable(tf.random_normal(shape = [hyp.hidden_dim + hyp.cell_dim + 1,hyp.cell_dim]), name = "forget_and_input_weight") #note that forget_and_input actually works for forget, and the input is the inverse
