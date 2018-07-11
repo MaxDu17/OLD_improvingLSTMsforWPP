@@ -109,10 +109,9 @@ for l in range(lower_bound[1],13):
                     base_template.extend(["err","err","err","err","err",]) #makes it robust to missing files
                 continue
 
-
-            delta_list = gate_delta * delta[i]
-            print(gate_delta)
-            ok_list = delta_list + keepers
+            delta_list = [k * delta[i] for k in gate_delta]
+            print(delta_list)
+            ok_list = [sum(x) for x in zip(delta_list, keepers)]
             print(ok_list)
             for number in ok_list:
                 selection = opened_file.select()[number]
