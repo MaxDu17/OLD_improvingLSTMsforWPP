@@ -44,7 +44,7 @@ with tf.Session() as sess:
         query = input("checkpoint detected! Would you like to restore from <" + ckpt.model_checkpoint_path + "> ?(y or n)\n")
         if query == 'y':
             saver.restore(sess, ckpt.model_checkpoint_path)
-            if np.sum(model.B_Forget_and_Input.eval()) != 0:
+            if np.sum(model_layer_1.B_Forget_and_Input.eval()) != 0:
                 print("session restored!")
         else:
             print("session discarded!")
@@ -96,10 +96,18 @@ with tf.Session() as sess:
 
                 next_cell_2, next_hidd_2 = sess.run([current_cell_2, current_hidden_2],
                                                     feed_dict={model_layer_2.X:input_2, model_layer_2.H_last:next_hidd_1,
-                                                               model_layer_2.C_lat:next_cell_1})
+                                                               model_layer_2.C_last:next_cell_1})
 
             else:
-                pass
+                next_cell, next_hidd, output_1 = sess.run(
+                    [current_cell_1, current_hidden_1, output1],
+                    feed_dict={model_layer_1.X: input_1, model_layer_1.H_last: next_hidd_1, model_layer_1.C_last: next_cell_1})
+
+                input_2 = output_1
+
+                next_cell_2, next_hidd_2, output_, loss_, summary, _  = sess.run([current_cell_2, current_hidden_2, loss, summary_op, optimizer],
+                                                    feed_dict={model_layer_2.X:input_2, model_layer_2.H_last:next_hidd_1,
+                                                               model_layer_2.C_last:next_cell_1, Y:label})
 
         logger.writerow([loss_])
 
@@ -107,20 +115,27 @@ with tf.Session() as sess:
             writer.add_summary(summary, global_step=epoch)
             print("I finished epoch ", epoch, " out of ", hyp.EPOCHS, " epochs")
             print("The absolute value loss for this sample is ", np.sqrt(loss_))
-            print("predicted number: ", output_2, ", real number: ", label)
+            print("predicted number: ", output_, ", real number: ", label)
 
         if epoch%2000 == 0 and epoch>498:
-            saver.save(sess, "2012/v7/models_CLASS/LSTMv7", global_step=epoch)
+            saver.save(sess, "2012/v8/models_CLASS/LSTMv8", global_step=epoch)
             print("saved model")
 
-            next_cell_hold = next_cell
-            next_hidd_hold = next_hidd
-            sm.create_validation_set()
-            average_rms_loss = 0.0
-            next_cell = np.zeros(shape=[1, hyp.cell_dim])
-            next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
-            for i in range(hyp.VALIDATION_NUMBER):
+            next_cell_hold_1 = next_cell_1
+            next_hidd_hold_1 = next_cell_1
+            next_hidd_hold_2 = next_hidd_2
+            next_cell_hold_2 = next_cell_2
 
+            sm.create_validation_set()
+
+            average_rms_loss = 0.0
+
+            next_cell_1 = np.zeros(shape=[1, hyp.cell_dim])
+            next_hidd_1 = np.zeros(shape=[1, hyp.hidden_dim])
+            next_cell_2 = np.zeros(shape=[1, hyp.cell_dim])
+            next_hidd_2 = np.zeros(shape=[1, hyp.hidden_dim])
+
+            for i in range(hyp.VALIDATION_NUMBER):
                 sm.next_epoch_valid()
                 label_ = sm.get_label()
                 label = np.reshape(label_, [1, 1])
@@ -130,16 +145,30 @@ with tf.Session() as sess:
                     data = np.reshape(data, [1, 1])
                     if counter < hyp.FOOTPRINT - 1:
 
-                        next_cell, next_hidd = sess.run([current_cell_1, current_hidden_1],
-                                                        feed_dict={model.X: data, model.H_last: next_hidd, model.C_last: next_cell})
-                        if counter == 0:
-                            hidden_saver = next_hidd  # saves THIS state for the next round
-                            cell_saver = next_cell
-                    else:
-                        next_cell, next_hidd, output_, loss_ = sess.run(
-                            [current_cell, current_hidden, output, loss],
-                            feed_dict={model.X: data, Y: label, model.H_last: next_hidd, model.C_last: next_cell})
+                        next_cell, next_hidd, output_1 = sess.run(
+                            [current_cell_1, current_hidden_1, output1],
+                            feed_dict={model_layer_1.X: input_1, model_layer_1.H_last: next_hidd_1,
+                                       model_layer_1.C_last: next_cell_1})
 
+                        input_2 = output_1
+
+                        next_cell_2, next_hidd_2 = sess.run([current_cell_2, current_hidden_2],
+                                                            feed_dict={model_layer_2.X: input_2,
+                                                                       model_layer_2.H_last: next_hidd_1,
+                                                                       model_layer_2.C_last: next_cell_1})
+
+                    else:
+                        next_cell, next_hidd, output_1 = sess.run(
+                            [current_cell_1, current_hidden_1, output1],
+                            feed_dict={model_layer_1.X: input_1, model_layer_1.H_last: next_hidd_1,
+                                       model_layer_1.C_last: next_cell_1})
+
+                        input_2 = output_1
+
+                        next_cell_2, next_hidd_2, output_, loss_ = sess.run(
+                            [current_cell_2, current_hidden_2, loss],
+                            feed_dict={model_layer_2.X: input_2, model_layer_2.H_last: next_hidd_1,
+                                       model_layer_2.C_last: next_cell_1, Y: label})
 
                 next_cell = cell_saver
                 next_hidden = hidden_saver
