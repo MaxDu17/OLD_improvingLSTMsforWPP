@@ -2,31 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/lstm_v8_model7_based.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2012/v7/GRAPHS_CLASS/LOSS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v7/GRAPHS_CLASS/LOSS.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2012/v7/GRAPHS_CLASS/TEST.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v7/GRAPHS_CLASS/TEST.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2012/v7/GRAPHS_CLASS/VALIDATION.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v7/GRAPHS_CLASS/VALIDATION.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/GRAPHS_CLASS/events.out.tfevents.1531324124.DESKTOP-A14IBSC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/GRAPHS_CLASS/graph.pbtxt" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v7/GRAPHS_CLASS/graph.pbtxt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-72000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-72000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-72000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-74000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-74000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-74000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-76000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-76000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-76000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-78000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-78000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-78000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-80000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-80000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-80000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/GRAPHS_CLASS/events.out.tfevents.1531330197.DESKTOP-A14IBSC" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v7/GRAPHS_CLASS/events.out.tfevents.1531330197.DESKTOP-A14IBSC" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-34000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-34000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-34000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-36000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-36000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-36000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-38000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-38000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-38000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-40000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-40000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-40000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-42000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-42000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/LSTMv7-42000.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/2012/v7/models_CLASS/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v7/models_CLASS/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset_maker.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset_maker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelv7.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelv7.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lstm_v8_model7_based.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v8_model7_based.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather_data and parser/2011_TOTALSET.csv" beforeDir="false" afterPath="$PROJECT_DIR$/weather_data and parser/2011_TOTALSET.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather_data and parser/error_file.csv" beforeDir="false" afterPath="$PROJECT_DIR$/weather_data and parser/error_file.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather_data and parser/local_grabber.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather_data and parser/local_grabber.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,11 +39,11 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="runfrozenLSTMv5.py" pinned="false" current-in-tab="true">
+            <file leaf-file-name="runfrozenLSTMv5.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/runfrozenLSTMv5.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="323">
-                    <caret line="23" column="60" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="60" />
+                  <state relative-caret-position="238">
+                    <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
                   </state>
                 </provider>
               </entry>
@@ -58,11 +57,11 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="local_grabber.py" pinned="false" current-in-tab="false">
+            <file leaf-file-name="local_grabber.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/weather_data and parser/local_grabber.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="799">
-                    <caret line="47" column="3" selection-start-line="47" selection-start-column="3" selection-end-line="47" selection-end-column="3" />
+                  <state relative-caret-position="327">
+                    <caret line="95" column="124" selection-start-line="95" selection-start-column="124" selection-end-line="95" selection-end-column="124" />
                     <folding>
                       <element signature="e#0#22#0" expanded="true" />
                     </folding>
@@ -104,18 +103,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modelv7.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modelv7.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="37" selection-start-line="37" selection-end-line="37" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="dataset_maker.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataset_maker.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -131,8 +118,8 @@
       <file leaf-file-name="lstm_v7_model_based.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lstm_v7_model_based.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="901">
+              <caret line="56" column="51" selection-start-line="56" selection-start-column="51" selection-end-line="56" selection-end-column="51" />
               <folding>
                 <element signature="e#126#149#0" expanded="true" />
               </folding>
@@ -140,9 +127,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lstm_v8_model7_based.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="modelv7.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/modelv7.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="629">
+              <caret line="37" selection-start-line="37" selection-end-line="37" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lstm_v8_model7_based.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lstm_v8_model7_based.py">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="138" column="50" lean-forward="true" selection-start-line="138" selection-start-column="50" selection-end-line="138" selection-end-column="50" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="lstm_v7.py" pinned="false" current-in-tab="false">
@@ -205,6 +208,7 @@
       <find>multirn</find>
       <find>2012</find>
       <find>forget</find>
+      <find>suffix</find>
     </findStrings>
     <replaceStrings>
       <replace>v2</replace>
@@ -224,7 +228,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/text file generator.py" />
         <option value="$PROJECT_DIR$/../finalcode/parse_data.py" />
         <option value="$PROJECT_DIR$/LSTM_test.py" />
         <option value="$PROJECT_DIR$/ARIMA_test.py" />
@@ -269,12 +272,13 @@
         <option value="$PROJECT_DIR$/run_foreign.py" />
         <option value="$PROJECT_DIR$/grabber_debugger.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/grabber_debugger.py" />
-        <option value="$PROJECT_DIR$/weather_data and parser/local_grabber.py" />
         <option value="$PROJECT_DIR$/pipeline/__init__.py" />
         <option value="$PROJECT_DIR$/lstm_v7_model_based.py" />
         <option value="$PROJECT_DIR$/lstm_v7.py" />
         <option value="$PROJECT_DIR$/dataset_maker.py" />
         <option value="$PROJECT_DIR$/modelv7.py" />
+        <option value="$PROJECT_DIR$/lstm_v8_model7_based.py" />
+        <option value="$PROJECT_DIR$/weather_data and parser/local_grabber.py" />
       </list>
     </option>
   </component>
@@ -459,7 +463,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.47396386" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2773645" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -732,16 +736,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/weather_data and parser/local_grabber.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="47" column="3" selection-start-line="47" selection-start-column="3" selection-end-line="47" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Miniconda3/Lib/site-packages/tensorflow/python/ops/rnn_cell_impl.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="676">
@@ -770,13 +764,6 @@
           <folding>
             <element signature="e#0#34#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/runfrozenLSTMv5.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="23" column="60" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="60" />
         </state>
       </provider>
     </entry>
@@ -817,6 +804,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/runfrozenLSTMv5.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lstm_v7_model_based.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="56" column="51" selection-start-line="56" selection-start-column="51" selection-end-line="56" selection-end-column="51" />
+          <folding>
+            <element signature="e#126#149#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lstm_v8_model7_based.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="138" column="50" lean-forward="true" selection-start-line="138" selection-start-column="50" selection-end-line="138" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/modelv7.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
@@ -827,18 +838,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lstm_v7_model_based.py">
+    <entry file="file://$PROJECT_DIR$/weather_data and parser/local_grabber.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="327">
+          <caret line="95" column="124" selection-start-line="95" selection-start-column="124" selection-end-line="95" selection-end-column="124" />
           <folding>
-            <element signature="e#126#149#0" expanded="true" />
+            <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lstm_v8_model7_based.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">

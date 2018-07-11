@@ -1,7 +1,7 @@
 """Maximilian Du 7-2-18
 LSTM implementation with wind data set
-Version 7 changes:
--peephole and concat. See what happens.
+Version 8 changes:
+multi-layer LSTM!
 """
 import tensorflow as tf
 import numpy as np
@@ -16,7 +16,8 @@ hyp = Hyperparameters()
 model = Model()
 
 
-output, current_cell, current_hidden = model.create_graph(layer_number = 1)
+output_1, current_cell_1, current_hidden_1 = model.create_graph(layer_number = 1)
+output, current_cell_2, current_hidden_2 = model.create_graph(layer_number = 2)
 
 with tf.name_scope("placeholders"):
     Y = tf.placeholder(shape=[1, 1], dtype=tf.float32, name="label")  # not used until the last cycle
@@ -39,7 +40,8 @@ with tf.name_scope("summaries_and_saver"):
     tf.summary.histogram("Output", model.output_gate)
     tf.summary.histogram("Gate", model.gate_gate)
 
-    tf.summary.histogram("Cell_State", current_cell)
+    tf.summary.histogram("Cell_State", current_cell_1)
+    tf.summary.histogram("Cell_State", current_cell_2)
 
     tf.summary.histogram("B_Forget_and_Input", model.B_Forget_and_Input)
     tf.summary.histogram("B_Output", model.B_Output)
@@ -52,7 +54,7 @@ with tf.name_scope("summaries_and_saver"):
     saver = tf.train.Saver()
 
 with tf.Session() as sess:
-    ckpt = tf.train.get_checkpoint_state(os.path.dirname('2012/v7/models_CLASS/'))
+    ckpt = tf.train.get_checkpoint_state(os.path.dirname('2012/v8/models/'))
     if ckpt and ckpt.model_checkpoint_path:
         query = input("checkpoint detected! Would you like to restore from <" + ckpt.model_checkpoint_path + "> ?(y or n)\n")
         if query == 'y':
@@ -64,9 +66,9 @@ with tf.Session() as sess:
 
 
     sm.create_training_set()
-    log_loss = open("2012/v7/GRAPHS_CLASS/LOSS.csv", "w")
-    validation = open("2012/v7/GRAPHS_CLASS/VALIDATION.csv", "w")
-    test = open("2012/v7/GRAPHS_CLASS/TEST.csv", "w")
+    log_loss = open("2012/v8/GRAPHS/LOSS.csv", "w")
+    validation = open("2012/v8/GRAPHS/VALIDATION.csv", "w")
+    test = open("2012/v8/GRAPHS/TEST.csv", "w")
 
     logger = csv.writer(log_loss, lineterminator="\n")
     validation_logger = csv.writer(validation, lineterminator="\n")
@@ -74,8 +76,8 @@ with tf.Session() as sess:
 
     sess.run(tf.global_variables_initializer())
 
-    tf.train.write_graph(sess.graph_def, '2012/v7/GRAPHS_CLASS/', 'graph.pbtxt')
-    writer = tf.summary.FileWriter("2012/v7/GRAPHS_CLASS/", sess.graph)
+    tf.train.write_graph(sess.graph_def, '2012/v8/GRAPHS/', 'graph.pbtxt')
+    writer = tf.summary.FileWriter("2012/v8/GRAPHS/", sess.graph)
 
     summary = None
     next_cell = np.zeros(shape=[1, hyp.cell_dim])
@@ -130,7 +132,7 @@ with tf.Session() as sess:
                     data = np.reshape(data, [1, 1])
                     if counter < hyp.FOOTPRINT - 1:
 
-                        next_cell, next_hidd = sess.run([current_cell, current_hidden],
+                        next_cell, next_hidd = sess.run([current_cell_1, current_hidden_1],
                                                         feed_dict={model.X: data, model.H_last: next_hidd, model.C_last: next_cell})
                         if counter == 0:
                             hidden_saver = next_hidd  # saves THIS state for the next round

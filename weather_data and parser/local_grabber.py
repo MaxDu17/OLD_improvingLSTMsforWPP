@@ -6,11 +6,13 @@ import pygrib #library that only works in linux
 
 hour_big = "00.g2/"
 hour_sub = "_0000_" #change me!
+hour = 0
 
 file_path = "/home/max/DRIVE/data/0000/"
 base_command = 'ruc2_130_'
 year = '2011'
-suffix = "_000.grb2"
+
+
 date_dict = {
 1:"01", 2:"02", 3:"03",
 4:"04", 5:"05", 6:"06",
@@ -42,8 +44,9 @@ point_to_keep_i =186
 point_to_keep_j = 388 #among the large list, it is this single point that we want to keep. This changes with location
 
 headers = ["year", "month", "date", "hour"]
-
-delta = [0,0,2,2,0,2,2,0,2,2,0,2,2,0,2,2,0,2,2] #this compensates for the index-hopping that the dataset does
+error_headers = headers + ["forecast_iteration"]
+#delta = [0,0,2,2,0,2,2,0,2,2,0,2,2,0,2,2,0,2,2] #this compensates for the index-hopping that the dataset does
+delta = [0,0,2]
 gate_delta = [0,0,1,1,1]
 lower_bound = list()
 
@@ -54,7 +57,7 @@ for i in range(3):
         concat = time + category
         headers.append(concat)
 
-error_headers = headers
+
 try:
     k = open("2011_TOTALSET.csv", "r")
     print("existing file detected!")
@@ -77,8 +80,8 @@ except:
     input("no filled file detected. Starting from scratch. Press enter to continue")
     big_data_ = open("2011_TOTALSET.csv", "w") #here we get the large file
     big_data = csv.writer(big_data_, lineterminator = "\n")
-    big_data.writerow(headers) #we write the headers here
-    lower_bound = [2011,1,1,0]
+    big_data.writerow() #we write the headers here
+    lower_bound = [2011,1,1,hour]
 
 error_file_ = open("error_file.csv", "w")
 error_file = csv.writer(error_file_, lineterminator = "\n")
@@ -88,8 +91,9 @@ for l in range(int(lower_bound[1]),13):
     print("I'm on month: " + str(l))
     for j in range(int(lower_bound[2]),32):
         print("I'm on day: " + str(j))
-        base_template = [2011, l, j, 0]
+        base_template = [2011, l, j, hour]
         for i in range(0,3):
+            lower_bound = [2011,1,1,hour] #this is to prevent a logic error in which it skips to where it started diff month
             print("I'm on forecast hour " + str(i))
             address = file_path + base_command + year + date_dict[l]+date_dict[j] + hour_big +\
                 base_command + year + date_dict[l]+date_dict[j] + hour_sub + time_dict[i] + ".grb2"
@@ -97,13 +101,13 @@ for l in range(int(lower_bound[1]),13):
             try:
                 opened_file = pygrib.open(address)
             except:
-                if j == 31:
-                    print("whoops! This month doesn't have a 31! No problem! Passing ........")
-                    base_template = []
+                if j == 31 or ((j == 28 or j == 29) and l == 2 ):
+                    print("this month doesn't have a 31 (or 28/29 for feb!) Skipping...")
+                    base_template = ["IGNORE"]
                 else:
                     print("file not found, this is recorded in the database")
-                    error_file.writerow([2011, l, j, hour_sub, "forecast hour " + str(i)])
-                    base_template.extend(["err","err","err","err","err",]) #makes it robust to missing files
+                    error_file.writerow([2011, l, j, hour, "forecast hour " + str(i)])
+                    base_template.extend([-99999,-99999,-99999,-99999,-99999,]) #makes it robust to missing files
                 continue
 
             delta_list = [k * delta[i] for k in gate_delta]
@@ -116,4 +120,9 @@ for l in range(int(lower_bound[1]),13):
                 base_template.append(single_pt)
                 print("extracted: " + str(number) + "\n")
 
-        big_data.writerow(base_template)
+        if base_template[0] != "IGNORE":
+            big_data.writerow(base_template)
+
+
+base_template = [2011,1,1,hour+1]
+big_data.writerow(base_template) #this is done so the next itertion of time doesn't erase the past point.
