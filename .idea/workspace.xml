@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lstm_v8_model7_based.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v8_model7_based.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modelv7.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelv7.py" afterDir="false" />
     </list>
@@ -106,11 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modelv7.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="modelv7.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modelv7.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="59" column="46" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
+            <state relative-caret-position="510">
+              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -118,11 +117,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lstm_v8_model7_based.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="lstm_v8_model7_based.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lstm_v8_model7_based.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="15" column="15" lean-forward="true" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+            <state relative-caret-position="425">
+              <caret line="100" column="17" lean-forward="true" selection-start-line="100" selection-start-column="17" selection-end-line="100" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -188,6 +187,7 @@
       <find>2012</find>
       <find>forget</find>
       <find>suffix</find>
+      <find>vars</find>
     </findStrings>
     <replaceStrings>
       <replace>v2</replace>
@@ -256,8 +256,8 @@
         <option value="$PROJECT_DIR$/lstm_v7.py" />
         <option value="$PROJECT_DIR$/dataset_maker.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/local_grabber.py" />
-        <option value="$PROJECT_DIR$/lstm_v8_model7_based.py" />
         <option value="$PROJECT_DIR$/modelv7.py" />
+        <option value="$PROJECT_DIR$/lstm_v8_model7_based.py" />
       </list>
     </option>
   </component>
@@ -810,20 +810,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lstm_v8_model7_based.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="15" column="15" lean-forward="true" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modelv7.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="59" column="46" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
+        <state relative-caret-position="510">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lstm_v8_model7_based.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="100" column="17" lean-forward="true" selection-start-line="100" selection-start-column="17" selection-end-line="100" selection-end-column="17" />
         </state>
       </provider>
     </entry>

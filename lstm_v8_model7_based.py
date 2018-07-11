@@ -13,17 +13,17 @@ import csv
 
 sm = SetMaker()
 hyp = Hyperparameters()
-model = Model()
+model_layer_1 = Model()
+model_layer_2 = Model()
 
-
-output1, current_cell_1, current_hidden_1 = model.create_graph(layer_number = 1)
-output2, current_cell_2, current_hidden2 = model.create_graph(layer_number = 2)
+output1, current_cell_1, current_hidden_1 = model_layer_1.create_graph(layer_number = 1)
+output2, current_cell_2, current_hidden_2 = model_layer_2.create_graph(layer_number = 2)
 
 with tf.name_scope("placeholders"):
     Y = tf.placeholder(shape=[1, 1], dtype=tf.float32, name="label")  # not used until the last cycle
 
 with tf.name_scope("loss"):
-    loss = tf.square(tf.subtract(output, Y))
+    loss = tf.square(tf.subtract(output2, Y))
     loss = tf.reduce_sum(loss)
 
 with tf.name_scope("optimizer"):
@@ -65,8 +65,11 @@ with tf.Session() as sess:
     writer = tf.summary.FileWriter("2012/v8/GRAPHS/", sess.graph)
 
     summary = None
-    next_cell = np.zeros(shape=[1, hyp.cell_dim])
-    next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
+
+    next_cell_1 = np.zeros(shape=[1, hyp.cell_dim])
+    next_hidd_1 = np.zeros(shape=[1, hyp.hidden_dim])
+    next_cell_2 = np.zeros(shape=[1, hyp.cell_dim])
+    next_hidd_2 = np.zeros(shape=[1, hyp.hidden_dim])
 
     for epoch in range(hyp.EPOCHS):
 
@@ -75,18 +78,28 @@ with tf.Session() as sess:
         label = np.reshape(label, [1, 1])
         loss_ = 0
         if reset: #this allows for hidden states to reset after the training set loops back around
-            next_cell = np.zeros(shape=[1, hyp.cell_dim])
-            next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
+            next_cell_1 = np.zeros(shape=[1, hyp.cell_dim])
+            next_hidd_1 = np.zeros(shape=[1, hyp.hidden_dim])
+            next_cell_2 = np.zeros(shape=[1, hyp.cell_dim])
+            next_hidd_2 = np.zeros(shape=[1, hyp.hidden_dim])
 
         for counter in range(hyp.FOOTPRINT):
-            data = sm.next_sample()
-            data = np.reshape(data, [1,1])
+            input_1 = sm.next_sample()
+            input_1 = np.reshape(input_1, [1,1])
             if counter < hyp.FOOTPRINT-1:
-                next_cell, next_hidd = sess.run([current_cell, current_hidden],
-                                                feed_dict= {model.X:data, model.H_last:next_hidd, model.C_last:next_cell})
+
+                next_cell, next_hidd, output_1 = sess.run(
+                    [current_cell_1, current_hidden_1, output1],
+                    feed_dict={model_layer_1.X: input_1, model_layer_1.H_last: next_hidd_1, model_layer_1.C_last: next_cell_1})
+
+                input_2 = output_1
+
+                next_cell_2, next_hidd_2 = sess.run([current_cell_2, current_hidden_2],
+                                                    feed_dict={model_layer_2.X:input_2, model_layer_2.H_last:next_hidd_1,
+                                                               model_layer_2.C_lat:next_cell_1})
+
             else:
-                next_cell, next_hidd, output_, loss_, summary, _ = sess.run([current_cell, current_hidden, output, loss, summary_op, optimizer],
-                                                feed_dict={model.X:data, Y:label,  model.H_last:next_hidd, model.C_last:next_cell})
+                pass
 
         logger.writerow([loss_])
 
@@ -94,7 +107,7 @@ with tf.Session() as sess:
             writer.add_summary(summary, global_step=epoch)
             print("I finished epoch ", epoch, " out of ", hyp.EPOCHS, " epochs")
             print("The absolute value loss for this sample is ", np.sqrt(loss_))
-            print("predicted number: ", output_, ", real number: ", label)
+            print("predicted number: ", output_2, ", real number: ", label)
 
         if epoch%2000 == 0 and epoch>498:
             saver.save(sess, "2012/v7/models_CLASS/LSTMv7", global_step=epoch)

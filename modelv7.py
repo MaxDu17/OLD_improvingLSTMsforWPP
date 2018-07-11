@@ -1,10 +1,7 @@
 import tensorflow as tf
-import numpy as np
 from pipeline import SetMaker
 from pipeline import Hyperparameters
 from pipeline import My_Loss
-import os
-import csv
 
 sm = SetMaker()
 hyp = Hyperparameters()
@@ -33,7 +30,7 @@ class Model:
                 self.C_last = tf.placeholder(shape= [1,hyp.cell_dim], dtype = tf.float32, name = "last_cell") #last cell state
 
             with tf.name_scope("to_gates"):
-                self.concat_input = tf.concat([self.X, self.H_last, self.C_last], axis=1, name="input_concat")  #concatenates the inputs to one vector
+                self.concat_input = tf.concat([self.X,  self.H_last,  self.C_last], axis=1, name="input_concat")  #concatenates the inputs to one vector
                 self.forget_gate = tf.add(tf.matmul(self.concat_input, self.W_Forget_and_Input, name = "f_w_m"),self.B_Forget_and_Input, name = "f_b_a") #decides which to drop from cell
 
                 self.gate_gate = tf.add(tf.matmul(self.concat_input, self.W_Gate, name = "g_w_m"), self.B_Gate, name = "g_b_a") #decides which things to change in cell state
@@ -60,12 +57,13 @@ class Model:
                 self.output_gate = tf.add(tf.matmul(self.concat_output_input, self.W_Output, name="o_w_m"), self.B_Output,name="o_b_a")  # we are making the output gates now, with the peephole.
                 self.output_gate = tf.sigmoid(self.output_gate,name="sigmoid_output")  # the gate is complete. Note that the two lines were supposed to be back in "to gates" and "non-linearity", but it is necessary to put it here
 
-                vars(self)['current_cell' + str(layer_number)] = tf.tanh(self.current_cell,name="cell_squashing")  # squashing the current cell, branching off now. Note the underscore, means saving a copy.
-                vars(self)['current_hidden' + str(layer_number)]  = tf.multiply(self.output_gate, self.current_cell,name="next_hidden")  # we are making the hidden by element-wise multiply of the squashed states
+                self.current_cell = tf.tanh(self.current_cell,name="cell_squashing")  # squashing the current cell, branching off now. Note the underscore, means saving a copy.
+                self.current_hidden = tf.multiply(self.output_gate, self.current_cell,name="next_hidden")  # we are making the hidden by element-wise multiply of the squashed states
 
-                self.raw_output = tf.add(tf.matmul( vars(self)['current_hidden' + str(layer_number)] , self.W_Hidden_to_Out, name="WHTO_w_m"), self.B_Hidden_to_Out,name="BHTO_b_a")  # now, we are propagating outwards
+                self.raw_output = tf.add(tf.matmul( self.current_hidden , self.W_Hidden_to_Out, name="WHTO_w_m"), self.B_Hidden_to_Out,name="BHTO_b_a")  # now, we are propagating outwards
 
                 self.output = tf.nn.relu(self.raw_output, name="output")  # makes sure it is not zero.
+
             with tf.name_scope("summaries_and_saver"):
                 tf.summary.histogram("W_Forget_and_Input", self.W_Forget_and_Input)
                 tf.summary.histogram("W_Output", self.W_Output)
@@ -82,6 +80,5 @@ class Model:
                 tf.summary.histogram("B_Gate", self.B_Gate)
                 tf.summary.histogram("B_Hidden_to_Out",self.B_Hidden_to_Out)
 
-            return self.output, self.current_cell, self.current_hidden
 
 
