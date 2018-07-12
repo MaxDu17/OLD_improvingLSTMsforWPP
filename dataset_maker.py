@@ -2,7 +2,7 @@ from data_feeder import DataParser
 from hyperparameters import Hyperparameters
 
 class SetMaker:
-    def __init__(self):
+    def __init__(self): #initializing variables used in calculation
         self.dp = DataParser()
         self.hyp = Hyperparameters()
         self.master_list = list()
@@ -15,17 +15,17 @@ class SetMaker:
         self.running_list = list()
         self.label_list = list()
 
-    def use_foreign(self, file_name): #wrapper function
+    def use_foreign(self, file_name): #wrapper function used to load a different-than-normal dataset, for foreign testing
         self.dp.use_foreign(file_name)
 
-    def create_training_set(self):
+    def create_training_set(self): #initializing statement for training
         self.training_set_size = self.hyp.TRAIN_PERCENT * self.dp.dataset_size()
         self.test_counter = self.training_set_size
 
-    def create_validation_set(self):
+    def create_validation_set(self): #initializing phrase for validation
         self.validation_set_size = int(self.hyp.VALIDATION_PERCENT * self.dp.dataset_size()) #just casting to whole #
 
-    def next_epoch(self):
+    def next_epoch(self): #this gets a new training epoch, retrns status on resetting the states
         carrier = False
         self.master_list = list()
         if self.counter + self.hyp.FOOTPRINT+1 > self.training_set_size:
@@ -49,7 +49,7 @@ class SetMaker:
         self.batch_counter = 0
         return carrier, self.master_list
 
-    def next_epoch_test(self):
+    def next_epoch_test(self): #this jumps a footprint to test. Biased estimator, and so is depreciated.
         if self.test_counter == 0:
             raise Exception("you forgot to initialize the test_counter! Execute create_training_set")
         if self.test_counter + self.hyp.FOOTPRINT + 1 > self.dp.dataset_size():
@@ -59,7 +59,7 @@ class SetMaker:
         self.test_counter += self.hyp.FOOTPRINT
         self.batch_counter = 0
 
-    def next_epoch_test_single_shift(self):
+    def next_epoch_test_single_shift(self): #instead of jumping a footprint, we shift by one; this is necessary for assessment
         if self.test_counter == 0:
             raise Exception("you forgot to initialize the test_counter! Execute create_training_set")
         if self.test_counter + self.hyp.FOOTPRINT + 1 > self.dp.dataset_size():
@@ -82,7 +82,7 @@ class SetMaker:
         label = self.master_list[1]
         return data, label
 
-    def next_epoch_valid(self):
+    def next_epoch_valid(self): #next validation epoch. Note that this is imperative; it doesn't return anything
         if self.valid_counter + self.hyp.FOOTPRINT + 1 > self.validation_set_size:
             raise ValueError("you have reached the end of the validation. Please check your code"
                              " for boundary cases. Violation dataset_maker/next_epoch_valid")
@@ -92,16 +92,16 @@ class SetMaker:
         self.batch_counter = 0
 
 
-    def clear_valid_counter(self):
+    def clear_valid_counter(self): #this is a public function that clears the validation counter
         self.valid_counter =0
 
-    def clear_counter(self):
+    def clear_counter(self): #resets the counter. This is a private function
         self.counter = 0
 
-    def get_label(self):
+    def get_label(self): #returns the label of the current epoch
         return self.master_list[self.hyp.FOOTPRINT]
 
-    def next_sample(self):
+    def next_sample(self): #returns the next sample of the epoch
         if self.batch_counter >=self.hyp.FOOTPRINT:
             raise ValueError("you are infiltrating into key territory! Traceback: dataset_maker/next_sample. "
                              "Violation: batch_counter > self.hyp.FOOTPRINT")
@@ -110,21 +110,9 @@ class SetMaker:
             self.batch_counter += 1
             return carrier
 
-    def next_sample_list(self):
+    def next_sample_list(self): #this is the basic version of the waterfall
         return self.master_list
 
-    '''
-    def self_prompt(self, prediction, initialize):
-        if initialize == True:
-            self.create_training_set()
-            self.label_list = self.dp.grab_list_range(0, self.hyp.Info.RUN_TEST_SIZE)
-            self.running_list = self.dp.grab_list_range(0, self.hyp.RUN_PROMPT)
-            return self.label_list, self.running_list
-        else:
-            self.running_list.pop(0)
-            self.running_list.append(prediction)
-            return self.running_list
-    '''
     def return_split_lists(self):
         self.from_run = self.dp.grab_list_range(self.hyp.RUN_PROMPT, self.hyp.Info.RUN_TEST_SIZE)
         self.from_start = self.dp.grab_list_range(0, self.hyp.RUN_PROMPT)

@@ -66,7 +66,7 @@ def step(last_state, X):
         states = tf.stack([current_cell, current_hidden])
     return states
 
-with tf.name_scope("foreward_roll"):
+with tf.name_scope("forward_roll"):
     states_list = tf.scan(fn = step, elems = inputs, initalizer = init_state)
     tail_states = states_list[-1]
 
@@ -88,8 +88,6 @@ with tf.name_scope("summaries_and_saver"):
     tf.summary.histogram("W_Output", W_Output)
     tf.summary.histogram("W_Gate", W_Gate)
     tf.summary.histogram("W_Hidden_to_Out", W_Hidden_to_Out)
-
-    tf.summary.histogram("Cell_State", current_cell)
 
     tf.summary.histogram("B_Forget", B_Forget)
     tf.summary.histogram("B_Input", B_Input)
@@ -132,7 +130,7 @@ with tf.Session() as sess:
     next_state = np.zeros(shape=[2,1,hyp.cell_dim])
 
     for epoch in range(hyp.EPOCHS):
-        reset = sm.next_epoch()
+        reset = sm.next_epoch_waterfall() #this gets you the entire cow, so to speak
         label = sm.get_label()
         label = np.reshape(label, [1, 1])
         loss_ = 0
@@ -141,14 +139,7 @@ with tf.Session() as sess:
         label = sm.get_label()
         label = np.reshape(label, [1, 1])
         loss_ = 0
-        for counter in range(hyp.FOOTPRINT):
-            data = sm.next_sample()
-            data = np.reshape(data, [1,1])
-            if counter < hyp.FOOTPRINT-1:
-                next_state = sess.run(states,feed_dict= {X:data, last_state:next_state})
-            else:
-                next_state, output_, loss_, summary, _ = sess.run([states, output, loss, summary_op, optimizer],
-                                                feed_dict={X:data, Y:label, last_state:next_state})
+
 
         logger.writerow([loss_])
 
