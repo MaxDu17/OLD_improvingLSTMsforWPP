@@ -120,8 +120,8 @@
       <file leaf-file-name="lstm_v8_copy_paste_dual_layer.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lstm_v8_copy_paste_dual_layer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1324">
-              <caret line="246" column="8" selection-start-line="246" selection-start-column="8" selection-end-line="246" selection-end-column="8" />
+            <state relative-caret-position="205">
+              <caret line="179" column="16" selection-start-line="179" selection-start-column="16" selection-end-line="179" selection-end-column="16" />
               <folding>
                 <element signature="e#387#5518#0" />
                 <element signature="e#5652#10929#0" />
@@ -165,7 +165,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>valid</find>
       <find>next_cell</find>
       <find>sa</find>
       <find>B_Gate</find>
@@ -195,6 +194,7 @@
       <find>v7</find>
       <find>self.</find>
       <find>_1</find>
+      <find>X_2</find>
     </findStrings>
     <replaceStrings>
       <replace>v2</replace>
@@ -207,6 +207,7 @@
       <replace>v6</replace>
       <replace>v7</replace>
       <replace>_2</replace>
+      <replace>output_1</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -781,8 +782,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lstm_v8_copy_paste_dual_layer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1324">
-          <caret line="246" column="8" selection-start-line="246" selection-start-column="8" selection-end-line="246" selection-end-column="8" />
+        <state relative-caret-position="205">
+          <caret line="179" column="16" selection-start-line="179" selection-start-column="16" selection-end-line="179" selection-end-column="16" />
           <folding>
             <element signature="e#387#5518#0" />
             <element signature="e#5652#10929#0" />

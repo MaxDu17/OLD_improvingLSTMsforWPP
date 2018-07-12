@@ -113,13 +113,13 @@ with tf.name_scope("layer_2"):
         B_Hidden_to_Out_2 = tf.Variable(tf.zeros(shape=[1, 1]), name="outwards_propagating_bias")
 
     with tf.name_scope("placeholders"):
-        X_2 = tf.placeholder(shape=[1, 1], dtype=tf.float32, name="input_placeholder")  # waits for the prompt
+        #X_2 = tf.placeholder(shape=[1, 1], dtype=tf.float32, name="input_placeholder")  # waits for the prompt
         H_last_2 = tf.placeholder(shape=[1, hyp.hidden_dim], dtype=tf.float32,
                                      name="last_hidden")  # last hidden state (aka the "output")
         C_last_2 = tf.placeholder(shape=[1, hyp.cell_dim], dtype=tf.float32, name="last_cell")  # last cell state
 
     with tf.name_scope("to_gates"):
-        concat_input_2 = tf.concat([X_2, H_last_2, C_last_2], axis=1,
+        concat_input_2 = tf.concat([output_1, H_last_2, C_last_2], axis=1,
                                       name="input_concat")  # concatenates the inputs to one vector
         forget_gate_2 = tf.add(tf.matmul(concat_input_2, W_Forget_and_Input_2, name="f_w_m"),
                                   B_Forget_and_Input_2, name="f_b_a")  # decides which to drop from cell
@@ -144,7 +144,7 @@ with tf.name_scope("layer_2"):
 
     with tf.name_scope("output_gate"):  # output gate values to hidden
 
-        concat_output_input_2 = tf.concat([X_2, H_last_2, current_cell_2], axis=1,
+        concat_output_input_2 = tf.concat([output_1, H_last_2, current_cell_2], axis=1,
                                              name="input_concat")  # concatenates the inputs to one vector #here, the processed current cell is concatenated and prepared for output
         output_gate_2 = tf.add(tf.matmul(concat_output_input_2, W_Output_2, name="o_w_m"), B_Output_2,
                                   name="o_b_a")  # we are making the output gates now, with the peephole.
@@ -177,9 +177,9 @@ with tf.name_scope("layer_2"):
         tf.summary.histogram("B_Gate", B_Gate_2)
         tf.summary.histogram("B_Hidden_to_Out", B_Hidden_to_Out_2)
 
-input_1, input_2 = list()
+input_1 = list()
 feed_1 ={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1}
-feed_2 ={X_2:input_2, H_last_2:next_hidd_2, C_last_2:next_cell_2}
+feed_2 ={H_last_2:next_hidd_2, C_last_2:next_cell_2}
 
 
 def zero_states():
@@ -244,7 +244,7 @@ with tf.Session() as sess:
         label = sm.get_label()
         label = np.reshape(label, [1, 1])
         loss_ = 0
-        
+
         if reset: #this allows for hidden states to reset after the training set loops back around
             zero_states()
 
@@ -253,23 +253,23 @@ with tf.Session() as sess:
             input_1 = np.reshape(input_1, [1,1])
             if counter < hyp.FOOTPRINT-1:
 
-                next_cell_1, next_hidd_1, output_1 = sess.run(
+                next_cell_1, next_hidd_1, output_1_ = sess.run(
                     [current_cell_1, current_hidden_1, output_1],
                     feed_dict=feed_1)
 
-                input_2 = output_1
+                input_2 = output_1_
 
                 next_cell_2, next_hidd_2 = sess.run([current_cell_2, current_hidden_2],
                                                     feed_dict=feed_2)
 
             else:
-                next_cell_1, next_hidd_1, output_1 = sess.run(
+                next_cell_1, next_hidd_1, output_1_ = sess.run(
                     [current_cell_1, current_hidden_1, output_1],
                     feed_dict=feed_1)
 
-                input_2 = output_1
+                input_2 = output_1_
 
-                next_cell_2, next_hidd_2, output_2  = sess.run([current_cell_2, current_hidden_2, loss, summary_op, optimizer],
+                next_cell_2, next_hidd_2, output_2_  = sess.run([current_cell_2, current_hidden_2, output_2],
                                                     feed_dict=feed_2)
                 loss_, summary, _ = sess.run([loss, summary_op, optimizer], feed_dict = {Y:label})
         logger.writerow([loss_])
@@ -308,11 +308,9 @@ with tf.Session() as sess:
                     input_1 = np.reshape(data, [1, 1])
                     if counter < hyp.FOOTPRINT - 1:
 
-                        next_cell_1, next_hidd_1, output_1 = sess.run(
+                        next_cell_1, next_hidd_1, output_1_ = sess.run(
                             [current_cell_1, current_hidden_1, output_1],
                             feed_dict=feed_1)
-
-                        input_2 = output_1
 
                         next_cell_2, next_hidd_2 = sess.run([current_cell_2, current_hidden_2],
                                                             feed_dict=feed_2)
