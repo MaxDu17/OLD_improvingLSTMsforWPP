@@ -253,22 +253,17 @@ with tf.Session() as sess:
             input_1 = np.reshape(input_1, [1,1])
             if counter < hyp.FOOTPRINT-1:
 
-                next_cell_1, next_hidd_1, output_1_ = sess.run(
-                    [current_cell_1, current_hidden_1, output_1],
-                    feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1})
-
-                input_2 = output_1_
-
-                next_cell_2, next_hidd_2 = sess.run([current_cell_2, current_hidden_2],
-                                                    feed_dict={H_last_2:next_hidd_2, C_last_2:next_cell_2})
+                next_cell_1, next_hidd_1, next_cell_2, next_hidd_2= sess.run(
+                    [current_cell_1, current_hidden_1, current_cell_2, current_hidden_2],
+                    feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1,
+                               H_last_2: next_hidd_2, C_last_2: next_cell_2})
 
             else:
-                next_cell_1, next_hidd_1, output_1_ = sess.run(
-                    [current_cell_1, current_hidden_1, output_1],
-                    feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1})
+                next_cell_1, next_hidd_1, next_cell_2, next_hidd_2, output_2_ = sess.run(
+                    [current_cell_1, current_hidden_1, current_cell_2, current_hidden_2, output_2],
+                    feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1,
+                               H_last_2: next_hidd_2, C_last_2: next_cell_2}) #this is a hecking large command
 
-                next_cell_2, next_hidd_2, output_2_  = sess.run([current_cell_2, current_hidden_2, output_2],
-                                                    feed_dict={H_last_2:next_hidd_2, C_last_2:next_cell_2})
                 loss_, summary, _ = sess.run([loss, summary_op, optimizer], feed_dict = {Y:label})
         logger.writerow([loss_])
 
@@ -276,7 +271,7 @@ with tf.Session() as sess:
             writer.add_summary(summary, global_step=epoch)
             print("I finished epoch ", epoch, " out of ", hyp.EPOCHS, " epochs")
             print("The absolute value loss for this sample is ", np.sqrt(loss_))
-            print("predicted number: ", output_2, ", real number: ", label)
+            print("predicted number: ", output_2_, ", real number: ", label)
 
 ############################################################### validation code here
         if epoch%2000 == 0 and epoch>498:
@@ -306,33 +301,25 @@ with tf.Session() as sess:
                     input_1 = np.reshape(data, [1, 1])
 
                     if counter < hyp.FOOTPRINT - 1:
-                        next_cell_1, next_hidd_1, output_1_ = sess.run(
-                            [current_cell_1, current_hidden_1, output_1],
-                            feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1})
 
-                        next_cell_2, next_hidd_2 = sess.run([current_cell_2, current_hidden_2],
-                                                            feed_dict={H_last_2:next_hidd_2, C_last_2:next_cell_2})
-                        if counter == 0:
-                            hidden_saver_1 = next_hidd_1  # saves THIS state for the next round
-                            hidden_saver_2 = next_hidd_2
-                            cell_saver_1 = next_cell_1
-                            cell_saver_2 = next_cell_2
-
+                        next_cell_1, next_hidd_1, next_cell_2, next_hidd_2 = sess.run(
+                            [current_cell_1, current_hidden_1, current_cell_2, current_hidden_2],
+                            feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1,
+                                       H_last_2: next_hidd_2, C_last_2: next_cell_2})
 
                     else:
-                        next_cell_1, next_hidd_1, output_1_ = sess.run(
-                            [current_cell_1, current_hidden_1, output_1],
-                            feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1})
-
-                        next_cell_2, next_hidd_2, output_2, loss_, summary, _ = sess.run(
-                            [current_cell_2, current_hidden_2, loss, summary_op, optimizer],
-                            feed_dict={H_last_2:next_hidd_2, C_last_2:next_cell_2})
+                        next_cell_1, next_hidd_1, next_cell_2, next_hidd_2, output_2_ = sess.run(
+                            [current_cell_1, current_hidden_1, current_cell_2, current_hidden_2, output_2],
+                            feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1,
+                                       H_last_2: next_hidd_2, C_last_2: next_cell_2})  # this is a hecking large command
+                        loss_, summary, _ = sess.run([loss, summary_op, optimizer], feed_dict={Y: label})
+                        RMS_loss += np.sqrt(loss_)
 
                 next_cell_1 = cell_saver_1
                 next_cell_2 = cell_saver_2
                 next_hidd_1 = hidden_saver_1
                 next_hidd_2 = hidden_saver_2
-                RMS_loss += np.sqrt(loss_)
+
                 sm.clear_valid_counter()
 
             RMS_loss = RMS_loss/hyp.VALIDATION_NUMBER
@@ -359,39 +346,28 @@ with tf.Session() as sess:
         for counter in range(hyp.FOOTPRINT):
             data = sm.next_sample()
             input_1 = np.reshape(data, [1, 1])
-            if counter < hyp.FOOTPRINT - 1:
+            if counter < hyp.FOOTPRINT-1:
 
-                next_cell_1, next_hidd_1, output_1_ = sess.run(
-                    [current_cell_1, current_hidden_1, output_1],
-                    feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1})
-
-                next_cell_2, next_hidd_2 = sess.run([current_cell_2, current_hidden_2],
-                                                    feed_dict={H_last_2:next_hidd_2, C_last_2:next_cell_2})
-                if counter == 0:
-                    hidden_saver_1 = next_hidd_1  # saves THIS state for the next round
-                    hidden_saver_2 = next_hidd_2
-                    cell_saver_1 = next_cell_1
-                    cell_saver_2 = next_cell_2
-
+                next_cell_1, next_hidd_1, next_cell_2, next_hidd_2= sess.run(
+                    [current_cell_1, current_hidden_1, current_cell_2, current_hidden_2],
+                    feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1,
+                               H_last_2: next_hidd_2, C_last_2: next_cell_2})
 
             else:
-                next_cell_1, next_hidd_1, output_1 = sess.run(
-                    [current_cell_1, current_hidden_1, output_1],
-                    feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1})
+                next_cell_1, next_hidd_1, next_cell_2, next_hidd_2, output_2_ = sess.run(
+                    [current_cell_1, current_hidden_1, current_cell_2, current_hidden_2, output_2],
+                    feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1,
+                               H_last_2: next_hidd_2, C_last_2: next_cell_2}) #this is a hecking large command
+                loss_, summary, _ = sess.run([loss, summary_op, optimizer], feed_dict={Y: label})
 
-                input_2 = output_1
-
-                next_cell_2, next_hidd_2, output_2, loss_, summary, _ = sess.run(
-                    [current_cell_2, current_hidden_2, loss, summary_op, optimizer],
-                    feed_dict={H_last_2:next_hidd_2, C_last_2:next_cell_2})
-
-                carrier = [label_, output_2[0][0], np.sqrt(loss_)]
+                carrier = [label_, output_2_[0][0], np.sqrt(loss_)]
+                RMS_loss += np.sqrt(loss_)
                 test_logger.writerow(carrier)
         next_cell_1 = cell_saver_1
         next_cell_2 = cell_saver_2
         next_hidd_1 = hidden_saver_1
         next_hidd_2 = hidden_saver_2
-        RMS_loss += np.sqrt(loss_)
+
     RMS_loss = RMS_loss / hyp.Info.TEST_SIZE
     print("test: rms loss is ", RMS_loss)
     test_logger.writerow(["final adaptive loss average", RMS_loss])
