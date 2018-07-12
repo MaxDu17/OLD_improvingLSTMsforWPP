@@ -54,7 +54,7 @@ with tf.Session() as sess:
         query = input("checkpoint detected! Would you like to restore from <" + ckpt.model_checkpoint_path + "> ?(y or n)\n")
         if query == 'y':
             saver.restore(sess, ckpt.model_checkpoint_path)
-            if np.sum(model1.B_Forget_and_Input.eval()) != 0:
+            if np.sum(model1.B_Forget.eval()) != 0:
                 print("session restored!")
         else:
             print("session discarded!")
