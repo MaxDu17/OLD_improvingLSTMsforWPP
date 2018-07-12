@@ -88,18 +88,18 @@ with tf.Session() as sess:
             input_1 = np.reshape(input_1, [1,1])
             if counter < hyp.FOOTPRINT-1:
 
-                next_cell, next_hidd, output_1 = sess.run(
+                next_cell_1, next_hidd_1, output_1 = sess.run(
                     [current_cell_1, current_hidden_1, output1],
                     feed_dict={model_layer_1.X: input_1, model_layer_1.H_last: next_hidd_1, model_layer_1.C_last: next_cell_1})
 
                 input_2 = output_1
 
                 next_cell_2, next_hidd_2 = sess.run([current_cell_2, current_hidden_2],
-                                                    feed_dict={model_layer_2.X:input_2, model_layer_2.H_last:next_hidd_1,
-                                                               model_layer_2.C_last:next_cell_1})
+                                                    feed_dict={model_layer_2.X:input_2, model_layer_2.H_last:next_hidd_2,
+                                                               model_layer_2.C_last:next_cell_2})
 
             else:
-                next_cell, next_hidd, output_1 = sess.run(
+                next_cell_1, next_hidd_1, output_1 = sess.run(
                     [current_cell_1, current_hidden_1, output1],
                     feed_dict={model_layer_1.X: input_1, model_layer_1.H_last: next_hidd_1, model_layer_1.C_last: next_cell_1})
 
@@ -148,17 +148,17 @@ with tf.Session() as sess:
                     input_1 = np.reshape(data, [1, 1])
                     if counter < hyp.FOOTPRINT - 1:
 
-                        next_cell, next_hidd, output_1 = sess.run(
+                        next_cell_1, next_hidd_1, output_1 = sess.run(
                             [current_cell_1, current_hidden_1, output1],
-                            feed_dict={model_layer_1.X: input_1, model_layer_1.H_last: next_hidd_1,
-                                       model_layer_1.C_last: next_cell_1})
+                            feed_dict={model_layer_1.X:input_1, model_layer_1.H_last:next_hidd_1,
+                                       model_layer_1.C_last:next_cell_1})
 
                         input_2 = output_1
 
                         next_cell_2, next_hidd_2 = sess.run([current_cell_2, current_hidden_2],
-                                                            feed_dict={model_layer_2.X: input_2,
-                                                                       model_layer_2.H_last: next_hidd_1,
-                                                                       model_layer_2.C_last: next_cell_1})
+                                                            feed_dict={model_layer_2.X:input_2,
+                                                                       model_layer_2.H_last: next_hidd_2,
+                                                                       model_layer_2.C_last: next_cell_2})
                         if counter == 0:
                             hidden_saver_1 = next_hidd_1  # saves THIS state for the next round
                             hidden_saver_2 = next_hidd_2
@@ -166,7 +166,7 @@ with tf.Session() as sess:
                             cell_saver_2 = next_cell_2
 
                     else:
-                        next_cell, next_hidd, output_1 = sess.run(
+                        next_cell_1, next_hidd_1, output_1 = sess.run(
                             [current_cell_1, current_hidden_1, output1],
                             feed_dict={model_layer_1.X: input_1, model_layer_1.H_last: next_hidd_1,
                                        model_layer_1.C_last: next_cell_1})
@@ -175,8 +175,8 @@ with tf.Session() as sess:
 
                         next_cell_2, next_hidd_2, output_, loss_ = sess.run(
                             [current_cell_2, current_hidden_2, loss],
-                            feed_dict={model_layer_2.X: input_2, model_layer_2.H_last: next_hidd_1,
-                                       model_layer_2.C_last: next_cell_1, Y: label})
+                            feed_dict={model_layer_2.X:input_2, model_layer_2.H_last:next_hidd_2,
+                                       model_layer_2.C_last:next_cell_2, Y:label})
 
                 next_cell_1 = cell_saver_1
                 next_cell_2 = cell_saver_2
@@ -210,10 +210,10 @@ with tf.Session() as sess:
         # this gets each 10th
         for counter in range(hyp.FOOTPRINT):
             data = sm.next_sample()
-            data = np.reshape(data, [1, 1])
+            input_1 = np.reshape(data, [1, 1])
             if counter < hyp.FOOTPRINT - 1:
 
-                next_cell, next_hidd, output_1 = sess.run(
+                next_cell_1, next_hidd_1, output_1 = sess.run(
                     [current_cell_1, current_hidden_1, output1],
                     feed_dict={model_layer_1.X: input_1, model_layer_1.H_last: next_hidd_1,
                                model_layer_1.C_last: next_cell_1})
@@ -222,8 +222,8 @@ with tf.Session() as sess:
 
                 next_cell_2, next_hidd_2 = sess.run([current_cell_2, current_hidden_2],
                                                     feed_dict={model_layer_2.X: input_2,
-                                                               model_layer_2.H_last: next_hidd_1,
-                                                               model_layer_2.C_last: next_cell_1})
+                                                               model_layer_2.H_last: next_hidd_2,
+                                                               model_layer_2.C_last: next_cell_2})
                 if counter == 0:
                     hidden_saver_1 = next_hidd_1  # saves THIS state for the next round
                     hidden_saver_2 = next_hidd_2
@@ -231,7 +231,7 @@ with tf.Session() as sess:
                     cell_saver_2 = next_cell_2
 
             else:
-                next_cell, next_hidd, output_1 = sess.run(
+                next_cell_1, next_hidd_1, output_1 = sess.run(
                     [current_cell_1, current_hidden_1, output1],
                     feed_dict={model_layer_1.X: input_1, model_layer_1.H_last: next_hidd_1,
                                model_layer_1.C_last: next_cell_1})
@@ -240,15 +240,15 @@ with tf.Session() as sess:
 
                 next_cell_2, next_hidd_2, output_, loss_ = sess.run(
                     [current_cell_2, current_hidden_2, loss],
-                    feed_dict={model_layer_2.X: input_2, model_layer_2.H_last: next_hidd_1,
-                               model_layer_2.C_last: next_cell_1, Y: label})
+                    feed_dict={model_layer_2.X: input_2, model_layer_2.H_last: next_hidd_2,
+                               model_layer_2.C_last: next_cell_2, Y: label})
 
                 carrier = [label_, output_[0][0], np.sqrt(loss_)]
                 test_logger.writerow(carrier)
         next_cell_1 = cell_saver_1
         next_cell_2 = cell_saver_2
         next_hidd_1 = hidden_saver_1
-        next_hidd_1 = hidden_saver_2
+        next_hidd_2 = hidden_saver_2
         RMS_loss += np.sqrt(loss_)
     RMS_loss = RMS_loss / hyp.Info.TEST_SIZE
     print("test: rms loss is ", RMS_loss)
