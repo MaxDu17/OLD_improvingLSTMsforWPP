@@ -37,9 +37,7 @@ with tf.name_scope("placeholders"):
 
 with tf.name_scope("to_gates"):
     C_last, H_last = tf.unstack(last_state)
-    H_last_ = tf.reshape(H_last, shape = [hyp.hidden_dim,1])
-    concat_input = tf.concat([X, H_last_], axis = 0, name = "input_concat") #concatenates the inputs to one vector
-    concat_input = tf.transpose(concat_input)
+    concat_input = tf.concat([X, H_last], axis = 1, name = "input_concat") #concatenates the inputs to one vector
     forget_gate = tf.add(tf.matmul(concat_input, W_Forget, name = "f_w_m"),B_Forget, name = "f_b_a") #decides which to drop from cell
     output_gate = tf.add(tf.matmul(concat_input, W_Output, name = "o_w_m"), B_Output, name = "o_b_a") #decides which to reveal to next_hidd/output
     gate_gate = tf.add(tf.matmul(concat_input, W_Gate, name = "g_w_m"), B_Gate, name = "g_b_a") #decides which things to change in cell state
@@ -115,14 +113,19 @@ with tf.Session() as sess:
 
     sess.run(tf.global_variables_initializer())
 
-    tf.train.write_graph(sess.graph_def, 'v2/GRAPHS_CONTAINED/', 'graph.pbtxt')
-    writer = tf.summary.FileWriter("v2/GRAPHS_CONAINED/", sess.graph)
+    tf.train.write_graph(sess.graph_def, '2012/v2/GRAPHS_CONTAINED/', 'graph.pbtxt')
+    writer = tf.summary.FileWriter("2012/v2/GRAPHS_CONTAINED/", sess.graph)
 
     summary = None
     next_state = np.zeros(shape=[2,1,hyp.cell_dim])
-    
+
     for epoch in range(hyp.EPOCHS):
-        sm.next_epoch()
+        reset = sm.next_epoch()
+        label = sm.get_label()
+        label = np.reshape(label, [1, 1])
+        loss_ = 0
+        if reset:  # this allows for hidden states to reset after the training set loops back around
+            next_state = np.zeros(shape=[2,1,hyp.cell_dim])
         label = sm.get_label()
         label = np.reshape(label, [1, 1])
         loss_ = 0
@@ -144,7 +147,7 @@ with tf.Session() as sess:
             print("predicted number: ", output_, ", real number: ", label)
 
         if epoch % 2000 == 0 and epoch > 498:
-            saver.save(sess, "2012/v2/models/LSTMv2", global_step=epoch)
+            saver.save(sess, "2012/v2/models_CONTAINED/LSTMv2", global_step=epoch)
             print("saved model")
 
             next_state_hold = next_state
@@ -160,7 +163,6 @@ with tf.Session() as sess:
                     data = sm.next_sample()
                     data = np.reshape(data, [1, 1])
                     if counter < hyp.FOOTPRINT - 1:
-
                         next_state = sess.run(states, feed_dict={X: data, last_state: next_state})
                         if counter == 0:
                             state_saver = next_state
@@ -182,6 +184,7 @@ with tf.Session() as sess:
 
     RMS_loss = 0.0
     next_state = np.zeros(shape=[2, 1, hyp.cell_dim])
+    print(np.shape(next_state))
     for test in range(hyp.Info.TEST_SIZE):  # this will be replaced later
 
         sm.next_epoch_test_single_shift()
