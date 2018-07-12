@@ -4,11 +4,11 @@ import os
 import time
 import pygrib #library that only works in linux
 
-hour_big = "00.g2/"
-hour_sub = "_0000_" #change me!
-hour = 0
+hour = 1 #change me!
+hour_big = "0" + str(hour) + ".g2/"
+hour_sub = "_0" + str(hour) + "00_"
 
-file_path = "/home/max/DRIVE/data/0000/"
+file_path = "/home/max/DRIVE/data/0" + str(hour) + "00/"
 base_command = 'ruc2_130_'
 year = '2011'
 
@@ -65,8 +65,8 @@ try:
     lines = list(r)
     lines = lines[1:len(lines) + 1]
     for i in range(len(lines)): #this is a 'dumb' way of casting a list
-        for j in range(len(lines[0])):
-            lines[i][j] = float(lines[i][j])
+        for j in range(len(lines[i])):
+                lines[i][j] = float(lines[i][j])
     input("loaded previous data: " + str(len(lines)) + " lines of data. Press enter to continue")
     k.close()
     big_data_ = open("2011_TOTALSET.csv", "w")  # here we get the large file
