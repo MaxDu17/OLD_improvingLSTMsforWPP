@@ -117,18 +117,21 @@ with tf.Session() as sess:
             print("The absolute value loss for this sample is ", np.sqrt(loss_))
             print("predicted number: ", output_, ", real number: ", label)
 
+############################################################### validation code here
         if epoch%2000 == 0 and epoch>498:
             saver.save(sess, "2012/v8/models_CLASS/LSTMv8", global_step=epoch)
             print("saved model")
 
+            hidden_saver_1, hidden_saver_2, cell_saver_1, cell_saver_2 = list() #initializing stuff
+
             next_cell_hold_1 = next_cell_1
-            next_hidd_hold_1 = next_cell_1
+            next_hidd_hold_1 = next_hidd_1
             next_hidd_hold_2 = next_hidd_2
             next_cell_hold_2 = next_cell_2
 
             sm.create_validation_set()
 
-            average_rms_loss = 0.0
+            RMS_loss = 0.0
 
             next_cell_1 = np.zeros(shape=[1, hyp.cell_dim])
             next_hidd_1 = np.zeros(shape=[1, hyp.hidden_dim])
@@ -142,7 +145,7 @@ with tf.Session() as sess:
                 # this gets each 10th
                 for counter in range(hyp.FOOTPRINT):
                     data = sm.next_sample()
-                    data = np.reshape(data, [1, 1])
+                    input_1 = np.reshape(data, [1, 1])
                     if counter < hyp.FOOTPRINT - 1:
 
                         next_cell, next_hidd, output_1 = sess.run(
@@ -177,19 +180,28 @@ with tf.Session() as sess:
 
                 next_cell_1 = cell_saver_1
                 next_cell_2 = cell_saver_2
-                next_hidd_1 = hidden_saver
-                average_rms_loss += np.sqrt(loss_)
+                next_hidd_1 = hidden_saver_1
+                RMS_loss += np.sqrt(loss_)
                 sm.clear_valid_counter()
 
-            average_rms_loss = average_rms_loss/hyp.VALIDATION_NUMBER
-            print("validation: RMS loss is ", average_rms_loss)
-            validation_logger.writerow([epoch, average_rms_loss])
+            RMS_loss = RMS_loss/hyp.VALIDATION_NUMBER
+            print("validation: RMS loss is ", RMS_loss)
+            validation_logger.writerow([epoch,RMS_loss])
 
-            next_cell = next_cell_hold
-            next_hidd = next_hidd_hold
+            next_cell_1 = next_cell_hold_1
+            next_hidd_1 = next_hidd_hold_1
+            next_hidd_2 = next_hidd_hold_2
+            next_cell_2 = next_cell_hold_2
+
+############################################################## below here is the test code
+
     RMS_loss = 0.0
-    next_cell = np.zeros(shape=[1, hyp.cell_dim])
-    next_hidd = np.zeros(shape=[1, hyp.hidden_dim])
+    next_cell_1 = np.zeros(shape=[1, hyp.cell_dim])
+    next_hidd_1 = np.zeros(shape=[1, hyp.hidden_dim])
+    next_cell_2 = np.zeros(shape=[1, hyp.cell_dim])
+    next_hidd_2 = np.zeros(shape=[1, hyp.hidden_dim])
+    hidden_saver_1, hidden_saver_2, cell_saver_1, cell_saver_2 = list()  # initializing stuff
+
     for test in range(hyp.Info.TEST_SIZE): #this will be replaced later
 
         sm.next_epoch_test_single_shift()
@@ -201,20 +213,42 @@ with tf.Session() as sess:
             data = np.reshape(data, [1, 1])
             if counter < hyp.FOOTPRINT - 1:
 
-                next_cell, next_hidd = sess.run([current_cell, current_hidden],
-                                                feed_dict={model.X: data, model.H_last: next_hidd, model.C_last: next_cell})
+                next_cell, next_hidd, output_1 = sess.run(
+                    [current_cell_1, current_hidden_1, output1],
+                    feed_dict={model_layer_1.X: input_1, model_layer_1.H_last: next_hidd_1,
+                               model_layer_1.C_last: next_cell_1})
+
+                input_2 = output_1
+
+                next_cell_2, next_hidd_2 = sess.run([current_cell_2, current_hidden_2],
+                                                    feed_dict={model_layer_2.X: input_2,
+                                                               model_layer_2.H_last: next_hidd_1,
+                                                               model_layer_2.C_last: next_cell_1})
                 if counter == 0:
-                    hidden_saver = next_hidd  # saves THIS state for the next round
-                    cell_saver = next_cell
+                    hidden_saver_1 = next_hidd_1  # saves THIS state for the next round
+                    hidden_saver_2 = next_hidd_2
+                    cell_saver_1 = next_cell_1
+                    cell_saver_2 = next_cell_2
+
             else:
-                next_cell, next_hidd, output_, loss_ = sess.run(
-                    [current_cell, current_hidden, output, loss],
-                    feed_dict={model.X: data, Y: label, model.H_last: next_hidd, model.C_last: next_cell})
+                next_cell, next_hidd, output_1 = sess.run(
+                    [current_cell_1, current_hidden_1, output1],
+                    feed_dict={model_layer_1.X: input_1, model_layer_1.H_last: next_hidd_1,
+                               model_layer_1.C_last: next_cell_1})
+
+                input_2 = output_1
+
+                next_cell_2, next_hidd_2, output_, loss_ = sess.run(
+                    [current_cell_2, current_hidden_2, loss],
+                    feed_dict={model_layer_2.X: input_2, model_layer_2.H_last: next_hidd_1,
+                               model_layer_2.C_last: next_cell_1, Y: label})
 
                 carrier = [label_, output_[0][0], np.sqrt(loss_)]
                 test_logger.writerow(carrier)
-        next_cell = cell_saver
-        next_hidden = hidden_saver
+        next_cell_1 = cell_saver_1
+        next_cell_2 = cell_saver_2
+        next_hidd_1 = hidden_saver_1
+        next_hidd_1 = hidden_saver_2
         RMS_loss += np.sqrt(loss_)
     RMS_loss = RMS_loss / hyp.Info.TEST_SIZE
     print("test: rms loss is ", RMS_loss)
