@@ -37,8 +37,6 @@ with tf.name_scope("placeholders"):
 def step(last_state, X):
     with tf.name_scope("to_gates"):
         C_last, H_last = tf.unstack(last_state)
-        print(H_last)
-        print(X)
         concat_input = tf.concat([X, H_last], axis = 1, name = "input_concat") #concatenates the inputs to one vector
         forget_gate = tf.add(tf.matmul(concat_input, W_Forget, name = "f_w_m"),B_Forget, name = "f_b_a") #decides which to drop from cell
         output_gate = tf.add(tf.matmul(concat_input, W_Output, name = "o_w_m"), B_Output, name = "o_b_a") #decides which to reveal to next_hidd/output
@@ -65,7 +63,6 @@ def step(last_state, X):
     return states
 
 with tf.name_scope("forward_roll"):
-    print(init_state)
     states_list = tf.scan(fn = step, elems = inputs, initializer = init_state)
     curr_state = states_list[-1]
     pass_back_state = states_list[0]
@@ -151,7 +148,7 @@ with tf.Session() as sess:
 
         if epoch % 2000 == 0 and epoch > 498:
             saver.save(sess, "2012/v2/models_CONTAINED/LSTMv2", global_step=epoch)
-            print("---------------------saved model----------------------")
+            print("---------------------saved model-------------------------")
 
             next_state_hold = next_state #this "pauses" the training that is happening right now.
             sm.create_validation_set()
@@ -163,7 +160,7 @@ with tf.Session() as sess:
                 label = np.reshape(label_, [1, 1])
                 data = np.reshape(data, [hyp.FOOTPRINT, 1, 1])
 
-                next_state, loss_ = sess.run([pass_back_state, loss_], #why passback? Because we only shift by one!
+                next_state, loss_ = sess.run([pass_back_state, loss], #why passback? Because we only shift by one!
                                                feed_dict = {inputs:data, Y:label, init_state:next_state})
                 RMS_loss += np.sqrt(loss_)
                 sm.clear_valid_counter()
@@ -179,29 +176,16 @@ with tf.Session() as sess:
     print(np.shape(next_state))
     for test in range(hyp.Info.TEST_SIZE):  # this will be replaced later
 
-        sm.next_epoch_test_single_shift()
+        data = sm.next_epoch_test_waterfall()
         label_ = sm.get_label()
         label = np.reshape(label_, [1, 1])
-        # this gets each 10th
-        for counter in range(hyp.FOOTPRINT):
-            data = sm.next_sample()
-            data = np.reshape(data, [1, 1])
-            if counter < hyp.FOOTPRINT - 1:
+        data = np.reshape(data, [hyp.FOOTPRINT, 1, 1])
 
-                next_state = sess.run([states],
-                                      feed_dict={X: data, last_state: next_state})
-                if counter == 0:
-                    state_saver = next_state
-            else:
-                next_state, output_, loss_ = sess.run(
-                    [states, output, loss],
-                    feed_dict={X: data, Y: label, last_state: next_state})
-
-                carrier = [label_, output_[0][0], np.sqrt(loss_)]
-                test_logger.writerow(carrier)
-
-        next_state = state_saver
+        next_state, output_, loss_ = sess.run([pass_back_state, output, loss],  # why passback? Because we only shift by one!
+                                     feed_dict={inputs: data, Y: label, init_state: next_state})
         RMS_loss += np.sqrt(loss_)
+        RMS_loss += np.sqrt(loss_)
+        carrier = [label_, output_[0][0], np.sqrt(loss_)]
     RMS_loss = RMS_loss / hyp.Info.TEST_SIZE
     print("test: rms loss is ", RMS_loss)
     test_logger.writerow(["final adaptive loss average", RMS_loss])

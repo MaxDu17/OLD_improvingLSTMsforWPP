@@ -59,7 +59,7 @@ class SetMaker:
         self.test_counter += self.hyp.FOOTPRINT
         self.batch_counter = 0
 
-    def next_epoch_test_waterfall(self): #this jumps a footprint to test. Biased estimator, and so is depreciated.
+    def next_epoch_test_waterfall(self): #this is nextepochtestsingleshift but with a waterfall
         if self.test_counter == 0:
             raise Exception("you forgot to initialize the test_counter! Execute create_training_set")
         if self.test_counter + self.hyp.FOOTPRINT + 1 > self.dp.dataset_size():
