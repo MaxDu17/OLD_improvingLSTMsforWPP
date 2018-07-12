@@ -259,12 +259,11 @@ with tf.Session() as sess:
                                H_last_2: next_hidd_2, C_last_2: next_cell_2})
 
             else:
-                next_cell_1, next_hidd_1, next_cell_2, next_hidd_2, output_2_ = sess.run(
-                    [current_cell_1, current_hidden_1, current_cell_2, current_hidden_2, output_2],
+                next_cell_1, next_hidd_1, next_cell_2, next_hidd_2, output_2_, loss_, summary, _= sess.run(
+                    [current_cell_1, current_hidden_1, current_cell_2, current_hidden_2, output_2, loss, summary_op, optimizer],
                     feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1,
-                               H_last_2: next_hidd_2, C_last_2: next_cell_2}) #this is a hecking large command
+                               H_last_2: next_hidd_2, C_last_2: next_cell_2, Y:label}) #this is a hecking large command
 
-                loss_, summary, _ = sess.run([loss, summary_op, optimizer], feed_dict = {Y:label})
         logger.writerow([loss_])
 
         if epoch%50 == 0:
@@ -277,8 +276,6 @@ with tf.Session() as sess:
         if epoch%2000 == 0 and epoch>498:
             saver.save(sess, "2012/v8/models/LSTMv8", global_step=epoch)
             print("saved model")
-
-            hidden_saver_1, hidden_saver_2, cell_saver_1, cell_saver_2 = list() #initializing stuff
 
             next_cell_hold_1 = next_cell_1
             next_hidd_hold_1 = next_hidd_1
@@ -306,13 +303,19 @@ with tf.Session() as sess:
                             [current_cell_1, current_hidden_1, current_cell_2, current_hidden_2],
                             feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1,
                                        H_last_2: next_hidd_2, C_last_2: next_cell_2})
+                        if counter == 0:
+                            cell_saver_1 = next_cell_1
+                            cell_saver_2 = next_cell_2
+                            hidden_saver_1= next_hidd_1
+                            hidden_saver_2 = next_hidd_2
 
                     else:
-                        next_cell_1, next_hidd_1, next_cell_2, next_hidd_2, output_2_ = sess.run(
-                            [current_cell_1, current_hidden_1, current_cell_2, current_hidden_2, output_2],
+                        next_cell_1, next_hidd_1, next_cell_2, next_hidd_2, output_2_, loss_, summary, _ = sess.run(
+                            [current_cell_1, current_hidden_1, current_cell_2, current_hidden_2, output_2, loss,
+                             summary_op, optimizer],
                             feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1,
-                                       H_last_2: next_hidd_2, C_last_2: next_cell_2})  # this is a hecking large command
-                        loss_, summary, _ = sess.run([loss, summary_op, optimizer], feed_dict={Y: label})
+                                       H_last_2: next_hidd_2, C_last_2: next_cell_2,
+                                       Y: label})  # this is a hecking large command
                         RMS_loss += np.sqrt(loss_)
 
                 next_cell_1 = cell_saver_1
@@ -335,7 +338,6 @@ with tf.Session() as sess:
 
     RMS_loss = 0.0
     zero_states()
-    hidden_saver_1, hidden_saver_2, cell_saver_1, cell_saver_2 = list()  # initializing stuff
 
     for test in range(hyp.Info.TEST_SIZE): #this will be replaced later
 
@@ -352,13 +354,17 @@ with tf.Session() as sess:
                     [current_cell_1, current_hidden_1, current_cell_2, current_hidden_2],
                     feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1,
                                H_last_2: next_hidd_2, C_last_2: next_cell_2})
+                if counter == 0:
+                    cell_saver_1 = next_cell_1
+                    cell_saver_2 = next_cell_2
+                    hidden_saver_1 = next_hidd_1
+                    hidden_saver_2 = next_hidd_2
 
             else:
-                next_cell_1, next_hidd_1, next_cell_2, next_hidd_2, output_2_ = sess.run(
-                    [current_cell_1, current_hidden_1, current_cell_2, current_hidden_2, output_2],
+                next_cell_1, next_hidd_1, next_cell_2, next_hidd_2, output_2_, loss_, summary, _= sess.run(
+                    [current_cell_1, current_hidden_1, current_cell_2, current_hidden_2, output_2, loss, summary_op, optimizer],
                     feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1,
-                               H_last_2: next_hidd_2, C_last_2: next_cell_2}) #this is a hecking large command
-                loss_, summary, _ = sess.run([loss, summary_op, optimizer], feed_dict={Y: label})
+                               H_last_2: next_hidd_2, C_last_2: next_cell_2, Y:label}) #this is a hecking large command
 
                 carrier = [label_, output_2_[0][0], np.sqrt(loss_)]
                 RMS_loss += np.sqrt(loss_)
