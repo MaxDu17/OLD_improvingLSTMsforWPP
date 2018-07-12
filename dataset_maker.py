@@ -47,7 +47,7 @@ class SetMaker:
         self.master_list = self.dp.grab_list_range(self.counter, self.counter+self.hyp.FOOTPRINT+1)
         self.counter += self.hyp.FOOTPRINT
         self.batch_counter = 0
-        return carrier, self.master_list
+        return carrier, self.master_list[:-1]
 
     def next_epoch_test(self): #this jumps a footprint to test. Biased estimator, and so is depreciated.
         if self.test_counter == 0:
@@ -99,7 +99,7 @@ class SetMaker:
         self.counter = 0
 
     def get_label(self): #returns the label of the current epoch
-        return self.master_list[self.hyp.FOOTPRINT]
+        return self.master_list[-1]
 
     def next_sample(self): #returns the next sample of the epoch
         if self.batch_counter >=self.hyp.FOOTPRINT:

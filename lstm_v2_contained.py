@@ -26,17 +26,19 @@ with tf.name_scope("weights_and_biases"):
     B_Forget = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name = "forget_bias")
     B_Output = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="output_bias")
     B_Gate = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="gate_bias")
-    B_Input = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="input_bias")
+    B_Input = tf.Variable(tf.zeros(shape=[1,hyp.cell_dim]), name="input_bias")
     B_Hidden_to_Out = tf.Variable(tf.zeros(shape=[1,1]), name = "outwards_propagating_bias")
 
 with tf.name_scope("placeholders"):
     Y = tf.placeholder(shape = [1,1], dtype = tf.float32, name = "label") #not used until the last cycle
-    init_state = tf.placeholder(shape = [2,hyp.cell_dim], dtype = tf.float32, name = "initial_states")
-    inputs = tf.placeholder(shape = [1, hyp.FOOTPRINT], dtype = tf.float32,  name = "input_data")
+    init_state = tf.placeholder(shape = [2,1,hyp.cell_dim], dtype = tf.float32, name = "initial_states")
+    inputs = tf.placeholder(shape = [hyp.FOOTPRINT,1,1], dtype = tf.float32,  name = "input_data")
 
 def step(last_state, X):
     with tf.name_scope("to_gates"):
         C_last, H_last = tf.unstack(last_state)
+        print(H_last)
+        print(X)
         concat_input = tf.concat([X, H_last], axis = 1, name = "input_concat") #concatenates the inputs to one vector
         forget_gate = tf.add(tf.matmul(concat_input, W_Forget, name = "f_w_m"),B_Forget, name = "f_b_a") #decides which to drop from cell
         output_gate = tf.add(tf.matmul(concat_input, W_Output, name = "o_w_m"), B_Output, name = "o_b_a") #decides which to reveal to next_hidd/output
@@ -63,6 +65,7 @@ def step(last_state, X):
     return states
 
 with tf.name_scope("forward_roll"):
+    print(init_state)
     states_list = tf.scan(fn = step, elems = inputs, initializer = init_state)
     curr_state = states_list[-1]
 
@@ -128,11 +131,11 @@ with tf.Session() as sess:
         reset, data = sm.next_epoch_waterfall() #this gets you the entire cow, so to speak
         label = sm.get_label()
         label = np.reshape(label, [1, 1])
-        data = np.reshape(data, [hyp.FOOTPRINT])
+        data = np.reshape(data, [hyp.FOOTPRINT,1,1])
         loss_ = 0
 
         if reset:  # this allows for hidden states to reset after the training set loops back around
-            next_state = np.zeros(shape=[2,hyp.cell_dim])
+            next_state = np.zeros(shape=[2,1,hyp.cell_dim])
 
         next_state, output_, loss_, summary, _ = sess.run([curr_state, output, loss, summary_op, optimizer],
                                                           feed_dict = {inputs:data, Y:label, init_state:next_state})
