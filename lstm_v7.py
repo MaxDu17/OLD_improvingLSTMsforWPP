@@ -191,7 +191,7 @@ with tf.Session() as sess:
 
 
                 next_cell = cell_saver
-                next_hidden = hidden_saver
+                next_hidd = hidden_saver
                 average_rms_loss += np.sqrt(loss_)
                 sm.clear_valid_counter()
 
@@ -228,7 +228,7 @@ with tf.Session() as sess:
                 carrier = [label_, output_[0][0], np.sqrt(loss_)]
                 test_logger.writerow(carrier)
         next_cell = cell_saver
-        next_hidden = hidden_saver
+        next_hidd = hidden_saver
         RMS_loss += np.sqrt(loss_)
     RMS_loss = RMS_loss / hyp.Info.TEST_SIZE
     print("test: rms loss is ", RMS_loss)

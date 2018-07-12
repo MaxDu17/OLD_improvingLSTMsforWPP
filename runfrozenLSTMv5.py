@@ -60,5 +60,5 @@ with tf.Session(graph=graph) as sess:
                 carrier = [label_, output_[0][0], np.sqrt(np.square((label_ - output_)[0][0]))]
                 test_logger.writerow(carrier)
         next_cell = cell_saver
-        next_hidden = hidden_saver
+        next_hidd = hidden_saver
 

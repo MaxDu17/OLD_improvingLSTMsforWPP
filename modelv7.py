@@ -80,5 +80,5 @@ class Model:
                 tf.summary.histogram("B_Gate", self.B_Gate)
                 tf.summary.histogram("B_Hidden_to_Out",self.B_Hidden_to_Out)
 
-
+        return self.output, self.current_cell, self.current_hidden
 

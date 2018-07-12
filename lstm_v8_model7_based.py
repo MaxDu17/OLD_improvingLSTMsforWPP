@@ -156,6 +156,11 @@ with tf.Session() as sess:
                                                             feed_dict={model_layer_2.X: input_2,
                                                                        model_layer_2.H_last: next_hidd_1,
                                                                        model_layer_2.C_last: next_cell_1})
+                        if counter == 0:
+                            hidden_saver_1 = next_hidd_1  # saves THIS state for the next round
+                            hidden_saver_2 = next_hidd_2
+                            cell_saver_1 = next_cell_1
+                            cell_saver_2 = next_cell_2
 
                     else:
                         next_cell, next_hidd, output_1 = sess.run(
@@ -170,8 +175,9 @@ with tf.Session() as sess:
                             feed_dict={model_layer_2.X: input_2, model_layer_2.H_last: next_hidd_1,
                                        model_layer_2.C_last: next_cell_1, Y: label})
 
-                next_cell = cell_saver
-                next_hidden = hidden_saver
+                next_cell_1 = cell_saver_1
+                next_cell_2 = cell_saver_2
+                next_hidd_1 = hidden_saver
                 average_rms_loss += np.sqrt(loss_)
                 sm.clear_valid_counter()
 
