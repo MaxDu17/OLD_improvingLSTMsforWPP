@@ -7,15 +7,15 @@ import tensorflow as tf
 import numpy as np
 from pipeline import SetMaker
 from pipeline import Hyperparameters
-from pipeline import Model
+from pipeline import Model7
 import os
 import csv
 
 sm = SetMaker()
 hyp = Hyperparameters()
 
-model1 = Model()
-model2 = Model()
+model1 = Model7()
+model2 = Model7()
 
 
 output_1, current_cell_1, current_hidden_1 = model1.create_graph_first_layer()

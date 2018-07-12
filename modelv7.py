@@ -7,7 +7,7 @@ sm = SetMaker()
 hyp = Hyperparameters()
 ml = My_Loss()
 
-class Model:
+class Model7:
 
     def create_graph_first_layer(self):
         with tf.name_scope("layer_1"):
