@@ -15,7 +15,6 @@ import csv
 
 sm = SetMaker()
 hyp = Hyperparameters()
-inputs = np.zeros(shape = [1, hyp.FOOTPRINT])
 #constructing the big weight now
 with tf.name_scope("weights_and_biases"):
     W_Forget = tf.Variable(tf.random_normal(shape = [hyp.hidden_dim + 1,hyp.cell_dim]), name = "forget_weight")
@@ -30,13 +29,10 @@ with tf.name_scope("weights_and_biases"):
     B_Input = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="input_bias")
     B_Hidden_to_Out = tf.Variable(tf.zeros(shape=[1,1]), name = "outwards_propagating_bias")
 
-
-
 with tf.name_scope("placeholders"):
-    #X = tf.placeholder(shape = [1,1], dtype =  tf.float32, name = "input_placeholder") #waits for the prompt
     Y = tf.placeholder(shape = [1,1], dtype = tf.float32, name = "label") #not used until the last cycle
-    init_state = tf.placeholder(shape = [2,1,hyp.cell_dim], dtype = tf.float32, name = "initial_states")
-    #last_state = tf.placeholder(shape = [2,1,hyp.cell_dim], dtype = tf.float32, name = "last_states")
+    init_state = tf.placeholder(shape = [2,hyp.cell_dim], dtype = tf.float32, name = "initial_states")
+    inputs = tf.placeholder(shape = [1, hyp.FOOTPRINT], dtype = tf.float32,  name = "input_data")
 
 def step(last_state, X):
     with tf.name_scope("to_gates"):
@@ -67,11 +63,11 @@ def step(last_state, X):
     return states
 
 with tf.name_scope("forward_roll"):
-    states_list = tf.scan(fn = step, elems = inputs, initalizer = init_state)
-    tail_states = states_list[-1]
+    states_list = tf.scan(fn = step, elems = inputs, initializer = init_state)
+    curr_state = states_list[-1]
 
 with tf.name_scope("prediction"):
-    _, current_hidden = tf.unstack(tail_states)
+    _, current_hidden = tf.unstack(curr_state)
     raw_output = tf.add(tf.matmul(current_hidden, W_Hidden_to_Out, name="WHTO_w_m"), B_Hidden_to_Out, name="BHTO_b_a")
     output = tf.nn.relu(raw_output, name="output")
 
@@ -101,6 +97,7 @@ with tf.name_scope("summaries_and_saver"):
     saver = tf.train.Saver()
 
 with tf.Session() as sess:
+    sess.run(tf.global_variables_initializer())
     ckpt = tf.train.get_checkpoint_state(os.path.dirname('2012/v2/models_CONTAINED/'))
     if ckpt and ckpt.model_checkpoint_path:
         query = input("checkpoint detected! Would you like to restore from <" + ckpt.model_checkpoint_path + "> ?(y or n)\n")
@@ -111,17 +108,15 @@ with tf.Session() as sess:
         else:
             print("session discarded!")
 
-
-    sm.create_training_set()
     log_loss = open("2012/v2/GRAPHS_CONTAINED/LOSS.csv", "w")
     validation = open("2012/v2/GRAPHS_CONTAINED/VALIDATION.csv", "w")
     test = open("2012/v2/GRAPHS_CONTAINED/TEST.csv", "w")
-
     logger = csv.writer(log_loss, lineterminator="\n")
     validation_logger = csv.writer(validation, lineterminator="\n")
     test_logger = csv.writer(test, lineterminator="\n")
 
-    sess.run(tf.global_variables_initializer())
+    sm.create_training_set()
+
 
     tf.train.write_graph(sess.graph_def, '2012/v2/GRAPHS_CONTAINED/', 'graph.pbtxt')
     writer = tf.summary.FileWriter("2012/v2/GRAPHS_CONTAINED/", sess.graph)
@@ -130,16 +125,17 @@ with tf.Session() as sess:
     next_state = np.zeros(shape=[2,1,hyp.cell_dim])
 
     for epoch in range(hyp.EPOCHS):
-        reset = sm.next_epoch_waterfall() #this gets you the entire cow, so to speak
+        reset, data = sm.next_epoch_waterfall() #this gets you the entire cow, so to speak
         label = sm.get_label()
         label = np.reshape(label, [1, 1])
-        loss_ = 0
-        if reset:  # this allows for hidden states to reset after the training set loops back around
-            next_state = np.zeros(shape=[2,1,hyp.cell_dim])
-        label = sm.get_label()
-        label = np.reshape(label, [1, 1])
+        data = np.reshape(data, [hyp.FOOTPRINT])
         loss_ = 0
 
+        if reset:  # this allows for hidden states to reset after the training set loops back around
+            next_state = np.zeros(shape=[2,hyp.cell_dim])
+
+        next_state, output_, loss_, summary, _ = sess.run([curr_state, output, loss, summary_op, optimizer],
+                                                          feed_dict = {inputs:data, Y:label, init_state:next_state})
 
         logger.writerow([loss_])
 
@@ -150,6 +146,7 @@ with tf.Session() as sess:
             print("predicted number: ", output_, ", real number: ", label)
 
         if epoch % 2000 == 0 and epoch > 498:
+            raise Exception("someBODY once told me")
             saver.save(sess, "2012/v2/models_CONTAINED/LSTMv2", global_step=epoch)
             print("saved model")
 
