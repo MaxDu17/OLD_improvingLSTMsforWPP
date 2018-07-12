@@ -177,6 +177,17 @@ with tf.name_scope("layer_2"):
         tf.summary.histogram("B_Gate", B_Gate_2)
         tf.summary.histogram("B_Hidden_to_Out", B_Hidden_to_Out_2)
 
+input_1, input_2 = list()
+feed_1 ={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1}
+feed_2 ={X_2:input_2, H_last_2:next_hidd_2, C_last_2:next_cell_2}
+
+
+def zero_states():
+    global next_cell_1, next_cell_2, next_hidd_1, next_hidd_2
+    next_cell_1 = np.zeros(shape=[1, hyp.cell_dim])
+    next_hidd_1 = np.zeros(shape=[1, hyp.hidden_dim])
+    next_cell_2 = np.zeros(shape=[1, hyp.cell_dim])
+    next_hidd_2 = np.zeros(shape=[1, hyp.hidden_dim])
 
 with tf.name_scope("placeholders"):
     Y = tf.placeholder(shape=[1, 1], dtype=tf.float32, name="label")  # not used until the last cycle
@@ -225,10 +236,7 @@ with tf.Session() as sess:
 
     summary = None
 
-    next_cell_1 = np.zeros(shape=[1, hyp.cell_dim])
-    next_hidd_1 = np.zeros(shape=[1, hyp.hidden_dim])
-    next_cell_2 = np.zeros(shape=[1, hyp.cell_dim])
-    next_hidd_2 = np.zeros(shape=[1, hyp.hidden_dim])
+    zero_states()
 
     for epoch in range(hyp.EPOCHS):
 
@@ -236,11 +244,9 @@ with tf.Session() as sess:
         label = sm.get_label()
         label = np.reshape(label, [1, 1])
         loss_ = 0
+        
         if reset: #this allows for hidden states to reset after the training set loops back around
-            next_cell_1 = np.zeros(shape=[1, hyp.cell_dim])
-            next_hidd_1 = np.zeros(shape=[1, hyp.hidden_dim])
-            next_cell_2 = np.zeros(shape=[1, hyp.cell_dim])
-            next_hidd_2 = np.zeros(shape=[1, hyp.hidden_dim])
+            zero_states()
 
         for counter in range(hyp.FOOTPRINT):
             input_1 = sm.next_sample()
@@ -249,25 +255,23 @@ with tf.Session() as sess:
 
                 next_cell_1, next_hidd_1, output_1 = sess.run(
                     [current_cell_1, current_hidden_1, output_1],
-                    feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1})
+                    feed_dict=feed_1)
 
                 input_2 = output_1
 
                 next_cell_2, next_hidd_2 = sess.run([current_cell_2, current_hidden_2],
-                                                    feed_dict={X_2:input_2, H_last_2:next_hidd_2,
-                                                               C_last_2:next_cell_2})
+                                                    feed_dict=feed_2)
 
             else:
                 next_cell_1, next_hidd_1, output_1 = sess.run(
                     [current_cell_1, current_hidden_1, output_1],
-                    feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1})
+                    feed_dict=feed_1)
 
                 input_2 = output_1
 
-                next_cell_2, next_hidd_2, output_2, loss_, summary, _  = sess.run([current_cell_2, current_hidden_2, loss, summary_op, optimizer],
-                                                    feed_dict={X_2:input_2, H_last_2:next_hidd_2,
-                                                               C_last_2:next_cell_2, Y:label})
-
+                next_cell_2, next_hidd_2, output_2  = sess.run([current_cell_2, current_hidden_2, loss, summary_op, optimizer],
+                                                    feed_dict=feed_2)
+                loss_, summary, _ = sess.run([loss, summary_op, optimizer], feed_dict = {Y:label})
         logger.writerow([loss_])
 
         if epoch%50 == 0:
@@ -292,10 +296,7 @@ with tf.Session() as sess:
 
             RMS_loss = 0.0
 
-            next_cell_1 = np.zeros(shape=[1, hyp.cell_dim])
-            next_hidd_1 = np.zeros(shape=[1, hyp.hidden_dim])
-            next_cell_2 = np.zeros(shape=[1, hyp.cell_dim])
-            next_hidd_2 = np.zeros(shape=[1, hyp.hidden_dim])
+            zero_states()
 
             for i in range(hyp.VALIDATION_NUMBER):
                 sm.next_epoch_valid()
@@ -309,13 +310,12 @@ with tf.Session() as sess:
 
                         next_cell_1, next_hidd_1, output_1 = sess.run(
                             [current_cell_1, current_hidden_1, output_1],
-                            feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1})
+                            feed_dict=feed_1)
 
                         input_2 = output_1
 
                         next_cell_2, next_hidd_2 = sess.run([current_cell_2, current_hidden_2],
-                                                            feed_dict={X_2: input_2, H_last_2: next_hidd_2,
-                                                                       C_last_2: next_cell_2})
+                                                            feed_dict=feed_2)
                         if counter == 0:
                             hidden_saver_1 = next_hidd_1  # saves THIS state for the next round
                             hidden_saver_2 = next_hidd_2
@@ -326,17 +326,14 @@ with tf.Session() as sess:
                     else:
 
                         next_cell_1, next_hidd_1, output_1 = sess.run(
-
                             [current_cell_1, current_hidden_1, output_1],
-                            feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1})
+                            feed_dict=feed_1)
 
                         input_2 = output_1
 
                         next_cell_2, next_hidd_2, output_2, loss_, summary, _ = sess.run(
                             [current_cell_2, current_hidden_2, loss, summary_op, optimizer],
-
-                            feed_dict={X_2: input_2, H_last_2: next_hidd_2,
-                                       C_last_2: next_cell_2, Y: label})
+                            feed_dict=feed_2)
 
                 next_cell_1 = cell_saver_1
                 next_cell_2 = cell_saver_2
@@ -356,10 +353,7 @@ with tf.Session() as sess:
 ############################################################## below here is the test code
 
     RMS_loss = 0.0
-    next_cell_1 = np.zeros(shape=[1, hyp.cell_dim])
-    next_hidd_1 = np.zeros(shape=[1, hyp.hidden_dim])
-    next_cell_2 = np.zeros(shape=[1, hyp.cell_dim])
-    next_hidd_2 = np.zeros(shape=[1, hyp.hidden_dim])
+    zero_states()
     hidden_saver_1, hidden_saver_2, cell_saver_1, cell_saver_2 = list()  # initializing stuff
 
     for test in range(hyp.Info.TEST_SIZE): #this will be replaced later
@@ -375,13 +369,12 @@ with tf.Session() as sess:
 
                 next_cell_1, next_hidd_1, output_1 = sess.run(
                     [current_cell_1, current_hidden_1, output_1],
-                    feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1})
+                    feed_dict=feed_1)
 
                 input_2 = output_1
 
                 next_cell_2, next_hidd_2 = sess.run([current_cell_2, current_hidden_2],
-                                                    feed_dict={X_2: input_2, H_last_2: next_hidd_2,
-                                                               C_last_2: next_cell_2})
+                                                    feed_dict=feed_2)
                 if counter == 0:
                     hidden_saver_1 = next_hidd_1  # saves THIS state for the next round
                     hidden_saver_2 = next_hidd_2
@@ -393,14 +386,13 @@ with tf.Session() as sess:
 
                 next_cell_1, next_hidd_1, output_1 = sess.run(
                     [current_cell_1, current_hidden_1, output_1],
-                    feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1})
+                    feed_dict=feed_1)
 
                 input_2 = output_1
 
                 next_cell_2, next_hidd_2, output_2, loss_, summary, _ = sess.run(
                     [current_cell_2, current_hidden_2, loss, summary_op, optimizer],
-                    feed_dict={X_2: input_2, H_last_2: next_hidd_2,
-                               C_last_2: next_cell_2, Y: label})
+                    feed_dict=feed_2)
 
                 carrier = [label_, output_2[0][0], np.sqrt(loss_)]
                 test_logger.writerow(carrier)
