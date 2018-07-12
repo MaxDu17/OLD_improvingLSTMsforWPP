@@ -2,14 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/save_v3_multilayer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2012/v8/GRAPHS/LOSS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/GRAPHS/LOSS.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2012/v8/GRAPHS/TEST.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/GRAPHS/TEST.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2012/v8/GRAPHS/VALIDATION.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/GRAPHS/VALIDATION.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/GRAPHS/events.out.tfevents.1531405949.DESKTOP-A14IBSC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lstm_v8_copy_paste_dual_layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v8_copy_paste_dual_layer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v8/GRAPHS/events.out.tfevents.1531406966.DESKTOP-A14IBSC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-72000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-72000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-72000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-74000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-74000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-74000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-76000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-76000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-76000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-78000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-78000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-78000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-80000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-80000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-80000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v8/models/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/models/checkpoint" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lstm_v8_model7_based.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v8_model7_based.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelv7.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelv7.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -99,13 +114,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lstm_v7_model_based.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lstm_v7_model_based.py">
+      <file leaf-file-name="modelv7.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modelv7.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="952">
-              <caret line="56" column="51" selection-start-line="56" selection-start-column="51" selection-end-line="56" selection-end-column="51" />
+            <state relative-caret-position="867">
+              <caret line="122" column="67" selection-start-line="122" selection-start-column="67" selection-end-line="122" selection-end-column="67" />
               <folding>
-                <element signature="e#126#149#0" expanded="true" />
+                <element signature="e#0#23#0" expanded="true" />
+                <element signature="e#241#5730#0" />
               </folding>
             </state>
           </provider>
@@ -114,38 +130,17 @@
       <file leaf-file-name="lstm_v8_model7_based.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lstm_v8_model7_based.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="190" lean-forward="true" selection-start-line="190" selection-end-line="190" />
-              <folding>
-                <element signature="e#339#5616#0" />
-                <element signature="e#5652#10940#0" />
-              </folding>
+            <state relative-caret-position="425">
+              <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modelv7.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modelv7.py">
+      <file leaf-file-name="lstm_v2.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lstm_v2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="80" column="76" selection-start-line="12" selection-start-column="7" selection-end-line="80" selection-end-column="76" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-                <element signature="e#304#5662#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lstm_v8_copy_paste_dual_layer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lstm_v8_copy_paste_dual_layer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="178" lean-forward="true" selection-start-line="178" selection-end-line="178" />
-              <folding>
-                <element signature="e#387#5518#0" />
-                <element signature="e#5652#10929#0" />
-              </folding>
+            <state relative-caret-position="500">
+              <caret line="190" column="30" selection-start-line="190" selection-start-column="30" selection-end-line="190" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -162,18 +157,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testdatasetmaker.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testdatasetmaker.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -185,7 +168,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>next_cell</find>
       <find>sa</find>
       <find>B_Gate</find>
       <find>logger</find>
@@ -215,6 +197,7 @@
       <find>self.</find>
       <find>_1</find>
       <find>X_2</find>
+      <find>self.X</find>
     </findStrings>
     <replaceStrings>
       <replace>v2</replace>
@@ -228,6 +211,7 @@
       <replace>v7</replace>
       <replace>_2</replace>
       <replace>output_1</replace>
+      <replace>last_output</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -282,10 +266,10 @@
         <option value="$PROJECT_DIR$/lstm_v7_model_based.py" />
         <option value="$PROJECT_DIR$/dataset_maker.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/local_grabber.py" />
-        <option value="$PROJECT_DIR$/modelv7.py" />
         <option value="$PROJECT_DIR$/lstm_v7.py" />
         <option value="$PROJECT_DIR$/runfrozenLSTMv5.py" />
         <option value="$PROJECT_DIR$/lstm_v8_copy_paste_dual_layer.py" />
+        <option value="$PROJECT_DIR$/modelv7.py" />
         <option value="$PROJECT_DIR$/lstm_v8_model7_based.py" />
       </list>
     </option>
@@ -321,7 +305,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lstm_v8_model7_based.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lstm_v2.py" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
@@ -342,7 +326,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.lstm_v8_copy_paste_dual_layer">
+  <component name="RunManager" selected="Python.lstm_v8_model7_based">
     <configuration name="lstm_v7_model_based" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CSIRE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -442,8 +426,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.lstm_v8_copy_paste_dual_layer" />
         <item itemvalue="Python.lstm_v8_model7_based" />
+        <item itemvalue="Python.lstm_v8_copy_paste_dual_layer" />
         <item itemvalue="Python.runfrozenLSTMv5" />
         <item itemvalue="Python.lstm_v7_model_based" />
         <item itemvalue="Python.testdatasetmaker" />
@@ -476,14 +460,14 @@
     <frame x="3192" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49940687" visible="true" weight="0.011064278" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49805447" visible="true" weight="0.011064278" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32897604" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.08169935" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.44008714" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32897604" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32897604" />
-      <window_info id="Structure" order="1" sideWeight="0.5005931" side_tool="true" visible="true" weight="0.011064278" />
+      <window_info id="Structure" order="1" sideWeight="0.5019455" side_tool="true" visible="true" weight="0.011064278" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.33769062" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -604,13 +588,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="25" column="67" selection-start-line="25" selection-start-column="63" selection-end-line="25" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lstm_v2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="178" selection-start-line="177" selection-end-line="178" />
         </state>
       </provider>
     </entry>
@@ -740,22 +717,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataset_maker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="75" column="80" selection-start-line="75" selection-start-column="80" selection-end-line="75" selection-end-column="80" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lstm_v7.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="183" column="1" selection-start-line="183" selection-start-column="1" selection-end-line="185" selection-end-column="50" />
           <folding>
             <element signature="e#126#149#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/save_v3_multilayer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lstm_v7_model_based.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1467">
+          <caret line="56" column="51" selection-start-line="56" selection-start-column="51" selection-end-line="56" selection-end-column="51" />
+          <folding>
+            <element signature="e#126#149#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset_maker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="75" column="80" selection-start-line="75" selection-start-column="80" selection-end-line="75" selection-end-column="80" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -774,30 +768,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/save_v3_multilayer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modelv7.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="80" column="76" selection-start-line="12" selection-start-column="7" selection-end-line="80" selection-end-column="76" />
+        <state relative-caret-position="867">
+          <caret line="122" column="67" selection-start-line="122" selection-start-column="67" selection-end-line="122" selection-end-column="67" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
-            <element signature="e#304#5662#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lstm_v7_model_based.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="56" column="51" selection-start-line="56" selection-start-column="51" selection-end-line="56" selection-end-column="51" />
-          <folding>
-            <element signature="e#126#149#0" expanded="true" />
+            <element signature="e#241#5730#0" />
           </folding>
         </state>
       </provider>
@@ -805,7 +782,7 @@
     <entry file="file://$PROJECT_DIR$/lstm_v8_copy_paste_dual_layer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="178" lean-forward="true" selection-start-line="178" selection-end-line="178" />
+          <caret line="178" selection-start-line="178" selection-end-line="178" />
           <folding>
             <element signature="e#387#5518#0" />
             <element signature="e#5652#10929#0" />
@@ -813,14 +790,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lstm_v2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="190" column="30" selection-start-line="190" selection-start-column="30" selection-end-line="190" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lstm_v8_model7_based.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="190" lean-forward="true" selection-start-line="190" selection-end-line="190" />
-          <folding>
-            <element signature="e#339#5616#0" />
-            <element signature="e#5652#10940#0" />
-          </folding>
+        <state relative-caret-position="425">
+          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
         </state>
       </provider>
     </entry>

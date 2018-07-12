@@ -14,172 +14,12 @@ import csv
 sm = SetMaker()
 hyp = Hyperparameters()
 
-with tf.name_scope("layer_1"):
-    with tf.name_scope("weights_and_biases"):
-        W_Forget_and_Input_1 = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + hyp.cell_dim + 1, hyp.cell_dim]),
-                                              name="forget_and_input_weight")  # note that forget_and_input actually works for forget, and the input is the inverse
-        W_Output_1 = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + hyp.cell_dim + 1, hyp.cell_dim]),
-                                    name="output_weight")
-        W_Gate_1 = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + hyp.cell_dim + 1, hyp.cell_dim]),
-                                  name="gate_weight")
-
-        W_Hidden_to_Out_1 = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim, 1]),
-                                           name="outwards_propagating_weight")
-
-        B_Forget_and_Input_1 = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="forget_and_input_bias")
-        B_Output_1 = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="output_bias")
-        B_Gate_1 = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="gate_bias")
-        B_Hidden_to_Out_1 = tf.Variable(tf.zeros(shape=[1, 1]), name="outwards_propagating_bias")
-
-    with tf.name_scope("placeholders"):
-        X_1 = tf.placeholder(shape=[1, 1], dtype=tf.float32, name="input_placeholder")  # waits for the prompt
-        H_last_1 = tf.placeholder(shape=[1, hyp.hidden_dim], dtype=tf.float32,
-                                     name="last_hidden")  # last hidden state (aka the "output")
-        C_last_1 = tf.placeholder(shape=[1, hyp.cell_dim], dtype=tf.float32, name="last_cell")  # last cell state
-
-    with tf.name_scope("to_gates"):
-        concat_input_1 = tf.concat([X_1, H_last_1, C_last_1], axis=1,
-                                      name="input_concat")  # concatenates the inputs to one vector
-        forget_gate_1 = tf.add(tf.matmul(concat_input_1, W_Forget_and_Input_1, name="f_w_m"),
-                                  B_Forget_and_Input_1, name="f_b_a")  # decides which to drop from cell
-
-        gate_gate_1 = tf.add(tf.matmul(concat_input_1, W_Gate_1, name="g_w_m"), B_Gate_1,
-                                name="g_b_a")  # decides which things to change in cell state
-
-    with tf.name_scope("non-linearity"):  # makes the gates into what they should be
-        forget_gate_1 = tf.sigmoid(forget_gate_1, name="sigmoid_forget")
-        input_gate_1 = tf.subtract(tf.ones([1, hyp.cell_dim]), forget_gate_1, name="making_input_gate")
-        input_gate_1 = tf.sigmoid(input_gate_1, name="sigmoid_input")
-
-        gate_gate_1 = tf.tanh(gate_gate_1, name="tanh_gate")
-
-    with tf.name_scope("forget_gate"):  # forget gate values and propagate
-
-        current_cell_1 = tf.multiply(forget_gate_1, C_last_1, name="forget_gating")
-
-    with tf.name_scope("suggestion_node"):  # suggestion gate
-        suggestion_box_1 = tf.multiply(input_gate_1, gate_gate_1, name="input_determiner")
-        current_cell_1 = tf.add(suggestion_box_1, current_cell_1, name="input_and_gate_gating")
-
-    with tf.name_scope("output_gate"):  # output gate values to hidden
-
-        concat_output_input_1 = tf.concat([X_1, H_last_1, current_cell_1], axis=1,
-                                             name="input_concat")  # concatenates the inputs to one vector #here, the processed current cell is concatenated and prepared for output
-        output_gate_1 = tf.add(tf.matmul(concat_output_input_1, W_Output_1, name="o_w_m"), B_Output_1,
-                                  name="o_b_a")  # we are making the output gates now, with the peephole.
-        output_gate_1 = tf.sigmoid(output_gate_1,
-                                      name="sigmoid_output")  # the gate is complete. Note that the two lines were supposed to be back in "to gates" and "non-linearity", but it is necessary to put it here
-
-        current_cell_1 = tf.tanh(current_cell_1,
-                                    name="cell_squashing")  # squashing the current cell, branching off now. Note the underscore, means saving a copy.
-        current_hidden_1 = tf.multiply(output_gate_1, current_cell_1,
-                                          name="next_hidden")  # we are making the hidden by element-wise multiply of the squashed states
-
-        raw_output_1 = tf.add(tf.matmul(current_hidden_1, W_Hidden_to_Out_1, name="WHTO_w_m"),
-                                 B_Hidden_to_Out_1, name="BHTO_b_a")  # now, we are propagating outwards
-
-        output_1 = tf.nn.relu(raw_output_1, name="output")  # makes sure it is not zero.
-
-    with tf.name_scope("summaries_and_saver"):
-        tf.summary.histogram("W_Forget_and_Input", W_Forget_and_Input_1)
-        tf.summary.histogram("W_Output", W_Output_1)
-        tf.summary.histogram("W_Gate", W_Gate_1)
-        tf.summary.histogram("W_Hidden_to_Out", W_Hidden_to_Out_1)
-
-        tf.summary.histogram("Forget", forget_gate_1)
-        tf.summary.histogram("Input", input_gate_1)
-        tf.summary.histogram("Output", output_gate_1)
-        tf.summary.histogram("Gate", gate_gate_1)
-
-        tf.summary.histogram("B_Forget_and_Input", B_Forget_and_Input_1)
-        tf.summary.histogram("B_Output", B_Output_1)
-        tf.summary.histogram("B_Gate", B_Gate_1)
-        tf.summary.histogram("B_Hidden_to_Out", B_Hidden_to_Out_1)
-with tf.name_scope("layer_2"):
-    with tf.name_scope("weights_and_biases"):
-        W_Forget_and_Input_2 = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + hyp.cell_dim + 1, hyp.cell_dim]),
-                                              name="forget_and_input_weight")  # note that forget_and_input actually works for forget, and the input is the inverse
-        W_Output_2 = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + hyp.cell_dim + 1, hyp.cell_dim]),
-                                    name="output_weight")
-        W_Gate_2 = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + hyp.cell_dim + 1, hyp.cell_dim]),
-                                  name="gate_weight")
-
-        W_Hidden_to_Out_2 = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim, 1]),
-                                           name="outwards_propagating_weight")
-
-        B_Forget_and_Input_2 = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="forget_and_input_bias")
-        B_Output_2 = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="output_bias")
-        B_Gate_2 = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="gate_bias")
-        B_Hidden_to_Out_2 = tf.Variable(tf.zeros(shape=[1, 1]), name="outwards_propagating_bias")
-
-    with tf.name_scope("placeholders"):
-        #X_2 = tf.placeholder(shape=[1, 1], dtype=tf.float32, name="input_placeholder")  # waits for the prompt
-        H_last_2 = tf.placeholder(shape=[1, hyp.hidden_dim], dtype=tf.float32,
-                                     name="last_hidden")  # last hidden state (aka the "output")
-        C_last_2 = tf.placeholder(shape=[1, hyp.cell_dim], dtype=tf.float32, name="last_cell")  # last cell state
-
-    with tf.name_scope("to_gates"):
-        concat_input_2 = tf.concat([output_1, H_last_2, C_last_2], axis=1,
-                                      name="input_concat")  # concatenates the inputs to one vector
-        forget_gate_2 = tf.add(tf.matmul(concat_input_2, W_Forget_and_Input_2, name="f_w_m"),
-                                  B_Forget_and_Input_2, name="f_b_a")  # decides which to drop from cell
-
-        gate_gate_2 = tf.add(tf.matmul(concat_input_2, W_Gate_2, name="g_w_m"), B_Gate_2,
-                                name="g_b_a")  # decides which things to change in cell state
-
-    with tf.name_scope("non-linearity"):  # makes the gates into what they should be
-        forget_gate_2 = tf.sigmoid(forget_gate_2, name="sigmoid_forget")
-        input_gate_2 = tf.subtract(tf.ones([1, hyp.cell_dim]), forget_gate_2, name="making_input_gate")
-        input_gate_2 = tf.sigmoid(input_gate_2, name="sigmoid_input")
-
-        gate_gate_2 = tf.tanh(gate_gate_2, name="tanh_gate")
-
-    with tf.name_scope("forget_gate"):  # forget gate values and propagate
-
-        current_cell_2 = tf.multiply(forget_gate_2, C_last_2, name="forget_gating")
-
-    with tf.name_scope("suggestion_node"):  # suggestion gate
-        suggestion_box_2 = tf.multiply(input_gate_2, gate_gate_2, name="input_determiner")
-        current_cell_2 = tf.add(suggestion_box_2, current_cell_2, name="input_and_gate_gating")
-
-    with tf.name_scope("output_gate"):  # output gate values to hidden
-
-        concat_output_input_2 = tf.concat([output_1, H_last_2, current_cell_2], axis=1,
-                                             name="input_concat")  # concatenates the inputs to one vector #here, the processed current cell is concatenated and prepared for output
-        output_gate_2 = tf.add(tf.matmul(concat_output_input_2, W_Output_2, name="o_w_m"), B_Output_2,
-                                  name="o_b_a")  # we are making the output gates now, with the peephole.
-        output_gate_2 = tf.sigmoid(output_gate_2,
-                                      name="sigmoid_output")  # the gate is complete. Note that the two lines were supposed to be back in "to gates" and "non-linearity", but it is necessary to put it here
-
-        current_cell_2 = tf.tanh(current_cell_2,
-                                    name="cell_squashing")  # squashing the current cell, branching off now. Note the underscore, means saving a copy.
-        current_hidden_2 = tf.multiply(output_gate_2, current_cell_2,
-                                          name="next_hidden")  # we are making the hidden by element-wise multiply of the squashed states
-
-        raw_output_2 = tf.add(tf.matmul(current_hidden_2, W_Hidden_to_Out_2, name="WHTO_w_m"),
-                                 B_Hidden_to_Out_2, name="BHTO_b_a")  # now, we are propagating outwards
-
-        output_2 = tf.nn.relu(raw_output_2, name="output")  # makes sure it is not zero.
-
-    with tf.name_scope("summaries_and_saver"):
-        tf.summary.histogram("W_Forget_and_Input", W_Forget_and_Input_2)
-        tf.summary.histogram("W_Output", W_Output_2)
-        tf.summary.histogram("W_Gate", W_Gate_2)
-        tf.summary.histogram("W_Hidden_to_Out", W_Hidden_to_Out_2)
-
-        tf.summary.histogram("Forget", forget_gate_2)
-        tf.summary.histogram("Input", input_gate_2)
-        tf.summary.histogram("Output", output_gate_2)
-        tf.summary.histogram("Gate", gate_gate_2)
-
-        tf.summary.histogram("B_Forget_and_Input", B_Forget_and_Input_2)
-        tf.summary.histogram("B_Output", B_Output_2)
-        tf.summary.histogram("B_Gate", B_Gate_2)
-        tf.summary.histogram("B_Hidden_to_Out", B_Hidden_to_Out_2)
+model1 = Model()
+model2 = Model()
 
 
-#feed_1 ={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1}
-#feed_2 ={H_last_2:next_hidd_2, C_last_2:next_cell_2}
+output_1, current_cell_1, current_hidden_1 = model1.create_graph_first_layer()
+output_2, current_cell_2, current_hidden_2 = model2.create_graph(layer_number = 2, last_output = output_1)
 
 
 def zero_states():
@@ -214,7 +54,7 @@ with tf.Session() as sess:
         query = input("checkpoint detected! Would you like to restore from <" + ckpt.model_checkpoint_path + "> ?(y or n)\n")
         if query == 'y':
             saver.restore(sess, ckpt.model_checkpoint_path)
-            if np.sum(B_Forget_and_Input_1.eval()) != 0:
+            if np.sum(model1.B_Forget_and_Input.eval()) != 0:
                 print("session restored!")
         else:
             print("session discarded!")
@@ -255,14 +95,14 @@ with tf.Session() as sess:
 
                 next_cell_1, next_hidd_1, next_cell_2, next_hidd_2= sess.run(
                     [current_cell_1, current_hidden_1, current_cell_2, current_hidden_2],
-                    feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1,
-                               H_last_2: next_hidd_2, C_last_2: next_cell_2})
+                    feed_dict={model1.X: input_1, model1.H_last: next_hidd_1, model1.C_last: next_cell_1,
+                               model2.H_last: next_hidd_2, model2.C_last: next_cell_2})
 
             else:
                 next_cell_1, next_hidd_1, next_cell_2, next_hidd_2, output_2_, loss_, summary, _= sess.run(
                     [current_cell_1, current_hidden_1, current_cell_2, current_hidden_2, output_2, loss, summary_op, optimizer],
-                    feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1,
-                               H_last_2: next_hidd_2, C_last_2: next_cell_2, Y:label}) #this is a hecking large command
+                    feed_dict={model1.X: input_1, model1.H_last: next_hidd_1, model1.C_last: next_cell_1,
+                               model2.H_last: next_hidd_2, model2.C_last: next_cell_2, Y:label}) #this is a hecking large command
 
         logger.writerow([loss_])
 
@@ -301,20 +141,22 @@ with tf.Session() as sess:
 
                         next_cell_1, next_hidd_1, next_cell_2, next_hidd_2 = sess.run(
                             [current_cell_1, current_hidden_1, current_cell_2, current_hidden_2],
-                            feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1,
-                                       H_last_2: next_hidd_2, C_last_2: next_cell_2})
+                            feed_dict={model1.X: input_1, model1.H_last: next_hidd_1, model1.C_last: next_cell_1,
+                                       model2.H_last: next_hidd_2, model2.C_last: next_cell_2})
                         if counter == 0:
                             cell_saver_1 = next_cell_1
                             cell_saver_2 = next_cell_2
                             hidden_saver_1= next_hidd_1
                             hidden_saver_2 = next_hidd_2
 
+
                     else:
+
                         next_cell_1, next_hidd_1, next_cell_2, next_hidd_2, output_2_, loss_, summary, _ = sess.run(
                             [current_cell_1, current_hidden_1, current_cell_2, current_hidden_2, output_2, loss,
                              summary_op, optimizer],
-                            feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1,
-                                       H_last_2: next_hidd_2, C_last_2: next_cell_2,
+                            feed_dict={model1.X: input_1, model1.H_last: next_hidd_1, model1.C_last: next_cell_1,
+                                       model2.H_last: next_hidd_2, model2.C_last: next_cell_2,
                                        Y: label})  # this is a hecking large command
                         RMS_loss += np.sqrt(loss_)
 
@@ -352,19 +194,22 @@ with tf.Session() as sess:
 
                 next_cell_1, next_hidd_1, next_cell_2, next_hidd_2= sess.run(
                     [current_cell_1, current_hidden_1, current_cell_2, current_hidden_2],
-                    feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1,
-                               H_last_2: next_hidd_2, C_last_2: next_cell_2})
+                    feed_dict={model1.X: input_1, model1.H_last: next_hidd_1, model1.C_last: next_cell_1,
+                               model2.H_last: next_hidd_2, model2.C_last: next_cell_2})
                 if counter == 0:
                     cell_saver_1 = next_cell_1
                     cell_saver_2 = next_cell_2
                     hidden_saver_1 = next_hidd_1
                     hidden_saver_2 = next_hidd_2
 
+
             else:
-                next_cell_1, next_hidd_1, next_cell_2, next_hidd_2, output_2_, loss_, summary, _= sess.run(
-                    [current_cell_1, current_hidden_1, current_cell_2, current_hidden_2, output_2, loss, summary_op, optimizer],
-                    feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1,
-                               H_last_2: next_hidd_2, C_last_2: next_cell_2, Y:label}) #this is a hecking large command
+                next_cell_1, next_hidd_1, next_cell_2, next_hidd_2, output_2_, loss_, summary, _ = sess.run(
+                    [current_cell_1, current_hidden_1, current_cell_2, current_hidden_2, output_2, loss, summary_op,
+                     optimizer],
+                    feed_dict={model1.X: input_1, model1.H_last: next_hidd_1, model1.C_last: next_cell_1,
+                               model2.H_last: next_hidd_2, model2.C_last: next_cell_2,
+                               Y: label})  # this is a hecking large command
 
                 carrier = [label_, output_2_[0][0], np.sqrt(loss_)]
                 RMS_loss += np.sqrt(loss_)
