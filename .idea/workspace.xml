@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v2/GRAPHS_CONTAINED/LOSS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v2/GRAPHS_CONTAINED/LOSS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v2/GRAPHS_CONTAINED/VALIDATION.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v2/GRAPHS_CONTAINED/VALIDATION.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v2/models/LSTMv2-2000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v2/models/LSTMv2-2000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v2/models/LSTMv2-2000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v2/models/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v2/models/checkpoint" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_maker.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset_maker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lstm_v2_contained.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v2_contained.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/GRAPHS_CONAINED/events.out.tfevents.1531417688.DESKTOP-A14IBSC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/GRAPHS_CONAINED/events.out.tfevents.1531417850.DESKTOP-A14IBSC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/GRAPHS_CONAINED/events.out.tfevents.1531417921.DESKTOP-A14IBSC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/GRAPHS_CONAINED/events.out.tfevents.1531417956.DESKTOP-A14IBSC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/GRAPHS_CONAINED/events.out.tfevents.1531418046.DESKTOP-A14IBSC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/GRAPHS_CONAINED/events.out.tfevents.1531418065.DESKTOP-A14IBSC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/GRAPHS_CONAINED/events.out.tfevents.1531418151.DESKTOP-A14IBSC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/GRAPHS_CONAINED/events.out.tfevents.1531418186.DESKTOP-A14IBSC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/GRAPHS_CONTAINED/graph.pbtxt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -78,20 +63,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="save_v2.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/save_v2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="21" column="64" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="save_v3_multilayer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/save_v3_multilayer.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
               <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dataset_maker.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dataset_maker.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="32" column="26" lean-forward="true" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -157,8 +145,8 @@
       <file leaf-file-name="lstm_v2_contained.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lstm_v2_contained.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="182" column="33" selection-start-line="182" selection-start-column="33" selection-end-line="182" selection-end-column="33" />
+            <state relative-caret-position="544">
+              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
             </state>
           </provider>
         </entry>
@@ -274,7 +262,6 @@
         <option value="$PROJECT_DIR$/grabber_debugger.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/grabber_debugger.py" />
         <option value="$PROJECT_DIR$/lstm_v7_model_based.py" />
-        <option value="$PROJECT_DIR$/dataset_maker.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/local_grabber.py" />
         <option value="$PROJECT_DIR$/lstm_v7.py" />
         <option value="$PROJECT_DIR$/runfrozenLSTMv5.py" />
@@ -286,6 +273,7 @@
         <option value="$PROJECT_DIR$/lstm_v8_model2_based.py" />
         <option value="$PROJECT_DIR$/modelv2_contained.py" />
         <option value="$PROJECT_DIR$/hyperparameters.py" />
+        <option value="$PROJECT_DIR$/dataset_maker.py" />
         <option value="$PROJECT_DIR$/lstm_v2_contained.py" />
       </list>
     </option>
@@ -321,7 +309,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lstm_v7.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/dataset_maker.py" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
@@ -707,16 +695,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataset_maker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="75" column="80" selection-start-line="75" selection-start-column="80" selection-end-line="75" selection-end-column="80" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/save_v2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -766,13 +744,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hyperparameters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
@@ -828,10 +799,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dataset_maker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="32" column="26" lean-forward="true" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hyperparameters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lstm_v2_contained.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="182" column="33" selection-start-line="182" selection-start-column="33" selection-end-line="182" selection-end-column="33" />
+        <state relative-caret-position="544">
+          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
         </state>
       </provider>
     </entry>

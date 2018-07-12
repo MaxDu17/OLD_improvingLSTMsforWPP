@@ -37,6 +37,18 @@ class SetMaker:
         self.batch_counter = 0
         return carrier
 
+    def next_epoch_waterfall(self): #this just returns the entire sequence. DO NOT CALL NEXT_SAMPLE WITH THIS.
+        carrier = False
+        self.master_list = list()
+        if self.counter + self.hyp.FOOTPRINT+1 > self.training_set_size:
+            self.clear_counter()
+            carrier = True
+            print("wraparound")
+        self.master_list = self.dp.grab_list_range(self.counter, self.counter+self.hyp.FOOTPRINT+1)
+        self.counter += self.hyp.FOOTPRINT
+        self.batch_counter = 0
+        return carrier, self.master_list
+
     def next_epoch_test(self):
         if self.test_counter == 0:
             raise Exception("you forgot to initialize the test_counter! Execute create_training_set")
