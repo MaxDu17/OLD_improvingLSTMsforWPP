@@ -68,6 +68,7 @@ with tf.name_scope("forward_roll"):
     print(init_state)
     states_list = tf.scan(fn = step, elems = inputs, initializer = init_state)
     curr_state = states_list[-1]
+    pass_back_state = states_list[0]
 
 with tf.name_scope("prediction"):
     _, current_hidden = tf.unstack(curr_state)
@@ -149,41 +150,29 @@ with tf.Session() as sess:
             print("predicted number: ", output_, ", real number: ", label)
 
         if epoch % 2000 == 0 and epoch > 498:
-            raise Exception("someBODY once told me")
             saver.save(sess, "2012/v2/models_CONTAINED/LSTMv2", global_step=epoch)
-            print("saved model")
+            print("---------------------saved model----------------------")
 
-            next_state_hold = next_state
+            next_state_hold = next_state #this "pauses" the training that is happening right now.
             sm.create_validation_set()
-            average_rms_loss = 0.0
+            RMS_loss = 0.0
             next_state = np.zeros(shape=[2, 1, hyp.cell_dim])
             for i in range(hyp.VALIDATION_NUMBER):
-                sm.next_epoch_valid()
+                data = sm.next_epoch_valid_waterfall()
                 label_ = sm.get_label()
                 label = np.reshape(label_, [1, 1])
-                # this gets each 10th
-                for counter in range(hyp.FOOTPRINT):
-                    data = sm.next_sample()
-                    data = np.reshape(data, [1, 1])
-                    if counter < hyp.FOOTPRINT - 1:
-                        next_state = sess.run(states, feed_dict={X: data, last_state: next_state})
-                        if counter == 0:
-                            state_saver = next_state
-                    else:
-                        next_state, output_, loss_ = sess.run(
-                            [states, output, loss],
-                            feed_dict={X: data, Y: label, last_state: next_state})
+                data = np.reshape(data, [hyp.FOOTPRINT, 1, 1])
 
-                next_state = state_saver
-
-                average_rms_loss += np.sqrt(loss_)
+                next_state, loss_ = sess.run([pass_back_state, loss_], #why passback? Because we only shift by one!
+                                               feed_dict = {inputs:data, Y:label, init_state:next_state})
+                RMS_loss += np.sqrt(loss_)
                 sm.clear_valid_counter()
 
-            average_rms_loss = average_rms_loss / hyp.VALIDATION_NUMBER
-            print("validation: RMS loss is ", average_rms_loss)
-            validation_logger.writerow([epoch, average_rms_loss])
+            RMS_loss = RMS_loss / hyp.VALIDATION_NUMBER
+            print("validation: RMS loss is ", RMS_loss)
+            validation_logger.writerow([epoch, RMS_loss])
 
-            next_state = next_state_hold
+            next_state = next_state_hold #restoring past point...
 
     RMS_loss = 0.0
     next_state = np.zeros(shape=[2, 1, hyp.cell_dim])

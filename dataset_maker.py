@@ -59,6 +59,17 @@ class SetMaker:
         self.test_counter += self.hyp.FOOTPRINT
         self.batch_counter = 0
 
+    def next_epoch_test_waterfall(self): #this jumps a footprint to test. Biased estimator, and so is depreciated.
+        if self.test_counter == 0:
+            raise Exception("you forgot to initialize the test_counter! Execute create_training_set")
+        if self.test_counter + self.hyp.FOOTPRINT + 1 > self.dp.dataset_size():
+            raise ValueError("you have reached the end of the test set. Violation dataset_maker/next_epoch_test")
+        self.master_list = list()
+        self.master_list = self.dp.grab_list_range(self.test_counter, self.test_counter + self.hyp.FOOTPRINT + 1)
+        self.test_counter += 1
+        self.batch_counter = 0
+        return self.master_list[:-1]
+
     def next_epoch_test_single_shift(self): #instead of jumping a footprint, we shift by one; this is necessary for assessment
         if self.test_counter == 0:
             raise Exception("you forgot to initialize the test_counter! Execute create_training_set")
@@ -91,6 +102,15 @@ class SetMaker:
         self.valid_counter += 1
         self.batch_counter = 0
 
+    def next_epoch_valid_waterfall(self):  #this is returning the entire datalist, useful for the "contained" modules that don't use for loops
+        if self.valid_counter + self.hyp.FOOTPRINT + 1 > self.validation_set_size:
+            raise ValueError("you have reached the end of the validation. Please check your code"
+                             " for boundary cases. Violation dataset_maker/next_epoch_valid")
+        self.master_list = list()
+        self.master_list = self.dp.grab_list_range(self.valid_counter, self.valid_counter + self.hyp.FOOTPRINT + 1)
+        self.valid_counter += 1
+        self.batch_counter = 0
+        return self.master_list[:-1]
 
     def clear_valid_counter(self): #this is a public function that clears the validation counter
         self.valid_counter =0
