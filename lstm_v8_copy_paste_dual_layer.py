@@ -176,15 +176,13 @@ with tf.name_scope("layer_2"):
         tf.summary.histogram("B_Output", B_Output_2)
         tf.summary.histogram("B_Gate", B_Gate_2)
         tf.summary.histogram("B_Hidden_to_Out", B_Hidden_to_Out_2)
-bogus_placeholder_x = np.zeros([1,1])
-bogus_placeholder_hidd = np.zeros([1,hyp.hidden_dim])
-bogus_placeholder_cell = np.zeros([1,hyp.cell_dim])
+
 
 with tf.name_scope("placeholders"):
     Y = tf.placeholder(shape=[1, 1], dtype=tf.float32, name="label")  # not used until the last cycle
 
 with tf.name_scope("loss"):
-    loss = tf.square(tf.subtract(output2, Y))
+    loss = tf.square(tf.subtract(output_2, Y))
     loss = tf.reduce_sum(loss)
 
 with tf.name_scope("optimizer"):
@@ -205,7 +203,7 @@ with tf.Session() as sess:
         query = input("checkpoint detected! Would you like to restore from <" + ckpt.model_checkpoint_path + "> ?(y or n)\n")
         if query == 'y':
             saver.restore(sess, ckpt.model_checkpoint_path)
-            if np.sum(model_layer_1.B_Forget_and_Input.eval()) != 0:
+            if np.sum(B_Forget_and_Input_1.eval()) != 0:
                 print("session restored!")
         else:
             print("session discarded!")
@@ -250,26 +248,25 @@ with tf.Session() as sess:
             if counter < hyp.FOOTPRINT-1:
 
                 next_cell_1, next_hidd_1, output_1 = sess.run(
-                    [current_cell_1, current_hidden_1, output1],
-                    feed_dict={model_layer_1.X: input_1, model_layer_1.H_last: next_hidd_1, model_layer_1.C_last: next_cell_1})
+                    [current_cell_1, current_hidden_1, output_1],
+                    feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1})
 
                 input_2 = output_1
 
                 next_cell_2, next_hidd_2 = sess.run([current_cell_2, current_hidden_2],
-                                                    feed_dict={model_layer_2.X:input_2, model_layer_2.H_last:next_hidd_2,
-                                                               model_layer_2.C_last:next_cell_2})
+                                                    feed_dict={X_2:input_2, H_last_2:next_hidd_2,
+                                                               C_last_2:next_cell_2})
 
             else:
                 next_cell_1, next_hidd_1, output_1 = sess.run(
-                    [current_cell_1, current_hidden_1, output1],
-                    feed_dict={model_layer_1.X: input_1, model_layer_1.H_last: next_hidd_1, model_layer_1.C_last: next_cell_1})
+                    [current_cell_1, current_hidden_1, output_1],
+                    feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1})
 
                 input_2 = output_1
 
-                next_cell_2, next_hidd_2, output_, loss_, summary, _  = sess.run([current_cell_2, current_hidden_2, loss, summary_op, optimizer],
-                                                    feed_dict={model_layer_1.X: bogus_placeholder_x, model_layer_1.H_last: bogus_placeholder_hidd, model_layer_1.C_last: bogus_placeholder_cell,
-                                                               model_layer_2.X:input_2, model_layer_2.H_last:next_hidd_2,
-                                                               model_layer_2.C_last:next_cell_2, Y:label})
+                next_cell_2, next_hidd_2, output_2, loss_, summary, _  = sess.run([current_cell_2, current_hidden_2, loss, summary_op, optimizer],
+                                                    feed_dict={X_2:input_2, H_last_2:next_hidd_2,
+                                                               C_last_2:next_cell_2, Y:label})
 
         logger.writerow([loss_])
 
@@ -277,11 +274,11 @@ with tf.Session() as sess:
             writer.add_summary(summary, global_step=epoch)
             print("I finished epoch ", epoch, " out of ", hyp.EPOCHS, " epochs")
             print("The absolute value loss for this sample is ", np.sqrt(loss_))
-            print("predicted number: ", output_, ", real number: ", label)
+            print("predicted number: ", output_2, ", real number: ", label)
 
 ############################################################### validation code here
         if epoch%2000 == 0 and epoch>498:
-            saver.save(sess, "2012/v8/models_CLASS/LSTMv8", global_step=epoch)
+            saver.save(sess, "2012/v8/models/LSTMv8", global_step=epoch)
             print("saved model")
 
             hidden_saver_1, hidden_saver_2, cell_saver_1, cell_saver_2 = list() #initializing stuff
@@ -311,38 +308,35 @@ with tf.Session() as sess:
                     if counter < hyp.FOOTPRINT - 1:
 
                         next_cell_1, next_hidd_1, output_1 = sess.run(
-                            [current_cell_1, current_hidden_1, output1],
-                            feed_dict={model_layer_1.X:input_1, model_layer_1.H_last:next_hidd_1,
-                                       model_layer_1.C_last:next_cell_1})
+                            [current_cell_1, current_hidden_1, output_1],
+                            feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1})
 
                         input_2 = output_1
 
                         next_cell_2, next_hidd_2 = sess.run([current_cell_2, current_hidden_2],
-                                                            feed_dict={model_layer_1.X:[[0]],
-                                                                       model_layer_2.X:input_2,
-                                                                       model_layer_2.H_last: next_hidd_2,
-                                                                       model_layer_2.C_last: next_cell_2})
+                                                            feed_dict={X_2: input_2, H_last_2: next_hidd_2,
+                                                                       C_last_2: next_cell_2})
                         if counter == 0:
                             hidden_saver_1 = next_hidd_1  # saves THIS state for the next round
                             hidden_saver_2 = next_hidd_2
                             cell_saver_1 = next_cell_1
                             cell_saver_2 = next_cell_2
 
+
                     else:
+
                         next_cell_1, next_hidd_1, output_1 = sess.run(
-                            [current_cell_1, current_hidden_1, output1],
-                            feed_dict={model_layer_1.X: input_1, model_layer_1.H_last: next_hidd_1,
-                                       model_layer_1.C_last: next_cell_1})
+
+                            [current_cell_1, current_hidden_1, output_1],
+                            feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1})
 
                         input_2 = output_1
 
-                        next_cell_2, next_hidd_2, output_, loss_ = sess.run(
-                            [current_cell_2, current_hidden_2, loss],
-                            feed_dict={model_layer_1.X: bogus_placeholder_x,
-                                       model_layer_1.H_last: bogus_placeholder_hidd,
-                                       model_layer_1.C_last: bogus_placeholder_cell,
-                                       model_layer_2.X: input_2, model_layer_2.H_last: next_hidd_2,
-                                       model_layer_2.C_last: next_cell_2, Y: label})
+                        next_cell_2, next_hidd_2, output_2, loss_, summary, _ = sess.run(
+                            [current_cell_2, current_hidden_2, loss, summary_op, optimizer],
+
+                            feed_dict={X_2: input_2, H_last_2: next_hidd_2,
+                                       C_last_2: next_cell_2, Y: label})
 
                 next_cell_1 = cell_saver_1
                 next_cell_2 = cell_saver_2
@@ -380,38 +374,35 @@ with tf.Session() as sess:
             if counter < hyp.FOOTPRINT - 1:
 
                 next_cell_1, next_hidd_1, output_1 = sess.run(
-                    [current_cell_1, current_hidden_1, output1],
-                    feed_dict={model_layer_1.X: input_1, model_layer_1.H_last: next_hidd_1,
-                               model_layer_1.C_last: next_cell_1})
+                    [current_cell_1, current_hidden_1, output_1],
+                    feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1})
 
                 input_2 = output_1
 
                 next_cell_2, next_hidd_2 = sess.run([current_cell_2, current_hidden_2],
-                                                    feed_dict={model_layer_1.X:[[0]],model_layer_2.X: input_2,
-                                                               model_layer_2.H_last: next_hidd_2,
-                                                               model_layer_2.C_last: next_cell_2})
+                                                    feed_dict={X_2: input_2, H_last_2: next_hidd_2,
+                                                               C_last_2: next_cell_2})
                 if counter == 0:
                     hidden_saver_1 = next_hidd_1  # saves THIS state for the next round
                     hidden_saver_2 = next_hidd_2
                     cell_saver_1 = next_cell_1
                     cell_saver_2 = next_cell_2
 
+
             else:
+
                 next_cell_1, next_hidd_1, output_1 = sess.run(
-                    [current_cell_1, current_hidden_1, output1],
-                    feed_dict={model_layer_1.X: input_1, model_layer_1.H_last: next_hidd_1,
-                               model_layer_1.C_last: next_cell_1})
+                    [current_cell_1, current_hidden_1, output_1],
+                    feed_dict={X_1: input_1, H_last_1: next_hidd_1, C_last_1: next_cell_1})
 
                 input_2 = output_1
 
-                next_cell_2, next_hidd_2, output_, loss_ = sess.run(
-                    [current_cell_2, current_hidden_2, loss],
-                    feed_dict={model_layer_1.X: bogus_placeholder_x, model_layer_1.H_last: bogus_placeholder_hidd,
-                               model_layer_1.C_last: bogus_placeholder_cell,
-                               model_layer_2.X: input_2, model_layer_2.H_last: next_hidd_2,
-                               model_layer_2.C_last: next_cell_2, Y: label})
+                next_cell_2, next_hidd_2, output_2, loss_, summary, _ = sess.run(
+                    [current_cell_2, current_hidden_2, loss, summary_op, optimizer],
+                    feed_dict={X_2: input_2, H_last_2: next_hidd_2,
+                               C_last_2: next_cell_2, Y: label})
 
-                carrier = [label_, output_[0][0], np.sqrt(loss_)]
+                carrier = [label_, output_2[0][0], np.sqrt(loss_)]
                 test_logger.writerow(carrier)
         next_cell_1 = cell_saver_1
         next_cell_2 = cell_saver_2

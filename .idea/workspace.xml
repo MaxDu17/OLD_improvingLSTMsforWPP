@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/lstm_v8_copy_paste_dual_layer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lstm_v8_model7_based.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v8_model7_based.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v8/GRAPHS/events.out.tfevents.1531401530.DESKTOP-A14IBSC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v8/GRAPHS/events.out.tfevents.1531401927.DESKTOP-A14IBSC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v8/GRAPHS/events.out.tfevents.1531402081.DESKTOP-A14IBSC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v8/GRAPHS/events.out.tfevents.1531402476.DESKTOP-A14IBSC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lstm_v8_copy_paste_dual_layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v8_copy_paste_dual_layer.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -122,10 +124,11 @@
       <file leaf-file-name="lstm_v8_copy_paste_dual_layer.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lstm_v8_copy_paste_dual_layer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="163" column="46" selection-start-line="163" selection-start-column="4" selection-end-line="177" selection-end-column="66" />
+            <state relative-caret-position="289">
+              <caret line="234" column="31" lean-forward="true" selection-start-line="234" selection-start-column="31" selection-end-line="234" selection-end-column="31" />
               <folding>
                 <element signature="e#387#5518#0" />
+                <element signature="e#5652#10929#0" />
               </folding>
             </state>
           </provider>
@@ -134,8 +137,8 @@
       <file leaf-file-name="lstm_v7.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lstm_v7.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7">
-              <caret line="181" column="33" selection-start-line="181" selection-start-column="33" selection-end-line="181" selection-end-column="33" />
+            <state relative-caret-position="163">
+              <caret line="173" column="39" lean-forward="true" selection-start-line="173" selection-start-column="39" selection-end-line="173" selection-end-column="39" />
               <folding>
                 <element signature="e#126#149#0" expanded="true" />
               </folding>
@@ -322,25 +325,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.lstm_v8_model7_based">
-    <configuration name="local_grabber" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="CSIRE" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/weather_data and parser" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/weather_data and parser/local_grabber.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
+  <component name="RunManager" selected="Python.lstm_v8_copy_paste_dual_layer">
     <configuration name="lstm_v7_model_based" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CSIRE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -354,6 +339,24 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lstm_v7_model_based.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="lstm_v8_copy_paste_dual_layer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CSIRE" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lstm_v8_copy_paste_dual_layer.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -414,19 +417,19 @@
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list>
-      <item itemvalue="Python.local_grabber" />
       <item itemvalue="Python.testdatasetmaker" />
       <item itemvalue="Python.lstm_v7_model_based" />
       <item itemvalue="Python.runfrozenLSTMv5" />
       <item itemvalue="Python.lstm_v8_model7_based" />
+      <item itemvalue="Python.lstm_v8_copy_paste_dual_layer" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.lstm_v8_copy_paste_dual_layer" />
         <item itemvalue="Python.lstm_v8_model7_based" />
         <item itemvalue="Python.runfrozenLSTMv5" />
         <item itemvalue="Python.lstm_v7_model_based" />
         <item itemvalue="Python.testdatasetmaker" />
-        <item itemvalue="Python.local_grabber" />
       </list>
     </recent_temporary>
   </component>
@@ -735,16 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lstm_v7.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="181" column="33" selection-start-line="181" selection-start-column="33" selection-end-line="181" selection-end-column="33" />
-          <folding>
-            <element signature="e#126#149#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/runfrozenLSTMv5.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
@@ -780,12 +773,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lstm_v7.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="173" column="39" lean-forward="true" selection-start-line="173" selection-start-column="39" selection-end-line="173" selection-end-column="39" />
+          <folding>
+            <element signature="e#126#149#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lstm_v8_copy_paste_dual_layer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="163" column="46" selection-start-line="163" selection-start-column="4" selection-end-line="177" selection-end-column="66" />
+        <state relative-caret-position="289">
+          <caret line="234" column="31" lean-forward="true" selection-start-line="234" selection-start-column="31" selection-end-line="234" selection-end-column="31" />
           <folding>
             <element signature="e#387#5518#0" />
+            <element signature="e#5652#10929#0" />
           </folding>
         </state>
       </provider>
