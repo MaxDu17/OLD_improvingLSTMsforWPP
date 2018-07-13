@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 upper_bound = 600
 lower_bound = 500
-version_number_1 = 6
+version_number_1 = 7
 
 x = np.arange(0,(upper_bound-lower_bound),1)
 

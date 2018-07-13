@@ -53,7 +53,7 @@ with tf.name_scope("layer_2_propagation"):
 
 with tf.name_scope("loss"):
     loss = tf.square(tf.subtract(output, Y))
-    loss = tf.reshape(loss, [])
+    loss = tf.reshape(loss, [], name = "loss")
 
 with tf.name_scope("optimizer"):
     optimizer = tf.train.AdamOptimizer(learning_rate=hyp.LEARNING_RATE).minimize(loss)

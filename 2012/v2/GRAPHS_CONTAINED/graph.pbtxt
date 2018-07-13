@@ -3717,6 +3717,42 @@ node {
   }
 }
 node {
+  name: "forward_roll/pass_back_state/x"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "forward_roll/pass_back_state"
+  op: "Add"
+  input: "forward_roll/pass_back_state/x"
+  input: "forward_roll/strided_slice_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
   name: "prediction/unstack"
   op: "Unpack"
   input: "forward_roll/strided_slice"
@@ -3810,7 +3846,7 @@ node {
   }
 }
 node {
-  name: "loss/Reshape/shape"
+  name: "loss/loss/shape"
   op: "Const"
   attr {
     key: "dtype"
@@ -3832,10 +3868,10 @@ node {
   }
 }
 node {
-  name: "loss/Reshape"
+  name: "loss/loss"
   op: "Reshape"
   input: "loss/Square"
-  input: "loss/Reshape/shape"
+  input: "loss/loss/shape"
   attr {
     key: "T"
     value {
@@ -4216,7 +4252,7 @@ node {
   }
 }
 node {
-  name: "optimizer/gradients/loss/Reshape_grad/Shape"
+  name: "optimizer/gradients/loss/loss_grad/Shape"
   op: "Const"
   attr {
     key: "dtype"
@@ -4240,10 +4276,10 @@ node {
   }
 }
 node {
-  name: "optimizer/gradients/loss/Reshape_grad/Reshape"
+  name: "optimizer/gradients/loss/loss_grad/Reshape"
   op: "Reshape"
   input: "optimizer/gradients/Fill"
-  input: "optimizer/gradients/loss/Reshape_grad/Shape"
+  input: "optimizer/gradients/loss/loss_grad/Shape"
   attr {
     key: "T"
     value {
@@ -4260,7 +4296,7 @@ node {
 node {
   name: "optimizer/gradients/loss/Square_grad/Const"
   op: "Const"
-  input: "^optimizer/gradients/loss/Reshape_grad/Reshape"
+  input: "^optimizer/gradients/loss/loss_grad/Reshape"
   attr {
     key: "dtype"
     value {
@@ -4294,7 +4330,7 @@ node {
 node {
   name: "optimizer/gradients/loss/Square_grad/Mul_1"
   op: "Mul"
-  input: "optimizer/gradients/loss/Reshape_grad/Reshape"
+  input: "optimizer/gradients/loss/loss_grad/Reshape"
   input: "optimizer/gradients/loss/Square_grad/Mul"
   attr {
     key: "T"
@@ -12380,7 +12416,7 @@ node {
   name: "summaries_and_saver/Loss"
   op: "ScalarSummary"
   input: "summaries_and_saver/Loss/tags"
-  input: "loss/Reshape"
+  input: "loss/loss"
   attr {
     key: "T"
     value {
@@ -13856,42 +13892,6 @@ node {
   input: "^summaries_and_saver/save/Assign_7"
   input: "^summaries_and_saver/save/Assign_8"
   input: "^summaries_and_saver/save/Assign_9"
-}
-node {
-  name: "init"
-  op: "NoOp"
-  input: "^optimizer/beta1_power/Assign"
-  input: "^optimizer/beta2_power/Assign"
-  input: "^weights_and_biases/forget_bias/Adam/Assign"
-  input: "^weights_and_biases/forget_bias/Adam_1/Assign"
-  input: "^weights_and_biases/forget_bias/Assign"
-  input: "^weights_and_biases/forget_weight/Adam/Assign"
-  input: "^weights_and_biases/forget_weight/Adam_1/Assign"
-  input: "^weights_and_biases/forget_weight/Assign"
-  input: "^weights_and_biases/gate_bias/Adam/Assign"
-  input: "^weights_and_biases/gate_bias/Adam_1/Assign"
-  input: "^weights_and_biases/gate_bias/Assign"
-  input: "^weights_and_biases/gate_weight/Adam/Assign"
-  input: "^weights_and_biases/gate_weight/Adam_1/Assign"
-  input: "^weights_and_biases/gate_weight/Assign"
-  input: "^weights_and_biases/input_bias/Adam/Assign"
-  input: "^weights_and_biases/input_bias/Adam_1/Assign"
-  input: "^weights_and_biases/input_bias/Assign"
-  input: "^weights_and_biases/input_weight/Adam/Assign"
-  input: "^weights_and_biases/input_weight/Adam_1/Assign"
-  input: "^weights_and_biases/input_weight/Assign"
-  input: "^weights_and_biases/output_bias/Adam/Assign"
-  input: "^weights_and_biases/output_bias/Adam_1/Assign"
-  input: "^weights_and_biases/output_bias/Assign"
-  input: "^weights_and_biases/output_weight/Adam/Assign"
-  input: "^weights_and_biases/output_weight/Adam_1/Assign"
-  input: "^weights_and_biases/output_weight/Assign"
-  input: "^weights_and_biases/outwards_propagating_bias/Adam/Assign"
-  input: "^weights_and_biases/outwards_propagating_bias/Adam_1/Assign"
-  input: "^weights_and_biases/outwards_propagating_bias/Assign"
-  input: "^weights_and_biases/outwards_propagating_weight/Adam/Assign"
-  input: "^weights_and_biases/outwards_propagating_weight/Adam_1/Assign"
-  input: "^weights_and_biases/outwards_propagating_weight/Assign"
 }
 versions {
   producer: 26

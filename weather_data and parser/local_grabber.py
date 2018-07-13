@@ -4,7 +4,7 @@ import os
 import time
 import pygrib #library that only works in linux
 
-hour = 2 #change me!
+hour = 3 #change me!
 hour_big = "0" + str(hour) + ".g2/"
 hour_sub = "_0" + str(hour) + "00_"
 

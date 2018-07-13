@@ -2,16 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/data_feeder v2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset_maker v2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/save_v5.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/checkfreeze.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/getpbtxt.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/GRAPHS/LOSS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/GRAPHS/LOSS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/GRAPHS/TEST.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/GRAPHS/TEST.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/GRAPHS/VALIDATION.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/GRAPHS/VALIDATION.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/GRAPHS/events.out.tfevents.1531493679.DESKTOP-A14IBSC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v2/GRAPHS_CONTAINED/graph.pbtxt" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v2/GRAPHS_CONTAINED/graph.pbtxt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lstm_v2_contained.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v2_contained.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lstm_v8_model2_based.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v8_model2_based.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/save_v3_multilayer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/makepbtxt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_frozen_LSTM_v3.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_frozen_LSTM_v3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/step_plotter_single.py" beforeDir="false" afterPath="$PROJECT_DIR$/step_plotter_single.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather_data and parser/local_grabber.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather_data and parser/local_grabber.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,11 +28,32 @@
             <file leaf-file-name="local_grabber.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/weather_data and parser/local_grabber.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="405">
-                    <caret line="105" column="47" selection-start-line="105" selection-start-column="47" selection-end-line="105" selection-end-column="47" />
+                  <state relative-caret-position="102">
+                    <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
                     <folding>
                       <element signature="e#0#22#0" expanded="true" />
                     </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="getpbtxt.py" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/getpbtxt.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="364">
+                    <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+                    <folding>
+                      <element signature="e#162#185#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="checkfreeze.py" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/checkfreeze.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="51">
+                    <caret line="3" column="43" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
                   </state>
                 </provider>
               </entry>
@@ -44,11 +65,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="lstm_v2_contained.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lstm_v2_contained.py">
+      <file leaf-file-name="run_frozen_LSTM_v3.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/run_frozen_LSTM_v3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="13" column="10" lean-forward="true" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
+            <state relative-caret-position="198">
+              <caret line="38" column="16" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="session.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Miniconda3/Lib/site-packages/tensorflow/python/client/session.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="1110" selection-start-line="1110" selection-end-line="1110" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="step_plotter_single.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/step_plotter_single.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -56,26 +95,8 @@
       <file leaf-file-name="modelv2_contained.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modelv2_contained.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-51">
+            <state relative-caret-position="51">
               <caret line="30" column="65" selection-start-line="30" selection-start-column="65" selection-end-line="30" selection-end-column="65" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="data_feeder.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_feeder.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="21" column="69" selection-start-line="21" selection-start-column="69" selection-end-line="21" selection-end-column="69" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="data_feeder v2.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_feeder v2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="74" lean-forward="true" selection-start-line="13" selection-start-column="74" selection-end-line="13" selection-end-column="74" />
             </state>
           </provider>
         </entry>
@@ -84,16 +105,16 @@
         <entry file="file://$PROJECT_DIR$/dataset_maker v2.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="10" column="34" lean-forward="true" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+              <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="run_frozen_LSTM_v3.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/run_frozen_LSTM_v3.py">
+      <file leaf-file-name="lstm_v2_contained.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lstm_v2_contained.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+            <state relative-caret-position="342">
+              <caret line="70" column="46" lean-forward="true" selection-start-line="70" selection-start-column="46" selection-end-line="70" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -101,8 +122,8 @@
       <file leaf-file-name="lstm_v8_model2_based.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lstm_v8_model2_based.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1508">
-              <caret line="110" column="22" selection-start-line="110" selection-start-column="22" selection-end-line="110" selection-end-column="22" />
+            <state relative-caret-position="271">
+              <caret line="58" column="39" lean-forward="true" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -110,17 +131,17 @@
       <file leaf-file-name="save_v4.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/save_v4.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+            <state relative-caret-position="170">
+              <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="save_v5.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="save_v5.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/save_v5.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
-              <caret line="21" column="70" lean-forward="true" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="70" />
+              <caret line="21" column="49" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -189,9 +210,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lstm_v1.py" />
-        <option value="$PROJECT_DIR$/makepbtxt.py" />
-        <option value="$PROJECT_DIR$/step_plotter_for_self_prompt.py" />
         <option value="$PROJECT_DIR$/self_prompt_LSTMv2.py" />
         <option value="$PROJECT_DIR$/lstm_v2.py" />
         <option value="$PROJECT_DIR$/adaptive_loss_function.py" />
@@ -210,7 +228,6 @@
         <option value="$PROJECT_DIR$/naive_base_case.py" />
         <option value="$PROJECT_DIR$/universal_run_frozenLSTM.py" />
         <option value="$PROJECT_DIR$/run_foreign_base_case.py" />
-        <option value="$PROJECT_DIR$/run_frozen_LSTM_v3.py" />
         <option value="$PROJECT_DIR$/testdatasetmaker.py" />
         <option value="$PROJECT_DIR$/data_feeder.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/get_all_data_labels.py" />
@@ -218,7 +235,6 @@
         <option value="$PROJECT_DIR$/weather_data and parser/get_best_pt.py" />
         <option value="$PROJECT_DIR$/lstm_v5.py" />
         <option value="$PROJECT_DIR$/lstm_v6.py" />
-        <option value="$PROJECT_DIR$/step_plotter_single.py" />
         <option value="$PROJECT_DIR$/run_foreign.py" />
         <option value="$PROJECT_DIR$/grabber_debugger.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/grabber_debugger.py" />
@@ -232,19 +248,25 @@
         <option value="$PROJECT_DIR$/dataset_maker.py" />
         <option value="$PROJECT_DIR$/save_v2.py" />
         <option value="$PROJECT_DIR$/save_v4.py" />
-        <option value="$PROJECT_DIR$/weather_data and parser/local_grabber.py" />
         <option value="$PROJECT_DIR$/pipeline/__init__.py" />
         <option value="$PROJECT_DIR$/hyperparameters.py" />
         <option value="$PROJECT_DIR$/modelv2_contained.py" />
-        <option value="$PROJECT_DIR$/lstm_v2_contained.py" />
-        <option value="$PROJECT_DIR$/lstm_v8_model2_based.py" />
         <option value="$PROJECT_DIR$/dataset_maker v2.py" />
         <option value="$PROJECT_DIR$/save_v5.py" />
+        <option value="$PROJECT_DIR$/weather_data and parser/local_grabber.py" />
+        <option value="$PROJECT_DIR$/../finalcode/checkfreeze.py" />
+        <option value="$PROJECT_DIR$/lstm_v2_contained.py" />
+        <option value="$PROJECT_DIR$/lstm_v8_model2_based.py" />
+        <option value="$PROJECT_DIR$/getpbtxt.py" />
+        <option value="$PROJECT_DIR$/checkfreeze.py" />
+        <option value="$PROJECT_DIR$/step_plotter_single.py" />
+        <option value="$PROJECT_DIR$/run_frozen_LSTM_v3.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="3194" />
+    <option name="x" value="3192" />
+    <option name="y" value="-8" />
     <option name="width" value="972" />
     <option name="height" value="1046" />
   </component>
@@ -273,8 +295,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/dataset_maker.py" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/step_plotter_single.py" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -294,8 +316,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.save_v5">
-    <configuration name="lstm_v2_contained" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.run_frozen_LSTM_v3">
+    <configuration name="checkfreeze" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CSIRE" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -307,13 +329,13 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lstm_v2_contained.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/checkfreeze.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="lstm_v8_model2_based" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="getpbtxt" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CSIRE" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -325,13 +347,13 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lstm_v8_model2_based.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/getpbtxt.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="save_v2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="run_frozen_LSTM_v3" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CSIRE" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -343,7 +365,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/save_v2.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_frozen_LSTM_v3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -367,7 +389,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="save_v5" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="step_plotter_single" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CSIRE" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -379,26 +401,26 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/save_v5.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/step_plotter_single.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list>
-      <item itemvalue="Python.lstm_v8_model2_based" />
-      <item itemvalue="Python.lstm_v2_contained" />
-      <item itemvalue="Python.save_v2" />
       <item itemvalue="Python.save_v4" />
-      <item itemvalue="Python.save_v5" />
+      <item itemvalue="Python.run_frozen_LSTM_v3" />
+      <item itemvalue="Python.getpbtxt" />
+      <item itemvalue="Python.checkfreeze" />
+      <item itemvalue="Python.step_plotter_single" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.save_v5" />
-        <item itemvalue="Python.lstm_v8_model2_based" />
+        <item itemvalue="Python.run_frozen_LSTM_v3" />
+        <item itemvalue="Python.step_plotter_single" />
+        <item itemvalue="Python.checkfreeze" />
         <item itemvalue="Python.save_v4" />
-        <item itemvalue="Python.save_v2" />
-        <item itemvalue="Python.lstm_v2_contained" />
+        <item itemvalue="Python.getpbtxt" />
       </list>
     </recent_temporary>
   </component>
@@ -428,15 +450,15 @@
     <frame x="3192" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49577466" visible="true" weight="0.011064278" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49488753" visible="true" weight="0.011064278" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32897604" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22657952" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.46732026" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32897604" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32897604" />
-      <window_info id="Structure" order="1" sideWeight="0.5042254" side_tool="true" visible="true" weight="0.011064278" />
+      <window_info id="Structure" order="1" sideWeight="0.50511247" side_tool="true" visible="true" weight="0.011064278" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.33769062" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.64705884" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -452,35 +474,17 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="11" />
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="29" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../SHAREDFOLDER/get_metadata.py" />
-    <entry file="file://$PROJECT_DIR$/weather_data and parser/ftp_test.py" />
-    <entry file="file://$PROJECT_DIR$/lstm_v3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="111" selection-start-line="111" selection-end-line="111" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/step_plotter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naive_base_case.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/weather_data and parser/grabber.py" />
-    <entry file="file://$PROJECT_DIR$/weather_data and parser/get_metadata.py" />
     <entry file="file://$PROJECT_DIR$/weather_data and parser/find_coordinate.py" />
     <entry file="file://$PROJECT_DIR$/weather_data and parser/get_lat_lon.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -528,13 +532,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="676">
           <caret line="1089" column="48" lean-forward="true" selection-start-line="1089" selection-start-column="48" selection-end-line="1090" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/step_plotter_single.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -618,7 +615,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/run_frozen_LSTM_v5.py">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/save_v2.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -644,16 +647,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/weather_data and parser/local_grabber.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="105" column="47" selection-start-line="105" selection-start-column="47" selection-end-line="105" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pipeline/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -675,13 +668,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modelv2_contained.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret line="30" column="65" selection-start-line="30" selection-start-column="65" selection-end-line="30" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dataset_maker.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="439">
@@ -699,14 +685,7 @@
     <entry file="file://$PROJECT_DIR$/data_feeder v2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="13" column="74" lean-forward="true" selection-start-line="13" selection-start-column="74" selection-end-line="13" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lstm_v2_contained.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="13" column="10" lean-forward="true" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
+          <caret line="13" column="74" selection-start-line="13" selection-start-column="74" selection-end-line="13" selection-end-column="74" />
         </state>
       </provider>
     </entry>
@@ -717,20 +696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/save_v4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lstm_v8_model2_based.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1508">
-          <caret line="110" column="22" selection-start-line="110" selection-start-column="22" selection-end-line="110" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/save_v3_multilayer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -738,24 +703,124 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataset_maker v2.py">
+    <entry file="file://$PROJECT_DIR$/makepbtxt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="34" lean-forward="true" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+        <state relative-caret-position="333">
+          <caret line="91" column="4" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_frozen_LSTM_v3.py">
+    <entry file="file://$PROJECT_DIR$/../finalcode/checkfreeze.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+        <state relative-caret-position="34">
+          <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/save_v5.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="21" column="70" lean-forward="true" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="70" />
+          <caret line="21" column="49" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lstm_v8_model2_based.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="58" column="39" lean-forward="true" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset_maker v2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/save_v4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/checkfreeze.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="43" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getpbtxt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+          <folding>
+            <element signature="e#162#185#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/weather_data and parser/local_grabber.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="1067" selection-start-line="1067" selection-end-line="1067" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/step_plotter_single.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelv2_contained.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="30" column="65" selection-start-line="30" selection-start-column="65" selection-end-line="30" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lstm_v2_contained.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="70" column="46" lean-forward="true" selection-start-line="70" selection-start-column="46" selection-end-line="70" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Miniconda3/Lib/site-packages/tensorflow/python/client/session.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="1110" selection-start-line="1110" selection-end-line="1110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_frozen_LSTM_v3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="38" column="16" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
         </state>
       </provider>
     </entry>

@@ -65,7 +65,7 @@ def step(last_state, X):
 with tf.name_scope("forward_roll"):
     states_list = tf.scan(fn = step, elems = inputs, initializer = init_state, name = "scan")
     curr_state = states_list[-1]
-    pass_back_state = states_list[0]
+    pass_back_state = tf.add([0.0], states_list[0], name = "pass_back_state")
 
 with tf.name_scope("prediction"):
     _, current_hidden = tf.unstack(curr_state)
@@ -74,7 +74,7 @@ with tf.name_scope("prediction"):
 
 with tf.name_scope("loss"):
     loss = tf.square(tf.subtract(output, Y))
-    loss = tf.reshape(loss, [], name = "loss")
+    loss = tf.reshape(loss, [], name="loss")
 
 with tf.name_scope("optimizer"):
     optimizer = tf.train.AdamOptimizer(learning_rate=hyp.LEARNING_RATE).minimize(loss)
@@ -98,94 +98,4 @@ with tf.name_scope("summaries_and_saver"):
     saver = tf.train.Saver()
 
 with tf.Session() as sess:
-    sess.run(tf.global_variables_initializer())
-    ckpt = tf.train.get_checkpoint_state(os.path.dirname('2012/v2/models_CONTAINED/'))
-    if ckpt and ckpt.model_checkpoint_path:
-        query = input("checkpoint detected! Would you like to restore from <" + ckpt.model_checkpoint_path + "> ?(y or n)\n")
-        if query == 'y':
-            saver.restore(sess, ckpt.model_checkpoint_path)
-            if np.sum(B_Forget.eval()) != 0:
-                print("session restored!")
-        else:
-            print("session discarded!")
-
-    log_loss = open("2012/v2/GRAPHS_CONTAINED/LOSS.csv", "w")
-    validation = open("2012/v2/GRAPHS_CONTAINED/VALIDATION.csv", "w")
-    test = open("2012/v2/GRAPHS_CONTAINED/TEST.csv", "w")
-    logger = csv.writer(log_loss, lineterminator="\n")
-    validation_logger = csv.writer(validation, lineterminator="\n")
-    test_logger = csv.writer(test, lineterminator="\n")
-
-    sm.create_training_set()
-
-
     tf.train.write_graph(sess.graph_def, '2012/v2/GRAPHS_CONTAINED/', 'graph.pbtxt')
-    writer = tf.summary.FileWriter("2012/v2/GRAPHS_CONTAINED/", sess.graph)
-
-    summary = None
-    next_state = np.zeros(shape=[2,1,hyp.cell_dim])
-
-    for epoch in range(hyp.EPOCHS):
-        reset, data = sm.next_epoch_waterfall() #this gets you the entire cow, so to speak
-        label = sm.get_label()
-        label = np.reshape(label, [1, 1])
-        data = np.reshape(data, [hyp.FOOTPRINT,1,1])
-        loss_ = 0
-
-        if reset:  # this allows for hidden states to reset after the training set loops back around
-            next_state = np.zeros(shape=[2,1,hyp.cell_dim])
-
-        next_state, output_, loss_, summary, _ = sess.run([curr_state, output, loss, summary_op, optimizer],
-                                                          feed_dict = {inputs:data, Y:label, init_state:next_state})
-
-        logger.writerow([loss_])
-
-        if epoch % 50 == 0:
-            writer.add_summary(summary, global_step=epoch)
-            print("I finished epoch ", epoch, " out of ", hyp.EPOCHS, " epochs")
-            print("The absolute value loss for this sample is ", np.sqrt(loss_))
-            print("predicted number: ", output_, ", real number: ", label)
-
-        if epoch % 2000 == 0 and epoch > 498:
-            saver.save(sess, "2012/v2/models_CONTAINED/LSTMv2", global_step=epoch)
-            print("---------------------saved model-------------------------")
-
-            next_state_hold = next_state #this "pauses" the training that is happening right now.
-            sm.create_validation_set()
-            RMS_loss = 0.0
-            next_state = np.zeros(shape=[2, 1, hyp.cell_dim])
-            for i in range(hyp.VALIDATION_NUMBER):
-                data = sm.next_epoch_valid_waterfall()
-                label_ = sm.get_label()
-                label = np.reshape(label_, [1, 1])
-                data = np.reshape(data, [hyp.FOOTPRINT, 1, 1])
-
-                next_state, loss_ = sess.run([pass_back_state, loss], #why passback? Because we only shift by one!
-                                               feed_dict = {inputs:data, Y:label, init_state:next_state})
-                RMS_loss += np.sqrt(loss_)
-            sm.clear_valid_counter()
-
-            RMS_loss = RMS_loss / hyp.VALIDATION_NUMBER
-            print("validation: RMS loss is ", RMS_loss)
-            validation_logger.writerow([epoch, RMS_loss])
-
-            next_state = next_state_hold #restoring past point...
-
-    RMS_loss = 0.0
-    next_state = np.zeros(shape=[2, 1, hyp.cell_dim])
-    print(np.shape(next_state))
-    for test in range(hyp.Info.TEST_SIZE):  # this will be replaced later
-
-        data = sm.next_epoch_test_waterfall()
-        label_ = sm.get_label()
-        label = np.reshape(label_, [1, 1])
-        data = np.reshape(data, [hyp.FOOTPRINT, 1, 1])
-
-        next_state, output_, loss_ = sess.run([pass_back_state, output, loss],  # why passback? Because we only shift by one!
-                                     feed_dict={inputs: data, Y: label, init_state: next_state})
-        RMS_loss += np.sqrt(loss_)
-        carrier = [label_, output_[0][0], np.sqrt(loss_)]
-        test_logger.writerow(carrier)
-    RMS_loss = RMS_loss / hyp.Info.TEST_SIZE
-    print("test: rms loss is ", RMS_loss)
-    test_logger.writerow(["final adaptive loss average", RMS_loss])
