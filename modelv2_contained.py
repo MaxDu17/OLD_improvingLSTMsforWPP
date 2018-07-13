@@ -9,153 +9,73 @@ ml = My_Loss()
 
 class Model2:
 
-    def create_graph_first_layer(self):
-        with tf.name_scope("layer_1"):
-
+    def create_graph(self, inputs, layer_number):
+        with tf.name_scope("layer_" + str(layer_number)):
             with tf.name_scope("weights_and_biases"):
-                self.W_Forget = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="forget_weight")
-                self.W_Output = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="output_weight")
-                self.W_Gate = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="gate_weight")
-                self.W_Input = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="input_weight")
-                self.W_Hidden_to_Out = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim, 1]),
+                W_Forget = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="forget_weight")
+                W_Output = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="output_weight")
+                W_Gate = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="gate_weight")
+                W_Input = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="input_weight")
+                W_Hidden_to_Out = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim, 1]),
                                               name="outwards_propagating_weight")
 
-                self.B_Forget = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="forget_bias")
-                self.B_Output = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="output_bias")
-                self.B_Gate = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="gate_bias")
-                self.B_Input = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="input_bias")
-                self.B_Hidden_to_Out = tf.Variable(tf.zeros(shape=[1, 1]), name="outwards_propagating_bias")
+                B_Forget = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="forget_bias")
+                B_Output = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="output_bias")
+                B_Gate = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="gate_bias")
+                B_Input = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="input_bias")
+                B_Hidden_to_Out = tf.Variable(tf.zeros(shape=[1, 1]), name="outwards_propagating_bias")
 
             with tf.name_scope("placeholders"):
-                self.X = tf.placeholder(shape=[1, 1], dtype=tf.float32, name="input_placeholder")  # waits for the prompt
-                self.H_last = tf.placeholder(shape=[1, hyp.hidden_dim], dtype=tf.float32, name="last_hidden")  # last hidden state (aka the "output")
-                self.C_last = tf.placeholder(shape=[1, hyp.cell_dim], dtype=tf.float32, name="last_cell")  # last cell state
+                init_state = tf.placeholder(shape=[2, 1, hyp.cell_dim], dtype=tf.float32, name="initial_states")
 
-            with tf.name_scope("to_gates"):
-                self.concat_input = tf.concat([self.X, self.H_last], axis=1,
-                                         name="input_concat")  # concatenates the inputs to one vector
-                self.forget_gate = tf.add(tf.matmul(self.concat_input, self.W_Forget, name="f_w_m"), self.B_Forget,
-                                     name="f_b_a")  # decides which to drop from cell
-                self.output_gate = tf.add(tf.matmul(self.concat_input, self.W_Output, name="o_w_m"), self.B_Output,
-                                     name="o_b_a")  # decides which to reveal to next_hidd/output
-                self.gate_gate = tf.add(tf.matmul(self.concat_input, self.W_Gate, name="g_w_m"), self.B_Gate,
-                                   name="g_b_a")  # decides which things to change in cell state
-                self.input_gate = tf.add(tf.matmul(self.concat_input, self.W_Input, name="i_w_m"), self.B_Input,
-                                    name="i_b_a")  # decides which of the changes to accept
-
-            with tf.name_scope("non-linearity"):  # makes the gates into what they should be
-                self.forget_gate = tf.sigmoid(self.forget_gate, name="sigmoid_forget")
-                self.output_gate = tf.sigmoid(self.output_gate, name="sigmoid_output")
-                self.input_gate = tf.sigmoid(self.input_gate, name="sigmoid_input")
-                self.gate_gate = tf.tanh(self.gate_gate, name="tanh_gate")
-
-            with tf.name_scope("forget_gate"):  # forget gate values and propagate
-                self.current_cell = tf.multiply(self.forget_gate, self.C_last, name="forget_gating")
-
-            with tf.name_scope("suggestion_node"):  # suggestion gate
-                self.suggestion_box = tf.multiply(self.input_gate, self.gate_gate, name="input_determiner")
-                self.current_cell = tf.add(self.suggestion_box, self.current_cell, name="input_and_gate_gating")
-
-            with tf.name_scope("output_gate"):  # output gate values to hidden
-                self.current_cell = tf.tanh(self.current_cell, name="output_presquashing")
-                self.current_hidden = tf.multiply(self.output_gate, self.current_cell, name="next_hidden")
-                self.raw_output = tf.add(tf.matmul(self.current_hidden, self.W_Hidden_to_Out, name="WHTO_w_m"), self.B_Hidden_to_Out,
-                                    name="BHTO_b_a")
-                self.output = tf.nn.relu(self.raw_output, name="output")
-
-            with tf.name_scope("summaries_and_saver"):
-                tf.summary.histogram("W_Forget", self.W_Forget)
-                tf.summary.histogram("W_Input", self.W_Input)
-                tf.summary.histogram("W_Output", self.W_Output)
-                tf.summary.histogram("W_Gate", self.W_Gate)
-                tf.summary.histogram("W_Hidden_to_Out", self.W_Hidden_to_Out)
-
-                tf.summary.histogram("Cell_State", self.current_cell)
-
-                tf.summary.histogram("B_Forget", self.B_Forget)
-                tf.summary.histogram("B_Input", self.B_Input)
-                tf.summary.histogram("B_Output", self.B_Output)
-                tf.summary.histogram("B_Gate", self.B_Gate)
-                tf.summary.histogram("B_Hidden_to_Out", self.B_Hidden_to_Out)
-
-        return self.output, self.current_cell, self.current_hidden
-
-    def create_graph(self, layer_number, last_output): #last_output links them together
-            with tf.name_scope("layer_" + str(layer_number)):
-                with tf.name_scope("weights_and_biases"):
-                    self.W_Forget = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]),
-                                                name="forget_weight")
-                    self.W_Output = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]),
-                                                name="output_weight")
-                    self.W_Gate = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]),
-                                              name="gate_weight")
-                    self.W_Input = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]),
-                                               name="input_weight")
-                    self.W_Hidden_to_Out = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim, 1]),
-                                                       name="outwards_propagating_weight")
-
-                    self.B_Forget = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="forget_bias")
-                    self.B_Output = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="output_bias")
-                    self.B_Gate = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="gate_bias")
-                    self.B_Input = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="input_bias")
-                    self.B_Hidden_to_Out = tf.Variable(tf.zeros(shape=[1, 1]), name="outwards_propagating_bias")
-                '''
-                with tf.name_scope("starting_states"):
-                    H_begin = tf.Variable(tf.random_normal(shape = [1, hyp.hidden_dim], name = "starting_hidd_val"))
-                    C_begin = tf.Variable(tf.random_normal(shape=[1, hyp.cell_dim], name="starting_cell_val"))
-                '''
-                with tf.name_scope("placeholders"):
-                    self.H_last = tf.placeholder(shape=[1, hyp.hidden_dim], dtype=tf.float32,
-                                                 name="last_hidden")  # last hidden state (aka the "output")
-                    self.C_last = tf.placeholder(shape=[1, hyp.cell_dim], dtype=tf.float32,
-                                                 name="last_cell")  # last cell state
-
+            def step(last_state, X):
                 with tf.name_scope("to_gates"):
-                    self.concat_input = tf.concat([last_output, self.H_last], axis=1,
-                                                  name="input_concat")  # concatenates the inputs to one vector
-                    self.forget_gate = tf.add(tf.matmul(self.concat_input, self.W_Forget, name="f_w_m"), self.B_Forget,
-                                              name="f_b_a")  # decides which to drop from cell
-                    self.output_gate = tf.add(tf.matmul(self.concat_input, self.W_Output, name="o_w_m"), self.B_Output,
-                                              name="o_b_a")  # decides which to reveal to next_hidd/output
-                    self.gate_gate = tf.add(tf.matmul(self.concat_input, self.W_Gate, name="g_w_m"), self.B_Gate,
-                                            name="g_b_a")  # decides which things to change in cell state
-                    self.input_gate = tf.add(tf.matmul(self.concat_input, self.W_Input, name="i_w_m"), self.B_Input,
-                                             name="i_b_a")  # decides which of the changes to accept
+                    C_last, H_last = tf.unstack(last_state)
+                    concat_input = tf.concat([X, H_last], axis=1,
+                                             name="input_concat")  # concatenates the inputs to one vector
+                    forget_gate = tf.add(tf.matmul(concat_input, W_Forget, name="f_w_m"), B_Forget,
+                                         name="f_b_a")  # decides which to drop from cell
+                    output_gate = tf.add(tf.matmul(concat_input, W_Output, name="o_w_m"), B_Output,
+                                         name="o_b_a")  # decides which to reveal to next_hidd/output
+                    gate_gate = tf.add(tf.matmul(concat_input, W_Gate, name="g_w_m"), B_Gate,
+                                       name="g_b_a")  # decides which things to change in cell state
+                    input_gate = tf.add(tf.matmul(concat_input, W_Input, name="i_w_m"), B_Input,
+                                        name="i_b_a")  # decides which of the changes to accept
 
                 with tf.name_scope("non-linearity"):  # makes the gates into what they should be
-                    self.forget_gate = tf.sigmoid(self.forget_gate, name="sigmoid_forget")
-                    self.output_gate = tf.sigmoid(self.output_gate, name="sigmoid_output")
-                    self.input_gate = tf.sigmoid(self.input_gate, name="sigmoid_input")
-                    self.gate_gate = tf.tanh(self.gate_gate, name="tanh_gate")
+                    forget_gate = tf.sigmoid(forget_gate, name="sigmoid_forget")
+                    output_gate = tf.sigmoid(output_gate, name="sigmoid_output")
+                    input_gate = tf.sigmoid(input_gate, name="sigmoid_input")
+                    gate_gate = tf.tanh(gate_gate, name="tanh_gate")
 
                 with tf.name_scope("forget_gate"):  # forget gate values and propagate
-                    self.current_cell = tf.multiply(self.forget_gate, self.C_last, name="forget_gating")
+                    current_cell = tf.multiply(forget_gate, C_last, name="forget_gating")
 
                 with tf.name_scope("suggestion_node"):  # suggestion gate
-                    self.suggestion_box = tf.multiply(self.input_gate, self.gate_gate, name="input_determiner")
-                    self.current_cell = tf.add(self.suggestion_box, self.current_cell, name="input_and_gate_gating")
+                    suggestion_box = tf.multiply(input_gate, gate_gate, name="input_determiner")
+                    current_cell = tf.add(suggestion_box, current_cell, name="input_and_gate_gating")
 
                 with tf.name_scope("output_gate"):  # output gate values to hidden
-                    self.current_cell = tf.tanh(self.current_cell, name="output_presquashing")
-                    self.current_hidden = tf.multiply(self.output_gate, self.current_cell, name="next_hidden")
-                    self.raw_output = tf.add(tf.matmul(self.current_hidden, self.W_Hidden_to_Out, name="WHTO_w_m"),
-                                             self.B_Hidden_to_Out,
-                                             name="BHTO_b_a")
-                    self.output = tf.nn.relu(self.raw_output, name="output")
+                    current_cell = tf.tanh(current_cell, name="output_presquashing")
+                    current_hidden = tf.multiply(output_gate, current_cell, name="next_hidden")
+                    states = tf.stack([current_cell, current_hidden])
+                return states
 
-                with tf.name_scope("summaries_and_saver"):
-                    tf.summary.histogram("W_Forget", self.W_Forget)
-                    tf.summary.histogram("W_Input", self.W_Input)
-                    tf.summary.histogram("W_Output", self.W_Output)
-                    tf.summary.histogram("W_Gate", self.W_Gate)
-                    tf.summary.histogram("W_Hidden_to_Out", self.W_Hidden_to_Out)
+            with tf.name_scope("forward_roll"):
+                states_list = tf.scan(fn=step, elems=inputs, initializer=init_state, name="scan")
 
-                    tf.summary.histogram("Cell_State", self.current_cell)
+            with tf.name_scope("summaries_and_saver"):
+                tf.summary.histogram("W_Forget", W_Forget)
+                tf.summary.histogram("W_Input", W_Input)
+                tf.summary.histogram("W_Output", W_Output)
+                tf.summary.histogram("W_Gate", W_Gate)
+                tf.summary.histogram("W_Hidden_to_Out", W_Hidden_to_Out)
 
-                    tf.summary.histogram("B_Forget", self.B_Forget)
-                    tf.summary.histogram("B_Input", self.B_Input)
-                    tf.summary.histogram("B_Output", self.B_Output)
-                    tf.summary.histogram("B_Gate", self.B_Gate)
-                    tf.summary.histogram("B_Hidden_to_Out", self.B_Hidden_to_Out)
+                tf.summary.histogram("B_Forget", B_Forget)
+                tf.summary.histogram("B_Input", B_Input)
+                tf.summary.histogram("B_Output", B_Output)
+                tf.summary.histogram("B_Gate", B_Gate)
+                tf.summary.histogram("B_Hidden_to_Out", B_Hidden_to_Out)
 
-            return self.output, self.current_cell, self.current_hidden
+        return states_list
+
