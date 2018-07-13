@@ -121,50 +121,50 @@ with tf.Session() as sess:
             print("predicted number: ", output_, ", real number: ", label)
 
 ############################################################### validation code here
-            if epoch % 2000 == 0 and epoch > 498:
-                saver.save(sess, "2012/v8/models/LSTMv8", global_step=epoch)
-                print("---------------------saved model-------------------------")
+        if epoch % 2000 == 0 and epoch > 498:
+            saver.save(sess, "2012/v8/models/LSTMv8", global_step=epoch)
+            print("---------------------saved model-------------------------")
 
-                init_state_1_hold = init_state_1_  # this "pauses" the training that is happening right now.
-                init_state_2_hold = init_state_2_
-                sm.create_validation_set()
-                RMS_loss = 0.0
-                next_state = np.zeros(shape=[2, 1, hyp.cell_dim])
-                for i in range(hyp.VALIDATION_NUMBER):
-                    data = sm.next_epoch_valid_waterfall()
-                    label_ = sm.get_label()
-                    label = np.reshape(label_, [1, 1])
-                    data = np.reshape(data, [hyp.FOOTPRINT, 1, 1])
+            init_state_1_hold = init_state_1_  # this "pauses" the training that is happening right now.
+            init_state_2_hold = init_state_2_
+            sm.create_validation_set()
+            RMS_loss = 0.0
+            next_state = np.zeros(shape=[2, 1, hyp.cell_dim])
+            for i in range(hyp.VALIDATION_NUMBER):
+                data = sm.next_epoch_valid_waterfall()
+                label_ = sm.get_label()
+                label = np.reshape(label_, [1, 1])
+                data = np.reshape(data, [hyp.FOOTPRINT, 1, 1])
 
-                    init_state_1_, init_state_2_, loss_ = sess.run([pass_back_state_1, pass_back_state_2, loss],  # why passback? Because we only shift by one!
-                                                 feed_dict={Y: label, init_state_1: init_state_1_,
-                                                            init_state_2: init_state_2_, inputs: data})
-                    RMS_loss += np.sqrt(loss_)
-                sm.clear_valid_counter()
+                init_state_1_, init_state_2_, loss_ = sess.run([pass_back_state_1, pass_back_state_2, loss],  # why passback? Because we only shift by one!
+                                             feed_dict={Y: label, init_state_1: init_state_1_,
+                                                        init_state_2: init_state_2_, inputs: data})
+                RMS_loss += np.sqrt(loss_)
+            sm.clear_valid_counter()
 
-                RMS_loss = RMS_loss / hyp.VALIDATION_NUMBER
-                print("validation: RMS loss is ", RMS_loss)
-                validation_logger.writerow([epoch, RMS_loss])
+            RMS_loss = RMS_loss / hyp.VALIDATION_NUMBER
+            print("validation: RMS loss is ", RMS_loss)
+            validation_logger.writerow([epoch, RMS_loss])
 
-                init_state_1_ = init_state_1_hold
-                init_state_2_ = init_state_2_hold  # restoring past point...
+            init_state_1_ = init_state_1_hold
+            init_state_2_ = init_state_2_hold  # restoring past point...
 
-        RMS_loss = 0.0
-        next_state = np.zeros(shape=[2, 1, hyp.cell_dim])
-        print(np.shape(next_state))
-        for test in range(hyp.Info.TEST_SIZE):  # this will be replaced later
+    RMS_loss = 0.0
+    next_state = np.zeros(shape=[2, 1, hyp.cell_dim])
+    print(np.shape(next_state))
+    for test in range(hyp.Info.TEST_SIZE):  # this will be replaced later
 
-            data = sm.next_epoch_test_waterfall()
-            label_ = sm.get_label()
-            label = np.reshape(label_, [1, 1])
-            data = np.reshape(data, [hyp.FOOTPRINT, 1, 1])
+        data = sm.next_epoch_test_waterfall()
+        label_ = sm.get_label()
+        label = np.reshape(label_, [1, 1])
+        data = np.reshape(data, [hyp.FOOTPRINT, 1, 1])
 
-            init_state_1_, init_state_2_, output_, loss_ = sess.run([pass_back_state_1, pass_back_state_2, output, loss], # why passback? Because we only shift by one!
-                                                           feed_dict={Y: label, init_state_1: init_state_1_,
-                                                                      init_state_2: init_state_2_, inputs: data})
-            RMS_loss += np.sqrt(loss_)
-            carrier = [label_, output_[0][0], np.sqrt(loss_)]
-            test_logger.writerow(carrier)
-        RMS_loss = RMS_loss / hyp.Info.TEST_SIZE
-        print("test: rms loss is ", RMS_loss)
-        test_logger.writerow(["final adaptive loss average", RMS_loss])
+        init_state_1_, init_state_2_, output_, loss_ = sess.run([pass_back_state_1, pass_back_state_2, output, loss], # why passback? Because we only shift by one!
+                                                       feed_dict={Y: label, init_state_1: init_state_1_,
+                                                                  init_state_2: init_state_2_, inputs: data})
+        RMS_loss += np.sqrt(loss_)
+        carrier = [label_, output_[0][0], np.sqrt(loss_)]
+        test_logger.writerow(carrier)
+    RMS_loss = RMS_loss / hyp.Info.TEST_SIZE
+    print("test: rms loss is ", RMS_loss)
+    test_logger.writerow(["final adaptive loss average", RMS_loss])
