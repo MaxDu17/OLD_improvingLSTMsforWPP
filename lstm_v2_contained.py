@@ -163,7 +163,7 @@ with tf.Session() as sess:
                 next_state, loss_ = sess.run([pass_back_state, loss], #why passback? Because we only shift by one!
                                                feed_dict = {inputs:data, Y:label, init_state:next_state})
                 RMS_loss += np.sqrt(loss_)
-                sm.clear_valid_counter()
+            sm.clear_valid_counter()
 
             RMS_loss = RMS_loss / hyp.VALIDATION_NUMBER
             print("validation: RMS loss is ", RMS_loss)
