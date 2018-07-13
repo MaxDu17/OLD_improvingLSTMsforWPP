@@ -9,37 +9,34 @@ ml = My_Loss()
 
 class Model2:
 
-    def create_graph(self, inputs, layer_number):
+    def create_graph(self, inputs, layer_number, init_state):
         with tf.name_scope("layer_" + str(layer_number)):
             with tf.name_scope("weights_and_biases"):
-                W_Forget = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="forget_weight")
-                W_Output = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="output_weight")
-                W_Gate = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="gate_weight")
-                W_Input = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="input_weight")
-                W_Hidden_to_Out = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim, 1]),
+                self.W_Forget = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="forget_weight")
+                self.W_Output = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="output_weight")
+                self.W_Gate = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="gate_weight")
+                self.W_Input = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 1, hyp.cell_dim]), name="input_weight")
+                self.W_Hidden_to_Out = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim, 1]),
                                               name="outwards_propagating_weight")
 
-                B_Forget = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="forget_bias")
-                B_Output = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="output_bias")
-                B_Gate = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="gate_bias")
-                B_Input = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="input_bias")
-                B_Hidden_to_Out = tf.Variable(tf.zeros(shape=[1, 1]), name="outwards_propagating_bias")
-
-            with tf.name_scope("placeholders"):
-                init_state = tf.placeholder(shape=[2, 1, hyp.cell_dim], dtype=tf.float32, name="initial_states")
+                self.B_Forget = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="forget_bias")
+                self.B_Output = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="output_bias")
+                self.B_Gate = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="gate_bias")
+                self.B_Input = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="input_bias")
+                self.B_Hidden_to_Out = tf.Variable(tf.zeros(shape=[1, 1]), name="outwards_propagating_bias")
 
             def step(last_state, X):
                 with tf.name_scope("to_gates"):
                     C_last, H_last = tf.unstack(last_state)
                     concat_input = tf.concat([X, H_last], axis=1,
                                              name="input_concat")  # concatenates the inputs to one vector
-                    forget_gate = tf.add(tf.matmul(concat_input, W_Forget, name="f_w_m"), B_Forget,
+                    forget_gate = tf.add(tf.matmul(concat_input, self.W_Forget, name="f_w_m"), self.B_Forget,
                                          name="f_b_a")  # decides which to drop from cell
-                    output_gate = tf.add(tf.matmul(concat_input, W_Output, name="o_w_m"), B_Output,
+                    output_gate = tf.add(tf.matmul(concat_input, self.W_Output, name="o_w_m"), self.B_Output,
                                          name="o_b_a")  # decides which to reveal to next_hidd/output
-                    gate_gate = tf.add(tf.matmul(concat_input, W_Gate, name="g_w_m"), B_Gate,
+                    gate_gate = tf.add(tf.matmul(concat_input, self.W_Gate, name="g_w_m"), self.B_Gate,
                                        name="g_b_a")  # decides which things to change in cell state
-                    input_gate = tf.add(tf.matmul(concat_input, W_Input, name="i_w_m"), B_Input,
+                    input_gate = tf.add(tf.matmul(concat_input, self.W_Input, name="i_w_m"), self.B_Input,
                                         name="i_b_a")  # decides which of the changes to accept
 
                 with tf.name_scope("non-linearity"):  # makes the gates into what they should be
@@ -65,17 +62,15 @@ class Model2:
                 states_list = tf.scan(fn=step, elems=inputs, initializer=init_state, name="scan")
 
             with tf.name_scope("summaries_and_saver"):
-                tf.summary.histogram("W_Forget", W_Forget)
-                tf.summary.histogram("W_Input", W_Input)
-                tf.summary.histogram("W_Output", W_Output)
-                tf.summary.histogram("W_Gate", W_Gate)
-                tf.summary.histogram("W_Hidden_to_Out", W_Hidden_to_Out)
+                tf.summary.histogram("W_Forget", self.W_Forget)
+                tf.summary.histogram("W_Input", self.W_Input)
+                tf.summary.histogram("W_Output", self.W_Output)
+                tf.summary.histogram("W_Gate", self.W_Gate)
 
-                tf.summary.histogram("B_Forget", B_Forget)
-                tf.summary.histogram("B_Input", B_Input)
-                tf.summary.histogram("B_Output", B_Output)
-                tf.summary.histogram("B_Gate", B_Gate)
-                tf.summary.histogram("B_Hidden_to_Out", B_Hidden_to_Out)
+                tf.summary.histogram("B_Forget", self.B_Forget)
+                tf.summary.histogram("B_Input", self.B_Input)
+                tf.summary.histogram("B_Output", self.B_Output)
+                tf.summary.histogram("B_Gate", self.B_Gate)
 
         return states_list
 
