@@ -4,7 +4,7 @@ import os
 import time
 import pygrib #library that only works in linux
 
-hour = 1 #change me!
+hour = 2 #change me!
 hour_big = "0" + str(hour) + ".g2/"
 hour_sub = "_0" + str(hour) + "00_"
 
@@ -66,7 +66,8 @@ try:
     lines = lines[1:len(lines) + 1]
     for i in range(len(lines)): #this is a 'dumb' way of casting a list
         for j in range(len(lines[i])):
-                lines[i][j] = float(lines[i][j])
+            lines[i][j] = float(lines[i][j])
+
     input("loaded previous data: " + str(len(lines)) + " lines of data. Press enter to continue")
     k.close()
     big_data_ = open("2011_TOTALSET.csv", "w")  # here we get the large file
@@ -101,7 +102,7 @@ for l in range(int(lower_bound[1]),13):
             try:
                 opened_file = pygrib.open(address)
             except:
-                if j == 31 or ((j == 28 or j == 29) and l == 2 ):
+                if j == 31 or ((j == 28 or j == 29 or j == 30 ) and l == 2 ):
                     print("this month doesn't have a 31 (or 28/29 for feb!) Skipping...")
                     base_template = ["IGNORE"]
                 else:
@@ -124,5 +125,5 @@ for l in range(int(lower_bound[1]),13):
             big_data.writerow(base_template)
 
 
-base_template = [2011,1,1,hour+1]
+base_template = [2011,1,1,hour+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 big_data.writerow(base_template) #this is done so the next itertion of time doesn't erase the past point.
