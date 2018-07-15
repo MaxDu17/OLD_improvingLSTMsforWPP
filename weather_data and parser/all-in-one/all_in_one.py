@@ -2,12 +2,13 @@
 
 import subprocess, os
 from ftplib import FTP
-
-directory = ""
+path = "/home/max/DRIVE/data/"
+len_path = len(path)
+directory = "HAS011154726"
 # Connect to FTP server and go to the folder
 ftp = FTP('ftp.ncdc.noaa.gov')
 ftp.login()
-ftp.cwd('pub/has/model/HAS011154722/')
+ftp.cwd('pub/has/model/' + directory + '/')
 
 # Read the list from a file, and remove white spaces
 #with open('tarfilelist.txt') as f:
@@ -19,11 +20,13 @@ for filename in content:
     # Download the file from the FTP server
     command = 'RETR ' + filename
     print("Downloading: " + filename)
-    ftp.retrbinary(command, open(filename, 'wb').write)
+    overarching_name = path + filename
+    ftp.retrbinary(command, open(overarching_name, 'wb').write)
 
     # Untar each file to its own folder, after it is done, delete the tar file
-    dirname = filename.replace('.tar','')
-    tarcommand = 'tar -xf '+filename + ' -C ./'+dirname + '; rm '+filename 
-    print("Run it in a subprocess: " + tarcommand)
+    dirname = overarching_name.replace('.tar','')
+    tarcommand = 'tar -xf '+overarching_name + ' -C ' + dirname + '; rm '+overarching_name + \
+                 '; cd /home/max/SHARED; python3 local_grabber_single.py ' + dirname
+    print("Extracting tar: " + filename)
     subprocess.call(["mkdir", dirname])
     subprocess.Popen(['/bin/sh', '-c', tarcommand], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
