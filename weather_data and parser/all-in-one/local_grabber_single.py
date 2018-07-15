@@ -5,7 +5,7 @@ import time
 import pygrib #library that only works in linux
 from sys import argv
 
-script, dir_name = argv
+script, dir_name, filename = argv
 
 category_dict = {0: "surface_pressure", 1: "temp@2M", 2: "wind_gust_speed", 3: "2_M_rel_humid", 4: "temp_gnd_lvl"}
 
@@ -60,3 +60,4 @@ big_data.writerow(base_template)
 big_data.flush()
 big_data.close()
 os.rmdir(dir_name)
+k = open(filename + ".txt", "w")

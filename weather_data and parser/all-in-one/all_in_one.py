@@ -19,30 +19,20 @@ except:
 # Read the list from a file, and remove white spaces
 #with open('tarfilelist.txt') as f:
 
-try:
-    print("attempting crash recovery")
-    l = open("crashfile.csv", "r")
-    content = csv.reader(l)
 
-    k_ = open("tarfiles.csv", "w")
-    k = csv.writer(k_, lineterminator = '\n')
-    k.writerows(content)
-    k.close()
-    
-    k = open("tarfiles.csv", "r")
-    content = csv.reader(k)
+print("attempting crash recovery")
+crash_list = os.listdir(path + 'crash/')
+print(crash_list)
+k_ = open("tarfiles.csv", "r")
+big_tar_list = csv.reader(k_)
+k_.close()
 
-except FileNotFoundError:
-    print("Either crash recovery failed, or this is a new run")
-    k = open("tarfiles.csv", "r")
-    content = csv.reader(k)
-else:
-    print("file(s) not found. Quitting!")
-    quit()
+big_tar_list.remove(crash_list) #now we are left with a list of things to do
 
+input("crash recovery complete. " + str(len(big_tar_list)) + " files to go!"
+                                                           " press enter to continue")
 
-
-for filename_ in content:
+for filename_ in big_tar_list:
     filename = str(filename_[0])
     # Download the file from the FTP server
     command = 'RETR ' + filename
@@ -53,7 +43,7 @@ for filename_ in content:
     # Untar each file to its own folder, after it is done, delete the tar file
     dirname = overarching_name.replace('.tar','')
     tarcommand = 'tar -xf '+overarching_name + ' -C ' + dirname + '; rm '+overarching_name + \
-                 '; cd /home/max/SHARED; python3 local_grabber_single.py ' + dirname
+                 '; cd /home/max/SHARED; python3 local_grabber_single.py ' + dirname + " " + filename
     print("Extracting tar: " + filename)
     subprocess.call(["mkdir", dirname])
     subprocess.Popen(['/bin/sh', '-c', tarcommand])
