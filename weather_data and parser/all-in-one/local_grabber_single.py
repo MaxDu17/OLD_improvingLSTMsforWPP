@@ -26,23 +26,25 @@ for i in range(3):
         concat = time + category
         headers.append(concat)
 
-
-big_data_ = open(dir_name, "w") #here we get the large file
+print("saving csv to: " + dir_name)
+big_data_ = open(dir_name + "_data", "w") #here we get the large file
 big_data = csv.writer(big_data_, lineterminator = "\n")
-big_data.writerow() #we write the headers here
+big_data.writerow(headers)
 
-base_template = list()
+
 
 file_names = os.listdir(dir_name)
+i = 0
+
+file_data = file_names[0] #this is to build up the template
+year = file_data[9:13]
+month = file_data[13:15]
+date = file_data[15:17]
+hour = file_data[19]
+base_template = [year, month, date, hour]
 for file_name in file_names[0:3]:
     #ruc2_130_20110102_0500_004
-    year = file_name[9:13]
-    month = file_name[13:15]
-    date = file_name[15:17]
-    hour = file_name[19]
-    base_template = [year, month, date, hour]
-
-    opened_file = pygrib.open(dir_name + file_name)
+    opened_file = pygrib.open(dir_name + "/" + file_name)
 
     delta_list = [k * delta[i] for k in gate_delta]
     ok_list = [sum(x) for x in zip(delta_list, keepers)]
@@ -53,5 +55,6 @@ for file_name in file_names[0:3]:
         single_pt = selection_[point_to_keep_i][point_to_keep_j]
         base_template.append(single_pt)
         print("extracted: " + str(number) + "\n")
-
+    i += 1
+print(base_template)
 big_data.writerow(base_template)

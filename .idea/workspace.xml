@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/2011_TOTALSET.csv" beforeDir="false" afterPath="$PROJECT_DIR$/weather_data and parser/2011_TOTALSET.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/all-in-one/tarfilelist.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/local_grabber_single.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather_data and parser/all-in-one/get_files.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather_data and parser/all-in-one/get_files.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather_data and parser/all-in-one/local_grabber_single.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather_data and parser/all-in-one/local_grabber_single.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -44,26 +43,41 @@
             <file leaf-file-name="all_in_one.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="34">
-                    <caret line="2" column="21" lean-forward="true" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+                  <state relative-caret-position="335">
+                    <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
+                    <folding>
+                      <element signature="e#23#33#0" expanded="true" />
+                    </folding>
                   </state>
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="local_grabber_single.py" pinned="false" current-in-tab="false">
+            <file leaf-file-name="local_grabber_single.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/local_grabber_single.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="238">
-                    <caret line="19" column="20" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+                  <state relative-caret-position="335">
+                    <caret line="53" column="37" lean-forward="true" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
                   </state>
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="get_files.py" pinned="false" current-in-tab="true">
+            <file leaf-file-name="get_files.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/get_files.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="85">
-                    <caret line="5" column="30" lean-forward="true" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+                  <state>
+                    <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="22" />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="local_grabber.py" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/weather_data and parser/local_grabber.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="-464">
+                    <caret line="54" column="41" lean-forward="true" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
+                    <folding>
+                      <element signature="e#0#22#0" expanded="true" />
+                    </folding>
                   </state>
                 </provider>
               </entry>
@@ -202,8 +216,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lstm_v4.py" />
-        <option value="$PROJECT_DIR$/plottest.py" />
         <option value="$PROJECT_DIR$/grabber.py" />
         <option value="$PROJECT_DIR$/ftp_test.py" />
         <option value="$PROJECT_DIR$/lstm_v3.py" />
@@ -251,8 +263,10 @@
         <option value="$PROJECT_DIR$/run_frozen_LSTM_v3.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/local_grabber.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/local_grabber_single.py" />
-        <option value="$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py" />
         <option value="$PROJECT_DIR$/get_files.py" />
+        <option value="$PROJECT_DIR$/weather_data and parser/all-in-one/get_files.py" />
+        <option value="$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py" />
+        <option value="$PROJECT_DIR$/weather_data and parser/all-in-one/local_grabber_single.py" />
       </list>
     </option>
   </component>
@@ -754,16 +768,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/weather_data and parser/local_grabber.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="110" column="57" lean-forward="true" selection-start-line="110" selection-start-column="57" selection-end-line="110" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/weather_data and parser/local_grabber_single.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
@@ -798,13 +802,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="21" lean-forward="true" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/run_frozen_LSTM_v3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -812,17 +809,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/local_grabber_single.py">
+    <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" column="20" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+        <state relative-caret-position="335">
+          <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
+          <folding>
+            <element signature="e#23#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/weather_data and parser/local_grabber.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-464">
+          <caret line="54" column="41" lean-forward="true" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/get_files.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="30" lean-forward="true" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+        <state>
+          <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/local_grabber_single.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="53" column="37" lean-forward="true" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
         </state>
       </provider>
     </entry>
