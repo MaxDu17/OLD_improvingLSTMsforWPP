@@ -20,13 +20,27 @@ except:
 #with open('tarfilelist.txt') as f:
 
 try:
+    print("attempting crash recovery")
+    l = open("crashfile.csv", "r")
+    content = csv.reader(l)
+
+    k_ = open("tarfiles.csv", "w")
+    k = csv.writer(k_, lineterminator = '\n')
+    k.writerows(content)
+    k.close()
+    
     k = open("tarfiles.csv", "r")
+    content = csv.reader(k)
+
 except FileNotFoundError:
-    print("file not found. Quitting!")
+    print("Either crash recovery failed, or this is a new run")
+    k = open("tarfiles.csv", "r")
+    content = csv.reader(k)
+else:
+    print("file(s) not found. Quitting!")
     quit()
 
-print("reading files")
-content = csv.reader(k)
+
 
 for filename_ in content:
     filename = str(filename_[0])
@@ -42,4 +56,4 @@ for filename_ in content:
                  '; cd /home/max/SHARED; python3 local_grabber_single.py ' + dirname
     print("Extracting tar: " + filename)
     subprocess.call(["mkdir", dirname])
-    subprocess.Popen(['/bin/sh', '-c', tarcommand], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    subprocess.Popen(['/bin/sh', '-c', tarcommand])

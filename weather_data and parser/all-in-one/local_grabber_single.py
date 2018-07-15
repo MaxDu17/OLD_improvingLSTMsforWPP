@@ -28,7 +28,6 @@ for i in range(3):
 
 print("saving csv to: " + dir_name)
 big_data_ = open(dir_name + "_data.csv", "w") #here we get the large file
-
 big_data = csv.writer(big_data_, lineterminator = "\n")
 big_data.writerow(headers)
 
@@ -59,3 +58,5 @@ for file_name in file_names[0:3]:
     i += 1
 big_data.writerow(base_template)
 big_data.flush()
+big_data.close()
+os.rmdir(dir_name)
