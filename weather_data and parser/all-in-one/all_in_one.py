@@ -25,6 +25,7 @@ crash_list = os.listdir(path + 'crash/')
 print(crash_list)
 k_ = open("tarfiles.csv", "r")
 big_tar_list = list(csv.reader(k_))
+big_tar_list = [m[0] for m in big_tar_list]
 k_.close()
 
 for item in crash_list:
@@ -34,8 +35,7 @@ for item in crash_list:
 input("crash recovery complete. " + str(len(big_tar_list)) + " files to go!"
                                                            " press enter to continue")
 
-for filename_ in big_tar_list:
-    filename = str(filename_[0])
+for filename in big_tar_list:
     # Download the file from the FTP server
     command = 'RETR ' + filename
     print("Downloading: " + filename)
