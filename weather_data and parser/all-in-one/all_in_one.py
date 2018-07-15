@@ -9,6 +9,11 @@ directory = "HAS011154726"
 ftp = FTP('ftp.ncdc.noaa.gov')
 ftp.login()
 ftp.cwd('pub/has/model/' + directory + '/')
+try:
+    content = ftp.nlst()
+except:
+    print("error, no files found. Quitting...")
+    quit()
 
 # Read the list from a file, and remove white spaces
 #with open('tarfilelist.txt') as f:
