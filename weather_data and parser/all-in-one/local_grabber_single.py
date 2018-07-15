@@ -27,7 +27,8 @@ for i in range(3):
         headers.append(concat)
 
 print("saving csv to: " + dir_name)
-big_data_ = open(dir_name + "_data", "w") #here we get the large file
+big_data_ = open(dir_name + "_data.csv", "w") #here we get the large file
+
 big_data = csv.writer(big_data_, lineterminator = "\n")
 big_data.writerow(headers)
 
@@ -56,5 +57,4 @@ for file_name in file_names[0:3]:
         base_template.append(single_pt)
         print("extracted: " + str(number) + "\n")
     i += 1
-print(base_template)
 big_data.writerow(base_template)
