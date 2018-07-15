@@ -40,7 +40,6 @@ for filename_ in content:
     dirname = overarching_name.replace('.tar','')
     tarcommand = 'tar -xf '+overarching_name + ' -C ' + dirname + '; rm '+overarching_name + \
                  '; cd /home/max/SHARED; python3 local_grabber_single.py ' + dirname
-    print(tarcommand)
     print("Extracting tar: " + filename)
     subprocess.call(["mkdir", dirname])
     subprocess.Popen(['/bin/sh', '-c', tarcommand], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)

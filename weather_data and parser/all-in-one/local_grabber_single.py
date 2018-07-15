@@ -58,3 +58,4 @@ for file_name in file_names[0:3]:
         print("extracted: " + str(number) + "\n")
     i += 1
 big_data.writerow(base_template)
+big_data.flush()
