@@ -4,9 +4,10 @@ import os
 import time
 import pygrib #library that only works in linux
 from sys import argv
+import subprocess
 
 script, dir_name, filename = argv
-
+path = "/home/max/DRIVE/data/crash/"
 category_dict = {0: "surface_pressure", 1: "temp@2M", 2: "wind_gust_speed", 3: "2_M_rel_humid", 4: "temp_gnd_lvl"}
 
 keepers = [223,230,300,295,310] #the data points to keep
@@ -50,14 +51,16 @@ for file_name in file_names[0:3]:
     ok_list = [sum(x) for x in zip(delta_list, keepers)]
     for number in ok_list:
         selection = opened_file.select()[number]
-        print(selection)
+        #print(selection)
         selection_ = selection.values
         single_pt = selection_[point_to_keep_i][point_to_keep_j]
         base_template.append(single_pt)
-        print("extracted: " + str(number) + "\n")
+        print("extracted: " + str(number) + " from " + file_name)
     i += 1
+    opened_file.close()
 big_data.writerow(base_template)
-big_data.flush()
-big_data.close()
-os.rmdir(dir_name)
-k = open(filename + ".txt", "w")
+big_data_.close()
+subprocess.call(["rm", "-r", dir_name])
+k = open(path + filename, "w")
+print(filename)
+k.close()

@@ -24,10 +24,12 @@ print("attempting crash recovery")
 crash_list = os.listdir(path + 'crash/')
 print(crash_list)
 k_ = open("tarfiles.csv", "r")
-big_tar_list = csv.reader(k_)
+big_tar_list = list(csv.reader(k_))
 k_.close()
 
-big_tar_list.remove(crash_list) #now we are left with a list of things to do
+for item in crash_list:
+    print(item)
+    big_tar_list.remove(item) #now we are left with a list of things to do
 
 input("crash recovery complete. " + str(len(big_tar_list)) + " files to go!"
                                                            " press enter to continue")
