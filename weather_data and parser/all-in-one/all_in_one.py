@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import csv
-
 import subprocess, os
 from ftplib import FTP
 #path = "/home/max/DRIVE/data/"
@@ -34,7 +33,7 @@ for item in crash_list:
 
 input("crash recovery complete. " + str(len(big_tar_list)) + " files to go!"
                                                            " press enter to continue")
-
+print(big_tar_list)
 for filename in big_tar_list:
     # Download the file from the FTP server
     command = 'RETR ' + filename
