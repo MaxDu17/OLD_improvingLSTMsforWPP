@@ -29,7 +29,7 @@ for item in crash_list:
     big_tar_list.remove(item) #now we are left with a list of things to do
 
 input("crash recovery complete. " + str(len(big_tar_list)) + " files to go!")
-
+big_tar_list = sorted(big_tar_list, key = lambda file_names: int(file_names[13:17]))
 for filename in big_tar_list:
     # Download the file from the FTP server
     command = 'RETR ' + filename
