@@ -1,10 +1,10 @@
-"""Maximilian Du 7-2-18
+"""Maximilian Du 7-16-18
 LSTM implementation with wind data set
 Version 2 changes:
 -relu at the end (whoops! Negative wind!)
 -continuous thread
 -more markups
-
+-also no for loops and many more changes; see spreadsheet
 """
 import tensorflow as tf
 import numpy as np
@@ -65,7 +65,7 @@ def step(last_state, X):
 with tf.name_scope("forward_roll"):
     states_list = tf.scan(fn = step, elems = inputs, initializer = init_state, name = "scan")
     curr_state = states_list[-1]
-    pass_back_state = states_list[0]
+    pass_back_state = tf.add([0.0], states_list[0], name = "pass_back_state")
 
 with tf.name_scope("prediction"):
     _, current_hidden = tf.unstack(curr_state)
