@@ -16,9 +16,6 @@ except:
     print("error, no files found. Quitting...")
     quit()
 
-# Read the list from a file, and remove white spaces
-#with open('tarfilelist.txt') as f:
-
 
 print("attempting crash recovery")
 crash_list = os.listdir(path + 'crash/')
@@ -31,9 +28,8 @@ for item in crash_list:
     print(item)
     big_tar_list.remove(item) #now we are left with a list of things to do
 
-input("crash recovery complete. " + str(len(big_tar_list)) + " files to go!"
-                                                           " press enter to continue")
-print(big_tar_list)
+input("crash recovery complete. " + str(len(big_tar_list)) + " files to go!")
+
 for filename in big_tar_list:
     # Download the file from the FTP server
     command = 'RETR ' + filename
