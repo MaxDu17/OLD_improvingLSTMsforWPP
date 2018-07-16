@@ -23,8 +23,8 @@ with tf.Graph().as_default() as graph:
     init_state_1 = graph.get_tensor_by_name("placeholders/initial_states_1:0")
     init_state_2 = graph.get_tensor_by_name("placeholders/initial_states_2:0")
     output = graph.get_tensor_by_name("layer_2_propagation/output:0")
-    pass_back_state_2 = graph.get_tensor_by_name("layer_2_propagation/strided_slice_1:0")
-    pass_back_state_1 = graph.get_tensor_by_name("layer_1_propagation/strided_slice_1:0")
+    pass_back_state_2 = graph.get_tensor_by_name("layer_2_propagation/pass_back_state_2:0")
+    pass_back_state_1 = graph.get_tensor_by_name("layer_1_propagation/pass_back_state_1:0")
     #loss = graph.get_tensor_by_name("loss/loss:0")
 
 with tf.Session(graph=graph) as sess:
