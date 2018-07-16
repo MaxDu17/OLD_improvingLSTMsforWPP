@@ -2,7 +2,7 @@ from ftplib import FTP
 import csv
 #path = "/home/max/DRIVE/data/"
 path = '/home/Max/data'
-directory = "HAS011154726"
+directory = "HAS011155583"
 # Connect to FTP server and go to the folder
 ftp = FTP('ftp.ncdc.noaa.gov')
 ftp.login()
