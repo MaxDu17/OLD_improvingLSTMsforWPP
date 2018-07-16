@@ -1,16 +1,16 @@
 import os
 import csv
 
-path = "/home/max/DRIVE/data/"
+path = "../data-07/"
 
 csv_list = [fname for fname in os.listdir(path) if fname.endswith('.csv')]
 
 
 sorted_list = sorted(csv_list, key = lambda file_names: int(file_names[13:17]))
-m_ = open("2011_TOTALSET.csv", "r")
+m_ = open("../2011_TOTALSET.csv", "r")
 m = list(csv.reader(m_))
 m_.close()
-k_ = open("2011_TOTALSET.csv", "w")
+k_ = open("../2011_TOTALSET.csv", "w")
 k = csv.writer(k_, lineterminator = '\n')
 
 k.writerows(m)
