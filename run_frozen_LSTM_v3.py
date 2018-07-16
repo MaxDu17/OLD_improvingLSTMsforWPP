@@ -21,8 +21,7 @@ with tf.Graph().as_default() as graph:
     input = graph.get_tensor_by_name("placeholders/input_data:0")
     init_state = graph.get_tensor_by_name("placeholders/initial_states:0")
     output = graph.get_tensor_by_name("prediction/output:0")
-    states_list = graph.get_tensor_by_name("forward_roll/scan/TensorArrayStack/TensorArrayGatherV3:0")
-    #loss = graph.get_tensor_by_name("loss/loss:0")
+    pass_back_state = graph.get_tensor_by_name("forward_roll/pass_back_state:0")
 
 with tf.Session(graph=graph) as sess:
     sm.create_training_set()
@@ -31,7 +30,7 @@ with tf.Session(graph=graph) as sess:
     carrier = ["true_values", "predicted_values", "abs_error"]
     test_logger.writerow(carrier)
     RMS_loss = 0.0
-    next_state_ = np.zeros(shape=[2, 1, hyp.cell_dim])
+    init_state_ = np.zeros(shape=[2, 1, hyp.cell_dim])
     for i in range(hyp.Info.TEST_SIZE):  # this will be replaced later
         data = sm.next_epoch_test_waterfall()
         label_ = sm.get_label()
@@ -40,16 +39,14 @@ with tf.Session(graph=graph) as sess:
         data = np.reshape(data, [hyp.FOOTPRINT, 1, 1])
 
 
-        states_list_ , output_= sess.run([states_list, output],
+        init_state_ , output_= sess.run([pass_back_state, output],
+                                                feed_dict = {input: data, init_state: init_state_})
 
-                                                feed_dict = {input: data, init_state: next_state_})
-        next_state_ = states_list_[0]
         loss_ = np.square(output_[0][0] - label_)
-
         RMS_loss += np.sqrt(loss_)
         carrier = [label_, output_[0][0], np.sqrt(loss_)]
         test_logger.writerow(carrier)
     RMS_loss = RMS_loss / hyp.Info.TEST_SIZE
     print("test: rms loss is ", RMS_loss)
-    test_logger.writerow(["final adaptive loss average", RMS_loss])
+    test_logger.writerow(["final absolute loss average", RMS_loss])
 

@@ -35,7 +35,6 @@ with tf.Session(graph=graph) as sess:
     carrier = ["true_values", "predicted_values", "abs_error"]
     test_logger.writerow(carrier)
     RMS_loss = 0.0
-    next_state_ = np.zeros(shape=[2, 1, hyp.cell_dim])
     for test in range(hyp.Info.TEST_SIZE):  # this will be replaced later
 
         data = sm.next_epoch_test_waterfall()
