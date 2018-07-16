@@ -52,7 +52,7 @@ for file_name in file_names[0:3]:
     ok_list = [sum(x) for x in zip(delta_list, keepers)]
     for number in ok_list:
         selection = opened_file.select()[number]
-        print(selection)
+        #print(selection)
         selection_ = selection.values
         single_pt = selection_[point_to_keep_i][point_to_keep_j]
         base_template.append(single_pt)
