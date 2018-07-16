@@ -2,28 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/GRAPHS/LOSS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/GRAPHS/LOSS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/GRAPHS/VALIDATION.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/GRAPHS/VALIDATION.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/GRAPHS/events.out.tfevents.1531763568.DESKTOP-A14IBSC" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/GRAPHS/events.out.tfevents.1531763568.DESKTOP-A14IBSC" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-72000.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/models/LSTMv8-72000.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-72000.index" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/models/LSTMv8-72000.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-72000.meta" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/models/LSTMv8-72000.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-74000.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/models/LSTMv8-74000.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-74000.index" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/models/LSTMv8-74000.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-74000.meta" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/models/LSTMv8-74000.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-76000.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/models/LSTMv8-76000.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-76000.index" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/models/LSTMv8-76000.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-76000.meta" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/models/LSTMv8-76000.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-78000.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/models/LSTMv8-78000.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-78000.index" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/models/LSTMv8-78000.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-78000.meta" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/models/LSTMv8-78000.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-80000.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/models/LSTMv8-80000.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-80000.index" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/models/LSTMv8-80000.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v8/models/LSTMv8-80000.meta" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v8/models/LSTMv8-80000.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/checkfreeze.py" beforeDir="false" afterPath="$PROJECT_DIR$/checkfreeze.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_frozen_LSTM_v6.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_frozen_LSTM_v6.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/save_v5.py" beforeDir="false" afterPath="$PROJECT_DIR$/save_v5.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -85,20 +64,20 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="run_frozen_LSTM_v6.py" pinned="false" current-in-tab="false">
+            <file leaf-file-name="run_frozen_LSTM_v6.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/run_frozen_LSTM_v6.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="357">
-                    <caret line="25" column="87" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="87" />
+                  <state relative-caret-position="459">
+                    <caret line="31" column="28" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="28" />
                   </state>
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="save_v5.py" pinned="false" current-in-tab="true">
+            <file leaf-file-name="save_v5.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/save_v5.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="221">
-                    <caret line="14" column="61" lean-forward="true" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
+                  <state relative-caret-position="136">
+                    <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
                   </state>
                 </provider>
               </entry>
@@ -106,8 +85,8 @@
             <file leaf-file-name="checkfreeze.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/checkfreeze.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="68">
-                    <caret line="4" column="74" selection-start-line="4" selection-start-column="74" selection-end-line="4" selection-end-column="74" />
+                  <state relative-caret-position="136">
+                    <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
                   </state>
                 </provider>
               </entry>
@@ -300,9 +279,9 @@
         <option value="$PROJECT_DIR$/pipeline/__init__.py" />
         <option value="$PROJECT_DIR$/getpbtxt.py" />
         <option value="$PROJECT_DIR$/lstm_v8_model2_based.py" />
+        <option value="$PROJECT_DIR$/save_v5.py" />
         <option value="$PROJECT_DIR$/checkfreeze.py" />
         <option value="$PROJECT_DIR$/run_frozen_LSTM_v6.py" />
-        <option value="$PROJECT_DIR$/save_v5.py" />
       </list>
     </option>
   </component>
@@ -358,7 +337,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.save_v5">
+  <component name="RunManager" selected="Python.run_frozen_LSTM_v6">
     <configuration name="checkfreeze" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CSIRE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -458,10 +437,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.save_v5" />
-        <item itemvalue="Python.checkfreeze" />
-        <item itemvalue="Python.lstm_v8_model2_based" />
         <item itemvalue="Python.run_frozen_LSTM_v6" />
+        <item itemvalue="Python.checkfreeze" />
+        <item itemvalue="Python.save_v5" />
+        <item itemvalue="Python.lstm_v8_model2_based" />
         <item itemvalue="Python.getpbtxt" />
       </list>
     </recent_temporary>
@@ -879,20 +858,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/checkfreeze.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="74" selection-start-line="4" selection-start-column="74" selection-end-line="4" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run_frozen_LSTM_v6.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="25" column="87" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/run_frozen_LSTM_v3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
@@ -900,10 +865,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/checkfreeze.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/save_v5.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="14" column="61" lean-forward="true" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
+        <state relative-caret-position="136">
+          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_frozen_LSTM_v6.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="31" column="28" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="28" />
         </state>
       </provider>
     </entry>
