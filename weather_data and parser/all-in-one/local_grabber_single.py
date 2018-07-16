@@ -6,7 +6,7 @@ import subprocess
 
 script, dir_name, filename = argv
 #path = "/home/max/DRIVE/data/crash/"
-path = '/home/Max/data/crash/'
+path = '/home/set/Max/data/crash/'
 category_dict = {0: "surface_pressure", 1: "temp@2M", 2: "wind_gust_speed", 3: "2_M_rel_humid", 4: "temp_gnd_lvl"}
 
 keepers = [223,230,300,295,310] #the data points to keep
