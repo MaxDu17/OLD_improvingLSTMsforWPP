@@ -4643,7 +4643,7 @@ node {
   }
 }
 node {
-  name: "layer_1_propagation/scalar"
+  name: "layer_1_propagation/pass_back_state_1/x"
   op: "Const"
   attr {
     key: "dtype"
@@ -4657,16 +4657,19 @@ node {
       tensor {
         dtype: DT_FLOAT
         tensor_shape {
+          dim {
+            size: 1
+          }
         }
-        float_val: 1.0
+        float_val: 0.0
       }
     }
   }
 }
 node {
-  name: "layer_1_propagation/mul"
-  op: "Mul"
-  input: "layer_1_propagation/scalar"
+  name: "layer_1_propagation/pass_back_state_1"
+  op: "Add"
+  input: "layer_1_propagation/pass_back_state_1/x"
   input: "layer_1_propagation/strided_slice_1"
   attr {
     key: "T"
@@ -10285,7 +10288,7 @@ node {
   }
 }
 node {
-  name: "layer_2_propagation/scalar"
+  name: "layer_2_propagation/pass_back_state_2/x"
   op: "Const"
   attr {
     key: "dtype"
@@ -10299,16 +10302,19 @@ node {
       tensor {
         dtype: DT_FLOAT
         tensor_shape {
+          dim {
+            size: 1
+          }
         }
-        float_val: 1.0
+        float_val: 0.0
       }
     }
   }
 }
 node {
-  name: "layer_2_propagation/mul"
-  op: "Mul"
-  input: "layer_2_propagation/scalar"
+  name: "layer_2_propagation/pass_back_state_2"
+  op: "Add"
+  input: "layer_2_propagation/pass_back_state_2/x"
   input: "layer_2_propagation/strided_slice_1"
   attr {
     key: "T"
