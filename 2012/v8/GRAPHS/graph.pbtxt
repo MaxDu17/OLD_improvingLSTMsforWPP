@@ -4643,6 +4643,39 @@ node {
   }
 }
 node {
+  name: "layer_1_propagation/scalar"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "layer_1_propagation/mul"
+  op: "Mul"
+  input: "layer_1_propagation/scalar"
+  input: "layer_1_propagation/strided_slice_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
   name: "layer_1_propagation/strided_slice_2/stack"
   op: "Const"
   attr {
@@ -10252,6 +10285,39 @@ node {
   }
 }
 node {
+  name: "layer_2_propagation/scalar"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "layer_2_propagation/mul"
+  op: "Mul"
+  input: "layer_2_propagation/scalar"
+  input: "layer_2_propagation/strided_slice_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
   name: "layer_2_propagation/unstack"
   op: "Unpack"
   input: "layer_2_propagation/strided_slice"
@@ -10345,7 +10411,7 @@ node {
   }
 }
 node {
-  name: "loss/Reshape/shape"
+  name: "loss/loss/shape"
   op: "Const"
   attr {
     key: "dtype"
@@ -10367,10 +10433,10 @@ node {
   }
 }
 node {
-  name: "loss/Reshape"
+  name: "loss/loss"
   op: "Reshape"
   input: "loss/Square"
-  input: "loss/Reshape/shape"
+  input: "loss/loss/shape"
   attr {
     key: "T"
     value {
@@ -11056,7 +11122,7 @@ node {
   }
 }
 node {
-  name: "optimizer/gradients/loss/Reshape_grad/Shape"
+  name: "optimizer/gradients/loss/loss_grad/Shape"
   op: "Const"
   attr {
     key: "dtype"
@@ -11080,10 +11146,10 @@ node {
   }
 }
 node {
-  name: "optimizer/gradients/loss/Reshape_grad/Reshape"
+  name: "optimizer/gradients/loss/loss_grad/Reshape"
   op: "Reshape"
   input: "optimizer/gradients/Fill"
-  input: "optimizer/gradients/loss/Reshape_grad/Shape"
+  input: "optimizer/gradients/loss/loss_grad/Shape"
   attr {
     key: "T"
     value {
@@ -11100,7 +11166,7 @@ node {
 node {
   name: "optimizer/gradients/loss/Square_grad/Const"
   op: "Const"
-  input: "^optimizer/gradients/loss/Reshape_grad/Reshape"
+  input: "^optimizer/gradients/loss/loss_grad/Reshape"
   attr {
     key: "dtype"
     value {
@@ -11134,7 +11200,7 @@ node {
 node {
   name: "optimizer/gradients/loss/Square_grad/Mul_1"
   op: "Mul"
-  input: "optimizer/gradients/loss/Reshape_grad/Reshape"
+  input: "optimizer/gradients/loss/loss_grad/Reshape"
   input: "optimizer/gradients/loss/Square_grad/Mul"
   attr {
     key: "T"
@@ -28806,7 +28872,7 @@ node {
   name: "summaries_and_saver/Loss"
   op: "ScalarSummary"
   input: "summaries_and_saver/Loss/tags"
-  input: "loss/Reshape"
+  input: "loss/loss"
   attr {
     key: "T"
     value {
@@ -31784,76 +31850,6 @@ node {
   input: "^summaries_and_saver/save/Assign_7"
   input: "^summaries_and_saver/save/Assign_8"
   input: "^summaries_and_saver/save/Assign_9"
-}
-node {
-  name: "init"
-  op: "NoOp"
-  input: "^aux_weights_and_biases/outwards_propagating_bias_1/Adam/Assign"
-  input: "^aux_weights_and_biases/outwards_propagating_bias_1/Adam_1/Assign"
-  input: "^aux_weights_and_biases/outwards_propagating_bias_1/Assign"
-  input: "^aux_weights_and_biases/outwards_propagating_bias_2/Adam/Assign"
-  input: "^aux_weights_and_biases/outwards_propagating_bias_2/Adam_1/Assign"
-  input: "^aux_weights_and_biases/outwards_propagating_bias_2/Assign"
-  input: "^aux_weights_and_biases/outwards_propagating_weight_1/Adam/Assign"
-  input: "^aux_weights_and_biases/outwards_propagating_weight_1/Adam_1/Assign"
-  input: "^aux_weights_and_biases/outwards_propagating_weight_1/Assign"
-  input: "^aux_weights_and_biases/outwards_propagating_weight_2/Adam/Assign"
-  input: "^aux_weights_and_biases/outwards_propagating_weight_2/Adam_1/Assign"
-  input: "^aux_weights_and_biases/outwards_propagating_weight_2/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/forget_bias/Adam/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/forget_bias/Adam_1/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/forget_bias/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/forget_weight/Adam/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/forget_weight/Adam_1/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/forget_weight/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/gate_bias/Adam/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/gate_bias/Adam_1/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/gate_bias/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/gate_weight/Adam/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/gate_weight/Adam_1/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/gate_weight/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/input_bias/Adam/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/input_bias/Adam_1/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/input_bias/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/input_weight/Adam/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/input_weight/Adam_1/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/input_weight/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/output_bias/Adam/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/output_bias/Adam_1/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/output_bias/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/output_weight/Adam/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/output_weight/Adam_1/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/output_weight/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/outwards_propagating_bias/Assign"
-  input: "^layer_1_propagation/layer_1/weights_and_biases/outwards_propagating_weight/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/forget_bias/Adam/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/forget_bias/Adam_1/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/forget_bias/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/forget_weight/Adam/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/forget_weight/Adam_1/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/forget_weight/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/gate_bias/Adam/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/gate_bias/Adam_1/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/gate_bias/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/gate_weight/Adam/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/gate_weight/Adam_1/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/gate_weight/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/input_bias/Adam/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/input_bias/Adam_1/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/input_bias/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/input_weight/Adam/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/input_weight/Adam_1/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/input_weight/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/output_bias/Adam/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/output_bias/Adam_1/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/output_bias/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/output_weight/Adam/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/output_weight/Adam_1/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/output_weight/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/outwards_propagating_bias/Assign"
-  input: "^layer_2_propagation/layer_2/weights_and_biases/outwards_propagating_weight/Assign"
-  input: "^optimizer/beta1_power/Assign"
-  input: "^optimizer/beta2_power/Assign"
 }
 versions {
   producer: 26

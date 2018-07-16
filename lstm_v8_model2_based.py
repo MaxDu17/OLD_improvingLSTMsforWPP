@@ -1,4 +1,4 @@
-"""Maximilian Du 7-2-18
+"""Maximilian Du 7-16-18
 LSTM implementation with wind data set
 Version 8 changes:
 multi-layer LSTM!
@@ -34,7 +34,7 @@ with tf.name_scope("aux_weights_and_biases"):
 with tf.name_scope("layer_1_propagation"):
     states_1 = layer_1.create_graph(layer_number = 1, inputs = inputs, init_state = init_state_1)
     curr_state_1 = states_1[-1]
-    pass_back_state_1 = states_1[0]
+    pass_back_state_1 = tf.scalar_mul(1, states_1[0])
     input_2 = list()
     for i in range(hyp.FOOTPRINT):
         _, current_hidden = tf.unstack(states_1[i])
@@ -46,7 +46,7 @@ with tf.name_scope("layer_1_propagation"):
 with tf.name_scope("layer_2_propagation"):
     states_2 = layer_2.create_graph(layer_number = 2, inputs = input_2, init_state = init_state_2)
     curr_state_2 = states_2[-1]
-    pass_back_state_2 = states_2[0]
+    pass_back_state_2 = tf.scalar_mul(1, states_2[0])
     _, current_hidden_2 = tf.unstack(curr_state_2)
     raw_output = tf.add(tf.matmul(current_hidden_2, W_Hidden_to_Out_2, name="WHTO_w_m_"), B_Hidden_to_Out_2, name="BHTO_b_a")
     output = tf.nn.relu(raw_output, name="output")
