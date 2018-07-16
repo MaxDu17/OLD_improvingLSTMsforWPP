@@ -1,6 +1,11 @@
 from pipeline import DataParser_Weather
 from pipeline import SetMaker_Weather
 
-DP = DataParser_Weather()
+dp = DataParser_Weather()
+print(dp.grab_list_range(0,100))
+'''
+SM = SetMaker_Weather()
 
-print(DP.print_from_start(100))
+SM.create_training_set()
+print(SM.next_epoch_waterfall())
+'''

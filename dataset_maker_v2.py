@@ -1,9 +1,9 @@
-from data_feeder import DataParser
+from data_feeder_v2 import DataParser_Weather
 from hyperparameters import Hyperparameters
 
 class SetMaker_Weather:
     def __init__(self): #initializing variables used in calculation
-        self.dp = DataParser()
+        self.dp = DataParser_Weather()
         self.hyp = Hyperparameters()
         self.master_list = list()
         self.counter = 0
@@ -37,7 +37,7 @@ class SetMaker_Weather:
         self.batch_counter = 0
         return carrier
 
-    def next_epoch_waterfall(self): #this just returns the entire sequence. DO NOT CALL NEXT_SAMPLE WITH THIS.
+    def next_epoch_waterfall(self): #this just returns the entire sequence. DO NOT CALL NEXT_SAMPLE WITH THIS. Only for training
         carrier = False
         self.master_list = list()
         if self.counter + self.hyp.FOOTPRINT+1 > self.training_set_size:
