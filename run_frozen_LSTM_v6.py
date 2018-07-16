@@ -18,12 +18,13 @@ with tf.Graph().as_default() as graph:
                         input_map = None,
                         return_elements = None,
                         name = "")
-    input = graph.get_tensor_by_name("placeholders/input_data:0")
+    inputs = graph.get_tensor_by_name("placeholders/input_data:0")
     init_state_1 = graph.get_tensor_by_name("placeholders/initial_states_1:0")
     init_state_2 = graph.get_tensor_by_name("placeholders/initial_states_2:0")
     output = graph.get_tensor_by_name("layer_2_propagation/output:0")
-    states_list = graph.get_tensor_by_name("forward_roll/scan/TensorArrayStack/TensorArrayGatherV3:0")
-
+    pass_back_state_2 = graph.get_tensor_by_name("layer_2_propagation/pass_back_state_2:0")
+    pass_back_state_1 = graph.get_tensor_by_name("layer_1_propagation/pass_back_state_1:0")
+    loss = graph.get_tensor_by_name("loss/loss:0")
 
 with tf.Session(graph=graph) as sess:
     sm.create_training_set()

@@ -129,7 +129,7 @@ with tf.Session() as sess:
             init_state_2_hold = init_state_2_
             sm.create_validation_set()
             RMS_loss = 0.0
-            next_state = np.zeros(shape=[2, 1, hyp.cell_dim])
+            init_state_1_ = init_state_2_ = np.zeros(shape=[2, 1, hyp.cell_dim])
             for i in range(hyp.VALIDATION_NUMBER):
                 data = sm.next_epoch_valid_waterfall()
                 label_ = sm.get_label()
@@ -150,7 +150,7 @@ with tf.Session() as sess:
             init_state_2_ = init_state_2_hold  # restoring past point...
 
     RMS_loss = 0.0
-    next_state = np.zeros(shape=[2, 1, hyp.cell_dim])
+    init_state_1_ = init_state_2_ = np.zeros(shape=[2, 1, hyp.cell_dim])
     print(np.shape(next_state))
     for test in range(hyp.Info.TEST_SIZE):  # this will be replaced later
 
