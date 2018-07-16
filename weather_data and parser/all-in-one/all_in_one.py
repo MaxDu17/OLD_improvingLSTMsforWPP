@@ -3,7 +3,8 @@ import csv
 
 import subprocess, os
 from ftplib import FTP
-path = "/home/max/DRIVE/data/"
+#path = "/home/max/DRIVE/data/"
+path = '/home/Max/data'
 len_path = len(path)
 directory = "HAS011154726"
 # Connect to FTP server and go to the folder
