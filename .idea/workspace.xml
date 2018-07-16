@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/checkfreeze.py" beforeDir="false" afterPath="$PROJECT_DIR$/checkfreeze.py" afterDir="false" />
-    </list>
+    <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,8 +65,8 @@
             <file leaf-file-name="run_frozen_LSTM_v6.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/run_frozen_LSTM_v6.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="459">
-                    <caret line="31" column="28" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="28" />
+                  <state relative-caret-position="816">
+                    <caret line="52" column="41" lean-forward="true" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
                   </state>
                 </provider>
               </entry>
@@ -98,7 +96,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="run_frozen_LSTM_v3.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="run_frozen_LSTM_v3.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run_frozen_LSTM_v3.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="147">
@@ -107,11 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modelv2_contained.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="modelv2_contained.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modelv2_contained.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="18" column="50" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
+            <state relative-caret-position="176">
+              <caret line="33" column="60" selection-start-line="33" selection-start-column="60" selection-end-line="33" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -286,10 +284,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="512" />
-    <option name="y" value="472" />
-    <option name="width" value="1915" />
-    <option name="height" value="695" />
+    <option name="x" value="3506" />
+    <option name="y" value="435" />
+    <option name="width" value="766" />
+    <option name="height" value="278" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -316,7 +314,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/checkfreeze.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pipeline/__init__.py" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
@@ -468,16 +466,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1293" height="693" extended-state="6" />
+    <frame x="3192" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4949833" visible="true" weight="0.016693164" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49583828" visible="true" weight="0.011064278" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32897604" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4651163" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.083877996" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32897604" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.20154186" />
-      <window_info id="Structure" order="1" sideWeight="0.50501674" side_tool="true" visible="true" weight="0.016693164" />
+      <window_info id="Structure" order="1" sideWeight="0.5041617" side_tool="true" visible="true" weight="0.011064278" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.33631486" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.64705884" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -803,13 +801,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modelv2_contained.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="18" column="50" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lstm_v2_contained.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="954">
@@ -881,8 +872,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/run_frozen_LSTM_v6.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="31" column="28" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="28" />
+        <state relative-caret-position="816">
+          <caret line="52" column="41" lean-forward="true" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelv2_contained.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="33" column="60" selection-start-line="33" selection-start-column="60" selection-end-line="33" selection-end-column="60" />
         </state>
       </provider>
     </entry>
