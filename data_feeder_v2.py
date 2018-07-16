@@ -11,8 +11,8 @@ class DataParser_Weather:
         #self.data = pd.read_csv("Training_sets/83863-2011.csv", skiprows = 3) #read file
         self.data = pd.read_csv("Training_sets/2012DATA.csv", skiprows=3)  # read file
         #clean_data = data[["Month", "Day", "Hour", "Minute", "power (MW)"]] #extract critical data, not used here
-        self.combined_data = self.data[["power (MW)"],["wind direction at 100m (deg)"],["wind speed at 100m (m/s)"],
-                              ["air temperature at 2m "],["surface air pressure (Pa)"],["density at hub height (kg/m^3)"]] #extracts ALL data
+        self.combined_data = self.data[["power (MW)","wind direction at 100m (deg)","wind speed at 100m (m/s)",
+                              "air temperature at 2m (K)","surface air pressure (Pa)","density at hub height (kg/m^3)"]] #extracts ALL data
     '''
     def use_foreign(self, file_name):
         self.data = pd.read_csv(file_name, skiprows = 3) #read file

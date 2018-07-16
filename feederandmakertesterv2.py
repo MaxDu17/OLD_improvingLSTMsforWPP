@@ -3,4 +3,4 @@ from pipeline import SetMaker_Weather
 
 DP = DataParser_Weather()
 
-DP.print_from_start()
+print(DP.print_from_start(100))
