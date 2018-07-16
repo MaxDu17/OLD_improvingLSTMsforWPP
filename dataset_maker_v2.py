@@ -1,7 +1,7 @@
 from data_feeder import DataParser
 from hyperparameters import Hyperparameters
 
-class SetMaker:
+class SetMaker_Weather:
     def __init__(self): #initializing variables used in calculation
         self.dp = DataParser()
         self.hyp = Hyperparameters()

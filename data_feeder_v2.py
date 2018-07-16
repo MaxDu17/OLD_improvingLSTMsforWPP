@@ -1,6 +1,6 @@
 import pandas as pd
 
-class DataParser:
+class DataParser_Weather:
     """
     this database has a query interval of [x, y)
     meaning that xth number is included, while the yth number is not
