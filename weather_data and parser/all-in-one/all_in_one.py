@@ -45,7 +45,7 @@ for filename in big_tar_list:
     # Untar each file to its own folder, after it is done, delete the tar file
     dirname = overarching_name.replace('.tar','')
     tarcommand = 'tar -xf '+overarching_name + ' -C ' + dirname + '; rm '+overarching_name + \
-                 '; cd /home/max/SHARED; python3 local_grabber_single.py ' + dirname + " " + filename
+                 '; python3 local_grabber_single.py ' + dirname + " " + filename
     print("Extracting tar: " + filename)
     subprocess.call(["mkdir", "-p", dirname])
     subprocess.Popen(['/bin/sh', '-c', tarcommand])
