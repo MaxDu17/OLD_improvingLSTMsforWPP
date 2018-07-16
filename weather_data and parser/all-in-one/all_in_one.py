@@ -22,7 +22,6 @@ except:
 
 print("attempting crash recovery")
 crash_list = os.listdir(path + 'crash/')
-print(crash_list)
 k_ = open("tarfiles.csv", "r")
 big_tar_list = list(csv.reader(k_))
 big_tar_list = [m[0] for m in big_tar_list]
