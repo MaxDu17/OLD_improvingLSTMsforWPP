@@ -1,2 +1,6 @@
-model_checkpoint_path: "LSTMv9-2000"
-all_model_checkpoint_paths: "LSTMv9-2000"
+model_checkpoint_path: "LSTMv9-80000"
+all_model_checkpoint_paths: "LSTMv9-72000"
+all_model_checkpoint_paths: "LSTMv9-74000"
+all_model_checkpoint_paths: "LSTMv9-76000"
+all_model_checkpoint_paths: "LSTMv9-78000"
+all_model_checkpoint_paths: "LSTMv9-80000"

@@ -57,8 +57,8 @@ def step(last_state, X):
         current_cell = tf.add(suggestion_box, current_cell, name = "input_and_gate_gating")
 
     with tf.name_scope("output_gate"): #output gate values to hidden
-        current_cell = tf.tanh(current_cell, name = "output_presquashing")
-        current_hidden = tf.multiply(output_gate, current_cell, name="next_hidden")
+        current_cell_ = tf.tanh(current_cell, name = "to_hidden")
+        current_hidden = tf.multiply(output_gate, current_cell_, name="next_hidden")
         states = tf.stack([current_cell, current_hidden])
     return states
 
