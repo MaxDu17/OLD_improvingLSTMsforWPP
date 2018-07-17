@@ -158,7 +158,7 @@ with tf.Session() as sess:
                 data = sm.next_epoch_valid_waterfall()
                 label_ = sm.get_label()
                 label = np.reshape(label_, [1, 1])
-                data = np.reshape(data, [hyp.FOOTPRINT, 1, 1])
+                data = np.reshape(data, [hyp.FOOTPRINT, 1, 6])
 
                 next_state, loss_ = sess.run([pass_back_state, loss], #why passback? Because we only shift by one!
                                                feed_dict = {inputs:data, Y:label, init_state:next_state})
@@ -179,7 +179,7 @@ with tf.Session() as sess:
         data = sm.next_epoch_test_waterfall()
         label_ = sm.get_label()
         label = np.reshape(label_, [1, 1])
-        data = np.reshape(data, [hyp.FOOTPRINT, 1, 1])
+        data = np.reshape(data, [hyp.FOOTPRINT, 1, 6])
 
         next_state, output_, loss_ = sess.run([pass_back_state, output, loss],  # why passback? Because we only shift by one!
                                      feed_dict={inputs: data, Y: label, init_state: next_state})
