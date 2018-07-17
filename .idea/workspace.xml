@@ -2,48 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/LOSS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/GRAPHS/LOSS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/TEST.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/GRAPHS/TEST.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/VALIDATION.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/GRAPHS/VALIDATION.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/events.out.tfevents.1531841340.DESKTOP-A14IBSC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/graph.pbtxt" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/GRAPHS/graph.pbtxt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-72000.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/models/LSTMv9-72000.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-72000.index" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/models/LSTMv9-72000.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-72000.meta" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/models/LSTMv9-72000.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-74000.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/models/LSTMv9-74000.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-74000.index" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/models/LSTMv9-74000.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-74000.meta" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/models/LSTMv9-74000.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-76000.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/models/LSTMv9-76000.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-76000.index" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/models/LSTMv9-76000.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-76000.meta" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/models/LSTMv9-76000.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-78000.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/models/LSTMv9-78000.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-78000.index" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/models/LSTMv9-78000.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-78000.meta" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/models/LSTMv9-78000.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-80000.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/models/LSTMv9-80000.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-80000.index" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/models/LSTMv9-80000.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-80000.meta" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/models/LSTMv9-80000.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/v1/LSTMv9-72000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/v1/LSTMv9-72000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/v1/LSTMv9-72000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/v1/LSTMv9-74000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/v1/LSTMv9-74000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/v1/LSTMv9-74000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/v1/LSTMv9-76000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/v1/LSTMv9-76000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/v1/LSTMv9-76000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/v1/LSTMv9-78000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/v1/LSTMv9-78000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/v1/LSTMv9-78000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/v1/LSTMv9-80000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/v1/LSTMv9-80000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/v1/LSTMv9-80000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/v1/checkpoint" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_feeder_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_feeder_v2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyperparameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/hyperparameters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lstm_v9.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v9.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/all-in-one/get_files.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather_data and parser/all-in-one/get_files.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -57,11 +16,11 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="all_in_one.py" pinned="false" current-in-tab="false">
+            <file leaf-file-name="all_in_one.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="153">
-                    <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+                  <state relative-caret-position="527">
+                    <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
                     <folding>
                       <element signature="e#23#33#0" expanded="true" />
                     </folding>
@@ -81,10 +40,10 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="local_grabber_single.py" pinned="false" current-in-tab="true">
+            <file leaf-file-name="local_grabber_single.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/local_grabber_single.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="97">
+                  <state relative-caret-position="102">
                     <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
                     <folding>
                       <element signature="e#1#11#0" expanded="true" />
@@ -323,8 +282,8 @@
         <option value="$PROJECT_DIR$/hyperparameters.py" />
         <option value="$PROJECT_DIR$/lstm_v9.py" />
         <option value="$PROJECT_DIR$/data_feeder_v2.py" />
-        <option value="$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/all-in-one/get_files.py" />
+        <option value="$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py" />
       </list>
     </option>
   </component>
@@ -910,16 +869,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-          <folding>
-            <element signature="e#23#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/get_files.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -932,10 +881,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/local_grabber_single.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
+        <state relative-caret-position="102">
           <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
           <folding>
             <element signature="e#1#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+          <folding>
+            <element signature="e#23#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
