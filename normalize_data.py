@@ -13,6 +13,7 @@ def min_max(clean):
 
 data = pd.read_csv("Training_sets/2012DATA.csv", skiprows=3)  # read file
 
+power_native = data[["power (MW)"]].values.tolist()
 power = min_max(data[["power (MW)"]].values).tolist()
 wind_dir = min_max(data[["wind direction at 100m (deg)"]].values).tolist()
 wind_speed = min_max(data[["wind speed at 100m (m/s)"]].values).tolist()
@@ -23,8 +24,8 @@ air_density = min_max(data[["density at hub height (kg/m^3)"]].values).tolist()
 logger_ = open("Training_sets/2012DATA_NORMALIZED.csv", "w")
 logger = csv.writer(logger_, lineterminator = '\n')
 
-headers = ["power", "wind_dir", "wind_speed", "air_temp", "SAP", "air_density"]
+headers = ["native_power", "power", "wind_dir", "wind_speed", "air_temp", "SAP", "air_density"]
 logger.writerow(headers)
 for i in range(len(power)):
-    k = [power[i][0], wind_dir[i][0], wind_speed[i][0], air_temp[i][0], SAP[i][0], air_density[i][0]]
+    k = [power_native[i][0], power[i][0], wind_dir[i][0], wind_speed[i][0], air_temp[i][0], SAP[i][0], air_density[i][0]]
     logger.writerow(k)

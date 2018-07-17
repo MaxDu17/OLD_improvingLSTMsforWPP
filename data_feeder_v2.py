@@ -9,16 +9,15 @@ class DataParser_Weather:
     """
     def __init__(self):
         #self.data = pd.read_csv("Training_sets/83863-2011.csv", skiprows = 3) #read file
-        self.data = pd.read_csv("Training_sets/2012DATA_NORMALIZED.csv", skiprows=3)  # read file
+        self.data = pd.read_csv("Training_sets/2012DATA_NORMALIZED.csv")  # read file
         #clean_data = data[["Month", "Day", "Hour", "Minute", "power (MW)"]] #extract critical data, not used here
-        self.combined_data = self.data[["power", "wind_dir", "wind_speed", "air_temp", "SAP", "air_density"]] #extracts ALL data
+        self.combined_data = self.data[["native_power", "power", "wind_dir", "wind_speed", "air_temp", "SAP", "air_density"]] #extracts ALL data
+
 
     def use_foreign(self, file_name):
-        self.data = pd.read_csv(file_name, skiprows = 3) #read file
+        self.data = pd.read_csv(file_name) #read file
         #clean_data = data[["Month", "Day", "Hour", "Minute", "power (MW)"]] #extract critical data, not used here
-        self.combined_data = self.data[["power (MW)", "wind direction at 100m (deg)", "wind speed at 100m (m/s)",
-                                       "air temperature at 2m (K)", "surface air pressure (Pa)",
-                                       "density at hub height (kg/m^3)"]]  # extracts ALL data
+        self.combined_data = self.data[["power", "wind_dir", "wind_speed", "air_temp", "SAP", "air_density"]]  # extracts ALL data
 
     def print_from_start(self, number):
         return self.combined_data.head(number) #print everything. Seldom used, but is an option
@@ -30,22 +29,11 @@ class DataParser_Weather:
         self.combined_data.index.name = "index" #sets index to "index" for ease of query
         command = str(start) + "<=index<" + str(end) #makes command
         subset = self.combined_data.query(command) #querys the pandas data frame
-
-        clean = [np.around(k,3).tolist() for k in subset.values] #extracts the value and discards the index value
-        if self.normalize:
-            clean = [self._min_max(k) for k in clean]
-        return clean #returns the query in a form of a list
+        isolated = [k[1:] for k in subset.values.tolist()]
+        return isolated  #returns the query in a form of a list
 
     def grab_element(self, element):
         array = self.combined_data.values
         clean_array = [k[0] for k in array]
         return clean_array[element]
-
-    def _min_max(self, clean):
-        minimum = np.amin(clean)
-        maximum = np.amax(clean)
-        range = maximum-minimum
-        scaled_array = clean - minimum
-        scaled_array = scaled_array / range
-        return scaled_array
 
