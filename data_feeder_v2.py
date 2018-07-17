@@ -29,8 +29,7 @@ class DataParser_Weather:
         self.combined_data.index.name = "index" #sets index to "index" for ease of query
         command = str(start) + "<=index<" + str(end) #makes command
         subset = self.combined_data.query(command) #querys the pandas data frame
-        isolated = [k[1:] for k in subset.values.tolist()]
-        return isolated  #returns the query in a form of a list
+        return subset.values.tolist()  #returns the query in a form of a list
 
     def grab_element(self, element):
         array = self.combined_data.values
