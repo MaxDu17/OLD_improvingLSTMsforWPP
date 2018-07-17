@@ -1,10 +1,7 @@
 """Maximilian Du 7-17-18
 LSTM implementation with wind data set
 Version 9 changes:
--relu at the end (whoops! Negative wind!)
--continuous thread
--more markups
--also no for loops and many more changes; see spreadsheet
+added weather data
 """
 import tensorflow as tf
 import numpy as np
