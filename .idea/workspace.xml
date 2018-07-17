@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/data_feeder_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_feeder_v2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset_maker_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset_maker_v2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feederandmakertesterv2.py" beforeDir="false" afterPath="$PROJECT_DIR$/feederandmakertesterv2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -112,8 +110,8 @@
       <file leaf-file-name="dataset_maker_v2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataset_maker_v2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="45" column="31" lean-forward="true" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
+            <state relative-caret-position="714">
+              <caret line="42" column="54" selection-start-line="42" selection-start-column="54" selection-end-line="42" selection-end-column="54" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -121,10 +119,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data_feeder_v2.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="data_feeder_v2.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data_feeder_v2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
+            <state relative-caret-position="527">
               <caret line="31" column="40" selection-start-line="31" selection-start-column="40" selection-end-line="31" selection-end-column="40" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -133,11 +131,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="feederandmakertesterv2.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="feederandmakertesterv2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/feederandmakertesterv2.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+              <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -264,10 +262,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="3194" />
-    <option name="width" value="972" />
-    <option name="height" value="1046" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-15" />
+    <option name="y" value="-15" />
+    <option name="width" value="3233" />
+    <option name="height" value="1833" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -315,7 +314,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.feederandmakertesterv2">
+  <component name="RunManager" selected="Python.downloader">
     <configuration name="checkfreeze" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CSIRE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -334,6 +333,24 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="downloader" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CSIRE" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../MyYoutubeDownloader" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../MyYoutubeDownloader/downloader.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="feederandmakertesterv2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CSIRE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -347,24 +364,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/feederandmakertesterv2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="getpbtxt" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="CSIRE" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/getpbtxt.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -407,19 +406,19 @@
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list>
-      <item itemvalue="Python.getpbtxt" />
       <item itemvalue="Python.save_v4" />
       <item itemvalue="Python.run_frozen_LSTM_v3" />
       <item itemvalue="Python.checkfreeze" />
       <item itemvalue="Python.feederandmakertesterv2" />
+      <item itemvalue="Python.downloader" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.downloader" />
         <item itemvalue="Python.feederandmakertesterv2" />
         <item itemvalue="Python.run_frozen_LSTM_v3" />
         <item itemvalue="Python.checkfreeze" />
         <item itemvalue="Python.save_v4" />
-        <item itemvalue="Python.getpbtxt" />
       </list>
     </recent_temporary>
   </component>
@@ -446,16 +445,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="3192" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-6" y="-6" width="1293" height="693" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4957627" visible="true" weight="0.011064278" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4950495" visible="true" weight="0.016693164" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32897604" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.48583877" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.45796064" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32897604" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.20154186" />
-      <window_info id="Structure" order="1" sideWeight="0.5042373" side_tool="true" visible="true" weight="0.011064278" />
+      <window_info id="Structure" order="1" sideWeight="0.5049505" side_tool="true" visible="true" weight="0.016693164" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.33631486" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.64705884" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -484,13 +483,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lstm_v8_copy_paste_dual_layer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="178" selection-start-line="178" selection-end-line="178" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lstm_v2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="867">
@@ -836,22 +828,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataset_maker_v2.py">
+    <entry file="file://$PROJECT_DIR$/../MyYoutubeDownloader/downloader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="45" column="31" lean-forward="true" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
+        <state relative-caret-position="51">
+          <caret line="3" column="77" selection-start-line="3" selection-start-column="77" selection-end-line="3" selection-end-column="77" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_feeder_v2.py">
+    <entry file="file://$PROJECT_DIR$/dataset_maker_v2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="31" column="40" selection-start-line="31" selection-start-column="40" selection-end-line="31" selection-end-column="40" />
+        <state relative-caret-position="714">
+          <caret line="42" column="54" selection-start-line="42" selection-start-column="54" selection-end-line="42" selection-end-column="54" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -859,9 +851,19 @@
     <entry file="file://$PROJECT_DIR$/feederandmakertesterv2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_feeder_v2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="40" selection-start-line="31" selection-start-column="40" selection-end-line="31" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
