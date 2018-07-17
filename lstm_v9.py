@@ -1,6 +1,6 @@
-"""Maximilian Du 7-16-18
+"""Maximilian Du 7-17-18
 LSTM implementation with wind data set
-Version 2 changes:
+Version 9 changes:
 -relu at the end (whoops! Negative wind!)
 -continuous thread
 -more markups
