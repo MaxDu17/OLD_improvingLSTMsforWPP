@@ -1,6 +1,6 @@
 from ftplib import FTP
 import csv
-directory = "HAS011156105"
+directory = "HAS011156992"
 # Connect to FTP server and go to the folder
 ftp = FTP('ftp.ncdc.noaa.gov')
 ftp.login()
