@@ -23,7 +23,7 @@ class DataParser_Weather:
         return self.combined_data.head(number) #print everything. Seldom used, but is an option
 
     def dataset_size(self):
-        return self.combined_data.size
+        return len(self.combined_data)
 
     def grab_list_range(self,start,end): #selects a range to query
         self.combined_data.index.name = "index" #sets index to "index" for ease of query
