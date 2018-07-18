@@ -11,6 +11,8 @@ class Hyperparameters: #the class that defines the hyperparameters is here
     SAVER_JUMP = 2000
     SUMMARY_JUMP = 50
     RUN_PROMPT = 25
+    STD = 0.5
+    SEED = 76137
 
     class Info: #not used in real code, just as metadata
         DATASET_SIZE = 150120
