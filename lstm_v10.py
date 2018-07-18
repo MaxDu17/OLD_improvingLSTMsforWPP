@@ -73,7 +73,7 @@ with tf.name_scope("forward_roll"):
     pass_back_state = tf.add([0.0], states_list[0], name = "pass_back_state")
 
 with tf.name_scope("prediction"):
-    _, current_hidden = tf.unstack(curr_state)
+    _cell, current_hidden = tf.unstack(curr_state)
     raw_output = tf.add(tf.matmul(current_hidden, W_Hidden_to_Out, name="WHTO_w_m"), B_Hidden_to_Out, name="BHTO_b_a")
     output = tf.nn.relu(raw_output, name="output")
 
@@ -96,7 +96,7 @@ with tf.name_scope("summaries_and_saver"):
     tf.summary.histogram("B_Output", B_Output)
     tf.summary.histogram("B_Gate", B_Gate)
     tf.summary.histogram("B_Hidden_to_Out", B_Hidden_to_Out)
-
+    tf.summary.histogram("Current_cell", _cell)
     tf.summary.scalar("Loss", loss)
 
     summary_op = tf.summary.merge_all()
