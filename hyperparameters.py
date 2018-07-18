@@ -5,8 +5,8 @@ class Hyperparameters: #the class that defines the hyperparameters is here
     TRAIN_PERCENT = 0.6
     VALIDATION_PERCENT = 0.002 #nullifies for now
     VALIDATION_NUMBER = 60
-    cell_dim = 50
-    hidden_dim = 50
+    cell_dim = 75
+    hidden_dim = 75
     TEST = True
     SAVER_JUMP = 2000
     SUMMARY_JUMP = 50

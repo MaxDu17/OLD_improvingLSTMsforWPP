@@ -71,7 +71,7 @@ with tf.name_scope("prediction"):
     output = tf.nn.relu(raw_output, name="output")
 
 with tf.name_scope("loss"):
-    loss = tf.sqrt(tf.square(tf.subtract(output, Y)))
+    loss = tf.abs(tf.subtract(output, Y))
     loss = tf.reshape(loss, [], name = "loss")
 
 with tf.name_scope("optimizer"):
@@ -141,7 +141,7 @@ with tf.Session() as sess:
         if epoch % 50 == 0: #50
             writer.add_summary(summary, global_step=epoch)
             print("I finished epoch ", epoch, " out of ", hyp.EPOCHS, " epochs")
-            print("The absolute value loss for this sample is ", np.sqrt(loss_))
+            print("The absolute value loss for this sample is ", loss_)
             print("predicted number: ", output_, ", real number: ", label)
 
         if epoch % 2000 == 0 and epoch > 498:
@@ -160,7 +160,7 @@ with tf.Session() as sess:
 
                 next_state, loss_ = sess.run([pass_back_state, loss], #why passback? Because we only shift by one!
                                                feed_dict = {inputs:data, Y:label, init_state:next_state})
-                RMS_loss += np.sqrt(loss_)
+                RMS_loss += loss_
             sm.clear_valid_counter()
 
             RMS_loss = RMS_loss / hyp.VALIDATION_NUMBER
@@ -180,7 +180,7 @@ with tf.Session() as sess:
         next_state, output_, loss_ = sess.run([pass_back_state, output, loss],  # why passback? Because we only shift by one!
                                      feed_dict={inputs: data, Y: label, init_state: next_state})
         RMS_loss += np.sqrt(loss_)
-        carrier = [label_, output_[0][0], np.sqrt(loss_)]
+        carrier = [label_, output_[0][0], loss_]
         test_logger.writerow(carrier)
     RMS_loss = RMS_loss / hyp.Info.TEST_SIZE
     print("test: rms loss is ", RMS_loss)
