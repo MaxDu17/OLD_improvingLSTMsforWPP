@@ -14,10 +14,10 @@ sm = SetMaker_Weather()
 hyp = Hyperparameters()
 #constructing the big weight now
 with tf.name_scope("weights_and_biases"):
-    W_Forget = tf.Variable(tf.random_normal(shape = [hyp.cell_dim + hyp.hidden_dim + 6,hyp.cell_dim]), name = "forget_weight")
-    W_Output = tf.Variable(tf.random_normal(shape=[hyp.cell_dim + hyp.hidden_dim + 6,hyp.cell_dim]), name="output_weight")
-    W_Gate = tf.Variable(tf.random_normal(shape=[hyp.cell_dim + hyp.hidden_dim + 6, hyp.cell_dim]), name="gate_weight")
-    W_Input = tf.Variable(tf.random_normal(shape=[hyp.cell_dim + hyp.hidden_dim + 6, hyp.cell_dim]), name="input_weight")
+    W_Forget = tf.Variable(tf.random_normal(shape = [hyp.cell_dim + hyp.hidden_dim + 6,hyp.cell_dim], mean = 1, stddev = hyp.STD, seed = hyp.SEED), name = "forget_weight")
+    W_Output = tf.Variable(tf.random_normal(shape=[hyp.cell_dim + hyp.hidden_dim + 6,hyp.cell_dim], mean = 1,stddev = hyp.STD, seed = hyp.SEED), name="output_weight")
+    W_Gate = tf.Variable(tf.random_normal(shape=[hyp.cell_dim + hyp.hidden_dim + 6, hyp.cell_dim], mean = 1,stddev = hyp.STD, seed = hyp.SEED), name="gate_weight")
+    W_Input = tf.Variable(tf.random_normal(shape=[hyp.cell_dim + hyp.hidden_dim + 6, hyp.cell_dim], mean = 1,stddev = hyp.STD, seed = hyp.SEED), name="input_weight")
     W_Hidden_to_Out = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim,1]), name = "outwards_propagating_weight")
 
     B_Forget = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name = "forget_bias")

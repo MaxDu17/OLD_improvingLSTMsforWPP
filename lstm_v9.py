@@ -15,11 +15,11 @@ hyp = Hyperparameters()
 #constructing the big weight now
 
 with tf.name_scope("weights_and_biases"):
-    W_Forget = tf.Variable(tf.random_normal(shape = [hyp.hidden_dim + 6,hyp.cell_dim], mean = 0, stddev = hyp.STD, seed = hyp.SEED), name = "forget_weight")
-    W_Output = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 6,hyp.cell_dim],mean = 0, stddev = hyp.STD, seed = hyp.SEED), name="output_weight")
-    W_Gate = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 6, hyp.cell_dim],mean = 0, stddev = hyp.STD, seed = hyp.SEED), name="gate_weight")
-    W_Input = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 6, hyp.cell_dim],mean = 0, stddev = hyp.STD, seed = hyp.SEED), name="input_weight")
-    W_Hidden_to_Out = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim,1]), name = "outwards_propagating_weight")
+    W_Forget = tf.Variable(tf.random_normal(shape = [hyp.hidden_dim + 6,hyp.cell_dim], mean = hyp.MEAN, stddev = hyp.STD, seed = hyp.SEED), name = "forget_weight")
+    W_Output = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 6,hyp.cell_dim], mean = hyp.MEAN, stddev = hyp.STD, seed = hyp.SEED), name="output_weight")
+    W_Gate = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 6, hyp.cell_dim],mean = hyp.MEAN, stddev = hyp.STD, seed = hyp.SEED), name="gate_weight")
+    W_Input = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 6, hyp.cell_dim],mean = hyp.MEAN, stddev = hyp.STD, seed = hyp.SEED), name="input_weight")
+    W_Hidden_to_Out = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim,1],mean = hyp.MEAN, stddev = hyp.STD, seed = hyp.SEED), name = "outwards_propagating_weight")
 
     B_Forget = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name = "forget_bias")
     B_Output = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="output_bias")
@@ -138,7 +138,7 @@ with tf.Session() as sess:
 
         logger.writerow([loss_])
 
-        if epoch % 50 == 0:
+        if epoch % 50 == 0: #50
             writer.add_summary(summary, global_step=epoch)
             print("I finished epoch ", epoch, " out of ", hyp.EPOCHS, " epochs")
             print("The absolute value loss for this sample is ", np.sqrt(loss_))

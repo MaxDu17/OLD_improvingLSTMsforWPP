@@ -13,6 +13,7 @@ class Hyperparameters: #the class that defines the hyperparameters is here
     RUN_PROMPT = 25
     STD = 0.5
     SEED = 76137
+    MEAN = 1
 
     class Info: #not used in real code, just as metadata
         DATASET_SIZE = 150120
