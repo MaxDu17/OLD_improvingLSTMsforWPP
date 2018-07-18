@@ -13,6 +13,7 @@ import csv
 sm = SetMaker_Weather()
 hyp = Hyperparameters()
 #constructing the big weight now
+
 with tf.name_scope("weights_and_biases"):
     W_Forget = tf.Variable(tf.random_normal(shape = [hyp.hidden_dim + 6,hyp.cell_dim], mean = 0, stddev = hyp.STD, seed = hyp.SEED), name = "forget_weight")
     W_Output = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 6,hyp.cell_dim],mean = 0, stddev = hyp.STD, seed = hyp.SEED), name="output_weight")
