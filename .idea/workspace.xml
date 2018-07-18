@@ -2,8 +2,224 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/2012/v9/versions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/versions.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyperparameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/hyperparameters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/ctrl1/LOSS.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/ctrl1/TEST.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/ctrl1/VALIDATION.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/ctrl1/events.out.tfevents.1531854767.DESKTOP-A14IBSC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/ctrl1/graph.pbtxt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/ctrl2/LOSS.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/ctrl2/TEST.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/ctrl2/VALIDATION.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/ctrl2/events.out.tfevents.1531856146.DESKTOP-A14IBSC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/ctrl2/graph.pbtxt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v1/LOSS.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v1/TEST.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v1/VALIDATION.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v1/events.out.tfevents.1531840160.DESKTOP-A14IBSC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v1/graph.pbtxt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v2/LOSS.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v2/TEST.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v2/VALIDATION.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v2/events.out.tfevents.1531841340.DESKTOP-A14IBSC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v2/graph.pbtxt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v3/LOSS.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v3/TEST.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v3/VALIDATION.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v3/events.out.tfevents.1531850503.DESKTOP-A14IBSC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v3/graph.pbtxt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v4/LOSS.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v4/TEST.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v4/VALIDATION.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v4/events.out.tfevents.1531851655.DESKTOP-A14IBSC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v4/graph.pbtxt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v5/LOSS.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v5/TEST.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v5/VALIDATION.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v5/events.out.tfevents.1531857713.DESKTOP-A14IBSC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v5/graph.pbtxt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v6/LOSS.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v6/TEST.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v6/VALIDATION.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v6/events.out.tfevents.1531922192.DESKTOP-A14IBSC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v6/graph.pbtxt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v7/LOSS.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v7/TEST.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v7/VALIDATION.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v7/events.out.tfevents.1531924729.DESKTOP-A14IBSC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v7/graph.pbtxt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v8/LOSS.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v8/TEST.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v8/VALIDATION.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v8/events.out.tfevents.1531926172.DESKTOP-A14IBSC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v8/graph.pbtxt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v9/LOSS.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v9/TEST.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v9/VALIDATION.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v9/events.out.tfevents.1531929403.DESKTOP-A14IBSC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/v9/graph.pbtxt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl1/LSTMv9-72000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl1/LSTMv9-72000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl1/LSTMv9-72000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl1/LSTMv9-74000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl1/LSTMv9-74000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl1/LSTMv9-74000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl1/LSTMv9-76000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl1/LSTMv9-76000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl1/LSTMv9-76000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl1/LSTMv9-78000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl1/LSTMv9-78000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl1/LSTMv9-78000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl1/LSTMv9-80000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl1/LSTMv9-80000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl1/LSTMv9-80000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl1/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl2/LSTMv9-72000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl2/LSTMv9-72000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl2/LSTMv9-72000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl2/LSTMv9-74000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl2/LSTMv9-74000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl2/LSTMv9-74000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl2/LSTMv9-76000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl2/LSTMv9-76000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl2/LSTMv9-76000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl2/LSTMv9-78000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl2/LSTMv9-78000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl2/LSTMv9-78000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl2/LSTMv9-80000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl2/LSTMv9-80000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl2/LSTMv9-80000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/ctrl2/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v2/LSTMv9-72000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v2/LSTMv9-72000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v2/LSTMv9-72000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v2/LSTMv9-74000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v2/LSTMv9-74000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v2/LSTMv9-74000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v2/LSTMv9-76000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v2/LSTMv9-76000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v2/LSTMv9-76000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v2/LSTMv9-78000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v2/LSTMv9-78000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v2/LSTMv9-78000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v2/LSTMv9-80000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v2/LSTMv9-80000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v2/LSTMv9-80000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v2/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v3/LSTMv9-72000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v3/LSTMv9-72000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v3/LSTMv9-72000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v3/LSTMv9-74000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v3/LSTMv9-74000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v3/LSTMv9-74000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v3/LSTMv9-76000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v3/LSTMv9-76000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v3/LSTMv9-76000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v3/LSTMv9-78000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v3/LSTMv9-78000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v3/LSTMv9-78000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v3/LSTMv9-80000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v3/LSTMv9-80000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v3/LSTMv9-80000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v3/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v4/LSTMv9-72000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v4/LSTMv9-72000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v4/LSTMv9-72000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v4/LSTMv9-74000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v4/LSTMv9-74000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v4/LSTMv9-74000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v4/LSTMv9-76000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v4/LSTMv9-76000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v4/LSTMv9-76000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v4/LSTMv9-78000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v4/LSTMv9-78000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v4/LSTMv9-78000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v4/LSTMv9-80000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v4/LSTMv9-80000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v4/LSTMv9-80000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v4/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v5/LSTMv9-72000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v5/LSTMv9-72000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v5/LSTMv9-72000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v5/LSTMv9-74000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v5/LSTMv9-74000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v5/LSTMv9-74000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v5/LSTMv9-76000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v5/LSTMv9-76000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v5/LSTMv9-76000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v5/LSTMv9-78000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v5/LSTMv9-78000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v5/LSTMv9-78000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v5/LSTMv9-80000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v5/LSTMv9-80000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v5/LSTMv9-80000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v5/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v6/LSTMv9-72000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v6/LSTMv9-72000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v6/LSTMv9-72000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v6/LSTMv9-74000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v6/LSTMv9-74000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v6/LSTMv9-74000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v6/LSTMv9-76000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v6/LSTMv9-76000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v6/LSTMv9-76000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v6/LSTMv9-78000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v6/LSTMv9-78000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v6/LSTMv9-78000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v6/LSTMv9-80000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v6/LSTMv9-80000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v6/LSTMv9-80000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v6/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v7/LSTMv9-72000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v7/LSTMv9-72000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v7/LSTMv9-72000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v7/LSTMv9-74000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v7/LSTMv9-74000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v7/LSTMv9-74000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v7/LSTMv9-76000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v7/LSTMv9-76000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v7/LSTMv9-76000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v7/LSTMv9-78000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v7/LSTMv9-78000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v7/LSTMv9-78000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v7/LSTMv9-80000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v7/LSTMv9-80000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v7/LSTMv9-80000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v7/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v8/LSTMv9-72000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v8/LSTMv9-72000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v8/LSTMv9-72000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v8/LSTMv9-74000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v8/LSTMv9-74000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v8/LSTMv9-74000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v8/LSTMv9-76000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v8/LSTMv9-76000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v8/LSTMv9-76000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v8/LSTMv9-78000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v8/LSTMv9-78000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v8/LSTMv9-78000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v8/LSTMv9-80000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v8/LSTMv9-80000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v8/LSTMv9-80000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v8/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v9/LSTMv9-72000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v9/LSTMv9-72000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v9/LSTMv9-72000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v9/LSTMv9-74000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v9/LSTMv9-74000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v9/LSTMv9-74000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v9/LSTMv9-76000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v9/LSTMv9-76000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v9/LSTMv9-76000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v9/LSTMv9-78000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v9/LSTMv9-78000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v9/LSTMv9-78000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v9/LSTMv9-80000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v9/LSTMv9-80000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v9/LSTMv9-80000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/v9/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Training_sets/2012DATA_NORMALIZED_.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Training_sets/2012DATA_NORMALIZED_.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_feeder_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_feeder_v2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lstm_v9.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v9.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,7 +257,7 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="local_grabber_single.py" pinned="false" current-in-tab="false">
+            <file leaf-file-name="local_grabber_single.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/local_grabber_single.py">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="612">
@@ -53,11 +269,11 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="extractor.py" pinned="false" current-in-tab="true">
+            <file leaf-file-name="extractor.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/extractor.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="221">
-                    <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
+                  <state relative-caret-position="170">
+                    <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
                     <folding>
                       <element signature="e#0#9#0" expanded="true" />
                     </folding>
@@ -84,8 +300,8 @@
       <file leaf-file-name="hyperparameters.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hyperparameters.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
+            <state relative-caret-position="170">
+              <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -93,7 +309,7 @@
       <file leaf-file-name="dataset_maker_v2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataset_maker_v2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-46">
+            <state relative-caret-position="221">
               <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
@@ -105,8 +321,8 @@
       <file leaf-file-name="lstm_v10.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lstm_v10.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="16" column="110" selection-start-line="16" selection-start-column="100" selection-end-line="16" selection-end-column="110" />
+            <state>
+              <caret column="24" lean-forward="true" selection-start-column="24" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -114,8 +330,8 @@
       <file leaf-file-name="lstm_v9.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lstm_v9.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="104" column="44" selection-start-line="104" selection-start-column="44" selection-end-line="104" selection-end-column="44" />
+            <state relative-caret-position="289">
+              <caret line="17" column="70" selection-start-line="17" selection-start-column="70" selection-end-line="17" selection-end-column="70" />
               <folding>
                 <element signature="e#220#243#0" expanded="true" />
               </folding>
@@ -123,20 +339,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lstm_v9_debug.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lstm_v9_debug.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2295">
-              <caret line="140" column="30" selection-start-line="140" selection-start-column="30" selection-end-line="140" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="data_feeder_v2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_feeder_v2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="323">
+              <caret line="19" column="100" selection-start-line="19" selection-start-column="100" selection-end-line="19" selection-end-column="100" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -253,7 +460,6 @@
         <option value="$PROJECT_DIR$/normalize_data.py" />
         <option value="$PROJECT_DIR$/feederandmakertesterv2.py" />
         <option value="$PROJECT_DIR$/dataset_maker_v2.py" />
-        <option value="$PROJECT_DIR$/data_feeder_v2.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/all-in-one/local_grabber_single.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/all-in-one/get_files.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py" />
@@ -262,6 +468,7 @@
         <option value="$PROJECT_DIR$/lstm_v9_debug.py" />
         <option value="$PROJECT_DIR$/lstm_v9.py" />
         <option value="$PROJECT_DIR$/hyperparameters.py" />
+        <option value="$PROJECT_DIR$/data_feeder_v2.py" />
       </list>
     </option>
   </component>
@@ -451,14 +658,14 @@
     <frame x="3192" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49636364" visible="true" weight="0.011064278" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49652296" visible="true" weight="0.011064278" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32897604" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.40087146" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2167756" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32897604" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.43681917" />
-      <window_info id="Structure" order="1" sideWeight="0.50363636" side_tool="true" visible="true" weight="0.011064278" />
+      <window_info id="Structure" order="1" sideWeight="0.50347704" side_tool="true" visible="true" weight="0.011064278" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.33551198" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5904139" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -785,16 +992,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/local_grabber_single.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
-          <folding>
-            <element signature="e#1#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/get_files.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -815,16 +1012,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_feeder_v2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lstm_v5.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="731">
@@ -832,19 +1019,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lstm_v9_debug.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="23" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/extractor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
+        <state relative-caret-position="170">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/local_grabber_single.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+          <folding>
+            <element signature="e#1#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hyperparameters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dataset_maker_v2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-46">
+        <state relative-caret-position="221">
           <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
@@ -852,31 +1063,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data_feeder_v2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="100" selection-start-line="19" selection-start-column="100" selection-end-line="19" selection-end-column="100" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lstm_v10.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="16" column="110" selection-start-line="16" selection-start-column="100" selection-end-line="16" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lstm_v9_debug.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2295">
-          <caret line="140" column="30" selection-start-line="140" selection-start-column="30" selection-end-line="140" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hyperparameters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
+        <state>
+          <caret column="24" lean-forward="true" selection-start-column="24" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lstm_v9.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="104" column="44" selection-start-line="104" selection-start-column="44" selection-end-line="104" selection-end-column="44" />
+        <state relative-caret-position="289">
+          <caret line="17" column="70" selection-start-line="17" selection-start-column="70" selection-end-line="17" selection-end-column="70" />
           <folding>
             <element signature="e#220#243#0" expanded="true" />
           </folding>
