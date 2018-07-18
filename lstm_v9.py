@@ -71,7 +71,7 @@ with tf.name_scope("prediction"):
     output = tf.nn.relu(raw_output, name="output")
 
 with tf.name_scope("loss"):
-    loss = tf.square(tf.subtract(output, Y))
+    loss = tf.sqrt(tf.square(tf.subtract(output, Y)))
     loss = tf.reshape(loss, [], name = "loss")
 
 with tf.name_scope("optimizer"):
