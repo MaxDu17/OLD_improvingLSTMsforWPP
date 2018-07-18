@@ -40,7 +40,7 @@ file_data = file_names[0] #this is to build up the template
 year = file_data[9:13]
 month = file_data[13:15]
 date = file_data[15:17]
-hour = file_data[19]
+hour = file_data[18:20]
 base_template = [year, month, date, hour]
 
 file_names = sorted(file_names, key = lambda file_names: int(file_names[-7:-5]))
