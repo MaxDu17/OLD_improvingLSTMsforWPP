@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/lstm_v9_debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/LOSS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/TEST.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/VALIDATION.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/graph.pbtxt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/2012/v9/versions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/versions.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyperparameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/hyperparameters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lstm_v10.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v10.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lstm_v9.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v9.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -92,8 +84,8 @@
       <file leaf-file-name="hyperparameters.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hyperparameters.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+            <state relative-caret-position="85">
+              <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -122,8 +114,8 @@
       <file leaf-file-name="lstm_v9.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lstm_v9.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="35" lean-forward="true" selection-start-line="29" selection-start-column="35" selection-end-line="30" selection-end-column="81" />
+            <state relative-caret-position="238">
+              <caret line="104" column="44" selection-start-line="104" selection-start-column="44" selection-end-line="104" selection-end-column="44" />
               <folding>
                 <element signature="e#220#243#0" expanded="true" />
               </folding>
@@ -135,7 +127,7 @@
         <entry file="file://$PROJECT_DIR$/lstm_v9_debug.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2295">
-              <caret line="140" column="30" lean-forward="true" selection-start-line="140" selection-start-column="30" selection-end-line="140" selection-end-column="30" />
+              <caret line="140" column="30" selection-start-line="140" selection-start-column="30" selection-end-line="140" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -268,8 +260,8 @@
         <option value="$PROJECT_DIR$/weather_data and parser/all-in-one/extractor.py" />
         <option value="$PROJECT_DIR$/lstm_v10.py" />
         <option value="$PROJECT_DIR$/lstm_v9_debug.py" />
-        <option value="$PROJECT_DIR$/hyperparameters.py" />
         <option value="$PROJECT_DIR$/lstm_v9.py" />
+        <option value="$PROJECT_DIR$/hyperparameters.py" />
       </list>
     </option>
   </component>
@@ -325,7 +317,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.lstm_v9_debug">
+  <component name="RunManager" selected="Python.lstm_v9">
     <configuration name="extractor" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CSIRE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -425,8 +417,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.lstm_v9_debug" />
         <item itemvalue="Python.lstm_v9" />
+        <item itemvalue="Python.lstm_v9_debug" />
         <item itemvalue="Python.extractor" />
         <item itemvalue="Python.lstm_v10" />
         <item itemvalue="Python.feederandmakertesterv2" />
@@ -870,21 +862,21 @@
     <entry file="file://$PROJECT_DIR$/lstm_v9_debug.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2295">
-          <caret line="140" column="30" lean-forward="true" selection-start-line="140" selection-start-column="30" selection-end-line="140" selection-end-column="30" />
+          <caret line="140" column="30" selection-start-line="140" selection-start-column="30" selection-end-line="140" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hyperparameters.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+        <state relative-caret-position="85">
+          <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lstm_v9.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="35" lean-forward="true" selection-start-line="29" selection-start-column="35" selection-end-line="30" selection-end-column="81" />
+        <state relative-caret-position="238">
+          <caret line="104" column="44" selection-start-line="104" selection-start-column="44" selection-end-line="104" selection-end-column="44" />
           <folding>
             <element signature="e#220#243#0" expanded="true" />
           </folding>
