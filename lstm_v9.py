@@ -179,7 +179,7 @@ with tf.Session() as sess:
 
         next_state, output_, loss_ = sess.run([pass_back_state, output, loss],  # why passback? Because we only shift by one!
                                      feed_dict={inputs: data, Y: label, init_state: next_state})
-        RMS_loss += np.sqrt(loss_)
+        RMS_loss += loss_
         carrier = [label_, output_[0][0], loss_]
         test_logger.writerow(carrier)
     RMS_loss = RMS_loss / hyp.Info.TEST_SIZE
