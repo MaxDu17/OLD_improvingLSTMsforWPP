@@ -4,12 +4,12 @@ import matplotlib.pyplot as plt
 upper_bound = 100
 lower_bound = 0
 step_length = 1
-version_number_1 = 1
-version_number_2 = 2
+version_number_1 = 6
+version_number_2 = 9
 x = np.arange(0,step_length*(upper_bound-lower_bound),step_length)
 
 file_name_1 = "2012/v" + str(version_number_1) + "/GRAPHS/EVALUATE_TEST.csv"
-file_name_2 = "2012/v" + str(version_number_2) + "/GRAPHS/EVALUATE_TEST.csv"
+file_name_2 = "2012/v" + str(version_number_2) + "/GRAPHS/TEST.csv"
 
 data1 = pd.read_csv(file_name_1)
 data2 = pd.read_csv(file_name_2)

@@ -14,11 +14,11 @@ sm = SetMaker_Weather()
 hyp = Hyperparameters()
 #constructing the big weight now
 with tf.name_scope("weights_and_biases"):
-    W_Forget = tf.Variable(tf.random_normal(shape = [hyp.cell_dim + hyp.hidden_dim + 6,hyp.cell_dim], mean = 1, stddev = hyp.STD, seed = hyp.SEED), name = "forget_weight")
-    W_Output = tf.Variable(tf.random_normal(shape=[hyp.cell_dim + hyp.hidden_dim + 6,hyp.cell_dim], mean = 1,stddev = hyp.STD, seed = hyp.SEED), name="output_weight")
-    W_Gate = tf.Variable(tf.random_normal(shape=[hyp.cell_dim + hyp.hidden_dim + 6, hyp.cell_dim], mean = 1,stddev = hyp.STD, seed = hyp.SEED), name="gate_weight")
-    W_Input = tf.Variable(tf.random_normal(shape=[hyp.cell_dim + hyp.hidden_dim + 6, hyp.cell_dim], mean = 1,stddev = hyp.STD, seed = hyp.SEED), name="input_weight")
-    W_Hidden_to_Out = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim,1]), name = "outwards_propagating_weight")
+    W_Forget = tf.Variable(tf.random_normal(shape = [hyp.cell_dim + hyp.hidden_dim + 6,hyp.cell_dim], mean = hyp.MEAN, stddev = hyp.STD, seed = hyp.SEED), name = "forget_weight")
+    W_Output = tf.Variable(tf.random_normal(shape=[hyp.cell_dim + hyp.hidden_dim + 6,hyp.cell_dim], mean = hyp.MEAN, stddev = hyp.STD, seed = hyp.SEED), name="output_weight")
+    W_Gate = tf.Variable(tf.random_normal(shape=[hyp.cell_dim + hyp.hidden_dim + 6, hyp.cell_dim], mean = hyp.MEAN, stddev = hyp.STD, seed = hyp.SEED), name="gate_weight")
+    W_Input = tf.Variable(tf.random_normal(shape=[hyp.cell_dim + hyp.hidden_dim + 6, hyp.cell_dim], mean = hyp.MEAN, stddev = hyp.STD, seed = hyp.SEED), name="input_weight")
+    W_Hidden_to_Out = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim,1], mean = hyp.MEAN, stddev = hyp.STD, seed = hyp.SEED), name = "outwards_propagating_weight")
 
     B_Forget = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name = "forget_bias")
     B_Output = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="output_bias")
@@ -58,12 +58,12 @@ def step(last_state, X):
     with tf.name_scope("output_gate"): #output gate values to hidden
         concat_output_input = tf.concat([X, H_last, current_cell], axis=1, name="input_concat")
 
-        current_cell_ = tf.tanh(current_cell, name = "to_hidden")
+        current_cell = tf.tanh(current_cell, name = "to_hidden")
         output_gate = tf.add(tf.matmul(concat_output_input, W_Output, name="o_w_m"), B_Output,
                              name="o_b_a")  # we are making the output gates now, with the peephole.
         output_gate = tf.sigmoid(output_gate,
                                  name="sigmoid_output")  # the gate is complete. Note that the two lines were supposed to be back in "to gates" and "non-linearity", but it is necessary to put it here
-        current_hidden = tf.multiply(output_gate, current_cell_, name="next_hidden")  # we are making the hidden by ele
+        current_hidden = tf.multiply(output_gate, current_cell, name="next_hidden")  # we are making the hidden by ele
         states = tf.stack([current_cell, current_hidden])
     return states
 
@@ -78,8 +78,8 @@ with tf.name_scope("prediction"):
     output = tf.nn.relu(raw_output, name="output")
 
 with tf.name_scope("loss"):
-    loss = tf.square(tf.subtract(output, Y))
-    loss = tf.reshape(loss, [], name = "loss")
+    loss = tf.abs(tf.subtract(output, Y))
+    loss = tf.reshape(loss, [], name="loss")
 
 with tf.name_scope("optimizer"):
     optimizer = tf.train.AdamOptimizer(learning_rate=hyp.LEARNING_RATE).minimize(loss)
@@ -148,7 +148,7 @@ with tf.Session() as sess:
         if epoch % 50 == 0:
             writer.add_summary(summary, global_step=epoch)
             print("I finished epoch ", epoch, " out of ", hyp.EPOCHS, " epochs")
-            print("The absolute value loss for this sample is ", np.sqrt(loss_))
+            print("The absolute value loss for this sample is ", loss_)
             print("predicted number: ", output_, ", real number: ", label)
 
         if epoch % 2000 == 0 and epoch > 498:
@@ -167,7 +167,7 @@ with tf.Session() as sess:
 
                 next_state, loss_ = sess.run([pass_back_state, loss], #why passback? Because we only shift by one!
                                                feed_dict = {inputs:data, Y:label, init_state:next_state})
-                RMS_loss += np.sqrt(loss_)
+                RMS_loss += loss_
             sm.clear_valid_counter()
 
             RMS_loss = RMS_loss / hyp.VALIDATION_NUMBER
@@ -178,6 +178,8 @@ with tf.Session() as sess:
 
     RMS_loss = 0.0
     next_state = np.zeros(shape=[2, 1, hyp.cell_dim])
+    carrier = ["true_values", "predicted_values", "abs_error"]
+    test_logger.writerow(carrier)
     for test in range(hyp.Info.TEST_SIZE):  # this will be replaced later
         data = sm.next_epoch_test_waterfall()
         label_ = sm.get_label()
@@ -186,8 +188,8 @@ with tf.Session() as sess:
 
         next_state, output_, loss_ = sess.run([pass_back_state, output, loss],  # why passback? Because we only shift by one!
                                      feed_dict={inputs: data, Y: label, init_state: next_state})
-        RMS_loss += np.sqrt(loss_)
-        carrier = [label_, output_[0][0], np.sqrt(loss_)]
+        RMS_loss += loss_
+        carrier = [label_, output_[0][0], loss_]
         test_logger.writerow(carrier)
     RMS_loss = RMS_loss / hyp.Info.TEST_SIZE
     print("test: rms loss is ", RMS_loss)
