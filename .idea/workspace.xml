@@ -309,7 +309,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.lstm_v9">
+  <component name="RunManager" selected="Python.extractor">
     <configuration name="extractor" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CSIRE" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -409,9 +409,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.extractor" />
         <item itemvalue="Python.lstm_v9" />
         <item itemvalue="Python.lstm_v9_debug" />
-        <item itemvalue="Python.extractor" />
         <item itemvalue="Python.lstm_v10" />
         <item itemvalue="Python.feederandmakertesterv2" />
       </list>
