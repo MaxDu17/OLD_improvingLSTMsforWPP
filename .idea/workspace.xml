@@ -2,8 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/hyperparameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/hyperparameters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lstm_v9.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm_v9.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/LOSS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/GRAPHS/LOSS.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/TEST.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/GRAPHS/TEST.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/VALIDATION.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/GRAPHS/VALIDATION.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/events.out.tfevents.1531947168.DESKTOP-A14IBSC" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/GRAPHS/events.out.tfevents.1531947168.DESKTOP-A14IBSC" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-18000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-18000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-18000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-20000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-20000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-20000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-22000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-22000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-22000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-24000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-24000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-24000.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-26000.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-26000.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2012/v9/models/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/models/checkpoint" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -45,7 +62,7 @@
               <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/local_grabber_single.py">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="544">
-                    <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+                    <caret line="32" selection-start-line="32" selection-end-line="32" />
                     <folding>
                       <element signature="e#1#11#0" expanded="true" />
                     </folding>
@@ -85,7 +102,7 @@
         <entry file="file://$PROJECT_DIR$/hyperparameters.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="8" column="19" lean-forward="true" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+              <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -114,8 +131,8 @@
       <file leaf-file-name="lstm_v9.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lstm_v9.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="72" column="27" lean-forward="true" selection-start-line="72" selection-start-column="27" selection-end-line="72" selection-end-column="27" />
+            <state relative-caret-position="34">
+              <caret line="83" column="42" selection-start-line="83" selection-start-column="42" selection-end-line="83" selection-end-column="42" />
               <folding>
                 <element signature="e#220#243#0" expanded="true" />
               </folding>
@@ -257,10 +274,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="3492" />
-    <option name="y" value="544" />
-    <option name="width" value="204" />
-    <option name="height" value="252" />
+    <option name="x" value="-15" />
+    <option name="y" value="-15" />
+    <option name="width" value="3233" />
+    <option name="height" value="1733" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -439,17 +456,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="3192" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-6" y="-6" width="1293" height="693" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49607843" visible="true" weight="0.011064278" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49006623" visible="true" weight="0.016693164" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32897604" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.44444445" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.7298748" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32897604" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.43681917" />
-      <window_info id="Structure" order="1" sideWeight="0.50392157" side_tool="true" visible="true" weight="0.011064278" />
+      <window_info id="Structure" order="1" sideWeight="0.50993377" side_tool="true" visible="true" weight="0.016693164" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.33551198" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5904139" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -850,7 +867,7 @@
     <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/local_grabber_single.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
           <folding>
             <element signature="e#1#11#0" expanded="true" />
           </folding>
@@ -860,14 +877,14 @@
     <entry file="file://$PROJECT_DIR$/hyperparameters.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" column="19" lean-forward="true" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lstm_v9.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="72" column="27" lean-forward="true" selection-start-line="72" selection-start-column="27" selection-end-line="72" selection-end-column="27" />
+        <state relative-caret-position="34">
+          <caret line="83" column="42" selection-start-line="83" selection-start-column="42" selection-end-line="83" selection-end-column="42" />
           <folding>
             <element signature="e#220#243#0" expanded="true" />
           </folding>
