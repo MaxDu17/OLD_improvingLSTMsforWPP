@@ -1,7 +1,7 @@
 import os
 import csv
 
-path = "../data-12/"
+path = "../data-13/"
 
 csv_list = [fname for fname in os.listdir(path) if fname.endswith('.csv')]
 
