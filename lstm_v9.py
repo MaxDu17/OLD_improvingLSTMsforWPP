@@ -21,11 +21,12 @@ with tf.name_scope("weights_and_biases"):
     W_Input = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 6, hyp.cell_dim],mean = hyp.MEAN, stddev = hyp.STD, seed = hyp.SEED), name="input_weight")
     W_Hidden_to_Out = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim,1],mean = hyp.MEAN, stddev = hyp.STD, seed = hyp.SEED), name = "outwards_propagating_weight")
 
-    B_Forget = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name = "forget_bias")
+
+    B_Forget = tf.Variable(tf.scalar_mul(5,tf.ones(shape=[1, hyp.cell_dim])), name = "forget_bias")
     B_Output = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="output_bias")
     B_Gate = tf.Variable(tf.zeros(shape=[1, hyp.cell_dim]), name="gate_bias")
     B_Input = tf.Variable(tf.zeros(shape=[1,hyp.cell_dim]), name="input_bias")
-    B_Hidden_to_Out = tf.Variable(tf.zeros(shape=[1,1]), name = "outwards_propagating_bias")
+    B_Hidden_to_Out = tf.Variable(tf.zeros(shape=[1, 1]), name="outwards_propagating_bias")
 
 with tf.name_scope("placeholders"):
     Y = tf.placeholder(shape = [1,1], dtype = tf.float32, name = "label") #not used until the last cycle
