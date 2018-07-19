@@ -2,25 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/LOSS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/GRAPHS/LOSS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/TEST.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/GRAPHS/TEST.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/VALIDATION.csv" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/GRAPHS/VALIDATION.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/GRAPHS/events.out.tfevents.1531947168.DESKTOP-A14IBSC" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/GRAPHS/events.out.tfevents.1531947168.DESKTOP-A14IBSC" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-18000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-18000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-18000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-20000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-20000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-20000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-22000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-22000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-22000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-24000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-24000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-24000.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-26000.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/LSTMv9-26000.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2012/v9/models/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/2012/v9/models/checkpoint" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather_data and parser/all-in-one/get_files.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather_data and parser/all-in-one/get_files.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,8 +20,8 @@
             <file leaf-file-name="all_in_one.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="102">
-                    <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+                  <state relative-caret-position="119">
+                    <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
                     <folding>
                       <element signature="e#23#33#0" expanded="true" />
                     </folding>
@@ -46,11 +29,11 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="get_files.py" pinned="false" current-in-tab="false">
+            <file leaf-file-name="get_files.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/get_files.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="34">
-                    <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+                  <state relative-caret-position="204">
+                    <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
                     <folding>
                       <element signature="e#0#22#0" expanded="true" />
                     </folding>
@@ -58,7 +41,7 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="local_grabber_single.py" pinned="false" current-in-tab="true">
+            <file leaf-file-name="local_grabber_single.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/local_grabber_single.py">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="544">
@@ -262,14 +245,14 @@
         <option value="$PROJECT_DIR$/feederandmakertesterv2.py" />
         <option value="$PROJECT_DIR$/dataset_maker_v2.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/all-in-one/local_grabber_single.py" />
-        <option value="$PROJECT_DIR$/weather_data and parser/all-in-one/get_files.py" />
-        <option value="$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/all-in-one/extractor.py" />
         <option value="$PROJECT_DIR$/lstm_v10.py" />
         <option value="$PROJECT_DIR$/lstm_v9_debug.py" />
         <option value="$PROJECT_DIR$/data_feeder_v2.py" />
         <option value="$PROJECT_DIR$/lstm_v9.py" />
         <option value="$PROJECT_DIR$/hyperparameters.py" />
+        <option value="$PROJECT_DIR$/weather_data and parser/all-in-one/get_files.py" />
+        <option value="$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py" />
       </list>
     </option>
   </component>
@@ -793,26 +776,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/get_files.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
-          <folding>
-            <element signature="e#23#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lstm_v5.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="731">
@@ -864,16 +827,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/local_grabber_single.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="e#1#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hyperparameters.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -887,6 +840,36 @@
           <caret line="83" column="42" selection-start-line="83" selection-start-column="42" selection-end-line="83" selection-end-column="42" />
           <folding>
             <element signature="e#220#243#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/local_grabber_single.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="e#1#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+          <folding>
+            <element signature="e#23#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/get_files.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
