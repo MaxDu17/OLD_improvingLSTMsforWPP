@@ -5,7 +5,7 @@ from ftplib import FTP
 #path = "/home/max/DRIVE/data/"
 path = '/home/set/Max/data/'
 len_path = len(path)
-directory = "HAS011159554"
+directory = "HAS011159558"
 # Connect to FTP server and go to the folder
 ftp = FTP('ftp.ncdc.noaa.gov')
 ftp.login()
