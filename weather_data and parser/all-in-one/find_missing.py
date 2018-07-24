@@ -1,7 +1,7 @@
 import csv
 
 
-k = open("../sortedtotalset.csv")
+k = open("../2011_TOTALSET.csv")
 rawset = list(csv.reader(k))
 m = open("../MARKEDTOTALSET.csv", "w")
 writer = csv.writer(m, lineterminator="\n")
