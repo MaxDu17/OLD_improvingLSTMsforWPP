@@ -3,11 +3,17 @@ import csv
 
 k = open("../sortedtotalset.csv")
 rawset = list(csv.reader(k))
-m = open("../test.csv", "w")
+m = open("../MARKEDTOTALSET.csv", "w")
 writer = csv.writer(m, lineterminator="\n")
-
+offset = 0
+print(len(rawset))
 for j in range(1,366*24):
+    try:
+        if int(rawset[j][3]) != int((j-1-offset)%24):
+            rawset.insert(j, ["DATA NOT FOUND"])
+            #print(rawset[j][0:4])
+    except:
+        continue
 
-    if int(rawset[j][3]) != int((j-1)%24):
-        print(rawset[j])
-        j = j+1
+print(len(rawset))
+writer.writerows(rawset)
