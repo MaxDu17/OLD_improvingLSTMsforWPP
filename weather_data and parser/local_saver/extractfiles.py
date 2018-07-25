@@ -49,7 +49,9 @@ big_data_ = open("LARGE_FILE_FILLED.csv", "w") #here we get the large file
 big_data = csv.writer(big_data_, lineterminator = "\n")
 big_data.writerow(headers)
 
+folders = sorted(folders, key= lambda names: int(names[13:19]))
 print(folders)
+
 for dir_name in folders:
     file_names = os.listdir(dir_name)
     i = 0
