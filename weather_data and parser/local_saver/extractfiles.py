@@ -6,8 +6,23 @@ import subprocess
 
 script, dir_name, filename = argv
 
+
 #path = "/home/max/DRIVE/data/crash/"
 path = '/home/set/Max/data/crash_extract/'
+data_path = '/home/set/Max/data/'
+
+folders = os.listdir(data_path)
+try:
+    folders.remove("crash")
+except:
+    print("crash folder seems to be removed. That's OK!")
+
+recovery = open("finished.csv", 'r')
+recovery =list(csv.reader(recovery))
+
+for name in recovery:
+    folders.remove(name)
+
 category_dict = {0: "surface_pressure", 1: "temp@2M", 2: "wind_gust_speed", 3: "2_M_rel_humid", 4: "temp_gnd_lvl"}
 
 keepers = [223,230,300,295,310] #the data points to keep
@@ -20,15 +35,15 @@ delta = [0,0,2]
 gate_delta = [0,0,1,1,1]
 lower_bound = list()
 
-for i in range(3):
+for i in range(3): #just making the headers...
     for j in range(5):
         time = "forecast " + str(i) + "-"
         category = category_dict[j]
         concat = time + category
         headers.append(concat)
 
-print("saving csv to: " + dir_name)
-big_data_ = open(dir_name + "_data.csv", "w") #here we get the large file
+print("making a large file now with everything inside!")
+big_data_ = open("LARGE_FILE_FILLED.csv", "w") #here we get the large file
 big_data = csv.writer(big_data_, lineterminator = "\n")
 big_data.writerow(headers)
 
@@ -60,8 +75,3 @@ for file_name in file_names[0:3]:
     i += 1
     opened_file.close()
 big_data.writerow(base_template)
-big_data_.close()
-subprocess.call(["rm", "-r", dir_name])
-k = open(path + filename, "w")
-print("done with " + filename + ". Added its name to crash file")
-k.close()
