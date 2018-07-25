@@ -78,4 +78,7 @@ for dir_name in folders:
             print("extracted: " + str(number) + " from " + file_name)
         i += 1
         opened_file.close()
+    donefile.writerow([dir_name])
+    print("wrote " + dir_name + " to finished csv!")
     big_data.writerow(base_template)
+    print("wrote data to big csv!")
