@@ -5,8 +5,7 @@ extract key data from the local database
 import csv
 import os
 import pygrib #library that only works in linux
-from get_best_pt_lib import Searcher
-
+from get_best_pt_lib import Searcher #not to worry, this will be all ok on linux
 point_finder = Searcher()
 #point_to_keep_i =186
 #point_to_keep_j = 388

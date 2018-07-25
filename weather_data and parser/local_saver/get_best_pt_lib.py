@@ -12,8 +12,8 @@ import pandas as pd
 #i is rows, j is columns
 class Searcher():
     def search(self):
-        data_lat = pd.read_csv("lats_ruc2_130.csv", header=None)
-        data_lon = pd.read_csv("lons_ruc2_130.csv",header=None)
+        data_lat = pd.read_csv("../lats_ruc2_130.csv", header=None)
+        data_lon = pd.read_csv("../lons_ruc2_130.csv",header=None)
 
         target_frame = pd.read_csv("target.csv")
         lat_ = target_frame[["lat"]]
