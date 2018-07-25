@@ -65,7 +65,7 @@ for dir_name in folders:
     file_names = sorted(file_names, key = lambda file_names: int(file_names[-7:-5]))
     for file_name in file_names[0:3]:
         #ruc2_130_20110102_0500_004
-        opened_file = pygrib.open(dir_name + "/" + file_name)
+        opened_file = pygrib.open(data_path + dir_name + "/" + file_name)
 
         delta_list = [k * delta[i] for k in gate_delta]
         ok_list = [sum(x) for x in zip(delta_list, keepers)]
