@@ -17,11 +17,16 @@ try:
 except:
     print("crash folder seems to be removed. That's OK!")
 
-recovery = open("finished.csv", 'r')
-recovery =list(csv.reader(recovery))
+recovery_ = open("finished.csv", 'r')
+recovery =list(csv.reader(recovery_))
+recovery_.close()
 
 for name in recovery:
-    folders.remove(name)
+    folders.remove(name)#this makes sure that we don't start from the begining
+
+donefile_ = open("finished.csv", 'w')
+donefile = csv.writer(donefile_, lineterminator='\n')
+donefile.writerows(recovery) #this opens the finished csv file, so it can be appended to later.
 
 category_dict = {0: "surface_pressure", 1: "temp@2M", 2: "wind_gust_speed", 3: "2_M_rel_humid", 4: "temp_gnd_lvl"}
 
@@ -47,31 +52,30 @@ big_data_ = open("LARGE_FILE_FILLED.csv", "w") #here we get the large file
 big_data = csv.writer(big_data_, lineterminator = "\n")
 big_data.writerow(headers)
 
+for dir_name in folders:
+    file_names = os.listdir(dir_name)
+    i = 0
+    file_data = file_names[0] #this is to build up the template
+    year = file_data[9:13]
+    month = file_data[13:15]
+    date = file_data[15:17]
+    hour = file_data[18:20]
+    base_template = [year, month, date, hour]
 
+    file_names = sorted(file_names, key = lambda file_names: int(file_names[-7:-5]))
+    for file_name in file_names[0:3]:
+        #ruc2_130_20110102_0500_004
+        opened_file = pygrib.open(dir_name + "/" + file_name)
 
-file_names = os.listdir(dir_name)
-i = 0
-file_data = file_names[0] #this is to build up the template
-year = file_data[9:13]
-month = file_data[13:15]
-date = file_data[15:17]
-hour = file_data[18:20]
-base_template = [year, month, date, hour]
-
-file_names = sorted(file_names, key = lambda file_names: int(file_names[-7:-5]))
-for file_name in file_names[0:3]:
-    #ruc2_130_20110102_0500_004
-    opened_file = pygrib.open(dir_name + "/" + file_name)
-
-    delta_list = [k * delta[i] for k in gate_delta]
-    ok_list = [sum(x) for x in zip(delta_list, keepers)]
-    for number in ok_list:
-        selection = opened_file.select()[number]
-        #print(selection)
-        selection_ = selection.values
-        single_pt = selection_[point_to_keep_i][point_to_keep_j]
-        base_template.append(single_pt)
-        print("extracted: " + str(number) + " from " + file_name)
-    i += 1
-    opened_file.close()
-big_data.writerow(base_template)
+        delta_list = [k * delta[i] for k in gate_delta]
+        ok_list = [sum(x) for x in zip(delta_list, keepers)]
+        for number in ok_list:
+            selection = opened_file.select()[number]
+            #print(selection)
+            selection_ = selection.values
+            single_pt = selection_[point_to_keep_i][point_to_keep_j]
+            base_template.append(single_pt)
+            print("extracted: " + str(number) + " from " + file_name)
+        i += 1
+        opened_file.close()
+    big_data.writerow(base_template)
