@@ -19,6 +19,7 @@ recovery_.close()
 
 for name in recovery:
     folders.remove(name)#this makes sure that we don't start from the begining
+print("Recovery finished! There are " + str(len(folders)) + " files left!")
 
 donefile_ = open("finished.csv", 'w')
 donefile = csv.writer(donefile_, lineterminator='\n')
@@ -48,6 +49,7 @@ big_data_ = open("LARGE_FILE_FILLED.csv", "w") #here we get the large file
 big_data = csv.writer(big_data_, lineterminator = "\n")
 big_data.writerow(headers)
 
+print(folders)
 for dir_name in folders:
     file_names = os.listdir(dir_name)
     i = 0
