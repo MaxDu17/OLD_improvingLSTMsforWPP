@@ -4,11 +4,7 @@ import pygrib #library that only works in linux
 from sys import argv
 import subprocess
 
-script, dir_name, filename = argv
-
-
 #path = "/home/max/DRIVE/data/crash/"
-path = '/home/set/Max/data/crash_extract/'
 data_path = '/home/set/Max/data/'
 
 folders = os.listdir(data_path)
