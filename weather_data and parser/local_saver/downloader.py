@@ -9,7 +9,7 @@ len_path = len(path)
 k_ = open("tarfiles.csv", "r")
 big_tar_list = list(csv.reader(k_))
 big_tar_list = [m[0] for m in big_tar_list]
-directory = big_tar_list.pop(0)
+directory = big_tar_list.pop(0) #getting directory from tarfile list
 k_.close()
 
 #directory = input("what is the directory name?\n")
@@ -22,16 +22,16 @@ except:
     print("error, no files found. Quitting...")
     quit()
 
-
 print("attempting crash recovery")
 crash_list = os.listdir(path + 'crash/')
 
-
-
-
 for item in crash_list:
-    print(item)
-    big_tar_list.remove(item) #now we are left with a list of things to do
+    try:
+        print(item)
+        big_tar_list.remove(item) #now we are left with a list of things to do
+    except:
+        print("you probably forgot to clear the crash directory. Do that please!")
+        quit()
 
 input("crash recovery complete. " + str(len(big_tar_list)) + " files to go!")
 big_tar_list = sorted(big_tar_list, key = lambda file_names: int(file_names[13:17]))
