@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="" />
+    <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/pipeline/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/__init__.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,20 +61,11 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="find_missing.py" pinned="false" current-in-tab="false">
+            <file leaf-file-name="find_missing.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/find_missing.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="323">
-                    <caret line="19" selection-start-line="19" selection-end-line="19" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/pipeline/__init__.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="68">
-                    <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+                  <state relative-caret-position="85">
+                    <caret line="5" column="38" lean-forward="true" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
                   </state>
                 </provider>
               </entry>
@@ -93,10 +86,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lstm_v10_weather+peep.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="lstm_v10_weather+peep.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LSTM_code/lstm_v10_weather+peep.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1020" />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="downloader.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/weather_data and parser/local_saver/downloader.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="10" column="43" lean-forward="true" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="get_files.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/weather_data and parser/local_saver/get_files.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="48" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="48" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
@@ -218,8 +232,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/testdatasetmaker.py" />
-        <option value="$PROJECT_DIR$/data_feeder.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/get_all_data_labels.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/get_lat_lon.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/get_best_pt.py" />
@@ -246,7 +258,6 @@
         <option value="$PROJECT_DIR$/extractor.py" />
         <option value="$PROJECT_DIR$/lstm_v8_model2_based.py" />
         <option value="$PROJECT_DIR$/save_v5.py" />
-        <option value="$PROJECT_DIR$/pipeline/__init__.py" />
         <option value="$PROJECT_DIR$/lstm_v2_contained.py" />
         <option value="$PROJECT_DIR$/getpbtxt.py" />
         <option value="$PROJECT_DIR$/save_v4.py" />
@@ -269,14 +280,17 @@
         <option value="$PROJECT_DIR$/weather_data and parser/all-in-one/all_in_one.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/all-in-one/extractor.py" />
         <option value="$PROJECT_DIR$/weather_data and parser/all-in-one/find_missing.py" />
+        <option value="$PROJECT_DIR$/pipeline/__init__.py" />
+        <option value="$PROJECT_DIR$/weather_data and parser/local_saver/get_files.py" />
+        <option value="$PROJECT_DIR$/weather_data and parser/local_saver/downloader.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="295" />
-    <option name="y" value="660" />
-    <option name="width" value="1295" />
-    <option name="height" value="695" />
+    <option name="x" value="3478" />
+    <option name="y" value="173" />
+    <option name="width" value="518" />
+    <option name="height" value="278" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -455,16 +469,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1293" height="693" extended-state="6" />
+    <frame x="3192" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4883721" visible="true" weight="0.003974563" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48910674" visible="true" weight="0.0026343518" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32897604" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" weight="1.0" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32897604" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.43681917" />
-      <window_info id="Structure" order="1" sideWeight="0.5116279" side_tool="true" visible="true" weight="0.003974563" />
+      <window_info id="Structure" order="1" sideWeight="0.5108932" side_tool="true" visible="true" weight="0.0026343518" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.33551198" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5904139" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -493,23 +507,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Miniconda3/Lib/site-packages/tensorflow/python/client/session.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10062">
-          <caret line="1110" selection-start-line="1110" selection-end-line="1110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/weather_data and parser/local_grabber_single.py" />
-    <entry file="file://$PROJECT_DIR$/get_files.py" />
-    <entry file="file://$PROJECT_DIR$/weather_data and parser/local_grabber.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-209">
-          <caret line="54" column="41" lean-forward="true" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/extractor.py" />
     <entry file="file://$PROJECT_DIR$/dataset_maker v2.py" />
     <entry file="file://$PROJECT_DIR$/data_feeder v2.py" />
     <entry file="file://$PROJECT_DIR$/../AI_Fun/test.py" />
@@ -764,13 +761,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/find_missing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LSTM_code/lstm_v8__dualv2based.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -778,13 +768,6 @@
           <folding>
             <element signature="e#105#128#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pipeline/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -801,9 +784,67 @@
     <entry file="file://$PROJECT_DIR$/LSTM_test.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/matrix test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_foreign_base_case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adaptive_loss_function.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/LSTM_code/lstm_v10_weather+peep.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1020" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pipeline/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="43" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/weather_data and parser/all-in-one/find_missing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="38" lean-forward="true" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/weather_data and parser/local_saver/get_files.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="48" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/weather_data and parser/local_saver/downloader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="10" column="43" lean-forward="true" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
+        </state>
       </provider>
     </entry>
   </component>
