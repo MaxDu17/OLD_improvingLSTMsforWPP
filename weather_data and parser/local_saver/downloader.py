@@ -39,7 +39,7 @@ for filename in big_tar_list:
     # Untar each file to its own folder, after it is done, delete the tar file
     dirname = overarching_name.replace('.tar','')
     tarcommand = 'tar -xf '+overarching_name + ' -C ' + dirname + '; rm '+overarching_name + \
-        '; cd ' + path + 'touch ' + filename
+        '; cd ' + path + 'crash/;'+ ' touch ' + filename
     print("Extracting tar: " + filename)
     subprocess.call(["mkdir", "-p", dirname])
     subprocess.Popen(['/bin/sh', '-c', tarcommand])
