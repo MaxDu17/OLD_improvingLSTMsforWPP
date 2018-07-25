@@ -10,6 +10,7 @@ ftp.cwd('pub/has/model/' + directory + '/')
 try:
     content = ftp.nlst()
     print(len(content))
+    tarfile_list.writerow([directory])
     for item in content:
         tarfile_list.writerow([item])
 except:

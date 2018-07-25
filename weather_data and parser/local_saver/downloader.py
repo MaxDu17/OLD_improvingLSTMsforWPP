@@ -5,7 +5,14 @@ from ftplib import FTP
 #path = "/home/max/DRIVE/data/"
 path = '/home/set/Max/data/'
 len_path = len(path)
-directory = input("what is the directory name?\n")
+
+k_ = open("tarfiles.csv", "r")
+big_tar_list = list(csv.reader(k_))
+big_tar_list = [m[0] for m in big_tar_list]
+directory = big_tar_list.pop(0)
+k_.close()
+
+#directory = input("what is the directory name?\n")
 ftp = FTP('ftp.ncdc.noaa.gov')
 ftp.login()
 ftp.cwd('pub/has/model/' + directory + '/')
@@ -18,10 +25,9 @@ except:
 
 print("attempting crash recovery")
 crash_list = os.listdir(path + 'crash/')
-k_ = open("tarfiles.csv", "r")
-big_tar_list = list(csv.reader(k_))
-big_tar_list = [m[0] for m in big_tar_list]
-k_.close()
+
+
+
 
 for item in crash_list:
     print(item)
