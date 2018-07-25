@@ -1,10 +1,20 @@
+"""
+this is meant for use on the home server. After downloading is finished, then this program is run to
+extract key data from the local database
+"""
 import csv
 import os
 import pygrib #library that only works in linux
-from sys import argv
-import subprocess
+from get_best_pt_lib import Searcher
 
-#path = "/home/max/DRIVE/data/crash/"
+point_finder = Searcher()
+#point_to_keep_i =186
+#point_to_keep_j = 388
+
+point_to_keep_i, point_to_keep_j = point_finder.search()
+print(point_to_keep_i)
+print(point_to_keep_j)
+
 data_path = '/home/set/Max/data/'
 
 folders = os.listdir(data_path)
@@ -17,7 +27,6 @@ recovery_ = open("finished.csv", 'r')
 recovery =list(csv.reader(recovery_))
 recovery_.close()
 recovery = [j[0] for j in recovery]
-print(recovery)
 for name in recovery:
     folders.remove(name)#this makes sure that we don't start from the begining
 
@@ -35,8 +44,8 @@ category_dict = {0: "surface_pressure", 1: "temp@2M", 2: "wind_gust_speed", 3: "
 
 keepers = [223,230,300,295,310] #the data points to keep
 headers = ["year", "month", "date", "hour"]
-point_to_keep_i =186
-point_to_keep_j = 388 #among the large list, it is this single point that we want to keep. This changes with location
+
+#among the large list, it is this single point that we want to keep. This changes with location
 
 #delta = [0,0,2,2,0,2,2,0,2,2,0,2,2,0,2,2,0,2,2] #this compensates for the index-hopping that the dataset does
 delta = [0,0,2]
@@ -50,13 +59,12 @@ for i in range(3): #just making the headers...
         concat = time + category
         headers.append(concat)
 
-print("making a large file now with everything inside!")
+print("making a large file now with everything inside!") #this is the filled file
 big_data_ = open("LARGE_FILE_FILLED.csv", "w") #here we get the large file
 big_data = csv.writer(big_data_, lineterminator = "\n")
 big_data.writerow(headers)
 
-folders = sorted(folders, key= lambda names: int(names[13:19]))
-print(folders)
+folders = sorted(folders, key= lambda names: int(names[13:19])) #sorting the folders in numerical order by data
 
 for dir_name in folders:
     file_names = os.listdir(data_path + dir_name)
