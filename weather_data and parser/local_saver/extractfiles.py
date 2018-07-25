@@ -53,7 +53,7 @@ folders = sorted(folders, key= lambda names: int(names[13:19]))
 print(folders)
 
 for dir_name in folders:
-    file_names = os.listdir(dir_name)
+    file_names = os.listdir(data_path + dir_name)
     i = 0
     file_data = file_names[0] #this is to build up the template
     year = file_data[9:13]
