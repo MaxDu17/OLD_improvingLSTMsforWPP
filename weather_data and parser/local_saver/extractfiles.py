@@ -16,7 +16,7 @@ except:
 recovery_ = open("finished.csv", 'r')
 recovery =list(csv.reader(recovery_))
 recovery_.close()
-
+recovery = [j[0] for j in recovery]
 for name in recovery:
     folders.remove(name)#this makes sure that we don't start from the begining
 print("Recovery finished! There are " + str(len(folders)) + " files left!")
