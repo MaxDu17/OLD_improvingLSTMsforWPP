@@ -1,11 +1,9 @@
 import tensorflow as tf
 from pipeline import SetMaker
 from pipeline import Hyperparameters
-from pipeline import My_Loss
 
 sm = SetMaker()
 hyp = Hyperparameters()
-ml = My_Loss()
 
 class Model2:
 

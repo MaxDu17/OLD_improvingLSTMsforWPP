@@ -98,7 +98,7 @@ with tf.name_scope("summaries_and_saver"):
 
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
-    ckpt = tf.train.get_checkpoint_state(os.path.dirname('2012/v9/models/'))
+    ckpt = tf.train.get_checkpoint_state(os.path.dirname('evaluation/continuous/currweather/RELU'))
     if ckpt and ckpt.model_checkpoint_path:
         query = input("checkpoint detected! Would you like to restore from <" + ckpt.model_checkpoint_path + "> ?(y or n)\n")
         if query == 'y':
@@ -108,9 +108,9 @@ with tf.Session() as sess:
         else:
             print("session discarded!")
 
-    log_loss = open("2012/v9/GRAPHS/LOSS.csv", "w")
-    validation = open("2012/v9/GRAPHS/VALIDATION.csv", "w")
-    test = open("2012/v9/GRAPHS/TEST.csv", "w")
+    log_loss = open("evaluation/continuous/currweather/RELU/GRAPHS/LOSS.csv", "w")
+    validation = open("evaluation/continuous/currweather/RELU/GRAPHS/VALIDATION.csv", "w")
+    test = open("evaluation/continuous/currweather/RELU/GRAPHS/TEST.csv", "w")
     logger = csv.writer(log_loss, lineterminator="\n")
     validation_logger = csv.writer(validation, lineterminator="\n")
     test_logger = csv.writer(test, lineterminator="\n")
@@ -118,8 +118,8 @@ with tf.Session() as sess:
     sm.create_training_set()
 
 
-    tf.train.write_graph(sess.graph_def, '2012/v9/GRAPHS/', 'graph.pbtxt')
-    writer = tf.summary.FileWriter("2012/v9/GRAPHS/", sess.graph)
+    tf.train.write_graph(sess.graph_def, 'evaluation/continuous/currweather/RELU/GRAPHS/', 'graph.pbtxt')
+    writer = tf.summary.FileWriter("evaluation/continuous/currweather/RELU/GRAPHS/", sess.graph)
 
     summary = None
     next_state = np.zeros(shape=[2,1,hyp.cell_dim])
@@ -146,13 +146,35 @@ with tf.Session() as sess:
             print("predicted number: ", output_, ", real number: ", label)
 
         if epoch % 50 == 0 and epoch > hyp.EPOCHS-(50*hyp.FINALJUMP):
-            saver.save(sess, "2012/v9/models/LSTMv9", global_step=epoch)
+            test_local_ = open(str(epoch) + ".csv", 'w')
+            test_local = csv.writer(test_local_, lineterminator='\n')
 
+            saver.save(sess, "evaluation/continuous/currweather/RELU/models/LSTMweatherRELU", global_step=epoch)
+
+            RMS_loss = 0.0
+            next_state_test = np.zeros(shape=[2, 1, hyp.cell_dim])
+            carrier = ["true_values", "predicted_values", "abs_error"]
+            test_local.writerow(carrier)
+            sm.reset_test_counter()
+            for test in range(hyp.Info.TEST_SIZE):  # this will be replaced later
+                data = sm.next_epoch_test_waterfall()
+                label_ = sm.get_label()
+                label = np.reshape(label_, [1, 1])
+                data = np.reshape(data, [hyp.FOOTPRINT, 1, 6])
+
+                next_state_test, output_, loss_ = sess.run([pass_back_state, output, loss],
+                                                           # why passback? Because we only shift by one!
+                                                           feed_dict={inputs: data, Y: label, init_state: next_state_test})
+                RMS_loss += loss_
+                carrier = [label_, output_[0][0], loss_]
+                test_local.writerow(carrier)
+            RMS_loss = RMS_loss / hyp.Info.TEST_SIZE
+            print("doing some rapid tests: this one had loss of " + str(RMS_loss))
+            test_local_.close()
 
         if epoch % 2000 == 0 and epoch > 498:
-            saver.save(sess, "2012/v9/models/LSTMv9", global_step=epoch)
+            saver.save(sess, "evaluation/continuous/currweather/RELU/models/LSTMweatherRELU", global_step=epoch)
             print("---------------------saved model-------------------------")
-
             sm.create_validation_set()
             RMS_loss = 0.0
             next_state_valid = np.zeros(shape=[2, 1, hyp.cell_dim])
@@ -163,7 +185,7 @@ with tf.Session() as sess:
                 data = np.reshape(data, [hyp.FOOTPRINT, 1, 6])
 
                 next_state_valid, loss_ = sess.run([pass_back_state, loss], #why passback? Because we only shift by one!
-                                               feed_dict = {inputs:data, Y:label, init_state:next_state})
+                                               feed_dict = {inputs:data, Y:label, init_state:next_state_valid})
                 RMS_loss += loss_
             sm.clear_valid_counter()
 
@@ -178,6 +200,7 @@ with tf.Session() as sess:
     next_state_test = np.zeros(shape=[2, 1, hyp.cell_dim])
     carrier = ["true_values", "predicted_values", "abs_error"]
     test_logger.writerow(carrier)
+    sm.reset_test_counter()
     for test in range(hyp.Info.TEST_SIZE):  # this will be replaced later
         data = sm.next_epoch_test_waterfall()
         label_ = sm.get_label()
@@ -185,7 +208,7 @@ with tf.Session() as sess:
         data = np.reshape(data, [hyp.FOOTPRINT, 1, 6])
 
         next_state_test, output_, loss_ = sess.run([pass_back_state, output, loss],  # why passback? Because we only shift by one!
-                                     feed_dict={inputs: data, Y: label, init_state: next_state})
+                                     feed_dict={inputs: data, Y: label, init_state: next_state_test})
         RMS_loss += loss_
         carrier = [label_, output_[0][0], loss_]
         test_logger.writerow(carrier)
