@@ -146,7 +146,7 @@ with tf.Session() as sess:
             print("predicted number: ", output_, ", real number: ", label)
 
         if epoch % 50 == 0 and epoch > hyp.EPOCHS-(50*hyp.FINALJUMP):
-            test_local_ = open(str(epoch) + ".csv", 'w')
+            test_local_ = open("evaluation/continuous/currweather/RELU/models/" + str(epoch) + ".csv", 'w')
             test_local = csv.writer(test_local_, lineterminator='\n')
 
             saver.save(sess, "evaluation/continuous/currweather/RELU/models/LSTMweatherRELU", global_step=epoch)

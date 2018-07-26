@@ -1,0 +1,6 @@
+model_checkpoint_path: "LSTMweatherRELU-80000"
+all_model_checkpoint_paths: "LSTMweatherRELU-79800"
+all_model_checkpoint_paths: "LSTMweatherRELU-79850"
+all_model_checkpoint_paths: "LSTMweatherRELU-79900"
+all_model_checkpoint_paths: "LSTMweatherRELU-79950"
+all_model_checkpoint_paths: "LSTMweatherRELU-80000"
