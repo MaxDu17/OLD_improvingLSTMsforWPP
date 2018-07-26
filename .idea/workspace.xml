@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSTM_code/evaluation/continuous/currweather/RELU/GRAPHS/LOSS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/LSTM_code/evaluation/continuous/currweather/RELU/GRAPHS/LOSS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSTM_code/evaluation/continuous/currweather/RELU/GRAPHS/TEST.csv" beforeDir="false" afterPath="$PROJECT_DIR$/LSTM_code/evaluation/continuous/currweather/RELU/GRAPHS/TEST.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSTM_code/evaluation/continuous/currweather/RELU/GRAPHS/VALIDATION.csv" beforeDir="false" afterPath="$PROJECT_DIR$/LSTM_code/evaluation/continuous/currweather/RELU/GRAPHS/VALIDATION.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSTM_code/evaluation/continuous/currweather/RELU/GRAPHS/events.out.tfevents.1532634465.DESKTOP-A14IBSC" beforeDir="false" afterPath="$PROJECT_DIR$/LSTM_code/evaluation/continuous/currweather/RELU/GRAPHS/events.out.tfevents.1532634465.DESKTOP-A14IBSC" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSTM_code/lstm_v9_weather_v2based_pick.py" beforeDir="false" afterPath="$PROJECT_DIR$/LSTM_code/lstm_v9_weather_v2based_pick.py" afterDir="false" />
-    </list>
+    <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -115,8 +108,8 @@
       <file leaf-file-name="lstm_v9_weather_v2based_pick.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/LSTM_code/lstm_v9_weather_v2based_pick.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="144" column="71" lean-forward="true" selection-start-line="144" selection-start-column="71" selection-end-line="144" selection-end-column="71" />
+            <state relative-caret-position="187">
+              <caret line="137" column="67" selection-start-line="137" selection-start-column="67" selection-end-line="137" selection-end-column="67" />
               <folding>
                 <element signature="e#106#129#0" expanded="true" />
               </folding>
@@ -886,8 +879,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/LSTM_code/lstm_v9_weather_v2based_pick.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="144" column="71" lean-forward="true" selection-start-line="144" selection-start-column="71" selection-end-line="144" selection-end-column="71" />
+        <state relative-caret-position="187">
+          <caret line="137" column="67" selection-start-line="137" selection-start-column="67" selection-end-line="137" selection-end-column="67" />
           <folding>
             <element signature="e#106#129#0" expanded="true" />
           </folding>
