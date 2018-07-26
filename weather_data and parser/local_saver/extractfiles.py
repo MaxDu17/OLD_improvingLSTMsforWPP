@@ -7,12 +7,11 @@ import os
 import pygrib #library that only works in linux
 from get_best_pt_lib import Searcher #not to worry, this will be all ok on linux
 point_finder = Searcher()
-#point_to_keep_i =186
-#point_to_keep_j = 388
+
 
 point_to_keep_i, point_to_keep_j = point_finder.search()
-print(point_to_keep_i)
-print(point_to_keep_j)
+print("queueing point " + point_to_keep_i)
+print("quueuing other point " + point_to_keep_j)
 
 data_path = '/home/set/Max/data/'
 
