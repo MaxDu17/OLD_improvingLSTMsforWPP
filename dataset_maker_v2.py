@@ -49,6 +49,9 @@ class SetMaker_Weather:
         input_data = [k[1:] for k in self.master_list[:-1]]
         return input_data
 
+    def reset_test_counter(self):
+        self.test_counter = self.training_set_size
+        
     def next_epoch_valid_waterfall(self):  #this is returning the entire datalist, useful for the "contained" modules that don't use for loops
         if self.validation_set_size ==0:
             raise Exception("You have not initialized the validation set!")

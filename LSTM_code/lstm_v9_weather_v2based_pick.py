@@ -15,11 +15,11 @@ hyp = Hyperparameters()
 #constructing the big weight now
 
 with tf.name_scope("weights_and_biases"):
-    W_Forget = tf.Variable(tf.random_normal(shape = [hyp.hidden_dim + 6,hyp.cell_dim], mean = hyp.MEAN, stddev = hyp.STD, seed = hyp.SEED), name = "forget_weight")
-    W_Output = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 6,hyp.cell_dim], mean = hyp.MEAN, stddev = hyp.STD, seed = hyp.SEED), name="output_weight")
-    W_Gate = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 6, hyp.cell_dim],mean = hyp.MEAN, stddev = hyp.STD, seed = hyp.SEED), name="gate_weight")
-    W_Input = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 6, hyp.cell_dim],mean = hyp.MEAN, stddev = hyp.STD, seed = hyp.SEED), name="input_weight")
-    W_Hidden_to_Out = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim,1],mean = hyp.MEAN, stddev = hyp.STD, seed = hyp.SEED), name = "outwards_propagating_weight")
+    W_Forget = tf.Variable(tf.random_normal(shape = [hyp.hidden_dim + 6,hyp.cell_dim]), name = "forget_weight")
+    W_Output = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 6,hyp.cell_dim]), name="output_weight")
+    W_Gate = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 6, hyp.cell_dim]), name="gate_weight")
+    W_Input = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim + 6, hyp.cell_dim]), name="input_weight")
+    W_Hidden_to_Out = tf.Variable(tf.random_normal(shape=[hyp.hidden_dim,1]), name = "outwards_propagating_weight")
 
 
     B_Forget = tf.Variable(tf.scalar_mul(5,tf.ones(shape=[1, hyp.cell_dim])), name = "forget_bias")
@@ -145,21 +145,24 @@ with tf.Session() as sess:
             print("The absolute value loss for this sample is ", loss_)
             print("predicted number: ", output_, ", real number: ", label)
 
+        if epoch % 50 == 0 and epoch > hyp.EPOCHS-(50*hyp.FINALJUMP):
+            saver.save(sess, "2012/v9/models/LSTMv9", global_step=epoch)
+
+
         if epoch % 2000 == 0 and epoch > 498:
             saver.save(sess, "2012/v9/models/LSTMv9", global_step=epoch)
             print("---------------------saved model-------------------------")
 
-            next_state_hold = next_state #this "pauses" the training that is happening right now.
             sm.create_validation_set()
             RMS_loss = 0.0
-            next_state = np.zeros(shape=[2, 1, hyp.cell_dim])
+            next_state_valid = np.zeros(shape=[2, 1, hyp.cell_dim])
             for i in range(hyp.VALIDATION_NUMBER):
                 data = sm.next_epoch_valid_waterfall()
                 label_ = sm.get_label()
                 label = np.reshape(label_, [1, 1])
                 data = np.reshape(data, [hyp.FOOTPRINT, 1, 6])
 
-                next_state, loss_ = sess.run([pass_back_state, loss], #why passback? Because we only shift by one!
+                next_state_valid, loss_ = sess.run([pass_back_state, loss], #why passback? Because we only shift by one!
                                                feed_dict = {inputs:data, Y:label, init_state:next_state})
                 RMS_loss += loss_
             sm.clear_valid_counter()
@@ -168,10 +171,11 @@ with tf.Session() as sess:
             print("validation: RMS loss is ", RMS_loss)
             validation_logger.writerow([epoch, RMS_loss])
 
-            next_state = next_state_hold #restoring past point...
+
+
 
     RMS_loss = 0.0
-    next_state = np.zeros(shape=[2, 1, hyp.cell_dim])
+    next_state_test = np.zeros(shape=[2, 1, hyp.cell_dim])
     carrier = ["true_values", "predicted_values", "abs_error"]
     test_logger.writerow(carrier)
     for test in range(hyp.Info.TEST_SIZE):  # this will be replaced later
@@ -180,7 +184,7 @@ with tf.Session() as sess:
         label = np.reshape(label_, [1, 1])
         data = np.reshape(data, [hyp.FOOTPRINT, 1, 6])
 
-        next_state, output_, loss_ = sess.run([pass_back_state, output, loss],  # why passback? Because we only shift by one!
+        next_state_test, output_, loss_ = sess.run([pass_back_state, output, loss],  # why passback? Because we only shift by one!
                                      feed_dict={inputs: data, Y: label, init_state: next_state})
         RMS_loss += loss_
         carrier = [label_, output_[0][0], loss_]
