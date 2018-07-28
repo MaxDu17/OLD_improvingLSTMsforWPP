@@ -149,7 +149,7 @@ with tf.Session() as sess:
             test_local_ = open("evaluation/continuous/currweather/RELU/models/" + str(epoch) + ".csv", 'w')
             test_local = csv.writer(test_local_, lineterminator='\n')
 
-            saver.save(sess, "evaluation/continuous/currweather/RELU/models/LSTMweatherRELU", global_step=epoch)
+            saver.save(sess, "evaluation/continuous/currweather/RELU/GRAPHS/LSTMweatherRELU", global_step=epoch)
 
             RMS_loss = 0.0
             next_state_test = np.zeros(shape=[2, 1, hyp.cell_dim])
