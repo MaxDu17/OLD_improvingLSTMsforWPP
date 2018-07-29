@@ -3,7 +3,7 @@ import csv
 import subprocess, os
 from ftplib import FTP
 #path = "/home/max/DRIVE/data/"
-path = '/home/wedu/database/'
+path = '/home/wedu/database/data/'
 len_path = len(path)
 
 k_ = open("tarfiles.csv", "r")
