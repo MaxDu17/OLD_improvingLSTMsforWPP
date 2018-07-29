@@ -13,7 +13,7 @@ point_to_keep_i, point_to_keep_j = point_finder.search()
 print("queueing point " + point_to_keep_i)
 print("quueuing other point " + point_to_keep_j)
 
-data_path = '/home/set/Max/data/'
+path = '/home/wedu/database/'
 
 folders = os.listdir(data_path)
 try:
