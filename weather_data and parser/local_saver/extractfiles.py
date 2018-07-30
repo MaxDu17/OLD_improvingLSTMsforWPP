@@ -10,8 +10,8 @@ point_finder = Searcher()
 
 
 point_to_keep_i, point_to_keep_j = point_finder.search()
-print("queueing point " + point_to_keep_i)
-print("quueuing other point " + point_to_keep_j)
+print("queueing point " + str(point_to_keep_i))
+print("quueuing other point " + str(point_to_keep_j))
 
 path = '/home/wedu/database/data/'
 
