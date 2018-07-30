@@ -8,12 +8,11 @@ import pygrib #library that only works in linux
 from get_best_pt_lib import Searcher #not to worry, this will be all ok on linux
 point_finder = Searcher()
 
-
 point_to_keep_i, point_to_keep_j = point_finder.search()
 print("queueing point " + str(point_to_keep_i))
 print("quueuing other point " + str(point_to_keep_j))
 
-path = '/home/wedu/database/data/'
+data_path = '/home/wedu/database/data/'
 
 folders = os.listdir(data_path)
 try:
