@@ -17,7 +17,7 @@ try:
     answer = input("Would you like to delete crash files? (y/n)")
     if answer == 'y':
         print("deleting crash directory")
-        subprocess.call(['rm*','/home/wedu/database/data/crash/'])
+        subprocess.call(['rm','*','/home/wedu/database/data/crash/'])
 except:
     print("error, no files found. Quitting...")
     quit()
