@@ -1,2 +1,0 @@
-year,month,date,hour,forecast 0-surface_pressure,forecast 0-temp@2M,forecast 0-wind_gust_speed,forecast 0-2_M_rel_humid,forecast 0-temp_gnd_lvl,forecast 1-surface_pressure,forecast 1-temp@2M,forecast 1-wind_gust_speed,forecast 1-2_M_rel_humid,forecast 1-temp_gnd_lvl,forecast 2-surface_pressure,forecast 2-temp@2M,forecast 2-wind_gust_speed,forecast 2-2_M_rel_humid,forecast 2-temp_gnd_lvl
-2011,01,24,20,102880.0,266.5,4.0,52.34,267.83,103010.0,266.3,3.0,62.730000000000004,266.61,102950.0,265.3,3.0,75.71000000000001,264.92
