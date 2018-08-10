@@ -57,7 +57,9 @@ for i in range(3): #just making the headers...
         headers.append(concat)
 
 print("making a large file now with everything inside!") #this is the filled file
-big_data_ = open("LARGE_FILE_FILLED.csv", "w") #here we get the large file
+loc_name = input("what location is this?\n")
+loc_name = loc_name + ".csv"
+big_data_ = open(loc_name, "w") #here we get the large file
 big_data = csv.writer(big_data_, lineterminator = "\n")
 big_data.writerow(headers)
 
