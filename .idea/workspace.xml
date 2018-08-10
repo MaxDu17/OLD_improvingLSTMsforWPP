@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/2011_TOTALSET.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/MARKEDTOTALSET.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/cleanset.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/error_file.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather_data and parser/local_saver/tarfiles.csv" beforeDir="false" />
-    </list>
+    <list default="true" id="1d8238ca-65aa-463d-956c-f18d1c3d4338" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,8 +111,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/weather_data and parser/local_saver/extractfiles.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
+            <state relative-caret-position="589">
+              <caret line="73" column="27" lean-forward="true" selection-start-line="73" selection-start-column="27" selection-end-line="73" selection-end-column="27" />
               <folding>
                 <element signature="e#150#160#0" expanded="true" />
               </folding>
@@ -266,7 +260,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1912" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -466,15 +460,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48087433" visible="true" weight="0.0037313432" />
-      <window_info id="Structure" order="1" sideWeight="0.5191257" side_tool="true" visible="true" weight="0.0037313432" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48187134" visible="true" weight="0.0037313432" />
+      <window_info id="Structure" order="1" sideWeight="0.51812863" side_tool="true" visible="true" weight="0.0037313432" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.40455532" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.07266811" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5904139" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -763,8 +757,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/weather_data and parser/local_saver/extractfiles.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
+        <state relative-caret-position="589">
+          <caret line="73" column="27" lean-forward="true" selection-start-line="73" selection-start-column="27" selection-end-line="73" selection-end-column="27" />
           <folding>
             <element signature="e#150#160#0" expanded="true" />
           </folding>
