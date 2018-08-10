@@ -62,7 +62,7 @@ big_data = csv.writer(big_data_, lineterminator = "\n")
 big_data.writerow(headers)
 
 folders = sorted(folders, key= lambda names: int(names[13:19])) #sorting the folders in numerical order by data
-
+print(folders)
 for dir_name in folders:
     file_names = os.listdir(data_path + dir_name)
     i = 0

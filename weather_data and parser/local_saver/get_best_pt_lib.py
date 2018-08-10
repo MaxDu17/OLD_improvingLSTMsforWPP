@@ -53,4 +53,3 @@ class Searcher():
 
         return best_i, best_j
 
-
