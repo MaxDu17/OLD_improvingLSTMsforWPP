@@ -2,6 +2,7 @@
 LSTM implementation with wind data set
 Version 9 changes:
 added weather data
+also added picking
 """
 import tensorflow as tf
 import numpy as np
